@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{multirow}
+\usepackage{fancyhdr} 
+\usepackage[table]{xcolor}
+\usepackage{amssymb}
+\usepackage{subfiles} % para dividir o projeto em subarquivos ;-)
+% \usepackage{breakcites}
+\usepackage{multicol}
+\usepackage{proof}
+\usepackage{amsmath}
+
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} %para "riscar" o texto
+
+\newcommand{\mudatexto}[1]{\textcolor{red}{#1}}
+\newcommand{\duvida}[1]{\textcolor{blue}{#1}}
+\newcommand{\obs}[1]{\textcolor{cyan}{#1}}
+\newcommand{\afazer}[1]{\textcolor{violet}{#1}}
+\newcommand{\atualizado}[1]{\textcolor{teal}{#1}}
+
+%\oddsidemargin -0.7cm 
+%\evensidemargin -0.7cm
+\topmargin -2.0cm 
+%\headheight 0  cm 
+\headsep 1.5cm   
+%\hoffset -1.0cm
+%\footskip 40pt
+%\textheight = 235mm \textwidth 185mm
+\oddsidemargin 0.4cm 
+\evensidemargin 0.4cm
+\textheight = 235mm \textwidth 165mm
+
+\pagestyle{plain}
+
+\addtolength\columnsep{2pt}
+
+\begin{document}
+
+\renewcommand{\refname}{Referências}
+\pagestyle{fancy}
+\lhead{
+  \includegraphics[scale=0.75]{figuras/logo_dcc.pdf}
+}
+\chead{
+  \scriptsize{
+    UNIVERSIDADE DO ESTADO DE SANTA CATARINA -- UDESC\\
+    CENTRO DE CIÊNCIAS TECNOLÓGICAS -- CCT\\
+    DEPARTAMENTO DE CIÊNCIA DA COMPUTAÇÃO -- DCC
+  }
+}
+\rhead{
+  \includegraphics[scale=0.75]{figuras/logo_udescjlle.pdf}
+}
+
+\subfile{cabecalho}
+
+%------------------------------------------------
+
+\section{Introdução e justificativa}
+\subfile{introducao}
+
+%------------------------------------------------
+
+\section{Objetivos}
+\subfile{objetivos}
+
+%------------------------------------------------
+
+\section{Metodologia}
+\subfile{metodologia}
+
+%------------------------------------------------
+
+\section{Cronograma proposto}
+\subfile{cronograma}
+
+%------------------------------------------------
+\section{Linha e grupo de pesquisa}
+\subfile{linha-grupo}
+
+%------------------------------------------------
+
+\section{Forma de acompanhamento/orientação}
+\subfile{acompanhamento}
+
+%------------------------------------------------
+
+\bibliographystyle{sbc-ref-estilo}
+\bibliography{referencias}
+
+%------------------------------------------------
+
+\vskip 1.5cm
+
+
+\begin{minipage} {0.47\linewidth}
+  \centering
+  \rule{7.2cm}{0.1mm}
+  \textbf{\textit{Karina Girardi Roggia}\\Orientadora}
+\end{minipage}
+%
+\begin{minipage} {0.47\linewidth}
+  \centering
+  \rule{7.2cm}{0.1mm}
+  \textbf{\textit{Elian Gustavo Chorny Babireski}\\Discente}
+\end{minipage}
+
+\end{document}
