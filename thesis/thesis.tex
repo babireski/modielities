@@ -1,0 +1,66 @@
+\documentclass{report}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{modalities}
+
+\newtheorem{definition}{Definição}
+
+\begin{document}
+    \title{Uma formalização da interpretação modal do sistema intuicionista}
+    \author{Elian Babireski}
+    \date{2024}
+
+    \maketitle
+
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \textbf{Axioma} & \textbf{Sentença}                                       & \textbf{Condição} \\ \hline
+            \textbf{K}      & $\nec(\varphi \to \psi) \to \nec \varphi \to \nec \psi$ & Distributividade  \\ \hline
+            \textbf{T}      & $\nec \varphi \to \varphi$                              & Reflexividade     \\ \hline
+            \textbf{B}      & $\varphi \to \nec \pos \varphi$                         & Simetria          \\ \hline
+            \textbf{D}      & $\nec \varphi \to \pos \varphi$                         & Serialidade       \\ \hline
+            \textbf{4}      & $\nec \varphi \to \nec \nec \varphi$                    & Transitividade    \\ \hline
+            \textbf{5}      & $\pos \varphi \to \nec \pos \varphi$                    & Euclidianidade    \\ \hline
+        \end{tabular}
+        \caption{Sample Table}
+        \label{tab:sample_table}
+    \end{table}
+
+    \begin{definition}[Tradução] 
+        Uma sentença $\varphi$ de um sistema $\mathcal{L}_A = \langle A, \vdash_A, \vDash_A \rangle$ pode ser traduzida a uma sentença $\varphi^\mathcal{T}$ em um sistema $\mathcal{L}_B = \langle B, \vdash_B, \vDash_B \rangle$ caso exista uma função $\bullet^\mathcal{T} : A \to B$ de forma que $\mathcal{L}_B \vdash \varphi \Leftrightarrow \mathcal{L}_B \vdash \varphi^\mathcal{T}$.
+        
+        \qed
+    \end{definition}
+
+    \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ$ indutivamente da seguinte maneira:
+        \begin{align*}
+            p^\circ                     & \coloneqq p                                       \\
+            \bot^\circ                  & \coloneqq \bot                                    \\
+            (\varphi \wedge \psi)^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ         \\
+            (\varphi \vee \psi)^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ \\
+            (\varphi \to \psi)^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ       \\
+            (\exists x. \varphi)^\circ  & \coloneqq \exists x. \nec \varphi^\circ           \\
+            (\forall x. \varphi)^\circ  & \coloneqq \forall x. \varphi^\circ
+        \end{align*}
+        \qed
+    \end{definition}
+
+    \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare$ indutivamente da seguinte maneira:
+        \begin{align*}
+            p^\medsquare                     & \coloneqq \nec p                                        \\
+            \bot^\medsquare                  & \coloneqq \bot                                          \\
+            (\varphi \wedge \psi)^\medsquare & \coloneqq \varphi^\medsquare \wedge \psi^\medsquare     \\
+            (\varphi \vee \psi)^\medsquare   & \coloneqq \varphi^\medsquare \vee \psi^\medsquare       \\
+            (\varphi \to \psi)^\medsquare    & \coloneqq \nec (\varphi^\medsquare \to \psi^\medsquare) \\
+            (\exists x. \varphi)^\medsquare  & \coloneqq \exists x. \varphi^\medsquare                 \\
+            (\forall x. \varphi)^\medsquare  & \coloneqq \nec \forall x. \varphi^\medsquare
+        \end{align*}
+        \qed
+    \end{definition}
+\end{document}
