@@ -5,6 +5,8 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{modalities}
+\usepackage{turnstile}
+% \usepackage{natbib}
 
 \newtheorem{definition}{Definição}
 
@@ -33,8 +35,22 @@
     \end{table}
 
     \begin{definition}[Tradução] 
-        Uma sentença $\varphi$ de um sistema $\mathcal{L}_A = \langle A, \vdash_A, \vDash_A \rangle$ pode ser traduzida a uma sentença $\varphi^\mathcal{T}$ em um sistema $\mathcal{L}_B = \langle B, \vdash_B, \vDash_B \rangle$ caso exista uma função $\bullet^\mathcal{T} : A \to B$ de forma que $\mathcal{L}_B \vdash \varphi \Leftrightarrow \mathcal{L}_B \vdash \varphi^\mathcal{T}$.
-        
+        Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
+        \qed
+    \end{definition}
+
+    A primeira tradução do sistema intuicionista ao sistema modal foi definida por Gödel \cite{Gödel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \cite{Troelstra}. Gödel demonstrou grande crença acerca da corretude fraca -- $ \varnothing \vdash_\mathbf{I} \varphi \Rightarrow \varnothing \vdash_\mathbf{M} \varphi^\medsquare $ -- dessa tradução.
+
+    \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare$ indutivamente da seguinte maneira:
+        \begin{align*}
+            p^\medsquare                     & \coloneqq \nec p                                           \\
+            \bot^\medsquare                  & \coloneqq \nec \bot                                        \\
+            (\varphi \wedge \psi)^\medsquare & \coloneqq \nec (\varphi^\medsquare \wedge \psi^\medsquare) \\
+            (\varphi \vee \psi)^\medsquare   & \coloneqq \nec (\varphi^\medsquare \vee \psi^\medsquare)   \\
+            (\varphi \to \psi)^\medsquare    & \coloneqq \nec (\varphi^\medsquare \to \psi^\medsquare)    \\
+            (\exists x. \varphi)^\medsquare  & \coloneqq \nec (\exists x. \varphi^\medsquare)             \\
+            (\forall x. \varphi)^\medsquare  & \coloneqq \nec (\forall x. \varphi^\medsquare)  
+        \end{align*}
         \qed
     \end{definition}
 
@@ -63,4 +79,9 @@
         \end{align*}
         \qed
     \end{definition}
+
+    Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^0$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por \cite{Girard}, bastando trocar o modalidade $\nec$ pelo expoente $!$ e os conectivos intuicionistas pelas suas contrapartes lineares.
+
+    \bibliographystyle{plain}
+    \bibliography{bibliography}
 \end{document}
