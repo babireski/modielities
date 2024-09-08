@@ -1,8 +1,8 @@
 \documentclass{report}
 
+\usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{modalities}
 \usepackage{turnstile}
@@ -17,42 +17,61 @@
 
     \maketitle
 
+    \chapter{Introdução}
+    \chapter{Fundamentação}
 
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|c|c|c|}
-            \hline
-            \textbf{Axioma} & \textbf{Sentença}                                       & \textbf{Condição} \\ \hline
-            \textbf{K}      & $\nec(\varphi \to \psi) \to \nec \varphi \to \nec \psi$ & Distributividade  \\ \hline
-            \textbf{T}      & $\nec \varphi \to \varphi$                              & Reflexividade     \\ \hline
-            \textbf{B}      & $\varphi \to \nec \pos \varphi$                         & Simetria          \\ \hline
-            \textbf{D}      & $\nec \varphi \to \pos \varphi$                         & Serialidade       \\ \hline
-            \textbf{4}      & $\nec \varphi \to \nec \nec \varphi$                    & Transitividade    \\ \hline
-            \textbf{5}      & $\pos \varphi \to \nec \pos \varphi$                    & Euclidianidade    \\ \hline
-        \end{tabular}
-        \caption{Sample Table}
-        \label{tab:sample_table}
-    \end{table}
+    \section{Sistema}
+
+    \begin{definition}[Sistema]
+        Um sistema consiste numa tripla $\mathbf{L} = \langle \mathcal{L}, \vdash, \vDash\rangle$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas, $\vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação de dedução e $\, \vDash \: : \wp(\mathcal{L}) \times \mathcal{L}$.
+        \qed
+    \end{definition}
+
+    \begin{definition}[$\mathcal{L}_\mathbf{I}$]
+        Define-se a linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, como o menor conjunto induzido a partir das seguintes regras:
+        
+        $\top, \bot \in \mathcal{L}_\mathbf{I}$
+        
+        $\mathcal{P} \subseteq \mathcal{L}_\mathbf{I}$
+        
+        $\varphi \in \mathcal{L}_\mathbf{I} \Rightarrow \neg \varphi \in \mathcal{L}_\mathbf{I}$
+
+        $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
+    \end{definition}
+
+    \begin{definition}[$\mathcal{L}_\mathbf{M}$]
+        Define-se a linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, como o menor conjunto induzido a partir das seguintes regras:
+        
+        $\top, \bot \in \mathcal{L}_\mathbf{I}$
+        
+        $\mathcal{P} \subseteq \mathcal{L}_\mathbf{I}$
+        
+        $\varphi \in \mathcal{L}_\mathbf{I} \Rightarrow \circ \varphi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\nec, \pos, \neg\}$
+
+        $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
+    \end{definition}
+
+    \section{Tradução}
+
+    Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema e garantem certas propiedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, fazendo deixando a definição exata de tradução -- assim como houve com a definição de sistema -- varie de acordo com a predileção de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante desta tese.
 
     \begin{definition}[Tradução] 
         Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
         \qed
     \end{definition}
 
-    A primeira tradução do sistema intuicionista ao sistema modal foi definida por Gödel \cite{Gödel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \cite{Troelstra}. Gödel demonstrou grande crença acerca da corretude fraca -- $ \varnothing \vdash_\mathbf{I} \varphi \Rightarrow \varnothing \vdash_\mathbf{M} \varphi^\medsquare $ -- dessa tradução.
-
-    \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
         \begin{align*}
-            p^\medsquare                     & \coloneqq \nec p                                           \\
-            \bot^\medsquare                  & \coloneqq \nec \bot                                        \\
-            (\varphi \wedge \psi)^\medsquare & \coloneqq \nec (\varphi^\medsquare \wedge \psi^\medsquare) \\
-            (\varphi \vee \psi)^\medsquare   & \coloneqq \nec (\varphi^\medsquare \vee \psi^\medsquare)   \\
-            (\varphi \to \psi)^\medsquare    & \coloneqq \nec (\varphi^\medsquare \to \psi^\medsquare)    \\
-            (\exists x. \varphi)^\medsquare  & \coloneqq \nec (\exists x. \varphi^\medsquare)             \\
-            (\forall x. \varphi)^\medsquare  & \coloneqq \nec (\forall x. \varphi^\medsquare)  
+            p^\neg                     & \coloneqq \neg\neg p                               \\
+            \bot^\neg                  & \coloneqq \bot                                     \\
+            (\varphi \wedge \psi)^\neg & \coloneqq \neg\neg (\varphi^\neg \wedge \psi^\neg) \\
+            (\varphi \vee \psi)^\neg   & \coloneqq \neg\neg (\varphi^\neg \vee \psi^\neg)   \\
+            (\varphi \to \psi)^\neg    & \coloneqq \neg\neg (\varphi^\neg \to \psi^\neg)
+            \tag*{\qed} 
         \end{align*}
-        \qed
     \end{definition}
+
+    A primeira tradução do sistema intuicionista ao sistema modal foi proposta por Gödel \cite{Gödel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \cite{Troelstra}. Gödel conjeiturou a corretude fraca dessa tradução, que foi posteriormente provada por McKinsey e Tarski \cite{McKinsey} em conjunto com sua completude fraca.
 
     \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ$ indutivamente da seguinte maneira:
         \begin{align*}
@@ -63,8 +82,8 @@
             (\varphi \to \psi)^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ       \\
             (\exists x. \varphi)^\circ  & \coloneqq \exists x. \nec \varphi^\circ           \\
             (\forall x. \varphi)^\circ  & \coloneqq \forall x. \varphi^\circ
+            \tag*{\qed} 
         \end{align*}
-        \qed
     \end{definition}
 
     \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare$ indutivamente da seguinte maneira:
@@ -76,11 +95,11 @@
             (\varphi \to \psi)^\medsquare    & \coloneqq \nec (\varphi^\medsquare \to \psi^\medsquare) \\
             (\exists x. \varphi)^\medsquare  & \coloneqq \exists x. \varphi^\medsquare                 \\
             (\forall x. \varphi)^\medsquare  & \coloneqq \nec \forall x. \varphi^\medsquare
+            \tag*{\qed} 
         \end{align*}
-        \qed
     \end{definition}
 
-    Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^0$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por \cite{Girard}, bastando trocar o modalidade $\nec$ pelo expoente $!$ e os conectivos intuicionistas pelas suas contrapartes lineares.
+    Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por Girard \cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
 
     \bibliographystyle{plain}
     \bibliography{bibliography}
