@@ -3,9 +3,12 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{epigraph}
 \usepackage{mathtools}
 \usepackage{modalities}
-\usepackage{turnstile}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{proof}
 % \usepackage{natbib}
 
 \newtheorem{definition}{Definição}
@@ -17,27 +20,42 @@
 
     \maketitle
 
-    \chapter{Introdução}
+    \tableofcontents
+
+    \include{epigraph}
+    \include{introduction}
+
     \chapter{Fundamentação}
 
     \section{Sistema}
 
     \begin{definition}[Sistema]
-        Um sistema consiste numa tripla $\mathbf{L} = \langle \mathcal{L}, \vdash, \vDash\rangle$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas, $\vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação de dedução e $\, \vDash \: : \wp(\mathcal{L}) \times \mathcal{L}$.
+        Um sistema consiste num par $\mathbf{L} = \langle \mathcal{L}, \vdash\rangle$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação de dedução, sem demais condições.
         \qed
     \end{definition}
+
+    \begin{definition}[Substituição]
+        Uma substituição consiste em uma função $\sigma : \mathcal{P} \to \mathcal{L}$ que mapeia proposições em sentenças. A aplicação de $\sigma$ em uma sentença $\varphi \in \mathcal{L}$, denotada $\varphi[\sigma]$, define-se recursivamente como a aplicação de $\sigma$ a cada proposição $p \in \mathcal{P}$ em $\varphi$.
+        \qed
+    \end{definition}    
 
     \begin{definition}[$\mathcal{L}_\mathbf{I}$]
         Define-se a linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, como o menor conjunto induzido a partir das seguintes regras:
         
-        $\top, \bot \in \mathcal{L}_\mathbf{I}$
+        Separação: \infer[Separação]{\psi}{\varphi \to \psi & \varphi}
         
-        $\mathcal{P} \subseteq \mathcal{L}_\mathbf{I}$
         
-        $\varphi \in \mathcal{L}_\mathbf{I} \Rightarrow \neg \varphi \in \mathcal{L}_\mathbf{I}$
-
-        $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
+        Substituição: \infer[Sustituição]{\sigma(\varphi)}{\varphi}
     \end{definition}
+
+    \begin{definition}[$\vdash_\mathbf{I}$]
+        Define-se a relação de dedução do sistema intuicionista, denotado $\vdash_\mathbf{I}$.
+
+
+        
+        
+    \end{definition}
+
 
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
         Define-se a linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, como o menor conjunto induzido a partir das seguintes regras:
@@ -49,6 +67,22 @@
         $\varphi \in \mathcal{L}_\mathbf{I} \Rightarrow \circ \varphi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\nec, \pos, \neg\}$
 
         $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
+    \end{definition}
+
+    \begin{definition}[]
+        \begin{align}
+            \mathcal{M}; \mathit{w} \vDash A \Leftrightarrow \mathit{w} \in \mathcal{V}(A) \\
+            \mathcal{M}; \mathit{w} \vDash \neg \varphi \Leftrightarrow \mathcal{M}; \mathit{w} \nvDash \varphi
+        \end{align}
+    \end{definition}
+
+
+    \begin{definition}[Dedução]
+        Uma dedução para uma linguagem $\mathcal{L}$ consiste em um par composto por um conjunto finito $\{\varphi_1, \cdots, \varphi_n\} \subseteq \mathcal{L}$, chamado de \emph{premissas}, e uma sentença $\varphi \in \mathcal{L}$, chamada de \emph{conclusão}, que pode ser notada da seguinte forma: $$\infer[.]{\varphi}{\varphi_1 \cdots \varphi_n}$$
+    \end{definition}
+
+    \begin{definition}[Sistema de Hilbert]
+        Um sistema de Hilbert para um sistema $\mathbf{L} = \langle \mathcal{L}, \vdash\rangle$ consiste em um par $\mathcal{H} = \langle \mathcal{A}, \mathcal{R} \rangle$, sendo $\mathcal{A}$ um conjunto de axiomas e $\mathcal{R}$ um conjunto de regras de dedução. Uma sucessão $(\varphi_i)_{i\in[1,n]}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
     \end{definition}
 
     \section{Tradução}
