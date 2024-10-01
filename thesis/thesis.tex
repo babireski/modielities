@@ -9,9 +9,13 @@
 \usepackage{ragged2e}
 \usepackage{hyperref}
 \usepackage{proof}
+\usepackage[brazil]{babel}
+\usepackage{fitch}
 % \usepackage{natbib}
 
 \newtheorem{definition}{Definição}
+\newtheorem{lemma}{Lema}
+\newtheorem{theorem}{Teorema}
 
 \begin{document}
     \title{Uma formalização da interpretação modal do sistema intuicionista}
@@ -41,19 +45,10 @@
 
     \begin{definition}[$\mathcal{L}_\mathbf{I}$]
         Define-se a linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, como o menor conjunto induzido a partir das seguintes regras:
-        
-        Separação: \infer[Separação]{\psi}{\varphi \to \psi & \varphi}
-        
-        
-        Substituição: \infer[Sustituição]{\sigma(\varphi)}{\varphi}
     \end{definition}
 
     \begin{definition}[$\vdash_\mathbf{I}$]
         Define-se a relação de dedução do sistema intuicionista, denotado $\vdash_\mathbf{I}$.
-
-
-        
-        
     \end{definition}
 
 
@@ -69,20 +64,12 @@
         $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
     \end{definition}
 
-    \begin{definition}[]
-        \begin{align}
-            \mathcal{M}; \mathit{w} \vDash A \Leftrightarrow \mathit{w} \in \mathcal{V}(A) \\
-            \mathcal{M}; \mathit{w} \vDash \neg \varphi \Leftrightarrow \mathcal{M}; \mathit{w} \nvDash \varphi
-        \end{align}
-    \end{definition}
-
-
     \begin{definition}[Dedução]
         Uma dedução para uma linguagem $\mathcal{L}$ consiste em um par composto por um conjunto finito $\{\varphi_1, \cdots, \varphi_n\} \subseteq \mathcal{L}$, chamado de \emph{premissas}, e uma sentença $\varphi \in \mathcal{L}$, chamada de \emph{conclusão}, que pode ser notada da seguinte forma: $$\infer[.]{\varphi}{\varphi_1 \cdots \varphi_n}$$
     \end{definition}
 
     \begin{definition}[Sistema de Hilbert]
-        Um sistema de Hilbert para um sistema $\mathbf{L} = \langle \mathcal{L}, \vdash\rangle$ consiste em um par $\mathcal{H} = \langle \mathcal{A}, \mathcal{R} \rangle$, sendo $\mathcal{A}$ um conjunto de axiomas e $\mathcal{R}$ um conjunto de regras de dedução. Uma sucessão $(\varphi_i)_{i\in[1,n]}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
+        Um sistema de Hilbert para um sistema $\mathbf{L} = \langle \mathcal{L}, \vdash\rangle$ consiste em um par $\mathcal{H} = \langle \mathcal{A}, \mathcal{R} \rangle$, sendo $\mathcal{A}$ um conjunto de axiomas e $\mathcal{R}$ um conjunto de regras de dedução. Uma sucessão $(\varphi_i)_{i=1}^n$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
     \end{definition}
 
     \section{Tradução}
@@ -134,6 +121,133 @@
     \end{definition}
 
     Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por Girard \cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
+
+    \begin{lemma}
+        $\forall \alpha \in \mathcal{L}_\mathbf{I} . \nec\alpha^\circ \leftrightarrow \alpha^\medsquare$.
+    \end{lemma}
+
+    \begin{proof}
+        Prova por indução na profundidade de $\alpha$.
+    \end{proof}
+
+    \begin{lemma}
+        $\forall \alpha \in \mathcal{L}_\mathbf{I} . \nec\alpha^\medsquare \leftrightarrow \alpha^\medsquare$.
+    \end{lemma}
+
+    \begin{proof}
+        Prova por indução no tamanho de $\alpha$.
+    \end{proof}
+
+    \begin{theorem}
+        $\forall \alpha \in \mathcal{L}_\mathbf{I} . \Gamma \vdash_\mathbf{I} \alpha \Rightarrow \Gamma^\medsquare \vdash_\mathbf{M} \alpha^\medsquare$
+    \end{theorem}
+
+    \begin{proof}
+        Temos dois casos a de serem analisados: axiomas e regras de dedução.
+    
+        \emph{Caso 1: Axiomas.}
+
+        $\mathbf{A^\to_1}$
+
+        $
+            \begin{nd}
+                \have{1}{\alpha \to \beta \to \alpha}
+                \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare}
+                \have{3}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare)}
+                \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
+                \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) \to \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
+                \have{6}{\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
+                \have{7}{\nec(\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare))}
+            \end{nd}
+        $
+
+        $\mathbf{A^\to_2}$
+
+        $
+            \begin{nd}
+                \have{1}{(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma}
+                \have{2}{(\alpha^\medsquare \to \beta^\medsquare \to \gamma^\medsquare) \to (\alpha^\medsquare \to \beta^\medsquare) \to \alpha^\medsquare \to \gamma^\medsquare}
+                \have{3}{}
+                \have{n}{\nec(\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\gamma^\medsquare))\to\nec(\nec(\alpha^\medsquare \to \beta^\medsquare)\to\nec(\alpha^\medsquare \to\gamma^\medsquare)))}
+            \end{nd}
+        $
+
+        $\mathbf{A^\wedge_1}$
+
+        $            
+            \begin{nd}
+                \have{1}{\alpha \wedge \beta \to \alpha}
+                \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare}
+                \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare)}
+            \end{nd}
+        $
+
+        $\mathbf{A^\wedge_2}$
+
+        $            
+            \begin{nd}
+                \have{1}{\alpha \wedge \beta \to \beta}
+                \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare}
+                \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare)}
+            \end{nd}
+        $
+
+        $\mathbf{A^\wedge_3}$
+
+        $            
+            \begin{nd}
+                \have{1}{\alpha \to \beta \to \alpha \wedge \beta}
+                \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare}
+                \have{2}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare)}
+                \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
+                \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) \to \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
+                \have{6}{\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
+                \have{7}{\nec (\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare))}
+            \end{nd}
+        $
+
+        $\mathbf{A^\vee_1}$
+
+        $            
+            \begin{nd}
+                \have{1}{\alpha \to \alpha \vee \beta}
+                \have{2}{\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
+                \have{3}{\nec(\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
+            \end{nd}
+        $
+
+        $\mathbf{A^\vee_2}$
+
+        $            
+            \begin{nd}
+                \have{1}{\beta \to \alpha \vee \beta}
+                \have{2}{\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
+                \have{3}{\nec(\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
+            \end{nd}
+        $
+
+        $\mathbf{A^\vee_3}$
+
+        $            
+            \begin{nd}
+                \have{1}{(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma}
+                \have{2}{(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare}
+                \have{3}{}
+                \have{n}{\nec(\nec(\alpha^\medsquare\to\gamma^\medsquare)\to\nec(\nec(\beta^\medsquare\to\gamma^\medsquare)\to\nec(\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare)))}
+            \end{nd}
+        $
+
+        $\mathbf{A^\bot_1}$
+        
+        $
+            \begin{nd}
+                \have{1}{}
+                \have{n}{\nec(\bot\to\alpha^\medsquare)}
+            \end{nd}
+        $
+
+        \emph{Caso 1: Regras.}
+    \end{proof}
 
     \bibliographystyle{plain}
     \bibliography{bibliography}

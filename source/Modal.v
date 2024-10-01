@@ -1,30 +1,19 @@
 Inductive Intuitionistic : Set :=
-    | Proposition : nat -> Intuitionistic
-    | Negation    : Intuitionistic -> Intuitionistic
-    | Conjunction : Intuitionistic -> Intuitionistic -> Intuitionistic
-    | Disjunction : Intuitionistic -> Intuitionistic -> Intuitionistic
-    | Implication : Intuitionistic -> Intuitionistic -> Intuitionistic.
+    | Contradiction : Intuitionistic
+    | Proposition   : Atom           -> Intuitionistic
+    | Conjunction   : Intuitionistic -> Intuitionistic -> Intuitionistic
+    | Disjunction   : Intuitionistic -> Intuitionistic -> Intuitionistic
+    | Implication   : Intuitionistic -> Intuitionistic -> Intuitionistic.
 
-Inductive Modal : Set :=
-    | Lit     : nat -> Modal
-    | Neg     : Modal -> Modal
-    | Box     : Modal -> Modal
-    | Dia     : Modal -> Modal
-    | And     : Modal -> Modal -> Modal
-    | Or      : Modal -> Modal -> Modal
-    | Implies : Modal -> Modal -> Modal.
+Definition True              := Negation Contradiction.
+Definition Negation α        := Implication (Proposition α) (Contradiction).
+Definition Biimplication α β := Conjunction (Implication (Proposition α) (Proposition β)) (Implication (Proposition β) (Proposition α)).
 
-Fixpoint boxtranslation (φ : Intuitionistic) : Modal :=
-    match φ with
-    | Proposition a   => Box (Lit a)
-    | Negation    φ   => Box (Neg (boxtranslation φ))
-    | Disjunction φ ψ => And (boxtranslation φ) (boxtranslation ψ)
-    | Conjunction φ ψ => Or  (boxtranslation φ) (boxtranslation ψ)
-    | Implication φ ψ => Box (Implies (boxtranslation φ) (boxtranslation ψ))
-    end.
-
-
-
-(* □ *)
-(* ◇ *)
-
+Notation "# P"   := (Proposition P) (at level 1).
+Notation "A ∨ B" := (Disjunction A B) (at level 15, right associativity).
+Notation "A ∧ B" := (Conjunction A B) (at level 15, right associativity).
+Notation "A → B" := (Implication A B) (at level 16, right associativity).
+Notation "⊥"     := Contradiction (at level 0).
+Notation "¬ A"   := (Negation A) (at level 5).
+Notation "⊤"     := True (at level 0).
+Notation "A ↔ B" := (Biimplication A B) (at level 17, right associativity).
