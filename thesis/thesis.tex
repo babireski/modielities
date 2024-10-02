@@ -11,7 +11,12 @@
 \usepackage{proof}
 \usepackage[brazil]{babel}
 \usepackage{fitch}
+\usepackage{cases}
+\usepackage{unicode-math}
 % \usepackage{natbib}
+
+
+\newcommand\mdoubleplus{\mathbin{+\mkern-10mu+}}
 
 \newtheorem{definition}{Definição}
 \newtheorem{lemma}{Lema}
@@ -33,12 +38,15 @@
 
     \section{Sistema}
 
+    Para este trabalho, a definição de sistema adotada será uma especialização daquela provida por Béziau \cite{Béziau}.
+
     \begin{definition}[Sistema]
         Um sistema consiste num par $\mathbf{L} = \langle \mathcal{L}, \vdash\rangle$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação de dedução, sem demais condições.
         \qed
     \end{definition}
 
-    % Troelstra, p. 10
+    Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme Troelstra \cite{Troelstra}.
+
     \begin{definition}[Profundidade]
         A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua árvore de construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
         \begin{align*}
@@ -52,7 +60,14 @@
 
     \begin{definition}[Substituição]
         Uma substituição consiste em uma função $\sigma : \mathcal{P} \to \mathcal{L}$ que mapeia proposições em sentenças. A aplicação de $\sigma$ em uma sentença $\varphi \in \mathcal{L}$, denotada $\varphi[\sigma]$, define-se recursivamente como a aplicação de $\sigma$ a cada proposição $p \in \mathcal{P}$ em $\varphi$.
-        \qed
+        \begin{align*}
+            p[p \mapsto \beta]                 & \coloneqq \beta                                                  \\
+            q[p \mapsto \beta]                 & \coloneqq q                                                      \\
+            \bot[p \mapsto \beta]              & \coloneqq \bot                                                   \\
+            \circ\alpha[p \mapsto \beta]       & \coloneqq \circ(\alpha[p \mapsto \beta])                         \\
+            \alpha\circ\beta[p \mapsto \beta]  & \coloneqq (\alpha[p \mapsto \beta])\circ(\beta[p \mapsto \beta])
+            \tag*{\qed} 
+        \end{align*}
     \end{definition}    
 
     \begin{definition}[$\mathcal{L}_\mathbf{I}$]
@@ -159,152 +174,184 @@
     \end{theorem}
 
     \begin{proof}
-        Prova por indução no tamanho da prova.
-    
-        \noindent\textbf{Base}: sucessão de dedução da forma $(\alpha)$.
+        Sabe-se que $\Gamma \vdash_\mathbf{I} \alpha$, portanto existe uma prova $\mathcal{P} = \mathcal{P} \mdoubleplus (\alpha)$, onde $\mathcal{P}$ consiste em uma sucessão finita e possivelmente vazia.
 
-        \noindent\textbf{Caso 1}: $\alpha\in\Gamma$. Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$. Portanto, pode-se provar $\Gamma^\medsquare\vdash_\mathbf{M}\alpha^\medsquare$ por meio da sucessão $(\alpha^\medsquare)$.
+        \begin{case}
+            \item{$\mathcal{P} = (\alpha)$}.
+                
+                Existem dois casos para uma prova $\mathcal{P}$ de tamanho $|\mathcal{P}| = 1$.
 
-        \noindent\textbf{Caso 2}: $\alpha\in\mathcal{A}$.
+            \begin{subcase}
+                \item{$\alpha\in\mathcal{A}$}.
+                    
+                    Prova.
 
-        $\mathbf{A^\to_1}$
-
-        $
-            \begin{nd}
-                \have{1}{\alpha \to \beta \to \alpha}
-                \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare}
-                \have{3}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare)}
-                \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
-                \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) \to \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
-                \have{6}{\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
-                \have{7}{\nec(\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare))}
-            \end{nd}
-        $
-
-        $\mathbf{A^\to_2}$
-
-        $
-            \begin{nd}
-                \have{1}{(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma}
-                \have{2}{(\alpha^\medsquare \to \beta^\medsquare \to \gamma^\medsquare) \to (\alpha^\medsquare \to \beta^\medsquare) \to \alpha^\medsquare \to \gamma^\medsquare}
-                \have{3}{}
-                \have{n}{\nec(\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\gamma^\medsquare))\to\nec(\nec(\alpha^\medsquare \to \beta^\medsquare)\to\nec(\alpha^\medsquare \to\gamma^\medsquare)))}
-            \end{nd}
-        $
-
-        $\mathbf{A^\wedge_1}$
-
-        $            
-            \begin{nd}
-                \have{1}{\alpha \wedge \beta \to \alpha}
-                \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare}
-                \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare)}
-            \end{nd}
-        $
-
-        $\mathbf{A^\wedge_2}$
-
-        $            
-            \begin{nd}
-                \have{1}{\alpha \wedge \beta \to \beta}
-                \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare}
-                \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare)}
-            \end{nd}
-        $
-
-        $\mathbf{A^\wedge_3}$
-
-        $            
-            \begin{nd}
-                \have{1}{\alpha \to \beta \to \alpha \wedge \beta}
-                \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare}
-                \have{2}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare)}
-                \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
-                \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) \to \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
-                \have{6}{\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
-                \have{7}{\nec (\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare))}
-            \end{nd}
-        $
-
-        $\mathbf{A^\vee_1}$
-
-        $            
-            \begin{nd}
-                \have{1}{\alpha \to \alpha \vee \beta}
-                \have{2}{\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
-                \have{3}{\nec(\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
-            \end{nd}
-        $
-
-        $\mathbf{A^\vee_2}$
-
-        $            
-            \begin{nd}
-                \have{1}{\beta \to \alpha \vee \beta}
-                \have{2}{\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
-                \have{3}{\nec(\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
-            \end{nd}
-        $
-
-        $\mathbf{A^\vee_3}$
-
-        $            
-            \begin{nd}
-                \have{1}{(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma}
-                \have{2}{(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare}
-                \have{3}{}
-                \have{n}{\nec(\nec(\alpha^\medsquare\to\gamma^\medsquare)\to\nec(\nec(\beta^\medsquare\to\gamma^\medsquare)\to\nec(\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare)))}
-            \end{nd}
-        $
-
-        $\mathbf{A^\bot_1}$
-        
-        $
-            \begin{nd}
-                \have{1}{}
-                \have{n}{\nec(\bot\to\alpha^\medsquare)}
-            \end{nd}
-        $
-
-        \emph{Caso 1: Regras.}
+                \item{$\alpha\in\Gamma$}.
+                    
+                    Prova.
+            \end{subcase}
+        \end{case}
     \end{proof}
 
-    \begin{definition}[$\mathcal{H}_\mathbf{I}$]
-        Define-se o sistema hilbertiano para o sistema intuicionista como um par $\mathcal{H}_\mathbf{I} = \langle\mathcal{A}_\mathbf{I}, \mathcal{R}_\mathbf{I}\rangle$, onde $\mathcal{A}_\mathbf{I} = \{\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}, \mathbf{A_4}, \mathbf{A_5}, \mathbf{A_6}, \mathbf{A_7}, \mathbf{A_8}, \mathbf{A_9}\}$ e $\mathcal{R}_\mathbf{I} = \{\mathbf{R_1}\}$.
-        \begin{align*}
-            \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
-            \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            \mathbf{A_3}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
-            \mathbf{A_4}\quad & \alpha\wedge\beta\to\alpha \\
-            \mathbf{A_5}\quad & \alpha\wedge\beta\to\beta \\
-            \mathbf{A_6}\quad & \alpha\to\alpha\vee\beta \\
-            \mathbf{A_7}\quad & \beta\to\alpha\vee\beta \\
-            \mathbf{A_8}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            \mathbf{A_9}\quad & \bot\to\alpha \\
-            \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
-        \end{align*}   
+    % \begin{proof}
+    %     Prova por indução no tamanho da prova.
+    
+    %     \noindent\textbf{Base}: sucessão de dedução da forma $(\alpha)$.
+
+    %     \noindent\textbf{Caso 1}: $\alpha\in\Gamma$. Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$. Portanto, pode-se provar $\Gamma^\medsquare\vdash_\mathbf{M}\alpha^\medsquare$ por meio da sucessão $(\alpha^\medsquare)$.
+
+    %     \noindent\textbf{Caso 2}: $\alpha\in\mathcal{A}$.
+
+    %     $\mathbf{A^\to_1}$
+
+    %     $
+    %         \begin{nd}
+    %             \have{1}{\alpha \to \beta \to \alpha}
+    %             \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare}
+    %             \have{3}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare)}
+    %             \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
+    %             \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) \to \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
+    %             \have{6}{\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)}
+    %             \have{7}{\nec(\nec \alpha^\medsquabre \to \nec (\beta^\medsquare \to \alpha^\medsquare))}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\to_2}$
+
+    %     $
+    %         \begin{nd}
+    %             \have{1}{(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma}
+    %             \have{2}{(\alpha^\medsquare \to \beta^\medsquare \to \gamma^\medsquare) \to (\alpha^\medsquare \to \beta^\medsquare) \to \alpha^\medsquare \to \gamma^\medsquare}
+    %             \have{3}{}
+    %             \have{n}{\nec(\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\gamma^\medsquare))\to\nec(\nec(\alpha^\medsquare \to \beta^\medsquare)\to\nec(\alpha^\medsquare \to\gamma^\medsquare)))}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\wedge_1}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{\alpha \wedge \beta \to \alpha}
+    %             \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare}
+    %             \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare)}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\wedge_2}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{\alpha \wedge \beta \to \beta}
+    %             \have{2}{\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare}
+    %             \have{3}{\nec(\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare)}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\wedge_3}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{\alpha \to \beta \to \alpha \wedge \beta}
+    %             \have{2}{\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare}
+    %             \have{2}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare)}
+    %             \have{4}{\nec(\alpha \to \beta) \to \nec \alpha \to \nec \beta}
+    %             \have{5}{\nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) \to \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
+    %             \have{6}{\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)}
+    %             \have{7}{\nec (\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare))}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\vee_1}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{\alpha \to \alpha \vee \beta}
+    %             \have{2}{\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
+    %             \have{3}{\nec(\alpha^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\vee_2}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{\beta \to \alpha \vee \beta}
+    %             \have{2}{\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare}
+    %             \have{3}{\nec(\beta^\medsquare \to \alpha^\medsquare \vee \beta^\medsquare)}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\vee_3}$
+
+    %     $            
+    %         \begin{nd}
+    %             \have{1}{(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma}
+    %             \have{2}{(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare}
+    %             \have{3}{}
+    %             \have{n}{\nec(\nec(\alpha^\medsquare\to\gamma^\medsquare)\to\nec(\nec(\beta^\medsquare\to\gamma^\medsquare)\to\nec(\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare)))}
+    %         \end{nd}
+    %     $
+
+    %     $\mathbf{A^\bot_1}$
+        
+    %     $
+    %         \begin{nd}
+    %             \have{1}{}
+    %             \have{n}{\nec(\bot\to\alpha^\medsquare)}
+    %         \end{nd}
+    %     $
+
+    %     \emph{Caso 1: Regras.}
+    % \end{proof}
+
+    % \begin{definition}[$\mathcal{H}_\mathbf{I}$]
+    %     Define-se o sistema hilbertiano para o sistema intuicionista como um par $\mathcal{H}_\mathbf{I} = \langle\mathcal{A}_\mathbf{I}, \mathcal{R}_\mathbf{I}\rangle$, onde $\mathcal{A}_\mathbf{I} = \{\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}, \mathbf{A_4}, \mathbf{A_5}, \mathbf{A_6}, \mathbf{A_7}, \mathbf{A_8}, \mathbf{A_9}\}$ e $\mathcal{R}_\mathbf{I} = \{\mathbf{R_1}\}$.
+    %     \begin{align*}
+    %         \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
+    %         \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+    %         \mathbf{A_3}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
+    %         \mathbf{A_4}\quad & \alpha\wedge\beta\to\alpha \\
+    %         \mathbf{A_5}\quad & \alpha\wedge\beta\to\beta \\
+    %         \mathbf{A_6}\quad & \alpha\to\alpha\vee\beta \\
+    %         \mathbf{A_7}\quad & \beta\to\alpha\vee\beta \\
+    %         \mathbf{A_8}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+    %         \mathbf{A_9}\quad & \bot\to\alpha \\
+    %         \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
+    %     \end{align*}   
+    % \end{definition}
+
+    % \begin{definition}[]
+    %     \begin{align*}
+    %         \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
+    %         \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma \\
+    %         \mathbf{A_3}\quad & (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
+    %         \mathbf{A_4}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
+    %         \mathbf{A_5}\quad & \alpha\wedge\beta\to\alpha \\
+    %         \mathbf{A_6}\quad & \alpha\wedge\beta\to\beta \\
+    %         \mathbf{A_7}\quad & \alpha\to\alpha\vee\beta \\
+    %         \mathbf{A_8}\quad & \beta\to\alpha\vee\beta \\
+    %         \mathbf{A_9}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma \\
+    %         \mathbf{A_\neg}\quad & \neg\neg\alpha\to\alpha \\
+    %         \mathbf{A_K}\quad & \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
+    %         \mathbf{A_T}\quad & \nec\alpha\to\alpha \\
+    %         \mathbf{A_4}\quad & \nec\alpha\to\nec\nec\alpha \\
+    %         \mathbf{A_\meddiamond}\quad & \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
+    %         \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
+    %         \mathbf{R_2}\quad & \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha
+    %     \end{align*}   
+    % \end{definition}
+
+    \begin{definition}[Sucessão]
+        Uma sucessão consiste em uma coleção ordenada de elementos que permite repetição.
     \end{definition}
 
-    \begin{definition}[]
-        \begin{align*}
-            \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
-            \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma \\
-            \mathbf{A_3}\quad & (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
-            \mathbf{A_4}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
-            \mathbf{A_5}\quad & \alpha\wedge\beta\to\alpha \\
-            \mathbf{A_6}\quad & \alpha\wedge\beta\to\beta \\
-            \mathbf{A_7}\quad & \alpha\to\alpha\vee\beta \\
-            \mathbf{A_8}\quad & \beta\to\alpha\vee\beta \\
-            \mathbf{A_9}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma \\
-            \mathbf{A_\neg}\quad & \neg\neg\alpha\to\alpha \\
-            \mathbf{A_K}\quad & \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
-            \mathbf{A_T}\quad & \nec\alpha\to\alpha \\
-            \mathbf{A_4}\quad & \nec\alpha\to\nec\nec\alpha \\
-            \mathbf{A_\meddiamond}\quad & \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
-            \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
-            \mathbf{R_2}\quad & \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha
-        \end{align*}   
+    \begin{definition}[Concatenação]
+        Uma sucessão consiste em uma coleção de elementos 
     \end{definition}
+
+    \chapter{Formalização}
+    \chapter{Implementação}
+    \chapter{Conclusão}
 
     \bibliographystyle{plain}
     \bibliography{bibliography}
