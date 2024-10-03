@@ -1,23 +1,45 @@
-\usepackage{mathtools,enumitem,newpxtext}
+% \usepackage{mathtools,enumitem,newpxtext}
 
-\DeclarePairedDelimiter{\dbracket}{[\![}{]\!]}    
+% \DeclarePairedDelimiter{\dbracket}{[\![}{]\!]}    
 
-\newlist{case}{itemize}{1}
-\setlist[case]
-{
-    label=\emph{Caso.},
-    labelindent=0pt, %customize value for distance from left margin to "Case"
-    leftmargin=4em, %customize value for distance from left margin to item content
-    labelsep=*,
-    align=left
-}
+% % \newlist{case}{itemize}{1}
+% % \setlist[case]
+% % {
+% %     label=\emph{Caso.},
+% %     labelindent=0pt, %customize value for distance from left margin to "Case"
+% %     leftmargin=4em, %customize value for distance from left margin to item content
+% %     labelsep=*,
+% %     align=left
+% % }
 
-\newlist{subcase}{itemize}{1}
-\setlist[subcase]
-{
-    label=\emph{Caso.},
-    labelindent=0pt, %customize value for distance from left margin to "Case"
-    leftmargin=4em, %customize value for distance from left margin to item content
-    labelsep=*,
-    align=left
-}
+% \newlist{case}{enumerate}{1}
+% \setlist[case]
+% {
+%     label=\textbf{Caso \arabic*},
+%     % labelindent=4em, % indent for the label itself
+%     leftmargin=4em, % distance from left margin to item content
+%     labelsep=*,
+%     align=left
+% }
+
+% \newlist{subcase}{itemize}{1}
+% \setlist[subcase]
+% {
+%     label=\emph{Caso.},
+%     labelindent=0pt, %customize value for distance from left margin to "Case"
+%     leftmargin=4em, %customize value for distance from left margin to item content
+%     labelsep=*,
+%     align=left
+% }
+
+\usepackage{mdframed}
+
+\newmdenv[
+  hidealllines=true,
+  innerleftmargin=1em,
+  innerrightmargin=0pt,
+  leftmargin=1em,
+  skipabove=1em,
+  skipbelow=1em
+  split=true
+]{case}
