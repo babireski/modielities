@@ -57,12 +57,12 @@
     Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme Troelstra \cite{Troelstra}.
 
     \begin{definition}[Profundidade]
-        A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua árvore de construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
+        A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
         \begin{align*}
             |p|                  & \coloneqq 0                           \\
             |\bot|               & \coloneqq 0                           \\
             |\circ \alpha|       & \coloneqq |\alpha| + 1                \\
-            |\alpha \circ \beta| & \coloneqq \max(|\alpha|, |\beta|) + 1
+            |\alpha \circ \beta| & \coloneqq \max(|\alpha|, |\beta|) + 1.
             \tag*{\qed} 
         \end{align*}
     \end{definition}
@@ -84,24 +84,24 @@
     % \end{definition}    
 
     \begin{definition}[$\mathcal{L}_\mathbf{I}$]
-        Define-se a linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, como o menor conjunto induzido a partir das seguintes regras:
+        A linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, consiste no menor conjunto induzido a partir das seguintes regras:
+        \begin{align*}
+            &\bot\in\mathcal{L}_\mathbf{I} \\
+            &\mathcal{P}\subseteq\mathcal{L}_\mathbf{I} \\
+            &\alpha,\beta\in\mathcal{L}_\mathbf{I}\Rightarrow\alpha\circ\beta\in\mathcal{L}_\mathbf{I}\text{, para }\circ\in\set{\wedge,\vee,\to}\text{.}
+            \tag*{\qed}
+        \end{align*}
     \end{definition}
-
-    \begin{definition}[$\vdash_\mathbf{I}$]
-        Define-se a relação de dedução do sistema intuicionista, denotado $\vdash_\mathbf{I}$.
-    \end{definition}
-
 
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
-        Define-se a linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, como o menor conjunto induzido a partir das seguintes regras:
-        
-        $\top, \bot \in \mathcal{L}_\mathbf{I}$
-        
-        $\mathcal{P} \subseteq \mathcal{L}_\mathbf{I}$
-        
-        $\varphi \in \mathcal{L}_\mathbf{I} \Rightarrow \circ \varphi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\nec, \pos, \neg\}$
-
-        $\varphi, \psi \in \mathcal{L}_\mathbf{I} \Rightarrow \varphi \circ \psi \in \mathcal{L}_\mathbf{I}$, para $\circ \in \{\wedge, \vee, \to\}$
+        A linguagem do sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, consiste no menor conjunto induzido a partir das seguintes regras:
+        \begin{align*}
+            &\bot\in\mathcal{L}_\mathbf{M} \\
+            &\mathcal{P}\subseteq\mathcal{L}_\mathbf{M} \\
+            &\alpha\in\mathcal{L}_\mathbf{M}\Rightarrow\nec\alpha\in\mathcal{L}_\mathbf{M} \\
+            &\alpha,\beta\in\mathcal{L}_\mathbf{M}\Rightarrow\alpha\circ\beta\in\mathcal{L}_\mathbf{M}\text{, para }\circ\in\set{\wedge,\vee,\to}\text{.}
+            \tag*{\qed}
+        \end{align*}
     \end{definition}
 
     \begin{definition}[Dedução]
@@ -109,7 +109,8 @@
     \end{definition}
 
     \begin{definition}[Sistema de Hilbert]
-        Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de axiomas e $\mathcal{R}$ um conjunto de regras de dedução. Uma sucessão $\sequence{\varphi_n | n < k}$, onde cada sentença $\varphi_n$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
+        Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas axiomas e $\mathcal{R}$ um conjunto de regras de dedução. Uma sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
+        \qed
     \end{definition}
 
     \section{Tradução}
@@ -187,13 +188,13 @@
     \end{theorem}
 
     \begin{proof}
-        Como $\Gamma \vdash_\mathbf{I} \alpha$, sabe-se que existe uma prova $\sequence{\varphi_i | 1 \leq i \leq n}$ tal que $\varphi_n = \alpha$. A demonstração deste teorema será feita por indução no tamanho $n$ da prova.
+        Como $\Gamma \vdash_\mathbf{I} \alpha$, sabe-se que existe uma prova $\sequence{\varphi_i\mid 1 \leq i \leq n}$ tal que $\varphi_n = \alpha$. A demonstração deste teorema será feita por indução no tamanho $n$ da prova.
 
         \begin{case}
                 \textbf{Passo} ($n = 1$)\textbf{.} A prova, caso possua tamanho $n = 1$, tem obrigatoriamente a forma $\sequence{\alpha}$. Deste modo, existem duas casos a serem considerados: $\alpha$ ser um axioma ou $\alpha$ ser uma premissa.
                 
                 \begin{case}
-                    \textbf{Caso 1} ($\alpha\in\Gamma$)\textbf{.} Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$, uma vez que $\Gamma^\medsquare = \set{\varphi^\medsquare | \varphi\in\Gamma}$. Desta forma, $\sequence{\alpha^\medsquare}$ constitui uma prova para $\Gamma^\medsquare\vdash\alpha^\medsquare$.
+                    \textbf{Caso 1} ($\alpha\in\Gamma$)\textbf{.} Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$, uma vez que $\Gamma^\medsquare = \set{\varphi^\medsquare\mid\varphi\in\Gamma}$. Desta forma, $\sequence{\alpha^\medsquare}$ constitui uma prova para $\Gamma^\medsquare\vdash\alpha^\medsquare$.
                 \end{case}
 
                 \begin{case}
@@ -301,45 +302,43 @@
         %     \end{nd}
         % $
 
-    \begin{definition}[$\mathcal{H}_\mathbf{I}$]
-        A axiomatização do sistema intuicionista consiste num par $\mathcal{H}_\mathbf{I} = \langle\mathcal{A}_\mathbf{I}, \mathcal{R}_\mathbf{I}\rangle$, onde $\mathcal{A}_\mathbf{I} = \{\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}, \mathbf{A_4}, \mathbf{A_5}, \mathbf{A_6}, \mathbf{A_7}, \mathbf{A_8}, \mathbf{A_9}\}$ e $\mathcal{R}_\mathbf{I} = \{\mathbf{R_1}\}$, conforme as definições abaixo:
-
-        \begin{align*}
-            & \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
-            & \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            & \mathbf{A_3}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
-            & \mathbf{A_4}\quad & \alpha\wedge\beta\to\alpha \\
-            & \mathbf{A_5}\quad & \alpha\wedge\beta\to\beta \\
-            & \mathbf{A_6}\quad & \alpha\to\alpha\vee\beta \\
-            & \mathbf{A_7}\quad & \beta\to\alpha\vee\beta \\
-            & \mathbf{A_8}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            & \mathbf{A_9}\quad & \bot\to\alpha \\
-            & \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta
+    \begin{definition}
+        A axiomatização do sistema intuicionista consiste nos seguintes esquemas e regras:
+        \begin{alignat*}{1}
+            \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
+            \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+            \mathbf{A_3}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
+            \mathbf{A_4}\quad & \alpha\wedge\beta\to\alpha \\
+            \mathbf{A_5}\quad & \alpha\wedge\beta\to\beta \\
+            \mathbf{A_6}\quad & \alpha\to\alpha\vee\beta \\
+            \mathbf{A_7}\quad & \beta\to\alpha\vee\beta \\
+            \mathbf{A_8}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+            \mathbf{A_9}\quad & \bot\to\alpha \\
+            \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta\text{.}
             \tag*{\qed}
-        \end{align*}   
+        \end{alignat*}   
     \end{definition}
 
-    \begin{definition}[$\mathcal{H}_\mathbf{M}$]
-        A axiomatização do sistema modal consiste num par $\mathcal{H}_\mathbf{M} = \langle\mathcal{A}_\mathbf{M}, \mathcal{R}_\mathbf{M}\rangle$, onde $\mathcal{A}_\mathbf{M} = \set{\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}, \mathbf{A_4}, \mathbf{A_5}, \mathbf{A_6}, \mathbf{A_7}, \mathbf{A_8}, \mathbf{A_9}, \mathbf{A_{10}}, \mathbf{A_{11}}, \mathbf{A_{12}}, \mathbf{A_{13}}, \mathbf{A_{14}}}$ e $\mathcal{R}_\mathbf{I} = \set{\mathbf{R_1}, \mathbf{R_2}}$, conforme as definições abaixo:
-        \begin{align*}
-            & \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
-            & \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            & \mathbf{A_3}\quad & (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
-            & \mathbf{A_4}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
-            & \mathbf{A_5}\quad & \alpha\wedge\beta\to\alpha \\
-            & \mathbf{A_6}\quad & \alpha\wedge\beta\to\beta \\
-            & \mathbf{A_7}\quad & \alpha\to\alpha\vee\beta \\
-            & \mathbf{A_8}\quad & \beta\to\alpha\vee\beta \\
-            & \mathbf{A_9}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            & \mathbf{A_{10}}\quad & \neg\neg\alpha\to\alpha \\
-            & \mathbf{A_{11}}\quad & \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
-            & \mathbf{A_{12}}\quad & \nec\alpha\to\alpha \\
-            & \mathbf{A_{13}}\quad & \nec\alpha\to\nec\nec\alpha \\
-            & \mathbf{A_{14}}\quad & \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
-            & \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
-            & \mathbf{R_2}\quad & \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha
-            \tag*{\qed} 
-        \end{align*}   
+    \begin{definition}
+        A axiomatização do sistema modal consiste nos seguintes esquemas e regras:
+        \begin{alignat*}{2}
+            & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
+            & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+            & \mathbf{A_3}\quad && (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
+            & \mathbf{A_4}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
+            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\alpha \\
+            & \mathbf{A_6}\quad && \alpha\wedge\beta\to\beta \\
+            & \mathbf{A_7}\quad && \alpha\to\alpha\vee\beta \\
+            & \mathbf{A_8}\quad && \beta\to\alpha\vee\beta \\
+            & \mathbf{A_9}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+            & \mathbf{A_{10}}\quad && \neg\neg\alpha\to\alpha \\
+            & \mathbf{A_{11}}\quad && \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
+            & \mathbf{A_{12}}\quad && \nec\alpha\to\alpha \\
+            & \mathbf{A_{13}}\quad && \nec\alpha\to\nec\nec\alpha \\
+            & \mathbf{A_{14}}\quad && \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
+            & \mathbf{R_1}\quad && \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
+            & \mathbf{R_2}\quad && \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha & \tag*{\qed} 
+        \end{alignat*}   
     \end{definition}
 
     \begin{definition}[Sucessão]
