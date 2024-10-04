@@ -160,11 +160,43 @@
     Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por Girard \cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
 
     \begin{lemma}
-        $\forall \alpha \in \mathcal{L}_\mathbf{I} . \nec\alpha^\circ \leftrightarrow \alpha^\medsquare$.
+        $\forall\alpha\in\mathcal{L}_\mathbf{I}.\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
     \end{lemma}
 
     \begin{proof}
         Prova por indução na profundidade de $\alpha$.
+
+        \begin{case}
+            \textbf{Caso 1} ($|\alpha| = 0$)\textbf{.}
+                Existem dois casos a serem considerados.
+
+                \begin{case}
+                \textbf{Caso 1.1} ($\alpha = a$)\textbf{.}
+                    $a^\circ = a$ e $a^\medsquare = \nec a$, assim $\nec a^\circ = a^\medsquare$ e, portanto, $\nec a^\circ \leftrightarrow a^\medsquare$.
+                \end{case}
+                \begin{case}
+                \textbf{Caso 2.1} ($\alpha = \bot$)\textbf{.}
+                    $\bot^\circ = \bot$ e $\bot^\medsquare = \bot$. A ida $\nec\bot\to\bot$ consiste em um axioma, sendo, portando provada trivialmente pela sucessão de dedução $\sequence{\nec\bot\to\bot}$.
+                    A volta $\bot\to\nec\bot$ equivale a provar, por meio do teorema da dedução, que $\set{\bot}\vdash_\mathbf{M}\nec\bot$, o que pode ser provado trivialmente pela sucessão de dedução $\sequence{\bot, \nec\bot}$, que consiste na invocação da premissa e aplicação da regra da necessitação, nessa ordem.
+                \end{case}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2} (Passo)\textbf{.} No passo, deve-se demonstrar que, caso $\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ para $|\alpha| = n$, 
+            então $\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ para $|\alpha|= n + 1$, onde $n \in \mathbb{N}$.
+
+            \begin{case}
+                \textbf{Caso 2.1} ($\alpha = \alpha_1\wedge\alpha_2$)\textbf{.}
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 2.2} ($\alpha = \alpha_1\vee\alpha_2$)\textbf{.}
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 2.3} ($\alpha = \alpha_1\to\alpha_2$)\textbf{.}
+            \end{case}
+        \end{case}
     \end{proof}
 
     \begin{lemma}
@@ -191,87 +223,87 @@
         Como $\Gamma \vdash_\mathbf{I} \alpha$, sabe-se que existe uma prova $\sequence{\varphi_i\mid 1 \leq i \leq n}$ tal que $\varphi_n = \alpha$. A demonstração deste teorema será feita por indução no tamanho $n$ da prova.
 
         \begin{case}
-                \textbf{Passo} ($n = 1$)\textbf{.} A prova, caso possua tamanho $n = 1$, tem obrigatoriamente a forma $\sequence{\alpha}$. Deste modo, existem duas casos a serem considerados: $\alpha$ ser um axioma ou $\alpha$ ser uma premissa.
-                
+            \textbf{Passo} ($n = 1$)\textbf{.} A prova, caso possua tamanho $n = 1$, tem obrigatoriamente a forma $\sequence{\alpha}$. Deste modo, existem duas casos a serem considerados: $\alpha$ ser um axioma ou $\alpha$ ser uma premissa.
+            
+            \begin{case}
+                \textbf{Caso 1} ($\alpha\in\Gamma$)\textbf{.} Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$, uma vez que $\Gamma^\medsquare = \set{\varphi^\medsquare\mid\varphi\in\Gamma}$. Desta forma, $\sequence{\alpha^\medsquare}$ constitui uma prova para $\Gamma^\medsquare\vdash\alpha^\medsquare$.
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 2} ($\alpha\in\mathcal{A}$)\textbf{.}
+
                 \begin{case}
-                    \textbf{Caso 1} ($\alpha\in\Gamma$)\textbf{.} Como $\alpha\in\Gamma$, sabe-se que $\alpha^\medsquare\in\Gamma^\medsquare$, uma vez que $\Gamma^\medsquare = \set{\varphi^\medsquare\mid\varphi\in\Gamma}$. Desta forma, $\sequence{\alpha^\medsquare}$ constitui uma prova para $\Gamma^\medsquare\vdash\alpha^\medsquare$.
+                    \textbf{Caso 2.1} ($\mathbf{A_1}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare & $\mathbf{A_1}$ \\
+                        \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_2} \; 1$ \\
+                        \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) \to \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare) & $\mathbf{A_{11}}$ \\
+                        \fa \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_1} \; 2 \; 3$ \\
+                        \fa \nec(\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)) & $\mathbf{R_2} \; 4$
+                    \end{fitch}
                 \end{case}
 
                 \begin{case}
-                    \textbf{Caso 2} ($\alpha\in\mathcal{A}$)\textbf{.}
-
-                    \begin{case}
-                        \textbf{Caso 2.1} ($\mathbf{A_1}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare & $\mathbf{A_1}$ \\
-                            \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_2} \; 1$ \\
-                            \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare) \to \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare) & $\mathbf{A_{11}}$ \\
-                            \fa \nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_1} \; 2 \; 3$ \\
-                            \fa \nec(\nec \alpha^\medsquare \to \nec (\beta^\medsquare \to \alpha^\medsquare)) & $\mathbf{R_2} \; 4$
-                        \end{fitch}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.2} ($\mathbf{A_2}$)\textbf{.}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.3} ($\mathbf{A_3}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare & $\mathbf{A_4}$ \\
-                            \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{R_2} \; 1$ \\
-                            \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) \to \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{A_{11}}$ \\
-                            \fa \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{R_1} \; 2 \; 3$ \\
-                            \fa \nec (\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)) & $\mathbf{R_2} \; 4$
-                        \end{fitch} 
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.4} ($\mathbf{A_4}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare & $\mathbf{A_4}$ \\
-                            \fa \nec(\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_2} \; 1$
-                        \end{fitch}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.5} ($\mathbf{A_5}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare & $\mathbf{A_5}$ \\
-                            \fa \nec(\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare) & $\mathbf{R_2} \; 1$
-                        \end{fitch}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.6} ($\mathbf{A_6}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare & $\mathbf{A_7}$ \\
-                            \fa \nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare) & $\mathbf{R_2} \; 1$
-                        \end{fitch}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.7} ($\mathbf{A_7}$)\textbf{.}
-
-                        \begin{fitch}
-                            \fa \beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare & $\mathbf{A_8}$ \\
-                            \fa \nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare) & $\mathbf{R_2}  \; 1$
-                        \end{fitch}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.8} ($\mathbf{A_8}$)\textbf{.}
-                    \end{case}
-
-                    \begin{case}
-                        \textbf{Caso 2.9} ($\mathbf{A_9}$)\textbf{.}
-                    \end{case}
+                    \textbf{Caso 2.2} ($\mathbf{A_2}$)\textbf{.}
                 \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.3} ($\mathbf{A_3}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare & $\mathbf{A_4}$ \\
+                        \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{R_2} \; 1$ \\
+                        \fa \nec(\alpha^\medsquare \to \beta^\medsquare \to \alpha^\medsquare \wedge \beta^\medsquare) \to \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{A_{11}}$ \\
+                        \fa \nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare) & $\mathbf{R_1} \; 2 \; 3$ \\
+                        \fa \nec (\nec (\alpha^\medsquare \to \beta^\medsquare) \to \nec (\alpha^\medsquare \wedge \beta^\medsquare)) & $\mathbf{R_2} \; 4$
+                    \end{fitch} 
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.4} ($\mathbf{A_4}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare & $\mathbf{A_4}$ \\
+                        \fa \nec(\alpha^\medsquare \wedge \beta^\medsquare \to \alpha^\medsquare) & $\mathbf{R_2} \; 1$
+                    \end{fitch}
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.5} ($\mathbf{A_5}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare & $\mathbf{A_5}$ \\
+                        \fa \nec(\alpha^\medsquare \wedge \beta^\medsquare \to \beta^\medsquare) & $\mathbf{R_2} \; 1$
+                    \end{fitch}
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.6} ($\mathbf{A_6}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare & $\mathbf{A_7}$ \\
+                        \fa \nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare) & $\mathbf{R_2} \; 1$
+                    \end{fitch}
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.7} ($\mathbf{A_7}$)\textbf{.}
+
+                    \begin{fitch}
+                        \fa \beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare & $\mathbf{A_8}$ \\
+                        \fa \nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare) & $\mathbf{R_2}  \; 1$
+                    \end{fitch}
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.8} ($\mathbf{A_8}$)\textbf{.}
+                \end{case}
+
+                \begin{case}
+                    \textbf{Caso 2.9} ($\mathbf{A_9}$)\textbf{.}
+                \end{case}
+            \end{case}
         \end{case}
     \end{proof}
 
@@ -304,49 +336,40 @@
 
     \begin{definition}
         A axiomatização do sistema intuicionista consiste nos seguintes esquemas e regras:
-        \begin{alignat*}{1}
-            \mathbf{A_1}\quad & \alpha\to\beta\to\alpha \\
-            \mathbf{A_2}\quad & (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            \mathbf{A_3}\quad & \alpha\to\beta\to\alpha\wedge\beta \\
-            \mathbf{A_4}\quad & \alpha\wedge\beta\to\alpha \\
-            \mathbf{A_5}\quad & \alpha\wedge\beta\to\beta \\
-            \mathbf{A_6}\quad & \alpha\to\alpha\vee\beta \\
-            \mathbf{A_7}\quad & \beta\to\alpha\vee\beta \\
-            \mathbf{A_8}\quad & (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            \mathbf{A_9}\quad & \bot\to\alpha \\
-            \mathbf{R_1}\quad & \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta\text{.}
-            \tag*{\qed}
+        \begin{alignat*}{3}
+            & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
+            & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+            & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
+            & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
+            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
+            & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
+            & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
+            & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+            & \mathbf{A_\bot}\quad && \bot\to\alpha \\
+            & \mathbf{R_1}\quad && \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta\text{.} & \tag*{\qed}
         \end{alignat*}   
     \end{definition}
 
     \begin{definition}
         A axiomatização do sistema modal consiste nos seguintes esquemas e regras:
-        \begin{alignat*}{2}
+        \begin{alignat*}{3}
             & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
             & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            & \mathbf{A_3}\quad && (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
-            & \mathbf{A_4}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
-            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\alpha \\
-            & \mathbf{A_6}\quad && \alpha\wedge\beta\to\beta \\
-            & \mathbf{A_7}\quad && \alpha\to\alpha\vee\beta \\
-            & \mathbf{A_8}\quad && \beta\to\alpha\vee\beta \\
-            & \mathbf{A_9}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            & \mathbf{A_{10}}\quad && \neg\neg\alpha\to\alpha \\
-            & \mathbf{A_{11}}\quad && \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
-            & \mathbf{A_{12}}\quad && \nec\alpha\to\alpha \\
-            & \mathbf{A_{13}}\quad && \nec\alpha\to\nec\nec\alpha \\
-            & \mathbf{A_{14}}\quad && \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
+            % & \mathbf{A_3}\quad && (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
+            & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
+            & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
+            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
+            & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
+            & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
+            & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+            & \mathbf{A_\neg}\quad && \neg\neg\alpha\to\alpha \\
+            & \mathbf{A_A}\quad && \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
+            & \mathbf{A_B}\quad && \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
+            & \mathbf{A_C}\quad && \nec\alpha\to\alpha \\
+            & \mathbf{A_D}\quad && \nec\alpha\to\nec\nec\alpha \\
             & \mathbf{R_1}\quad && \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
             & \mathbf{R_2}\quad && \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha & \tag*{\qed} 
         \end{alignat*}   
-    \end{definition}
-
-    \begin{definition}[Sucessão]
-        Uma sucessão, denotada por $\sequence{\bullet}$, consiste em uma coleção ordenada de elementos que permite repetição. A notação $\sequence{a_n | 1 \leq n \leq k}$ denota uma sucessão iniciada em $a_1$ e terminada em $a_k$. 
-    \end{definition}
-
-    \begin{definition}[Concatenação]
-        A concatenação de duas sucessões $\mathbf{A}$ e $\mathbf{B}$, denotada $\mathbf{A} \mdoubleplus \mathbf{B}$ consiste em uma nova sucessão resultante da justaposição dos elementos de $\mathbf{A}$ sucedidos pelos elementos de $\mathbf{B}$, mantendo a ordem original de ambos.
     \end{definition}
 
     \chapter{Formalização}
