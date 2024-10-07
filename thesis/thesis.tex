@@ -5,14 +5,14 @@
 \usepackage{amssymb}
 \usepackage{epigraph}
 \usepackage{mathtools}
-\usepackage{modalities}
+\usepackage{styles/modalities}
 \usepackage{ragged2e}
 \usepackage{hyperref}
 \usepackage{proof}
 \usepackage[brazil]{babel}
-\usepackage{fitch}
-\usepackage{cases}
-\usepackage{functions}
+\usepackage{styles/fitch}
+\usepackage{styles/cases}
+\usepackage{styles/functions}
 
 \newcommand{\entails}{\mathrel{\vdash}}
 \newcommand{\point}{\mathrel{.}}
@@ -35,10 +35,10 @@
 
     \tableofcontents
 
-    \include{epigraph}
-    \include{introduction}
-    \include{foundation}
-    \include{formalization}
+    \include{parts/epigraph}
+    \include{parts/introduction}
+    \include{parts/foundation}
+    \include{parts/formalization}
 
     \bibliographystyle{plain}
     \bibliography{bibliography}
