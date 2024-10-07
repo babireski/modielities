@@ -79,7 +79,6 @@
         \end{definition}
 
         Provaremos, para o sistema modal apresentado, uma variação do teorema da dedução, que permite simplificar muitas das demonstrações apresentadas futuramente neste trabalho.
-        \babireski{\citet{Hakli} apresentam uma discussão sobre a validade do metateorema da dedução e suas variantes nos sistemas modais. Quem sabe valha a pena escrever um pouco sobre isso, pois se trata de uma leitura interessante.}
 
         \begin{theorem}
             $\forall\,\Gamma\cup\set{\alpha,\beta}\in\wp(\mathcal{L}_\mathbf{M})\point\Gamma\cup\set{\alpha}\vdash\beta\Rightarrow  \Gamma\vdash\nec(\alpha\to\beta)$.
@@ -163,9 +162,9 @@
             \begin{align*}
                 p^\circ                     & \coloneqq p                                       \\
                 \bot^\circ                  & \coloneqq \bot                                    \\
-                {(\varphi \wedge \psi)}^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ         \\
-                {(\varphi \vee \psi)}^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ \\
-                {(\varphi \to \psi)}^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ
+                (\varphi \wedge \psi)^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ         \\
+                (\varphi \vee \psi)^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ \\
+                (\varphi \to \psi)^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ
                 \tag*{\qed} 
             \end{align*}
         \end{definition}
@@ -174,9 +173,9 @@
             \begin{align*}
                 p^\nec                     & \coloneqq \nec p                                        \\
                 \bot^\nec                  & \coloneqq \bot                                          \\
-                {(\varphi \wedge \psi)}^\nec & \coloneqq \varphi^\nec \wedge \psi^\nec     \\
-                {(\varphi \vee \psi)}^\nec   & \coloneqq \varphi^\nec \vee \psi^\nec       \\
-                {(\varphi \to \psi)}^\nec    & \coloneqq \nec (\varphi^\nec \to \psi^\nec)
+                (\varphi \wedge \psi)^\nec & \coloneqq \varphi^\nec \wedge \psi^\nec     \\
+                (\varphi \vee \psi)^\nec   & \coloneqq \varphi^\nec \vee \psi^\nec       \\
+                (\varphi \to \psi)^\nec    & \coloneqq \nec (\varphi^\nec \to \psi^\nec)
                 \tag*{\qed} 
             \end{align*}
         \end{definition}
@@ -223,8 +222,6 @@
                 \end{case}
             \end{case}
         \end{proof}
-
-    \section{Corretude}
 
         \begin{theorem}
             $\forall \alpha \in \mathcal{L}_\mathbf{I} \point \Gamma \vdash_\mathbf{I} \alpha \Rightarrow \Gamma^\nec \vdash_\mathbf{M} \alpha^\nec$
@@ -368,6 +365,3 @@
                         \end{fitch}
                     \end{caseee}
         \end{proof}
-
-    \section{Completude}
-        \babireski{Não vai rolar de provar a completude como~\cite{Troelstra}. Vou precisar procurar outros artigos.}

@@ -2,7 +2,7 @@
 
 \section{Sistemas}
 
-Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por \cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
+Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por~\cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
 
 \begin{definition}[Sistema]
     Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \Vdash}$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \Vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação sobre as sentenças, sem demais condições.
@@ -16,7 +16,7 @@ Cabe destacar que a definição de sistema provida foi definida com base em $\Vd
     \qed
 \end{definition}
 
-Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme \cite{Troelstra}.
+Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme~\cite{Troelstra}.
 
 \begin{definition}[Profundidade]
     A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
@@ -60,9 +60,9 @@ Traduções entre sistemas consistem em funções que mapeiam sentenças de um s
     \begin{align*}
         p^\neg                     & \coloneqq \neg\neg p                               \\
         \bot^\neg                  & \coloneqq \bot                                     \\
-        (\varphi \wedge \psi)^\neg & \coloneqq \neg\neg (\varphi^\neg \wedge \psi^\neg) \\
-        (\varphi \vee \psi)^\neg   & \coloneqq \neg\neg (\varphi^\neg \vee \psi^\neg)   \\
-        (\varphi \to \psi)^\neg    & \coloneqq \neg\neg (\varphi^\neg \to \psi^\neg)
+        {(\varphi \wedge \psi)}^\neg & \coloneqq \neg\neg (\varphi^\neg \wedge \psi^\neg) \\
+        {(\varphi \vee \psi)}^\neg   & \coloneqq \neg\neg (\varphi^\neg \vee \psi^\neg)   \\
+        {(\varphi \to \psi)}^\neg    & \coloneqq \neg\neg (\varphi^\neg \to \psi^\neg)
         \tag*{\qed} 
     \end{align*}
 \end{definition}
