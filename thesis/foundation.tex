@@ -67,30 +67,4 @@ Traduções entre sistemas consistem em funções que mapeiam sentenças de um s
     \end{align*}
 \end{definition}
 
-A primeira tradução do sistema intuicionista ao sistema modal foi proposta por Gödel \cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \cite{Troelstra}. Gödel conjeiturou a corretude fraca dessa tradução, que foi posteriormente provada por McKinsey e Tarski \cite{McKinsey} em conjunto com sua completude fraca.
-
-\begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ$ indutivamente da seguinte maneira:
-    \begin{align*}
-        p^\circ                     & \coloneqq p                                       \\
-        \bot^\circ                  & \coloneqq \bot                                    \\
-        (\varphi \wedge \psi)^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ         \\
-        (\varphi \vee \psi)^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ \\
-        (\varphi \to \psi)^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ
-        \tag*{\qed} 
-    \end{align*}
-\end{definition}
-
-\begin{definition}[$\bullet^\nec$] Define-se a tradução $\bullet^\nec$ indutivamente da seguinte maneira:
-    \begin{align*}
-        p^\nec                     & \coloneqq \nec p                                        \\
-        \bot^\nec                  & \coloneqq \bot                                          \\
-        (\varphi \wedge \psi)^\nec & \coloneqq \varphi^\nec \wedge \psi^\nec     \\
-        (\varphi \vee \psi)^\nec   & \coloneqq \varphi^\nec \vee \psi^\nec       \\
-        (\varphi \to \psi)^\nec    & \coloneqq \nec (\varphi^\nec \to \psi^\nec)
-        \tag*{\qed} 
-    \end{align*}
-\end{definition}
-
-Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\nec$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por Girard \cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
-
 \section{Provadores}
