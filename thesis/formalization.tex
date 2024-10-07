@@ -1,0 +1,320 @@
+\chapter{Formalização}
+\begin{definition}[$\mathcal{L}_\mathbf{I}$]
+    A linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, consiste no menor conjunto induzido a partir das seguintes regras:
+    \begin{align*}
+        &\bot\in\mathcal{L}_\mathbf{I} \\
+        &\mathcal{P}\subseteq\mathcal{L}_\mathbf{I} \\
+        &\alpha,\beta\in\mathcal{L}_\mathbf{I}\Rightarrow\alpha\circ\beta\in\mathcal{L}_\mathbf{I}\text{, para }\circ\in\set{\wedge,\vee,\to}\text{.}
+        \tag*{\qed}
+    \end{align*}
+\end{definition}
+
+\begin{notation}
+    Serão usadas as seguintes abreviações:
+    \begin{align*}
+        \top&\coloneqq\bot\to\bot\\
+        \neg\alpha&\coloneqq\alpha\to\bot\\
+        \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge\beta\to\alpha
+    \end{align*}
+\end{notation}
+
+\begin{definition}
+    A axiomatização do sistema intuicionista consiste nos seguintes esquemas e regras:
+    \begin{alignat*}{3}
+        & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
+        & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+        & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
+        & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
+        & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
+        & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
+        & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
+        & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+        & \mathbf{A_\bot}\quad && \bot\to\alpha \\
+        & \mathbf{R_1}\quad && \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta\text{.} & \tag*{\qed}
+    \end{alignat*}   
+\end{definition}
+
+\begin{notation}
+    Serão usadas as seguintes abreviações:
+    \begin{align*}
+        \top&\coloneqq\bot\to\bot\\
+        \neg\alpha&\coloneqq\alpha\to\bot\\
+        \pos\alpha&\coloneqq\neg\nec\neg\alpha\\
+        \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge\beta\to\alpha
+    \end{align*}
+\end{notation}
+
+\begin{definition}[$\mathcal{L}_\mathbf{M}$]
+    A linguagem do sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, consiste no menor conjunto induzido a partir das seguintes regras:
+    \begin{align*}
+        &\bot\in\mathcal{L}_\mathbf{M} \\
+        &\mathcal{P}\subseteq\mathcal{L}_\mathbf{M} \\
+        &\alpha\in\mathcal{L}_\mathbf{M}\Rightarrow\nec\alpha\in\mathcal{L}_\mathbf{M} \\
+        &\alpha,\beta\in\mathcal{L}_\mathbf{M}\Rightarrow\alpha\circ\beta\in\mathcal{L}_\mathbf{M}\text{, para }\circ\in\set{\wedge,\vee,\to}\text{.}
+        \tag*{\qed}
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    A axiomatização do sistema modal consiste nos seguintes esquemas e regras:
+    \begin{alignat*}{3}
+        & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
+        & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
+        % & \mathbf{A_3}\quad && (\neg\alpha\to\neg\beta)\to\alpha\to\beta \\
+        & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
+        & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
+        & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
+        & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
+        & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
+        & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
+        & \mathbf{A_\neg}\quad && \neg\neg\alpha\to\alpha \\
+        & \mathbf{B_1}\quad && \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
+        % & \mathbf{B_B}\quad && \pos(\alpha\vee\beta)\to\pos\alpha\vee\pos\beta \\
+        & \mathbf{B_2}\quad && \nec\alpha\to\alpha \\
+        & \mathbf{B_3}\quad && \nec\alpha\to\nec\nec\alpha \\
+        & \mathbf{R_1}\quad && \text{Se }\vdash\alpha\text{ e }\vdash\alpha\to\beta\text{, então }\vdash\beta \\
+        & \mathbf{R_2}\quad && \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha\text{.} & \tag*{\qed} 
+    \end{alignat*}   
+\end{definition}
+
+\begin{theorem}
+    $\forall\,\Gamma\cup\set{\alpha,\beta}\in\wp(\mathcal{L}_\mathbf{M})\point\Gamma\cup\set{\alpha}\vdash\beta\Rightarrow  \Gamma\vdash\nec(\alpha\to\beta)$.
+\end{theorem}
+
+\begin{proof}
+    Seja $\Gamma$ um conjunto de sentenças e sejam $\alpha$ e $\beta$ sentenças de modo que $\Gamma\cup\set{\alpha}\vdash\beta$, deve-se provar que $\Gamma\vdash\nec(\alpha\to\beta)$. Como $\Gamma\cup\set{\alpha}\vdash\beta$, existe uma prova de $\beta$ a partir de $\Gamma\cup\set{\alpha}$. A prova baseia-se numa indução sobre o tamanho $n$ da prova.
+
+    \begin{case}
+        \textbf{Caso 1} (Base)\textbf{.}
+        Para a base requer-se considerar os seguintes casos: 
+            \textbf{(1)} $\beta$ consiste num axioma,
+            \textbf{(2)} $\beta\in\Gamma$ e
+            \textbf{(3)} $\beta=\alpha$.
+
+        \begin{case}
+            \textbf{Caso 1.1} ($\beta\in\mathcal{A}$)\textbf{.}
+
+            \begin{fitch}
+                \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
+                \fa\beta&$\mathbf{A_\beta}$\\
+                \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
+                \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
+            \end{fitch}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 1.2} ($\beta\in\Gamma$)\textbf{.}
+
+            \begin{fitch}
+                \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
+                \fa\beta&$\mathbf{P}$\\
+                \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
+                \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
+            \end{fitch}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 1.3} ($\beta=\alpha$)\textbf{.}
+            
+            \begin{fitch}
+                \fa\alpha\to\alpha&$\mathbf{L_1}$\\
+                \fa\nec(\alpha\to\alpha)&$\mathbf{R_2}\;\sequence{1}$
+            \end{fitch}
+        \end{case}
+    \end{case}
+
+    \begin{case}
+        \textbf{Caso 2} (Passo)\textbf{.}
+        Supõe-se que, para qualquer prova de $\Gamma\cup\set{\alpha}\vdash\beta$ com tamanho $k$, tem-se que $\Gamma\vdash\nec(\alpha\to\beta)$.
+        Deve-se mostrar que a proposição segue verdadeira caso a prova tenha tamanho $k+1$. 
+        Assim, sendo $\sequence{\varphi_i\mid1\leq i\leq k+1}$ uma sucessão de dedução com $\varphi_{k+1}=\beta$, requer-se considerar os seguintes casos:
+
+        \begin{case}
+            \textbf{Caso 2.1} ($\beta\in\mathcal{A}$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.1}}$.
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.2} ($\beta\in\Gamma$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.2}}$.
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.3} ($\beta=\alpha$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.3}}$.
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.4} ($\mathbf{R_1}$)\textbf{.}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.5} ($\mathbf{R_2}$)\textbf{.}
+        \end{case}
+    \end{case}
+\end{proof}
+
+\begin{lemma}[$\mathbf{L_1}$]
+    $\forall\alpha\in\mathcal{L}_\mathbf{I}\,.\,\alpha\to\alpha$.    
+\end{lemma}
+
+\begin{proof}
+    A prova faz-se pela seguinte sucessão de dedução:
+
+    \begin{fitch}
+        \fa\alpha\to(\alpha\to\alpha)\to\alpha&$\mathbf{A_1}$\\
+        \fa(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{A_2}$\\
+        \fa(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{R_1}\;1\;2$\\
+        \fa\alpha\to\alpha\to\alpha&$\mathbf{A_1}$\\
+        \fa\alpha\to\alpha&$\mathbf{R_1}\;3\;4$
+    \end{fitch}
+\end{proof}
+
+\begin{theorem}
+    $\forall\alpha\in\mathcal{L}_\mathbf{I}\,.\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
+\end{theorem}
+
+\begin{proof}
+    Prova por indução na profundidade de $\alpha$.
+
+    \begin{case}
+        \textbf{Caso 1} (Base)\textbf{.}
+            Para $|\alpha| = 0$, existem dois casos a serem considerados.
+
+            \begin{case}
+            \textbf{Caso 1.1} ($\alpha = a$)\textbf{.}
+                $a^\circ = a$ e $a^\nec = \nec a$, assim $\nec a^\circ = a^\nec$ e, portanto, $\nec a^\circ \leftrightarrow a^\nec$.
+            \end{case}
+            \begin{case}
+            \textbf{Caso 2.1} ($\alpha = \bot$)\textbf{.}
+                $\bot^\circ = \bot$ e $\bot^\nec = \bot$. A ida $\nec\bot\to\bot$ consiste em um axioma, sendo, portando provada trivialmente pela sucessão de dedução $\sequence{\nec\bot\to\bot}$.
+                A volta $\bot\to\nec\bot$ equivale a provar, por meio do teorema da dedução, que $\set{\bot}\vdash_\mathbf{M}\nec\bot$, o que pode ser provado trivialmente pela sucessão de dedução $\sequence{\bot, \nec\bot}$, que consiste na invocação da premissa e aplicação da regra da necessitação, nessa ordem.
+            \end{case}
+    \end{case}
+
+    \begin{case}
+        \textbf{Caso 2} (Passo)\textbf{.} No passo, deve-se demonstrar que, caso $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n$, 
+        então $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n + 1$, onde $n \in \mathbb{N}$. Assim, seja $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ uma proposição verdadeira para $|\alpha| = k$, onde $k \in \mathbb{N}$. Existem os seguintes casos a serem considerados para $|\alpha| = k + 1$.
+
+        \begin{case}
+            \textbf{Caso 2.1} ($\alpha = \alpha_1\wedge\alpha_2$)\textbf{.}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.2} ($\alpha = \alpha_1\vee\alpha_2$)\textbf{.}
+        \end{case}
+
+        \begin{case}
+            \textbf{Caso 2.3} ($\alpha = \alpha_1\to\alpha_2$)\textbf{.}
+        \end{case}
+    \end{case}
+\end{proof}
+
+\begin{theorem}
+    $\forall \alpha \in \mathcal{L}_\mathbf{I} . \Gamma \vdash_\mathbf{I} \alpha \Rightarrow \Gamma^\nec \vdash_\mathbf{M} \alpha^\nec$
+\end{theorem}
+
+\begin{proof}
+    Como $\Gamma \vdash_\mathbf{I} \alpha$, sabe-se que existe uma prova $\sequence{\varphi_i\mid 1 \leq i \leq n}$ tal que $\varphi_n = \alpha$. A demonstração deste teorema será feita por indução no tamanho $n$ da prova.
+
+    \begin{case}
+        \textbf{Passo} ($n = 1$)\textbf{.} A prova, caso possua tamanho $n = 1$, tem obrigatoriamente a forma $\sequence{\alpha}$. Deste modo, existem duas casos a serem considerados: $\alpha$ ser um axioma ou $\alpha$ ser uma premissa.
+    \end{case}
+
+        \begin{casee}
+            \textbf{Caso 1} ($\alpha\in\Gamma$)\textbf{.} Como $\alpha\in\Gamma$, sabe-se que $\alpha^\nec\in\Gamma^\nec$, uma vez que $\Gamma^\nec = \set{\varphi^\nec\mid\varphi\in\Gamma}$. Desta forma, $\sequence{\alpha^\nec}$ constitui uma prova para $\Gamma^\nec\vdash\alpha^\nec$.
+        \end{casee}
+
+        \begin{casee}
+            \textbf{Caso 2} ($\alpha\in\mathcal{A}$)\textbf{.}
+        \end{casee}
+
+            \begin{caseee}
+                \textbf{Caso 2.1} ($\mathbf{A_1}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa a^\nec&$\mathbf{P}$ \\
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.2} ($\mathbf{A_2}$)\textbf{.}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.3} ($\mathbf{A_3}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa\alpha^\nec\to\beta^\nec\to\alpha^\nec\wedge\beta^\nec&$\mathbf{A_3}$\\
+                    \fa\alpha^\nec&$\mathbf{P}$\\
+                    \fa\beta^\nec\to\alpha^\nec\wedge\beta^\nec&$\mathbf{R_1}\;\sequence{1,2}$\\
+                    \fa\beta^\nec&$\mathbf{P}$\\
+                    \fa\alpha^\nec\wedge\beta^\nec&$\mathbf{R_1}\;\sequence{3,4}$
+                \end{fitch} 
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.4} ($\mathbf{A_4}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa \alpha^\nec\wedge\beta^\nec\to\alpha^\nec & $\mathbf{A_4}$ \\
+                    \fa \nec(\alpha^\nec \wedge \beta^\nec \to \alpha^\nec) & $\mathbf{R_2}\;\sequence{1}$
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.5} ($\mathbf{A_5}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa \alpha^\nec\wedge\beta^\nec\to\beta^\nec & $\mathbf{A_5}$ \\
+                    \fa \nec(\alpha^\nec \wedge \beta^\nec \to \beta^\nec) & $\mathbf{R_2}\;\sequence{1}$
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.6} ($\mathbf{A_6}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa \alpha^\nec\to\alpha^\nec\vee\beta^\nec & $\mathbf{A_6}$ \\
+                    \fa \nec(\alpha^\nec\to\alpha^\nec\vee\beta^\nec) & $\mathbf{R_2}\;\sequence{1}$
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.7} ($\mathbf{A_7}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa \beta^\nec\to\alpha^\nec\vee\beta^\nec & $\mathbf{A_7}$ \\
+                    \fa \nec(\beta^\nec\to\alpha^\nec\vee\beta^\nec) & $\mathbf{R_2}\;\sequence{1}$
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.8} ($\mathbf{A_8}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa(\alpha^\nec\to\gamma^\nec)\to(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
+                    \fa\nec(\alpha^\nec\to\gamma^\nec)\\
+                    \fa\alpha^\nec\to\gamma^\nec\\
+                    \fa(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
+                    \fa\nec(\beta^\nec\to\gamma^\nec)\\
+                    \fa\beta^\nec\to\gamma^\nec\\
+                    \fa\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
+                    \fa\alpha^\nec\vee\beta^\nec\\
+                    \fa\gamma^\nec
+                \end{fitch}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.9} ($\mathbf{A_\bot}$)\textbf{.}
+            \end{caseee}
+
+            \begin{caseee}
+                \textbf{Caso 2.9} ($\mathbf{R_1}$)\textbf{.}
+
+                \begin{fitch}
+                    \fa\nec(\alpha^\nec\to\beta^\nec)\to\alpha^\nec\to\beta^\nec&$\mathbf{B_2}$\\
+                    \fa\nec(\alpha^\nec\to\beta^\nec)&$\mathbf{H_2}$\\
+                    \fa\alpha^\nec\to\beta^\nec&$\mathbf{R_1}\;\sequence{1, 2}$\\
+                    \fa\alpha^\nec&$\mathbf{H_1}$\\
+                    \fa\beta^\nec&$\mathbf{R_1}\;\sequence{3, 4}$
+                \end{fitch}
+            \end{caseee}
+\end{proof}

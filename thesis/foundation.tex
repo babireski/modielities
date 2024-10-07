@@ -1,0 +1,96 @@
+\chapter{Fundamentação}
+
+\section{Sistemas}
+
+Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por \cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
+
+\begin{definition}[Sistema]
+    Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \Vdash}$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \Vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação sobre as sentenças, sem demais condições.
+    \qed
+\end{definition}
+
+Cabe destacar que a definição de sistema provida foi definida com base em $\Vdash$, uma relação qualquer entre as sentenças, que pode ser uma relação de dedução, denotada $\vdash$, ou uma relação de satisfação, denotada $\vDash$. Propriedades da tradução podem ser provadas sobre qualquer uma dessas relações, como veremos adiante. Entretanto, neste trabalho, serão abordadas somente as relações de dedução.
+
+\begin{definition}[Assinatura]
+    Uma assinatura consiste num conjunto de operadores e suas respeitivas aridades. A notação $\circ^n$ denota um operador $\circ$ com aridade $n \in \mathbb{N}$.
+    \qed
+\end{definition}
+
+Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme Troelstra \cite{Troelstra}.
+
+\begin{definition}[Profundidade]
+    A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
+    \begin{align*}
+        |p|                  & \coloneqq 0                           \\
+        |\bot|               & \coloneqq 0                           \\
+        |\circ \alpha|       & \coloneqq |\alpha| + 1                \\
+        |\alpha \circ \beta| & \coloneqq \max(|\alpha|, |\beta|) + 1.
+        \tag*{\qed} 
+    \end{align*}
+\end{definition}
+
+\begin{definition}[Esquema]
+    Definição.
+\end{definition}
+
+\begin{definition}[Axiomatização]
+    Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas axiomas e $\mathcal{R}$ um conjunto de regras de dedução. 
+\end{definition}
+
+\begin{definition}[Dedução]
+    Uma sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
+    \qed
+\end{definition}
+
+\section{Traduções}
+
+Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema e garantem certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução -- assim como houve com a definição de sistema -- varie de acordo com a predileção de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
+
+\begin{definition}[Tradução] 
+    Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
+    \qed
+\end{definition}
+
+\begin{notation}
+    Seja $\Gamma\in\wp(\mathcal{L}_\mathbf{A})$ um conjunto de sentenças e $\bullet^*\mathrel{:}\mathcal{L}_\mathbf{A}\to\mathcal{L}_\mathbf{B}$ uma tradução. $\Gamma^*$ denota o conjunto $\set{\alpha^*\mid\alpha\in\mathcal{L}_\mathbf{A}}\in\wp(\mathcal{L}_\mathbf{B})$, ou seja, a aplicação da tradução a todos os elementos do conjunto.
+    \qed
+\end{notation}
+
+\begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
+    \begin{align*}
+        p^\neg                     & \coloneqq \neg\neg p                               \\
+        \bot^\neg                  & \coloneqq \bot                                     \\
+        (\varphi \wedge \psi)^\neg & \coloneqq \neg\neg (\varphi^\neg \wedge \psi^\neg) \\
+        (\varphi \vee \psi)^\neg   & \coloneqq \neg\neg (\varphi^\neg \vee \psi^\neg)   \\
+        (\varphi \to \psi)^\neg    & \coloneqq \neg\neg (\varphi^\neg \to \psi^\neg)
+        \tag*{\qed} 
+    \end{align*}
+\end{definition}
+
+A primeira tradução do sistema intuicionista ao sistema modal foi proposta por Gödel \cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \cite{Troelstra}. Gödel conjeiturou a corretude fraca dessa tradução, que foi posteriormente provada por McKinsey e Tarski \cite{McKinsey} em conjunto com sua completude fraca.
+
+\begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ$ indutivamente da seguinte maneira:
+    \begin{align*}
+        p^\circ                     & \coloneqq p                                       \\
+        \bot^\circ                  & \coloneqq \bot                                    \\
+        (\varphi \wedge \psi)^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ         \\
+        (\varphi \vee \psi)^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ \\
+        (\varphi \to \psi)^\circ    & \coloneqq \nec \varphi^\circ \to \psi^\circ
+        \tag*{\qed} 
+    \end{align*}
+\end{definition}
+
+\begin{definition}[$\bullet^\nec$] Define-se a tradução $\bullet^\nec$ indutivamente da seguinte maneira:
+    \begin{align*}
+        p^\nec                     & \coloneqq \nec p                                        \\
+        \bot^\nec                  & \coloneqq \bot                                          \\
+        (\varphi \wedge \psi)^\nec & \coloneqq \varphi^\nec \wedge \psi^\nec     \\
+        (\varphi \vee \psi)^\nec   & \coloneqq \varphi^\nec \vee \psi^\nec       \\
+        (\varphi \to \psi)^\nec    & \coloneqq \nec (\varphi^\nec \to \psi^\nec)
+        \tag*{\qed} 
+    \end{align*}
+\end{definition}
+
+Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\nec$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por Girard \cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
+
+\section{Provadores}
