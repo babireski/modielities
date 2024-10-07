@@ -1,0 +1,45 @@
+\documentclass{report}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epigraph}
+\usepackage{mathtools}
+\usepackage{styles/modalities}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{proof}
+\usepackage[brazil]{babel}
+\usepackage{styles/fitch}
+\usepackage{styles/cases}
+\usepackage{styles/functions}
+
+\newcommand{\entails}{\mathrel{\vdash}}
+\newcommand{\point}{\mathrel{.}}
+
+\newtheorem*{notation}{Notação}
+\newtheorem{definition}{Definição}
+\newtheorem{lemma}{Lema}
+\newtheorem{theorem}{Teorema}
+
+\begin{document}
+    \title{Uma formalização da interpretação modal do sistema intuicionista}
+    \author{Elian Babireski}
+    \date{2024}
+
+    \maketitle
+
+    \begin{abstract}
+        Resumo aqui.
+    \end{abstract}
+
+    \tableofcontents
+
+    \include{parts/epigraph}
+    \include{parts/introduction}
+    \include{parts/foundation}
+    \include{parts/formalization}
+
+    \bibliographystyle{plain}
+    \bibliography{bibliography}
+\end{document}
