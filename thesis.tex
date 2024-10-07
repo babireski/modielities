@@ -10,10 +10,19 @@
 \usepackage{hyperref}
 \usepackage{proof}
 \usepackage[round]{natbib}
-\usepackage[brazil]{babel}
+\usepackage[french, brazil]{babel}
 \usepackage{styles/fitch}
 \usepackage{styles/cases}
 \usepackage{styles/functions}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[
+    left = \flqq{},% 
+    right = \frqq{},% 
+    leftsub = \flq{},% 
+    rightsub = \frq{} %
+]{dirtytalk}
 
 \newcommand{\entails}{\mathrel{\vdash}}
 \newcommand{\point}{\mathrel{.}}

@@ -6,14 +6,14 @@ Conforme visto, as noções de sistema variam entre diferentes autores e permane
 
 \begin{definition}[Sistema]
     Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \Vdash}$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \Vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação sobre as sentenças, sem demais condições.
-    \qed
+    \qed{}
 \end{definition}
 
 Cabe destacar que a definição de sistema provida foi definida com base em $\Vdash$, uma relação qualquer entre as sentenças, que pode ser uma relação de dedução, denotada $\vdash$, ou uma relação de satisfação, denotada $\vDash$. Propriedades da tradução podem ser provadas sobre qualquer uma dessas relações, como veremos adiante. Entretanto, neste trabalho, serão abordadas somente as relações de dedução.
 
 \begin{definition}[Assinatura]
     Uma assinatura consiste num conjunto de operadores e suas respeitivas aridades. A notação $\circ^n$ denota um operador $\circ$ com aridade $n \in \mathbb{N}$.
-    \qed
+    \qed{}
 \end{definition}
 
 Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme~\cite{Troelstra}.
@@ -39,21 +39,21 @@ Definiremos a noção de profundidade de uma sentença para que possamos realiza
 
 \begin{definition}[Dedução]
     Uma sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
-    \qed
+    \qed{}
 \end{definition}
 
 \section{Traduções}
 
-Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema e garantem certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução -- assim como houve com a definição de sistema -- varie de acordo com a predileção de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
+Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema e garantem certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
 
 \begin{definition}[Tradução] 
     Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
-    \qed
+    \qed{}
 \end{definition}
 
 \begin{notation}
     Seja $\Gamma\in\wp(\mathcal{L}_\mathbf{A})$ um conjunto de sentenças e $\bullet^*\mathrel{:}\mathcal{L}_\mathbf{A}\to\mathcal{L}_\mathbf{B}$ uma tradução. $\Gamma^*$ denota o conjunto $\set{\alpha^*\mid\alpha\in\mathcal{L}_\mathbf{A}}\in\wp(\mathcal{L}_\mathbf{B})$, ou seja, a aplicação da tradução a todos os elementos do conjunto.
-    \qed
+    \qed{}
 \end{notation}
 
 \begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
