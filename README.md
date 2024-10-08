@@ -10,6 +10,6 @@ https://plato.stanford.edu/archIves/spr2024/entries/ruth-barcan-marcus/#DeduDedu
 
 # Artigos
 
-- Raul Hakli and Sara Negri. Does the deduction theorem fail for modal logic? *Synthes*e, 2012.
+- Raul Hakli and Sara Negri. Does the deduction theorem fail for modal logic? *Synthese*, 2012.
 
   Apresenta uma discussão sobre a validade do metateorema da dedução e suas variantes nos sistemas modais.
