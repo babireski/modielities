@@ -13,6 +13,7 @@
 % - - \fitchnumsep controls separation between numbers and vertical lines
 
 \RequirePackage{mathtools,amsmath,ifthen,array}
+\usepackage{longtable}
 
 % Line height in proofs
 \newlength{\fitchlineht}
@@ -96,10 +97,15 @@
 
 % Main environments
 % AK modified the next two environments by replacing Ml (which is supposed to force math mode, left aligned in mdwtab) with >{$}l<{$}, which has the same effect in tabular
+% \newenvironment{fitchnum}%
+% {\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
+%   \begin{tabular}{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
+% {\end{tabular}}
+
 \newenvironment{fitchnum}%
 {\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
-  \begin{tabular}{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
-{\end{tabular}}
+  \begin{longtable}[l]{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
+{\end{longtable}}
 
 \newenvironment{fitchunum}%
 {\begin{tabular}{!{\makebox[\fitchnumwd][r]{}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%

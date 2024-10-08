@@ -55,7 +55,7 @@
                 \neg\alpha&\coloneqq\alpha\to\bot\\
                 \pos\alpha&\coloneqq\neg\nec\neg\alpha\\
                 \alpha\fishhook\beta&\coloneqq\nec(\alpha\to\beta)\\
-                \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge\beta\to\alpha
+                \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
             \end{align*}
         \end{notation}
 
@@ -81,9 +81,16 @@
             \end{alignat*}   
         \end{definition}
 
-        \babireski{Escrever aqui sobre os axiomas modais duais e provar suas derivações. São eles: $\mathbf{B_1^\diamond}\coloneqq\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$, $\mathbf{B_2^\diamond}\coloneqq\alpha\to\pos\alpha$ e $\mathbf{B_3^\diamond}\coloneqq\pos\pos\alpha\to\pos\alpha$.}
+        \begin{theorem}
+            A partir dos axiomas modais $\mathbf{B_1}$, $\mathbf{B_2}$ e $\mathbf{B_3}$, podem-se derivar os seguintes axiomas duais:
+            \begin{align*}
+                \mathbf{B_1^\diamond}&\coloneqq\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta\\
+                \mathbf{B_2^\diamond}&\coloneqq\alpha\to\pos\alpha\\
+                \mathbf{B_3^\diamond}&\coloneqq\pos\pos\alpha\to\pos\alpha\text{.}
+            \end{align*}
+        \end{theorem}
 
-        Provaremos, para o sistema modal apresentado, uma variação do teorema da dedução, que permite simplificar muitas das demonstrações apresentadas futuramente neste trabalho.
+        Provaremos, para o sistema modal apresentado, uma variação do teorema da dedução baseado na implicação estrita, conforme proposto por \cite{Marcus} de modo a permitir simplificar muitas das demonstrações apresentadas futuramente neste trabalho.
         \babireski{\citet{Hakli} apresentam uma discussão sobre a validade do metateorema da dedução e suas variantes nos sistemas modais. Quem sabe valha a pena escrever um pouco sobre isso, pois se trata de uma leitura interessante.}
 
         \begin{theorem}
@@ -102,7 +109,7 @@
 
                 \begin{case}
                     \textbf{Caso 1.1} ($\beta\in\mathcal{A}$)\textbf{.}
-
+                    
                     \begin{fitch}
                         \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
                         \fa\beta&$\mathbf{A_\beta}$\\
