@@ -6,6 +6,8 @@ Aqui fala sobre definição de lógica e tradução:
 
 https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=10fbfb17dd2b81258b22dca62d1a370d609d1489#page=196
 
+https://plato.stanford.edu/archIves/spr2024/entries/ruth-barcan-marcus/#DeduDeduTheo
+
 # Artigos
 
 - Raul Hakli and Sara Negri. Does the deduction theorem fail for modal logic? *Synthes*e, 2012.
