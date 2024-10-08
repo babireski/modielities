@@ -54,6 +54,7 @@
                 \top&\coloneqq\bot\to\bot\\
                 \neg\alpha&\coloneqq\alpha\to\bot\\
                 \pos\alpha&\coloneqq\neg\nec\neg\alpha\\
+                \alpha\fishhook\beta&\coloneqq\nec(\alpha\to\beta)\\
                 \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge\beta\to\alpha
             \end{align*}
         \end{notation}
@@ -263,18 +264,18 @@
                         \textbf{Caso 2.2} ($\mathbf{A_2}$)\textbf{.}
 
                         \begin{fitch}
-                            \fa\nec(\alpha^\nec\to\beta^\nec)\to\alpha^\nec\to\beta^\nec\\
-                            \fa\nec(\alpha^\nec\to\beta^\nec)\\
-                            \fa\alpha^\nec\to\beta^\nec\\
-                            \fa\alpha^\nec\\
-                            \fa\beta^\nec\\
-                            \fa\nec(\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec))\to\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec)\\
-                            \fa\nec(\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec))\\
-                            \fa\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec)\\
-                            \fa\nec(\beta^\nec\to\alpha^\nec)\\
-                            \fa\nec(\beta^\nec\to\alpha^\nec)\to\beta^\nec\to\gamma^\nec\\
-                            \fa\beta^\nec\to\gamma^\nec\\
-                            \fa\gamma^\nec{}
+                            \fa\nec(\alpha^\nec\to\beta^\nec)\to\alpha^\nec\to\beta^\nec&$\mathbf{B_2}$\\
+                            \fa\nec(\alpha^\nec\to\beta^\nec)&$\mathbf{P}$\\
+                            \fa\alpha^\nec\to\beta^\nec&$\mathbf{R_1}\;\sequence{1,2}$\\
+                            \fa\alpha^\nec&$\mathbf{P}$\\
+                            \fa\beta^\nec&$\mathbf{R_1}\;\sequence{3,4}$\\
+                            \fa\nec(\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec))\to\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec)&$\mathbf{B_2}$\\
+                            \fa\nec(\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec))&$\mathbf{P}$\\
+                            \fa\alpha^\nec\to\nec(\beta^\nec\to\alpha^\nec)&$\mathbf{R_1}\;\sequence{6,7}$\\
+                            \fa\nec(\beta^\nec\to\alpha^\nec)&$\mathbf{R_1}\;\sequence{4,8}$\\
+                            \fa\nec(\beta^\nec\to\alpha^\nec)\to\beta^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
+                            \fa\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{10,9}$\\
+                            \fa\gamma^\nec&$\mathbf{R_1}\;\sequence{11,5}${}
                         \end{fitch}
                     \end{caseee}
 
@@ -292,6 +293,7 @@
 
                     \begin{caseee}
                         \textbf{Caso 2.4} ($\mathbf{A_4}$)\textbf{.}
+                        Deve-se demonstrar que $\vdash\nec(\alpha^\nec\wedge\beta^\nec\to\alpha^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                         \begin{fitch}
                             \fa\alpha^\nec\wedge\beta^\nec\to\alpha^\nec&$\mathbf{A_4}$\\
@@ -301,6 +303,7 @@
 
                     \begin{caseee}
                         \textbf{Caso 2.5} ($\mathbf{A_5}$)\textbf{.}
+                        Deve-se demonstrar que $\vdash\nec(\alpha^\nec\wedge\beta^\nec\to\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                         \begin{fitch}
                             \fa\alpha^\nec\wedge\beta^\nec\to\beta^\nec&$\mathbf{A_5}$\\
@@ -310,6 +313,7 @@
 
                     \begin{caseee}
                         \textbf{Caso 2.6} ($\mathbf{A_6}$)\textbf{.}
+                        Deve-se demonstrar que $\vdash\nec(\alpha^\nec\to\alpha^\nec\vee\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                         \begin{fitch}
                             \fa\alpha^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_6}$ \\
@@ -319,6 +323,7 @@
 
                     \begin{caseee}
                         \textbf{Caso 2.7} ($\mathbf{A_7}$)\textbf{.}
+                        Deve-se demonstrar que $\vdash\nec(\beta^\nec\to\alpha^\nec\vee\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                         \begin{fitch}
                             \fa\beta^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_7}$\\
@@ -328,19 +333,23 @@
 
                     \begin{caseee}
                         \textbf{Caso 2.8} ($\mathbf{A_8}$)\textbf{.}
-
+                        Deve-se demonstrar que $\vdash(\alpha^\nec\fishhook\gamma^\nec)\fishhook(\beta^\nec\fishhook\gamma^\nec)\fishhook\alpha^\nec\vee\beta^\nec\fishhook\gamma^\nec$.
+                        Pelo teorema $\mathbf{T_1}$, basta provar que $\set{\alpha\fishhook\gamma,\beta\fishhook\gamma,\alpha\vee\gamma}\vdash\alpha^\nec$, o que pode ser feito pela seguinte sucessão de dedução:
+                        
+                        % $\vdash\nec(\nec(\alpha^\nec\to\gamma^\nec)\to\nec(\nec(\beta^\nec\to\gamma)\to\nec(\alpha^\nec\vee\beta^\nec\to\gamma^\nec)))$.
+                        
                         \begin{fitch}
-                            \fa(\alpha^\nec\to\gamma^\nec)\to(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
-                            \fa\nec(\alpha^\nec\to\gamma^\nec)\to\alpha^\nec\to\gamma^\nec\\
-                            \fa\nec(\alpha^\nec\to\gamma^\nec)\\
-                            \fa\alpha^\nec\to\gamma^\nec\\
-                            \fa(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
-                            \fa\nec(\beta^\nec\to\gamma^\nec)\to\beta^\nec\to\gamma^\nec\\
-                            \fa\nec(\beta^\nec\to\gamma^\nec)\\
-                            \fa\beta^\nec\to\gamma^\nec\\
-                            \fa\alpha^\nec\vee\beta^\nec\to\gamma^\nec\\
-                            \fa\alpha^\nec\vee\beta^\nec\\
-                            \fa\gamma^\nec{}
+                            \fa(\alpha^\nec\to\gamma^\nec)\to(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{A_8}$\\
+                            \fa\nec(\alpha^\nec\to\gamma^\nec)\to\alpha^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
+                            \fa\nec(\alpha^\nec\to\gamma^\nec)&$\mathbf{P}$\\
+                            \fa\alpha^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{2,3}$\\
+                            \fa(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{1,4}$\\
+                            \fa\nec(\beta^\nec\to\gamma^\nec)\to\beta^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
+                            \fa\nec(\beta^\nec\to\gamma^\nec)&$\mathbf{P}$\\
+                            \fa\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{6,7}$\\
+                            \fa\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{5,8}$\\
+                            \fa\alpha^\nec\vee\beta^\nec&$\mathbf{P}$\\
+                            \fa\gamma^\nec&$\mathbf{R_1}\;\sequence{9,10}${}
                         \end{fitch}
                     \end{caseee}
 
