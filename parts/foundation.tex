@@ -30,15 +30,22 @@ Definiremos a noção de profundidade de uma sentença para que possamos realiza
 \end{definition}
 
 \begin{definition}[Esquema]
-    Definição.
+    Um esquema consiste em um padrão com metavariaveis que permitem representar um conjunto, geralmente infinito, de sentenças.
+    \qed{}
+\end{definition}
+
+\begin{definition}[Regra]
+    Uma regra de dedução consiste num par $\sequence{\Gamma, \alpha}$, sendo $\Gamma$ um conjunto de sentenças chamadas de \textit{premissas} e $\alpha$ uma sentença chamada \textit{conclusão}.
+    \qed{}
 \end{definition}
 
 \begin{definition}[Axiomatização]
-    Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas axiomas e $\mathcal{R}$ um conjunto de regras de dedução. 
+    Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas axiomas e $\mathcal{R}$ um conjunto de regras de dedução.
+    \qed{}
 \end{definition}
 
 \begin{definition}[Dedução]
-    Uma sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$, onde cada sentença $\varphi_i$ trata-se de um axioma $\alpha \in \mathcal{A}$, uma assunção $\gamma \in \Gamma$ ou sentenças geradas pela aplicação de regras de dedução $\rho \in \mathcal{R}$ a sentenças anteriores, consiste em uma prova de $\Gamma \vdash \varphi_n$.
+    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$ onde $\varphi_n=\alpha$ cada sentença $\varphi_i$ trata-se de um axioma, uma premissa, ou a conclusão da aplicação de uma regra de dedução a sentenças anteriores.
     \qed{}
 \end{definition}
 
