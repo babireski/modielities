@@ -1,0 +1,51 @@
+\section{Dualidades}
+
+    \babireski{Ver~\cite{Zach} acerca dos axiomas duais e suas derivações.}
+
+    \begin{theorem}
+        A partir dos axiomas modais $\mathbf{B_1}$, $\mathbf{B_2}$ e $\mathbf{B_3}$, podem-se derivar os seguintes axiomas duais:
+        \begin{align*}
+            \mathbf{B_1^\diamond}&\coloneqq\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta\\
+            \mathbf{B_2^\diamond}&\coloneqq\alpha\to\pos\alpha\\
+            \mathbf{B_3^\diamond}&\coloneqq\pos\pos\alpha\to\pos\alpha\text{.}
+        \end{align*}
+    \end{theorem}
+
+    \begin{theorem}
+        $\vdash\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \begin{fitch}
+                \fa(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\neg\nec\neg\alpha\\
+                \fa\nec\neg\alpha\to\neg\alpha\\
+                \fa\neg\neg\alpha\to\neg\nec\neg\alpha{}
+            \end{fitch}
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}
+        $\vdash\alpha\to\pos\alpha$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\neg\nec\neg\alpha\\
+                \fa\nec\neg\alpha\to\neg\alpha\\
+                \fa\neg\neg\alpha\to\neg\nec\neg\alpha{}
+            \end{fitch}
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}
+        $\vdash\pos\pos\alpha\to\pos\alpha$.
+        \begin{proof}
+            Isso equivale, por reescrita, a demonstrar $\vdash\neg\nec\neg\neg\nec\neg\alpha\to\neg\nec\neg\alpha$, o que pode ser feito pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\neg\nec\neg\alpha\\
+                \fa\nec\neg\alpha\to\neg\alpha\\
+                \fa\neg\neg\alpha\to\neg\nec\neg\alpha{}
+            \end{fitch}
+        \end{proof}
+    \end{theorem}
