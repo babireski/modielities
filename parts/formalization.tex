@@ -15,7 +15,7 @@
             \begin{align*}
                 \top&\coloneqq\bot\to\bot\\
                 \neg\alpha&\coloneqq\alpha\to\bot\\
-                \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge\beta\to\alpha
+                \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
             \end{align*}
         \end{notation}
 
@@ -237,6 +237,42 @@
         Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\nec$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
         Ademais, as duas traduções providas são equivalentes, conforme demonstrado pelo teorema $\mathbf{T_2}$.
 
+        \begin{lemma}
+            $\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma$.
+        \end{lemma}
+
+        \begin{lemma}
+            $\vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
+
+            \begin{proof}
+                Pode ser provado pela seguinte sucessão de dedução:
+
+                \begin{fitch}
+                    \fa\alpha\wedge\beta\to\alpha\\
+                    \fa\nec(\alpha\wedge\beta\to\alpha)\\
+                    \fa\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)\\
+                    \fa\nec(\alpha\wedge\beta)\to\nec\alpha\\
+                    \fa\alpha\wedge\beta\to\beta\\
+                    \fa\nec(\alpha\wedge\beta\to\beta)\\
+                    \fa\nec(\alpha\wedge\beta\to\beta)\to(\nec(\alpha\wedge\beta)\to\nec\beta)\\
+                    \fa\nec(\alpha\wedge\beta)\to\nec\beta\\
+                    \fa(\nec(\alpha\wedge\beta)\to\nec\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta\\
+                    \fa(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta\\
+                    \fa\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta{}
+                \end{fitch}
+                \vspace*{-18pt}
+                \qedhere
+            \end{proof}
+        \end{lemma}
+
+        \begin{lemma}    
+            $\vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
+        \end{lemma}
+
+        \begin{lemma}
+            $\vdash\nec(\alpha\to\beta)\to\nec\alpha\to\beta$.
+        \end{lemma}
+
         \begin{theorem}
             $\forall\alpha\in\mathcal{L}_\mathbf{I}\point\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
         \end{theorem}
@@ -264,15 +300,25 @@
                 então $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n + 1$, onde $n \in \mathbb{N}$. Assim, seja $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ uma proposição verdadeira para $|\alpha| = k$, onde $k \in \mathbb{N}$. Existem os seguintes casos a serem considerados para $|\alpha| = k + 1$.
 
                 \begin{case}
-                    \textbf{Caso 2.1} ($\alpha = \alpha_1\wedge\alpha_2$)\textbf{.}
+                    \textbf{Caso 2.1.}
+                    Caso $\alpha = \varphi\wedge\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$.
+                    Pelo lemas $\mathbf{L_2}$ e $\mathbf{L_3}$ temos que $\nec(\varphi^\circ\wedge\psi^\circ)\leftrightarrow\nec\varphi^\circ\wedge\nec\psi^\circ$ e pela premissa da indução temos que $\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e $\nec\psi^\circ\leftrightarrow\psi^\nec$.
+                    Deste modo, $\nec{(\varphi\wedge\psi)}^\circ\leftrightarrow{(\varphi\wedge\psi)}^\nec$.
                 \end{case}
 
                 \begin{case}
-                    \textbf{Caso 2.2} ($\alpha = \alpha_1\vee\alpha_2$)\textbf{.}
+                    \textbf{Caso 2.2.}
+                    Caso $\alpha = \varphi\vee\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$.
+                    Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
+                    Para a volta, basta aplicar a regra da necessitação.
                 \end{case}
 
                 \begin{case}
-                    \textbf{Caso 2.3} ($\alpha = \alpha_1\to\alpha_2$)\textbf{.}
+                    \textbf{Caso 2.3.}
+                    Caso $\alpha=\varphi\to\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$.
+                    Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
+                    Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
+                    \qedhere
                 \end{case}
             \end{case}
         \end{proof}
