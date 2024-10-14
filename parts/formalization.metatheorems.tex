@@ -1,11 +1,29 @@
 \section{Metateoremas}
-    Provaremos o metaterema da dedução para os sistemas modais, conforme apresentado por~\cite{Hakli}.
+    Provaremos o metateorema da dedução para os sistemas modais, conforme apresentado por~\cite{Hakli}.
 
     \begin{theorem}
         $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
 
         \begin{proof}
-            Prova em~\cite{Hakli}.
+            Prova por indução forte sobre o tamanho da sucessão de dedução.
+            Assim, suponhamos que o teorema da dedução valha para qualquer sucessão dedução de tamanho $n\leq k$.
+            Demonstraremos, analisando-se os casos, que o teorema da dedução vale para sucessões de deduções de tamanho $n=k+1$.
+
+            \begin{case}
+                \textbf{Caso 1.} Caso $\beta\in\Gamma\cup\set{\alpha}$.
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 2.} Caso $\beta\in\mathcal{A}$.
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 3.} Caso $\beta$ tenha sido gerado pela regra da necessitação.
+            \end{case}
+
+            \begin{case}
+                \textbf{Caso 4.} Caso $\beta$ tenha sido gerado pela regra da separação.
+            \end{case}
         \end{proof}
     \end{theorem}
 
