@@ -38,16 +38,16 @@
                 \textbf{Caso 1} (Base)\textbf{.}
                     Para $|\alpha| = 0$, existem dois casos a serem considerados.
     
-                    \begin{casee}
+                    \begin{subcase}
                         \textbf{Caso 1.1} ($\alpha = a$)\textbf{.}
                         $a^\circ = a$ e $a^\nec = \nec a$, assim $\nec a^\circ = a^\nec$ e, portanto, $\nec a^\circ \leftrightarrow a^\nec$.
-                    \end{casee}
+                    \end{subcase}
 
-                    \begin{casee}
+                    \begin{subcase}
                         \textbf{Caso 2.1} ($\alpha = \bot$)\textbf{.}
                         $\bot^\circ = \bot$ e $\bot^\nec = \bot$. A ida $\nec\bot\to\bot$ consiste em um axioma, sendo, portando provada trivialmente pela sucessão de dedução $\sequence{\nec\bot\to\bot}$.
                         A volta $\bot\to\nec\bot$ equivale a provar, por meio do teorema da dedução, que $\set{\bot}\vdash_\mathbf{M}\nec\bot$, o que pode ser provado trivialmente pela sucessão de dedução $\sequence{\bot, \nec\bot}$, que consiste na invocação da premissa e aplicação da regra da necessitação, nessa ordem.
-                    \end{casee}
+                    \end{subcase}
             \end{case}
     
             \begin{case}
@@ -55,29 +55,29 @@
                 então $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n + 1$, onde $n \in \mathbb{N}$. Assim, seja $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ uma proposição verdadeira para $|\alpha| = k$, onde $k \in \mathbb{N}$. Existem os seguintes casos a serem considerados para $|\alpha| = k + 1$.
             \end{case}
     
-                \begin{casee}
+                \begin{subcase}
                     \textbf{Caso 2.1.}
                     Neste caso, consideraremos que $\alpha = \varphi\wedge\psi$.
                     Assim sendo, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$.
                     Pelo lemas $\mathbf{L_2}$ e $\mathbf{L_3}$ temos que $\nec(\varphi^\circ\wedge\psi^\circ)\leftrightarrow\nec\varphi^\circ\wedge\nec\psi^\circ$ e pela premissa da indução temos que $\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e $\nec\psi^\circ\leftrightarrow\psi^\nec$.
                     Deste modo, $\nec{(\varphi\wedge\psi)}^\circ\leftrightarrow{(\varphi\wedge\psi)}^\nec$.
-                \end{casee}
+                \end{subcase}
     
-                \begin{casee}
+                \begin{subcase}
                     \textbf{Caso 2.2.}
                     Neste caso, consideraremos que $\alpha = \varphi\vee\psi$.
                     Assim sendo, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$.
                     Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
                     Para a volta, basta aplicar a regra da necessitação.
-                \end{casee}
+                \end{subcase}
     
-                \begin{casee}
+                \begin{subcase}
                     \textbf{Caso 2.3.}
                     Neste caso, consideraremos que $\alpha=\varphi\to\psi$.
                     Assim sendo, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$.
                     Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
                     Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
                     \qedhere
-                \end{casee}
+                \end{subcase}
         \end{proof}
     \end{theorem}
