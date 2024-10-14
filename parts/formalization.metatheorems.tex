@@ -1,77 +1,92 @@
 \section{Metateoremas}
-    Provaremos, para o sistema modal apresentado, uma variação do teorema da dedução baseado na implicação estrita, conforme proposto por~\cite{Marcus} de modo a permitir simplificar muitas das demonstrações apresentadas futuramente neste trabalho.
-    \babireski{\citet{Hakli} apresentam uma discussão sobre a validade do metateorema da dedução e suas variantes nos sistemas modais. Quem sabe valha a pena escrever um pouco sobre isso, pois se trata de uma leitura interessante.}
+    Provaremos o metaterema da dedução para os sistemas modais, conforme apresentado por~\cite{Hakli}.
 
     \begin{theorem}
-        $\forall\,\Gamma\cup\set{\alpha,\beta}\in\wp(\mathcal{L}_\mathbf{M})\point\Gamma\cup\set{\alpha}\vdash\beta\Rightarrow  \Gamma\vdash\nec(\alpha\to\beta)$.
+        $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
+
+        \begin{proof}
+            Prova em~\cite{Hakli}.
+        \end{proof}
     \end{theorem}
 
-    \begin{proof}
-        Seja $\Gamma$ um conjunto de sentenças e sejam $\alpha$ e $\beta$ sentenças de modo que $\Gamma\cup\set{\alpha}\vdash\beta$, deve-se provar que $\Gamma\vdash\nec(\alpha\to\beta)$. Como $\Gamma\cup\set{\alpha}\vdash\beta$, existe uma prova de $\beta$ a partir de $\Gamma\cup\set{\alpha}$. A prova baseia-se numa indução sobre o tamanho $n$ da prova.
+    \begin{theorem}
+        $\text{Se }\nec\Gamma\cup\set{\nec\alpha}\vdash\beta\text{, então }\nec\Gamma\vdash\nec(\nec\alpha\to\beta)$.
 
-        \begin{case}
-            \textbf{Caso 1} (Base)\textbf{.}
-            Para a base requer-se considerar os seguintes casos: 
-                \textbf{(1)} $\beta$ consiste num axioma,
-                \textbf{(2)} $\beta\in\Gamma$ e
-                \textbf{(3)} $\beta=\alpha$.
+        \begin{proof}
+            Prova em~\cite{Marcus}.
+        \end{proof}
+    \end{theorem}
 
-            \begin{case}
-                \textbf{Caso 1.1} ($\beta\in\mathcal{A}$)\textbf{.}
+    % \begin{theorem}
+    %     $\forall\,\Gamma\cup\set{\alpha,\beta}\in\wp(\mathcal{L}_\mathbf{M})\point\Gamma\cup\set{\alpha}\vdash\beta\Rightarrow  \Gamma\vdash\nec(\alpha\to\beta)$.
+    % \end{theorem}
+
+    % \begin{proof}
+    %     Seja $\Gamma$ um conjunto de sentenças e sejam $\alpha$ e $\beta$ sentenças de modo que $\Gamma\cup\set{\alpha}\vdash\beta$, deve-se provar que $\Gamma\vdash\nec(\alpha\to\beta)$. Como $\Gamma\cup\set{\alpha}\vdash\beta$, existe uma prova de $\beta$ a partir de $\Gamma\cup\set{\alpha}$. A prova baseia-se numa indução sobre o tamanho $n$ da prova.
+
+    %     \begin{case}
+    %         \textbf{Caso 1} (Base)\textbf{.}
+    %         Para a base requer-se considerar os seguintes casos: 
+    %             \textbf{(1)} $\beta$ consiste num axioma,
+    %             \textbf{(2)} $\beta\in\Gamma$ e
+    %             \textbf{(3)} $\beta=\alpha$.
+
+    %         \begin{case}
+    %             \textbf{Caso 1.1} ($\beta\in\mathcal{A}$)\textbf{.}
                 
-                \begin{fitch}
-                    \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
-                    \fa\beta&$\mathbf{A_\beta}$\\
-                    \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
-                    \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
-                \end{fitch}
-            \end{case}
+    %             \begin{fitch}
+    %                 \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
+    %                 \fa\beta&$\mathbf{A_\beta}$\\
+    %                 \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
+    %                 \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
+    %             \end{fitch}
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 1.2} ($\beta\in\Gamma$)\textbf{.}
+    %         \begin{case}
+    %             \textbf{Caso 1.2} ($\beta\in\Gamma$)\textbf{.}
 
-                \begin{fitch}
-                    \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
-                    \fa\beta&$\mathbf{P}$\\
-                    \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
-                    \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
-                \end{fitch}
-            \end{case}
+    %             \begin{fitch}
+    %                 \fa\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
+    %                 \fa\beta&$\mathbf{P}$\\
+    %                 \fa\alpha\to\beta&$\mathbf{R_1}\;\sequence{1, 2}$\\
+    %                 \fa\nec(\alpha\to\beta)&$\mathbf{R_2}\;\sequence{3}$
+    %             \end{fitch}
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 1.3} ($\beta=\alpha$)\textbf{.}
+    %         \begin{case}
+    %             \textbf{Caso 1.3} ($\beta=\alpha$)\textbf{.}
                 
-                \begin{fitch}
-                    \fa\alpha\to\alpha&$\mathbf{L_1}$\\
-                    \fa\nec(\alpha\to\alpha)&$\mathbf{R_2}\;\sequence{1}$
-                \end{fitch}
-            \end{case}
-        \end{case}
+    %             \begin{fitch}
+    %                 \fa\alpha\to\alpha&$\mathbf{L_1}$\\
+    %                 \fa\nec(\alpha\to\alpha)&$\mathbf{R_2}\;\sequence{1}$
+    %             \end{fitch}
+    %         \end{case}
+    %     \end{case}
 
-        \begin{case}
-            \textbf{Caso 2} (Passo)\textbf{.}
-            Supõe-se que, para qualquer prova de $\Gamma\cup\set{\alpha}\vdash\beta$ com tamanho $k$, tem-se que $\Gamma\vdash\nec(\alpha\to\beta)$.
-            Deve-se mostrar que a proposição segue verdadeira caso a prova tenha tamanho $k+1$. 
-            Assim, sendo $\sequence{\varphi_i\mid1\leq i\leq k+1}$ uma sucessão de dedução com $\varphi_{k+1}=\beta$, requer-se considerar os seguintes casos:
+    %     \begin{case}
+    %         \textbf{Caso 2} (Passo)\textbf{.}
+    %         Supõe-se que, para qualquer prova de $\Gamma\cup\set{\alpha}\vdash\beta$ com tamanho $k$, tem-se que $\Gamma\vdash\nec(\alpha\to\beta)$.
+    %         Deve-se mostrar que a proposição segue verdadeira caso a prova tenha tamanho $k+1$. 
+    %         Assim, sendo $\sequence{\varphi_i\mid1\leq i\leq k+1}$ uma sucessão de dedução com $\varphi_{k+1}=\beta$, requer-se considerar os seguintes casos:
 
-            \begin{case}
-                \textbf{Caso 2.1} ($\beta\in\mathcal{A}$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.1}}$.
-            \end{case}
+    %         \begin{case}
+    %             \textbf{Caso 2.1} ($\beta\in\mathcal{A}$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.1}}$.
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 2.2} ($\beta\in\Gamma$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.2}}$.
-            \end{case}
+    %         \begin{case}
+    %             \textbf{Caso 2.2} ($\beta\in\Gamma$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.2}}$.
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 2.3} ($\beta=\alpha$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.3}}$.
-            \end{case}
+    %         \begin{case}
+    %             \textbf{Caso 2.3} ($\beta=\alpha$)\textbf{.} \textit{Vide} caso $\mathbf{C_{1.3}}$.
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 2.4} ($\mathbf{R_1}$)\textbf{.} \babireski{Aqui basta transcrever a prova da aula.}
-            \end{case}
+    %         \begin{case}
+    %             \textbf{Caso 2.4} ($\mathbf{R_1}$)\textbf{.} \babireski{Aqui basta transcrever a prova da aula.}
+    %         \end{case}
 
-            \begin{case}
-                \textbf{Caso 2.5} ($\mathbf{R_2}$)\textbf{.} \babireski{Estou sofrendo nesse caso.}
-            \end{case}
-        \end{case}
-    \end{proof}
+    %         \begin{case}
+    %             \textbf{Caso 2.5} ($\mathbf{R_2}$)\textbf{.} \babireski{Estou sofrendo nesse caso.}
+    %         \end{case}
+    %     \end{case}
+    % \end{proof}

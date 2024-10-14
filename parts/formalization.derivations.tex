@@ -1,17 +1,16 @@
 \section{Derivações}
+    Nesta seção serão apresentadas diversas derivações feitas a partir da axiomatização do sistema modal que servirão de lemas para a prova de teoremas futuros neste trabalho.
+
     \begin{lemma}
         $\vdash\alpha\to\alpha$
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{A_2}$\\
-                \fa\alpha\to(\alpha\to\alpha)\to\alpha&$\mathbf{A_1}$\\
-                \fa(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{R_1}\;\set{1, 2}$\\
-                \fa\alpha\to\alpha\to\alpha&$\mathbf{A_1}$\\
-                \fa\alpha\to\alpha&$\mathbf{R_1}\;\set{3, 4}$\\
+                \fa\set{a}\vdash\alpha&$\mathbf{P}$\\
+                \fa\vdash\alpha\to\alpha&$\mathbf{T_1}\;\set{1}$.
             \end{fitch}
-            \vspace*{-18pt}
+            \vspace*{-18pt-0.7em}
             \qedhere
         \end{proof}
     \end{lemma}
@@ -22,27 +21,56 @@
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa(((\alpha\to\bot)\to\bot)\to\alpha)\to\bot\to((\alpha\to\bot)\to\bot)\to\alpha&$\mathbf{A_1}$\\
-                \fa((\alpha\to\bot)\to\bot)\to\alpha&$\mathbf{A_\neg}$\\
-                \fa\bot\to((\alpha\to\bot)\to\bot)\to\alpha&$\mathbf{R_1}\;\set{1, 2}$\\
-                \fa(\bot\to(\alpha\to\bot)\to\bot)\to\bot\to\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
-                \fa\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
-                \fa\bot\to\bot\to(\alpha\to\bot)\to\bot&$\mathbf{R_1}\;\set{4, 5}$\\
-                \fa\bot\to\bot&$\mathbf{L_1}$\\
-                \fa\\
-                \fa\\
-                \fa\bot\to(\alpha\to\bot)\to\bot\\
-                \fa\\
-                \fa\\
-                \fa\bot\to\alpha\\
+                \fa\set{\bot}\vdash\bot&$\mathbf{P}$\\
+                \fa\set{\bot}\vdash\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
+                \fa\set{\bot}\vdash\neg\neg\alpha&$\mathbf{R_1}\;\set{1,2}$\\
+                \fa\set{\bot}\vdash\neg\neg\alpha\to\alpha&$\mathbf{A_\neg}$\\
+                \fa\set{\bot}\vdash\alpha&$\mathbf{R_1}\;\set{3,4}$\\
+                \fa\vdash\bot\to\alpha&$\mathbf{T_1}\;\set{5}$.
             \end{fitch}
-            \vspace*{-18pt}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\vdash(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+        
+            \begin{fitch}
+                \fa\set{\alpha\to\beta,\neg\beta}\vdash\neg\alpha\\
+
+                % \fa\vdash(\alpha\to\beta)\to\neg\beta\to\neg\alpha\\
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
             \qedhere
         \end{proof}
     \end{lemma}
 
     \begin{lemma}
         $\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            
+            \begin{fitch}
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\mathbf{P}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\beta&$\mathbf{P}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta&$\mathbf{R_1}\;\set{1, 2}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma&$\mathbf{P}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma&$\mathbf{R_1}\;\set{1, 4}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\to\gamma\to\beta\wedge\gamma&$\mathbf{A_3}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma\to\beta\wedge\gamma&$\mathbf{R_1}\;\set{3, 6}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\wedge\gamma&$\mathbf{R_1}\;\set{5, 7}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma}\vdash\alpha\to\beta\wedge\gamma&$\mathbf{T_1}\;\set{8}$\\
+                \fa\set{\alpha\to\beta}\vdash(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&$\mathbf{T_1}\;\set{9}$\\
+                \fa\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&$\mathbf{T_1}\;\set{10}$.
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
     \end{lemma}
 
     \begin{lemma}
@@ -64,13 +92,28 @@
                 \fa(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta\\
                 \fa\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta{}
             \end{fitch}
-            \vspace*{-18pt}
+            \vspace*{-18pt-0.7em}
             \qedhere
         \end{proof}
     \end{lemma}
 
     \begin{lemma}    
         $\vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta&$\mathbf{A_3}$\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\alpha&$\mathbf{A_4}$\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\alpha\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\beta&$\mathbf{A_5}$\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\beta\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha&$\mathbf{R_1}\;\set{1, 4}$\\
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
     \end{lemma}
 
     \begin{lemma}
