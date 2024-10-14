@@ -19,6 +19,13 @@
 
             \begin{case}
                 \textbf{Caso 3.} Caso $\beta$ tenha sido gerado pela regra da necessitação.
+
+                \begin{fitch}
+                    \fa\vdash\varphi&$\mathbf{H}$\\
+                    \fa\Gamma\vdash\nec\varphi&$\mathbf{R_2}\;\set{1}$\\
+                    \fa\vdash\nec\varphi\to\alpha\to\nec\varphi&$\mathbf{A_1}$\\
+                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\mathbf{R_1}\;\set{2,3}$.
+                \end{fitch}
             \end{case}
 
             \begin{case}
