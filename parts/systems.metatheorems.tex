@@ -7,7 +7,7 @@
         \begin{proof}
             Prova por indução forte sobre o tamanho da sucessão de dedução.
             Assim, suponhamos que o teorema da dedução valha para qualquer sucessão dedução de tamanho $n\leq k$.
-            Demonstraremos, analisando-se os casos, que o teorema da dedução vale para sucessões de deduções de tamanho $n=k+1$.
+            Demonstraremos, analisando-se os casos, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k+1$.
 
             \begin{case}
                 \textbf{Caso 1.} Caso $\beta\in\Gamma\cup\set{\alpha}$.
@@ -18,7 +18,9 @@
             \end{case}
 
             \begin{case}
-                \textbf{Caso 3.} Caso $\beta$ tenha sido gerado pela regra da necessitação.
+                \textbf{Caso 3.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e $\vdash\varphi$.
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
                     \fa\vdash\varphi&$\mathbf{H}$\\
