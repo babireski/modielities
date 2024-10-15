@@ -1,4 +1,4 @@
-\section{Traduções}
+\section{Definições}
     A primeira tradução do sistema intuicionista ao sistema modal foi proposta por~\cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \citep{Troelstra}. Gödel conjeiturou a corretude fraca dessa tradução, que foi posteriormente provada por~\cite{McKinsey} em conjunto com sua completude fraca.
 
     \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ$ indutivamente da seguinte maneira:
@@ -27,57 +27,91 @@
     Ademais, as duas traduções providas são equivalentes, conforme demonstrado pelo teorema $\mathbf{T_2}$.
 
     \begin{theorem}
-        $\forall\alpha\in\mathcal{L}_\mathbf{I}\point\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
+        $\forall\alpha\in\mathcal{L}_\mathbf{I}\point\proves\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
 
         \begin{proof}
             Prova por indução forte sobre a profundidade de $\alpha$.
-            Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n\leq k$.
-            Demonstraremos, analisando-se os casos, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k+1$.
+            Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n<k$.
+            Demonstraremos, analisando-se os casos, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
     
             \begin{case}
-                \textbf{Caso 1} (Base)\textbf{.}
-                    Para $|\alpha| = 0$, existem dois casos a serem considerados.
-    
-                    \begin{subcase}
-                        \textbf{Caso 1.1} ($\alpha = a$)\textbf{.}
-                        $a^\circ = a$ e $a^\nec = \nec a$, assim $\nec a^\circ = a^\nec$ e, portanto, $\nec a^\circ \leftrightarrow a^\nec$.
-                    \end{subcase}
+                \textsc{Caso 1.}
+                Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\nec =\nec a$ pelas definições das traduções.
+                Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema $\mathbf{L_1}$.
+            \end{case}
 
-                    \begin{subcase}
-                        \textbf{Caso 2.1} ($\alpha = \bot$)\textbf{.}
-                        $\bot^\circ = \bot$ e $\bot^\nec = \bot$. A ida $\nec\bot\to\bot$ consiste em um axioma, sendo, portando provada trivialmente pela sucessão de dedução $\sequence{\nec\bot\to\bot}$.
-                        A volta $\bot\to\nec\bot$ equivale a provar, por meio do teorema da dedução, que $\set{\bot}\vdash_\mathbf{M}\nec\bot$, o que pode ser provado trivialmente pela sucessão de dedução $\sequence{\bot, \nec\bot}$, que consiste na invocação da premissa e aplicação da regra da necessitação, nessa ordem.
-                    \end{subcase}
+            \begin{case}
+                \textsc{Caso 2.}
+                Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\nec=\bot$ pelas definições das traduções.
+                Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema $\mathbf{B_2}$ --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema $\mathbf{L_2}$.
             \end{case}
     
             \begin{case}
-                \textbf{Caso 2} (Passo)\textbf{.} No passo, deve-se demonstrar que, caso $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n$, 
-                então $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ para $|\alpha| = n + 1$, onde $n \in \mathbb{N}$. Assim, seja $\nec\alpha^\circ\leftrightarrow\alpha^\nec$ uma proposição verdadeira para $|\alpha| = k$, onde $k \in \mathbb{N}$. Existem os seguintes casos a serem considerados para $|\alpha| = k + 1$.
+                \textsc{Caso 3.}
+                Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e que ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$ pelas definições das traduções.
             \end{case}
-    
+
                 \begin{subcase}
-                    \textbf{Caso 2.1.}
-                    Neste caso, consideraremos que $\alpha = \varphi\wedge\psi$.
-                    Assim sendo, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$.
-                    Pelo lemas $\mathbf{L_2}$ e $\mathbf{L_3}$ temos que $\nec(\varphi^\circ\wedge\psi^\circ)\leftrightarrow\nec\varphi^\circ\wedge\nec\psi^\circ$ e pela premissa da indução temos que $\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e $\nec\psi^\circ\leftrightarrow\psi^\nec$.
-                    Deste modo, $\nec{(\varphi\wedge\psi)}^\circ\leftrightarrow{(\varphi\wedge\psi)}^\nec$.
+                    \textsc{Caso 3.1.}
+                    Assim, pode-se provar a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ pela seguinte sucessão de dedução:
+
+                    \begin{fitch}
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{L_5}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{R_1}\;\sequence{1,2}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&$\mathbf{A_4}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\mathbf{R_1}\;\sequence{3,4}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\nec&$\mathbf{H}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec&$\mathbf{R_1}\;\sequence{5,6}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&$\mathbf{A_4}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\mathbf{R_1}\;\sequence{3,8}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\nec&$\mathbf{H}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\nec&$\mathbf{R_1}\;\sequence{9,10}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec\to\psi^\nec\to\varphi^\nec\wedge\psi^\nec&$\mathbf{A_3}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\nec\to\varphi^\nec\wedge\psi^\nec&$\mathbf{R_1}\;\sequence{7,12}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec\wedge\psi^\nec&$\mathbf{R_1}\;\sequence{9,13}$\\
+                        \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec&$\mathbf{T_1}\;\sequence{14}$\\
+                    \end{fitch}
                 \end{subcase}
-    
+
                 \begin{subcase}
-                    \textbf{Caso 2.2.}
-                    Neste caso, consideraremos que $\alpha = \varphi\vee\psi$.
-                    Assim sendo, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$.
-                    Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
-                    Para a volta, basta aplicar a regra da necessitação.
+                    \textsc{Caso 3.2.}
+                    Outrossim, pode-se provar a volta $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
+
+                    \begin{fitch}
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec\to\varphi^\nec&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\to\nec\varphi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec\to\psi^\nec&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\psi^\nec&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\psi^\nec\to\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fa\proves\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                    \end{fitch}
                 \end{subcase}
-    
-                \begin{subcase}
-                    \textbf{Caso 2.3.}
-                    Neste caso, consideraremos que $\alpha=\varphi\to\psi$.
-                    Assim sendo, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$.
-                    Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
-                    Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
-                    \qedhere
-                \end{subcase}
+
+            \begin{case}
+                \textsc{Caso 4.}
+                Neste caso, consideraremos que $\alpha = \varphi\vee\psi$.
+                Assim sendo, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$.
+                Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
+                Para a volta, basta aplicar a regra da necessitação.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 5.}
+                Neste caso, consideraremos que $\alpha=\varphi\to\psi$.
+                Assim sendo, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$.
+                Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
+                Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
+                \qedhere
+            \end{case}
         \end{proof}
     \end{theorem}
