@@ -17,6 +17,17 @@
 
 \usepackage[T1]{fontenc}
 
+\hypersetup
+{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue
+}
+
 \usepackage[
     left = \flqq{},% 
     right = \frqq{},% 
@@ -25,7 +36,7 @@
 ]{dirtytalk}
 
 \newcommand{\entails}{\mathrel{\vdash}}
-\newcommand{\point}{\mathrel{.}}
+\newcommand{\point}{\mathpunct{.}}
 
 \newtheorem*{notation}{Notação}
 \newtheorem{definition}{Definição}

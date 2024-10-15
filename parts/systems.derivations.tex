@@ -2,13 +2,14 @@
     Nesta seção serão apresentadas diversas derivações feitas a partir da axiomatização do sistema modal que servirão de lemas para a prova de teoremas futuros neste trabalho.
 
     \begin{lemma}
-        $\vdash\alpha\to\alpha$
+        \label{identity}
+        $\forall\alpha\point\entails\alpha\to\alpha$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa\set{a}\vdash\alpha&$\mathbf{P}$\\
-                \fa\vdash\alpha\to\alpha&$\mathbf{T_1}\;\set{1}$.
+                \fa\set{a}\entails\alpha&$\mathbf{P}$\\
+                \fa\entails\alpha\to\alpha&$\mathbf{T_1}\;\set{1}$.
             \end{fitch}
             \vspace*{-18pt-0.7em}
             \qedhere
@@ -16,17 +17,18 @@
     \end{lemma}
 
     \begin{lemma}
-        $\vdash\bot\to\alpha$
+        \label{explosion}
+        $\forall\alpha\point\entails\bot\to\alpha$
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa\set{\bot}\vdash\bot&$\mathbf{P}$\\
-                \fa\vdash\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
-                \fa\set{\bot}\vdash\neg\neg\alpha&$\mathbf{R_1}\;\set{1,2}$\\
-                \fa\vdash\neg\neg\alpha\to\alpha&$\mathbf{A_\neg}$\\
-                \fa\set{\bot}\vdash\alpha&$\mathbf{R_1}\;\set{3,4}$\\
-                \fa\vdash\bot\to\alpha&$\mathbf{T_1}\;\set{5}$.
+                \fa\set{\bot}\entails\bot&$\mathbf{P}$\\
+                \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha&$\mathbf{R_1}\;\set{1,2}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\mathbf{A_\neg}$\\
+                \fa\set{\bot}\entails\alpha&$\mathbf{R_1}\;\set{3,4}$\\
+                \fa\entails\bot\to\alpha&$\mathbf{T_1}\;\set{5}$.
             \end{fitch}
             \vspace*{-18pt-0.7em}
             \qedhere
@@ -34,15 +36,22 @@
     \end{lemma}
 
     \begin{lemma}
-        $\vdash(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$
+        \label{contraposition}
+        $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$
 
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa\set{\alpha\to\beta,\neg\beta}\vdash\neg\alpha\\
-
-                % \fa\vdash(\alpha\to\beta)\to\neg\beta\to\neg\alpha\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\mathbf{P}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\beta\to\bot)\to\alpha\to(\beta\to\bot)&$\mathbf{A_1}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\mathbf{R_1}\;\set{1,2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta\to\bot)\to(\alpha\to\beta)\to(\alpha\to\bot)&$\mathbf{A_2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta&$\mathbf{P}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta)\to(\alpha\to\bot)&$\mathbf{R_1}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\neg\alpha&$\mathbf{R_1}\;\set{5,6}$\\
+                \fa\set{\alpha\to\beta}\entails\neg\beta\to\neg\alpha&$\mathbf{T_1}\;\set{7}$\\
+                \fa\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)&$\mathbf{T_1}\;\set{8}$.
             \end{fitch}
             \vspace*{-18pt-0.7em}
             \qedhere
