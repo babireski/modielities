@@ -23,25 +23,24 @@
         \end{align*}
     \end{notation}
 
-    \begin{definition}
-        \label{m-axioms}
+    \begin{definition}\label{m-axioms}
         A axiomatização do sistema modal consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
-        \begin{alignat*}{3}
-            & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
-            & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
-            & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
-            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
-            & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
-            & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
-            & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            & \mathbf{A_\neg}\quad && \neg\neg\alpha\to\alpha \\
-            & \mathbf{B_1}\quad && \nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta \\
-            & \mathbf{B_2}\quad && \nec\alpha\to\alpha \\
-            & \mathbf{B_3}\quad && \nec\alpha\to\nec\nec\alpha \\
-            & \mathbf{R_1}\quad && \text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\\
-            & \mathbf{R_2}\quad && \text{Se }\vdash\alpha\text{, então }\vdash\nec\alpha\text{.} & \tag*{\qed} 
-        \end{alignat*}   
+        \begin{alignat}{3}
+            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{MA1}\tag*{}\\
+            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{MA2}\tag*{}\\
+            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{MA3}\tag*{}\\
+            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{MA4}\tag*{}\\
+            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{MA5}\tag*{}\\
+            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{MA6}\tag*{}\\
+            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{MA7}\tag*{}\\
+            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{MA8}\tag*{}\\
+            &\mathbf{A_\neg}\quad&&\neg\neg\alpha\to\alpha\label{MANEG}\tag*{}\\
+            &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\\
+            &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\\
+            &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\\
+            &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\\
+            &\mathbf{R_2}\quad&&\text{Se }\entails\alpha\text{, então }\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
+        \end{alignat}   
     \end{definition}
 
     Chamaremos $\mathbf{R_1}$ de \emph{regra da separação} e $\mathbf{R_2}$ de \emph{regra da necessitação}.

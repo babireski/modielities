@@ -37,7 +37,7 @@
             \begin{case}
                 \textsc{Caso 1.}
                 Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\nec =\nec a$ pelas definições das traduções.
-                Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_1}$}.
+                Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
             \end{case}
 
             \begin{case}
@@ -99,16 +99,18 @@
 
             \begin{case}
                 \textsc{Caso 4.}
-                Neste caso, consideraremos que $\alpha = \varphi\vee\psi$.
-                Assim sendo, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$.
+                Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e que ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$ pelas definições das traduções.
                 Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
                 Para a volta, basta aplicar a regra da necessitação.
+
+                \begin{fitch}
+                    \fa\\
+                \end{fitch}
             \end{case}
 
             \begin{case}
                 \textsc{Caso 5.}
-                Neste caso, consideraremos que $\alpha=\varphi\to\psi$.
-                Assim sendo, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$.
+                Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$ pelas definições das traduções.
                 Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
                 Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
                 \qedhere

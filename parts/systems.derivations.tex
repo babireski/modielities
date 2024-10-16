@@ -1,42 +1,39 @@
 \section{Derivações}
     Nesta seção serão apresentadas diversas derivações feitas a partir da axiomatização do sistema modal que servirão de lemas para a prova de teoremas futuros neste trabalho.
 
-    \begin{lemma}
-        \label{identity}
+    \begin{lemma}\label{identity}
         $\forall\alpha\point\entails\alpha\to\alpha$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa\set{a}\entails\alpha&$\mathbf{P}$\\
-                \fa\entails\alpha\to\alpha&$\mathbf{T_1}\;\set{1}$.
+                \fa\set{a}\entails\alpha&$\mathbf{P_1}$\\
+                \fa\entails\alpha\to\alpha&\refer{deduction}{T}$\;\set{1}$.
             \end{fitch}
             \vspace*{-18pt-0.7em}
             \qedhere
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}
-        \label{explosion}
+    \begin{lemma}\label{explosion}
         $\forall\alpha\point\entails\bot\to\alpha$
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fa\set{\bot}\entails\bot&$\mathbf{P}$\\
-                \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\mathbf{A_1}$\\
-                \fa\set{\bot}\entails\neg\neg\alpha&$\mathbf{R_1}\;\set{1,2}$\\
-                \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\mathbf{A_\neg}$\\
-                \fa\set{\bot}\entails\alpha&$\mathbf{R_1}\;\set{3,4}$\\
-                \fa\entails\bot\to\alpha&$\mathbf{T_1}\;\set{5}$.
+                \fa\set{\bot}\entails\bot&$\mathbf{P_1}$\\
+                \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\hyperref[MANEG]{\mathbf{A_\neg}}$\\
+                \fa\set{\bot}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\entails\bot\to\alpha&$\hyperref[deduction]{\mathbf{T_1}}\;\set{5}$.
             \end{fitch}
             \vspace*{-18pt-0.7em}
             \qedhere
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}
-        \label{contraposition}
+    \begin{lemma}\label{contrapositive}
         $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$
 
         \begin{proof}
@@ -127,4 +124,22 @@
 
     \begin{lemma}
         $\vdash\nec(\alpha\to\beta)\to\nec\alpha\to\beta$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\mathbf{P_1}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,6}$\\
+                \fa\set{\nec(\alpha\to\beta)}\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{7}$\\
+                \fa\entails\nec(\alpha\to\beta)\to\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{8}$.
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
     \end{lemma}
