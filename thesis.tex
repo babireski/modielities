@@ -17,6 +17,8 @@
 
 \usepackage[T1]{fontenc}
 
+\usepackage[a4paper, margin=1.5in]{geometry}
+
 \hypersetup{
     pdftitle={Uma formalização da interpretação modal do sistema intuicionista},
     pdfauthor={Elian Babireski},
@@ -41,6 +43,15 @@
 \newtheorem{definition}{Definição}
 \newtheorem{lemma}{Lema}
 \newtheorem{theorem}{Teorema}
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}
+\titlespacing*{\chapter}{0pt}{-19pt}{20pt}
+
+\usepackage{setspace}
+\onehalfspacing{}
 
 \begin{document}
     \title{Uma formalização da interpretação modal do sistema intuicionista}

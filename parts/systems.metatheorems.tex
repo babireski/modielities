@@ -1,7 +1,7 @@
 \section{Metateoremas}
     Nesta seção apresentaremos alguns teoremas para os sistemas modais que permitirão simplificar muito as provas apresentadas no decorrer deste trabalho.
     Primeiramente, provaremos a regra da dedução \hyperref[deduction]{$\mathbf{T_1}$} com base na prova apresentada por~\cite{Hakli}.
-    Pequenas alterações na prova foram feitas para garantir a adequação com a axiomatização provida na definição \hyperref[m-axioms]{$\mathbf{D_{13}}$}.
+    Pequenas alterações na prova foram feitas para garantir a adequação com a axiomatização provida na definição \refer{m-axioms}{D}.
 
     \begin{theorem}\label{deduction}
         $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
@@ -19,51 +19,43 @@
 
             \begin{subcase}
                 \textsc{Caso 1.1.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa do conjunto $\Gamma$, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que existe alguma premissa $\mathbf{P_\beta}\in\Gamma$ igual a $\beta$. Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma\vdash\beta&$\mathbf{P}$\\
-                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
-                    \fa\Gamma\vdash\alpha\to\beta&$\mathbf{R_1}\;\set{1,2}$.
+                    \fb\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
+                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
                 \textsc{Caso 1.1.}
                 Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação da premissa $\alpha$, sabe-se que $\beta=\alpha$.
-                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\alpha$ pela seguinte sucessão de dedução:
-
-                \begin{fitch}
-                    \fa\Gamma\vdash\alpha\to\alpha\to\alpha&$\mathbf{A_1}$\\
-                    \fa\Gamma\vdash\alpha\to(\alpha\to\alpha)\to\alpha&$\mathbf{A_1}$\\
-                    \fa\Gamma\vdash(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{A_2}$\\
-                    \fa\Gamma\vdash(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\mathbf{R_1}\;\set{2,3}$\\
-                    \fa\Gamma\vdash\alpha\to\alpha&$\mathbf{R_1}\;\set{1,4}$.
-                \end{fitch}
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\alpha$ pela seguinte sucessão de dedução, o que consiste num enfraquecimento do lema \refer{identity}{L}.
             \end{subcase}
 
             \begin{case}
                 \textsc{Caso 2.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $A_\beta\in\mathcal{A}$ que gera $\beta$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\beta}\in\mathcal{A}$ que gera $\beta$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
-                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\mathbf{A_1}$\\
-                    \fa\Gamma\vdash\alpha\to\beta&$\mathbf{R_1}\;\set{1,2}$.
+                    \fb\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
+                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
             \end{case}
 
             \begin{case}
                 \textsc{Caso 3.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e $\vdash\varphi$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}=\varphi$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\vdash\varphi&$\mathbf{H}$\\
-                    \fa\Gamma\vdash\nec\varphi&$\mathbf{R_2}\;\set{1}$\\
-                    \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\mathbf{A_1}$\\
-                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\mathbf{R_1}\;\set{2,3}$.
+                    \fb\vdash\varphi&$\mathbf{H_1}$\\
+                    \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
+                    \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$.
                 \end{fitch}
             \end{case}
 
@@ -81,6 +73,10 @@
         \end{proof}
     \end{theorem}
 
-    \begin{theorem}
-        Se $\Gamma\entails\alpha$ e $\Gamma\entails\phi\to\psi$, então $\entails$.
+    \begin{theorem}\label{replacement}
+        Se $\Gamma\entails\alpha$ e $\Gamma\entails\varphi\leftrightarrow\psi$, então $\Gamma\entails\alpha[\varphi\mapsto\psi]$.
+
+        \begin{proof}
+            
+        \end{proof}
     \end{theorem}

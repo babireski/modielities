@@ -45,13 +45,13 @@ Definiremos a noção de profundidade de uma sentença para que possamos realiza
 \end{definition}
 
 \begin{definition}[Dedução]
-    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão $\sequence{\varphi_i\mid 1 \leq i\leq n}$ onde $\varphi_n=\alpha$ cada sentença $\varphi_i$ trata-se de um axioma, uma premissa, ou a conclusão da aplicação de uma regra de dedução a sentenças anteriores.
+    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão de sentenças $\sequence{\varphi_i\mid 1 \leq i\leq n}$ de modo que $\varphi_n=\alpha$ e cada sentença $\varphi_i$ foi gerada a partir da aplicação de uma regra a axiomas, premissas ou sentenças anteriores.
     \qed{}
 \end{definition}
 
 \section{Traduções}
 
-Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema e garantem certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
+Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro sistema garantindo certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção e as necessidades de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
 
 \begin{definition}[Tradução] 
     Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
@@ -59,7 +59,7 @@ Traduções entre sistemas consistem em funções que mapeiam sentenças de um s
 \end{definition}
 
 \begin{notation}
-    Seja $\Gamma\in\wp(\mathcal{L}_\mathbf{A})$ um conjunto de sentenças e $\bullet^*\mathrel{:}\mathcal{L}_\mathbf{A}\to\mathcal{L}_\mathbf{B}$ uma tradução. $\Gamma^*$ denota o conjunto $\set{\alpha^*\mid\alpha\in\mathcal{L}_\mathbf{A}}\in\wp(\mathcal{L}_\mathbf{B})$, ou seja, a aplicação da tradução a todos os elementos do conjunto.
+    Seja $\Gamma\in\wp(\mathcal{L}_\mathbf{A})$ um conjunto de sentenças bem-formadas e $\bullet^*\mathrel{:}\mathcal{L}_\mathbf{A}\to\mathcal{L}_\mathbf{B}$ uma tradução. $\Gamma^*$ denota o conjunto $\set{\alpha^*\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_\mathbf{B})$, ou seja, a aplicação da tradução a todos os elementos do conjunto.
     \qed{}
 \end{notation}
 

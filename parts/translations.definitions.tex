@@ -27,7 +27,7 @@
     Ademais, as duas traduções providas são equivalentes, conforme demonstrado pelo teorema $\mathbf{T_2}$.
 
     \begin{theorem}
-        $\forall\alpha\in\mathcal{L}_\mathbf{I}\point\proves\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
+        $\entails\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
 
         \begin{proof}
             Prova por indução forte sobre a profundidade de $\alpha$.
@@ -38,22 +38,26 @@
                 \textsc{Caso 1.}
                 Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\nec =\nec a$ pelas definições das traduções.
                 Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
+                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
 
             \begin{case}
                 \textsc{Caso 2.}
                 Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\nec=\bot$ pelas definições das traduções.
-                Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema $\mathbf{B_2}$ --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
+                Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
+                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
     
             \begin{case}
                 \textsc{Caso 3.}
                 Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e que ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$ pelas definições das traduções.
+                Separaremos a prova em dois casos: um para a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ e outro para a volta $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$. Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
 
                 \begin{subcase}
                     \textsc{Caso 3.1.}
-                    Assim, pode-se provar a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ pela seguinte sucessão de dedução:
+                    Pela premissa de indução, temos que $\mathbf{H_1}=\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e que $\mathbf{H_2}=\nec\psi^\circ\leftrightarrow\psi^\nec$.
+                    Valendo-se dessas sentenças e da regra da relocação em conjunto com alguns lemas, pode-se provar a sentença $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ pela seguinte sucessão de dedução:
 
                     \begin{fitch}
                         \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
@@ -76,7 +80,8 @@
 
                 \begin{subcase}
                     \textsc{Caso 3.2.}
-                    Outrossim, pode-se provar a volta $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
+                    Pela premissa de indução, temos que $\mathbf{H_1}=\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e que $\mathbf{H_2}=\nec\psi^\circ\leftrightarrow\psi^\nec$.
+                    Valendo-se dessas sentenças e da regra da relocação em conjunto com alguns lemas, pode-se provar a sentença $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
 
                     \begin{fitch}
                         \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec&$\mathbf{P}$\\
@@ -100,20 +105,42 @@
             \begin{case}
                 \textsc{Caso 4.}
                 Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e que ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$ pelas definições das traduções.
-                Para a ida, basta aplicar o axioma $\mathbf{B_2}$.
-                Para a volta, basta aplicar a regra da necessitação.
+                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\nec\vee\psi^\nec$ e outro para a volta $\varphi^\nec\vee\psi^\nec\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$.
+                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
 
                 \begin{fitch}
-                    \fa\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\varphi^\nec\vee\psi^\nec\\
+                    \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\nec\vee\psi^\nec\\
+                \end{fitch}
+
+                \begin{fitch}
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\varphi^\nec\vee\psi^\nec&$\mathbf{P}$\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\varphi^\nec\leftrightarrow\nec\varphi^\circ&$\mathbf{H}$\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\vee\psi^\nec&\refer{replacement}{T}$\;\set{1,2}$\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\psi^\nec\leftrightarrow\nec\psi^\circ&$\mathbf{H}$\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\vee\nec\psi^\circ&\refer{replacement}{T}$\;\set{3,4}$\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\leftrightarrow\nec\nec\varphi^\circ\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\psi^\circ\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\psi^\circ\leftrightarrow\nec\nec\psi^\circ\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                    \fa\entails\varphi^\nec\vee\psi^\nec\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
                 \end{fitch}
             \end{case}
 
             \begin{case}
                 \textsc{Caso 5.}
                 Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$ pelas definições das traduções.
-                Para a ida, basta aplicar o axioma $\mathbf{B_1}$.
-                Para a volta, basta aplicar o lema $\mathbf{L_4}$ seguido pela necessitação.
-                \qedhere
+                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\nec\to\psi^\nec)$ e outro para a volta $\nec(\varphi^\nec\to\psi^\nec)\to\nec(\nec\varphi^\circ\to\psi^\circ)$.
+                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
+
+                \begin{fitch}
+                    \fa\\
+                \end{fitch}
             \end{case}
         \end{proof}
     \end{theorem}
