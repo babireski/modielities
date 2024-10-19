@@ -22,16 +22,16 @@
                 Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que existe alguma premissa $\mathbf{P_\beta}\in\Gamma$ igual a $\beta$. Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fb\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
+                    \fa\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 1.1.}
+                \textsc{Caso 1.2.}
                 Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação da premissa $\alpha$, sabe-se que $\beta=\alpha$.
-                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\alpha$ pela seguinte sucessão de dedução, o que consiste num enfraquecimento do lema \refer{identity}{L}.
+                Deste modo, basta demonstrar que $\Gamma\vdash\alpha\to\alpha$ o que consiste num enfraquecimento do lema \refer{identity}{L}.
             \end{subcase}
 
             \begin{case}
@@ -40,7 +40,7 @@
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fb\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
+                    \fa\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
@@ -52,7 +52,7 @@
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fb\vdash\varphi&$\mathbf{H_1}$\\
+                    \fa\vdash\varphi&$\mathbf{H_1}$\\
                     \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
                     \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$.
@@ -60,7 +60,17 @@
             \end{case}
 
             \begin{case}
-                \textsc{Caso 4.} Caso $\beta$ tenha sido gerado pela regra da separação.
+                \textsc{Caso 4.} Seja a sentença $\varphi_n=\beta$ gerada pela aplicação da regra da separação a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
+                Assim, pela premissa da indução temos que $\mathbf{H_1}=\alpha\to\varphi_i$ e que $\mathbf{H_2}=\alpha\to\varphi_i\to\varphi_n$.
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
+
+                \begin{fitch}
+                    \fa\Gamma\entails\alpha\to\varphi_j&$\mathbf{H_1}$\\
+                    \fa\Gamma\entails\alpha\to\varphi_j\to\beta&$\mathbf{H_2}$\\
+                    \fa\Gamma\entails(\alpha\to\varphi_j\to\beta)\to(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[MA2]{\mathbf{A_2}}$\\
+                    \fa\Gamma\entails(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                    \fa\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
+                \end{fitch}
             \end{case}
         \end{proof}
     \end{theorem}

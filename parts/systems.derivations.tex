@@ -7,48 +7,44 @@
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fb\vdash\alpha\to\alpha\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
+                \fa\vdash\alpha\to\alpha\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
                 \fa\vdash\alpha\to(\alpha\to\alpha)\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
                 \fa\vdash(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&\hyperref[MA2]{$\mathbf{A_2}$}\\
                 \fa\vdash(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
-                \fa\vdash\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
+                \fa\vdash\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.\qedhere
             \end{fitch}
 
             % \begin{fitch}
             %     \fa\set{a}\entails\alpha&$\mathbf{P_1}$\\
             %     \fa\entails\alpha\to\alpha&\refer{deduction}{T}$\;\set{1}$.
             % \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
         \end{proof}
     \end{lemma}
 
     \begin{lemma}\label{explosion}
-        $\entails\bot\to\alpha$
+        $\entails\bot\to\alpha$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fb\set{\bot}\entails\bot&$\mathbf{P_1}$\\
+                \fa\set{\bot}\entails\bot&$\mathbf{P_1}$\\
                 \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\hyperref[MA1]{\mathbf{A_1}}$\\
                 \fa\set{\bot}\entails\neg\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\hyperref[MANEG]{\mathbf{A_\neg}}$\\
                 \fa\set{\bot}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                \fa\entails\bot\to\alpha&$\hyperref[deduction]{\mathbf{T_1}}\;\set{5}$.
+                \fa\entails\bot\to\alpha&$\hyperref[deduction]{\mathbf{T_1}}\;\set{5}$.\qedhere
             \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
         \end{proof}
     \end{lemma}
 
     \begin{lemma}\label{contrapositive}
-        $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$
+        $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$.
 
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
         
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\mathbf{P_2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\mathbf{P_2}$\\
                 \fa\set{\alpha\to\beta,\neg\beta}\entails(\beta\to\bot)\to\alpha\to(\beta\to\bot)&\hyperref[MA1]{$\mathbf{A_1}$}\\
                 \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta\to\bot)\to(\alpha\to\beta)\to(\alpha\to\bot)&\hyperref[MA2]{$\mathbf{A_2}$}\\
@@ -70,7 +66,7 @@
             Pode ser provado pela seguinte sucessão de dedução:
             
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\mathbf{P_3}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\mathbf{P_3}$\\
                 \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\beta&$\mathbf{P_1}$\\
                 \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
                 \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma&$\mathbf{P_2}$\\
@@ -94,7 +90,7 @@
             Pode ser provado pela seguinte sucessão de dedução:
 
             \begin{fitch}
-                \fb\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
+                \fa\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
                 \fa\entails\nec(\alpha\wedge\beta\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
                 \fa\entails\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)&\hyperref[MB1]{$\mathbf{B_1}$}\\
                 \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2, 3}$\\
@@ -118,7 +114,7 @@
             Pode ser provado pela seguinte sucessão de dedução:
 
             \begin{fitch}
-                \fb\set{\nec\alpha\wedge\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
                 \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\alpha&$\mathbf{A_4}$\\
                 \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\alpha\\
                 \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\beta&$\mathbf{A_5}$\\
@@ -137,7 +133,7 @@
             Pode ser provado pela seguinte sucessão de dedução:
 
             \begin{fitch}
-                \fb\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\mathbf{P_1}$\\

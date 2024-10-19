@@ -139,7 +139,18 @@
                 Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
 
                 \begin{fitch}
-                    \fa\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\nec\to\psi^\nec\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
+                \end{fitch}
+
+                \begin{fitch}
+                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
+                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\psi^\nec)\\
+                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\nec\psi^\circ)\\
+                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                    \fa\entails\nec(\varphi^\nec\to\psi^\nec)\to\nec(\nec\varphi^\circ\to\psi^\circ)\\
                 \end{fitch}
             \end{case}
         \end{proof}

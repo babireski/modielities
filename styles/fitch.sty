@@ -14,6 +14,7 @@
 
 \RequirePackage{mathtools,amsmath,ifthen,array}
 \usepackage{longtable}
+\usepackage{tabularx}
 
 % Line height in proofs
 \newlength{\fitchlineht}
@@ -42,6 +43,7 @@
 \newcommand{\fa}{\hspace*{\fitchsep}\vline\hspace*{\fitchindent}}
 % Vertical line, shorter: Use at start of (sub)proof
 \newcommand{\fb}{\hspace*{\fitchsep}\fvline\hspace*{\fitchindent}}
+
 % Hypothesis
 \newcommand{\fh}{\hspace*{\fitchsep}\fvline%
   \makebox[0pt][l]{{%
@@ -102,9 +104,14 @@
 %   \begin{tabular}{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
 % {\end{tabular}}
 
+% \newenvironment{fitchnum}%
+% {\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
+%   \begin{longtable}[l]{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
+% {\end{longtable}}
+
 \newenvironment{fitchnum}%
 {\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
-  \begin{longtable}[l]{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}l<{$}@{\hspace{\fitchcomind}}l}}%
+  \begin{longtable}[l]{!{\makebox[\fitchnumwd][r]{\fitchcounter}\hspace{\fitchnumsep-\fitchsep}}>{$}p{0.7\textwidth}<{$}@{\hspace{\fitchcomind}}p{0.3\textwidth}}}%
 {\end{longtable}}
 
 \newenvironment{fitchunum}%
