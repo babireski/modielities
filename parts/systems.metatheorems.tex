@@ -75,18 +75,20 @@
         \end{proof}
     \end{theorem}
 
-    \begin{theorem}
-        $\text{Se }\nec\Gamma\cup\set{\nec\alpha}\vdash\beta\text{, então }\nec\Gamma\vdash\nec(\nec\alpha\to\beta)$.
-
-        \begin{proof}
-            Prova em~\cite{Marcus}.
-        \end{proof}
+    \begin{theorem}\label{gen-nec}
+        Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
     \end{theorem}
 
-    \begin{theorem}\label{replacement}
-        Se $\Gamma\entails\alpha$ e $\Gamma\entails\varphi\leftrightarrow\psi$, então $\Gamma\entails\alpha[\varphi\mapsto\psi]$.
+    \begin{theorem}
+        $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
 
         \begin{proof}
-            
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa\nec\Gamma\cup\set{\alpha}\entails\beta&$\mathbf{H_1}$\\
+                \fa\nec\Gamma\entails\alpha\to\beta&\refer{deduction}{T}$\;\set{1}$\\
+                \fa\nec\Gamma\entails\nec(\alpha\to\beta)&\refer{gen-nec}{T}$\;\set{2}$.\qedhere
+            \end{fitch}
         \end{proof}
     \end{theorem}

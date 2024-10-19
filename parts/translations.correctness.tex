@@ -24,7 +24,8 @@
                 Pelo teorema $\mathbf{T_1}$, basta provar que $\set{\alpha^\nec,\beta^\nec}\vdash\alpha^\nec$, o que pode ser feito pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\alpha^\nec&$\mathbf{P}$
+                    \fa\set{\alpha^\nec}\entails\alpha^\nec\\
+                    \fa\set{\alpha^\nec}\entails\alpha^\nec\to\beta^\nec\to\alpha^\nec\\
                 \end{fitch}
             \end{subcase}
 
@@ -65,8 +66,8 @@
                 Deve-se demonstrar que $\vdash\nec(\alpha^\nec\wedge\beta^\nec\to\alpha^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\alpha^\nec\wedge\beta^\nec\to\alpha^\nec&$\mathbf{A_4}$\\
-                    \fa\nec(\alpha^\nec\wedge\beta^\nec\to\alpha^\nec)&$\mathbf{R_2}\;\sequence{1}$
+                    \fa\entails\alpha^\nec\wedge\beta^\nec\to\alpha^\nec&$\mathbf{A_4}$\\
+                    \fa\entails\nec(\alpha^\nec\wedge\beta^\nec\to\alpha^\nec)&$\mathbf{R_2}\;\sequence{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -75,8 +76,8 @@
                 Deve-se demonstrar que $\vdash\nec(\alpha^\nec\wedge\beta^\nec\to\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\alpha^\nec\wedge\beta^\nec\to\beta^\nec&$\mathbf{A_5}$\\
-                    \fa\nec(\alpha^\nec\wedge\beta^\nec\to\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
+                    \fa\entails\alpha^\nec\wedge\beta^\nec\to\beta^\nec&$\mathbf{A_5}$\\
+                    \fa\entails\nec(\alpha^\nec\wedge\beta^\nec\to\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -85,8 +86,8 @@
                 Deve-se demonstrar que $\vdash\nec(\alpha^\nec\to\alpha^\nec\vee\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\alpha^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_6}$ \\
-                    \fa\nec(\alpha^\nec\to\alpha^\nec\vee\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
+                    \fa\entails\alpha^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_6}$ \\
+                    \fa\entails\nec(\alpha^\nec\to\alpha^\nec\vee\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -95,8 +96,8 @@
                 Deve-se demonstrar que $\vdash\nec(\beta^\nec\to\alpha^\nec\vee\beta^\nec)$, o que pode ser feito ela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\beta^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_7}$\\
-                    \fa\nec(\beta^\nec\to\alpha^\nec\vee\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
+                    \fa\entails\beta^\nec\to\alpha^\nec\vee\beta^\nec&$\mathbf{A_7}$\\
+                    \fa\entails\nec(\beta^\nec\to\alpha^\nec\vee\beta^\nec)&$\mathbf{R_2}\;\sequence{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -105,34 +106,43 @@
                 Deve-se demonstrar que $\vdash(\alpha^\nec\fishhook\gamma^\nec)\fishhook(\beta^\nec\fishhook\gamma^\nec)\fishhook\alpha^\nec\vee\beta^\nec\fishhook\gamma^\nec$.
                 Pelo teorema $\mathbf{T_1}$, basta provar que $\set{\alpha\fishhook\gamma,\beta\fishhook\gamma,\alpha\vee\gamma}\vdash\alpha^\nec$, o que pode ser feito pela seguinte sucessão de dedução:
                 
-                % $\vdash\nec(\nec(\alpha^\nec\to\gamma^\nec)\to\nec(\nec(\beta^\nec\to\gamma)\to\nec(\alpha^\nec\vee\beta^\nec\to\gamma^\nec)))$.
-                
                 \begin{fitch}
-                    \fa(\alpha^\nec\to\gamma^\nec)\to(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{A_8}$\\
-                    \fa\nec(\alpha^\nec\to\gamma^\nec)\to\alpha^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
-                    \fa\nec(\alpha^\nec\to\gamma^\nec)&$\mathbf{P}$\\
-                    \fa\alpha^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{2,3}$\\
-                    \fa(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{1,4}$\\
-                    \fa\nec(\beta^\nec\to\gamma^\nec)\to\beta^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
-                    \fa\nec(\beta^\nec\to\gamma^\nec)&$\mathbf{P}$\\
-                    \fa\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{6,7}$\\
-                    \fa\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{5,8}$\\
-                    \fa\alpha^\nec\vee\beta^\nec&$\mathbf{P}$\\
-                    \fa\gamma^\nec&$\mathbf{R_1}\;\sequence{9,10}${}
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\alpha\fishhook\gamma\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails(\alpha\fishhook\gamma)\to(\alpha\to\gamma)\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\alpha\to\gamma\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\beta\fishhook\gamma\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails(\beta\fishhook\gamma)\to(\beta\to\gamma)\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\beta\to\gamma\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\alpha\vee\beta\to\gamma\\
+                    \fa\set{\alpha\fishhook\gamma,\beta\fishhook\gamma}\entails\alpha\vee\beta\fishhook\gamma\\
+                    \fa\set{\alpha\fishhook\gamma}\entails(\beta\fishhook\gamma)\fishhook\alpha\vee\beta\fishhook\gamma\\
+                    \fa\entails(\alpha\fishhook\gamma)\fishhook(\beta\fishhook\gamma)\fishhook\alpha\vee\beta\fishhook\gamma\\
                 \end{fitch}
+                
+                % \begin{fitch}
+                %     \fa(\alpha^\nec\to\gamma^\nec)\to(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{A_8}$\\
+                %     \fa\nec(\alpha^\nec\to\gamma^\nec)\to\alpha^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
+                %     \fa\nec(\alpha^\nec\to\gamma^\nec)&$\mathbf{P}$\\
+                %     \fa\alpha^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{2,3}$\\
+                %     \fa(\beta^\nec\to\gamma^\nec)\to\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{1,4}$\\
+                %     \fa\nec(\beta^\nec\to\gamma^\nec)\to\beta^\nec\to\gamma^\nec&$\mathbf{B_2}$\\
+                %     \fa\nec(\beta^\nec\to\gamma^\nec)&$\mathbf{P}$\\
+                %     \fa\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{6,7}$\\
+                %     \fa\alpha^\nec\vee\beta^\nec\to\gamma^\nec&$\mathbf{R_1}\;\sequence{5,8}$\\
+                %     \fa\alpha^\nec\vee\beta^\nec&$\mathbf{P}$\\
+                %     \fa\gamma^\nec&$\mathbf{R_1}\;\sequence{9,10}${}
+                % \end{fitch}
             \end{subcase}
 
             \begin{subcase}
                 \textsc{Caso 2.9} ($\mathbf{A_\bot}$).
-                Deve-se demonstrar que $\vdash\nec(\bot\to\alpha^\nec)$.
-                Pelo teorema $\mathbf{T_1}$, basta provar que $\set{\bot}\vdash\alpha^\nec$, o que pode ser feito pela seguinte sucessão de dedução:
+                Se a prova for feita pela evocação do esquema $\mathbf{A_\bot}$, temos que $\alpha=\bot\to\varphi$ e que $\alpha^\nec=\nec(\bot\to\varphi)$.
 
                 \begin{fitch}
-                    \fa((\alpha^\nec\to\bot)\to\bot)\to\alpha^\nec&$\mathbf{A_\neg}$\\
-                    \fa\bot\to(\alpha^\nec\to\bot)\to\bot&$\mathbf{A_1}$\\
-                    \fa\bot&$\mathbf{P}$\\
-                    \fa(\alpha^\nec\to\bot)\to\bot&$\mathbf{R_1}\;\sequence{2, 3}$\\
-                    \fa\alpha^\nec&$\mathbf{R_1}\;\sequence{1, 4}$.
+                    \fa\entails\bot\to\varphi^\nec&\refer{explosion}{L}\\
+                    \fa\entails\nec(\bot\to\varphi^\nec)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
                 \end{fitch}
             \end{subcase}
 

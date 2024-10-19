@@ -1,8 +1,12 @@
 \usepackage{wasysym}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \newcommand{\nec}{\Box}
 \newcommand{\pos}{\Diamond}
 % \newcommand{\pos}{{\raisebox{-1pt}{\Diamond}}}
 
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
-\DeclareMathSymbol{\fishhook}{\mathrel}{symbolsC}{74}
+% \DeclareMathSymbol{\fishhook}{\mathrel}{symbolsC}{74}
+
+\newcommand{\fishhook}{\mathrel{\tikz{\draw [arrows = {-Hooks[]}, line cap=round, anchor=base] (0,0) -- (3.375mm,0);}}}
