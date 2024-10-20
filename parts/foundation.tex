@@ -18,9 +18,10 @@ Ainda, com base no escopo deste trabalho, restringiremos a definição do conjun
     \qed{}
 \end{definition}
 
+Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}$ de um sistema --- chamado de linguagem --- indutivamente. Nesta definição, primeiramente definimos todas as letras proposicionais e operadores de aridade zero como pertencentes ao conjunto e, em seguida, aplicamos recursivamente as sentenças aos operadores de aridade não-nula
+
 \begin{definition}[Sentença]
     Seja $\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma sentença proposicional consiste em qualquer um dos elementos do conjunto $\mathcal{L}$, sendo este o menor conjunto induzido a partir das seguintes regras:
-
     \begin{align*}
         &\mathcal{P}\subseteq\mathcal{L}\\
         &\text{Se    }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}\\
@@ -53,7 +54,11 @@ Tendo definidas as noções de assinatura e sentença, pode-se definir a noção
 
 \begin{definition}[Axiomatização]
     Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas axiomas e $\mathcal{R}$ um conjunto de regras de dedução.
-    \qed{}
+    \begin{alignat}{3}
+        &\mathbf{A}\quad&&\text{Se }\alpha\in\mathcal{A}\text{, então }\Gamma\entails\alpha\tag*{}\\
+        &\mathbf{P}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha\tag*{}\\
+        &\mathbf{E}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\alpha.\tag*{\qed}
+    \end{alignat}
 \end{definition}
 
 \begin{definition}[Dedução]
