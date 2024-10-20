@@ -137,21 +137,45 @@
                 Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$ pelas definições das traduções.
                 Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\nec\to\psi^\nec)$ e outro para a volta $\nec(\varphi^\nec\to\psi^\nec)\to\nec(\nec\varphi^\circ\to\psi^\circ)$.
                 Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
-
-                \begin{fitch}
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\nec\to\psi^\nec\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
-                \end{fitch}
-
-                \begin{fitch}
-                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
-                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\psi^\nec)\\
-                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\nec\psi^\circ)\\
-                    \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
-                    \fa\entails\nec(\varphi^\nec\to\psi^\nec)\to\nec(\nec\varphi^\circ\to\psi^\circ)\\
-                \end{fitch}
             \end{case}
+
+                \begin{subcase}
+                    \textsc{Caso 5.1.}
+
+                    \footnotesize
+                    \begin{fitch}
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\nec\to\nec\varphi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\nec\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\nec\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\nec\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\nec\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\psi^\circ\to\psi^\nec\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\nec\to\nec\psi^\circ)\to(\nec\psi^\circ\to\psi^\nec)\to\psi^\nec\to\psi^\nec\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\nec)\to\psi^\nec\to\psi^\nec\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\psi^\nec\to\psi^\nec\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\psi^\nec\to\psi^\nec)\\
+                        \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\nec\to\psi^\nec)\\
+                    \end{fitch}
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 5.2.}
+
+                    \footnotesize
+                    \begin{fitch}
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\to\varphi^\nec\to\psi^\nec\\
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\varphi^\nec\to\psi^\nec\\
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
+                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
+                    \end{fitch}
+                \end{subcase}
         \end{proof}
     \end{theorem}
