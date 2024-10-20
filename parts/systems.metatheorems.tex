@@ -77,9 +77,40 @@
 
     \begin{theorem}\label{gen-nec}
         Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
+
+        \begin{proof}
+            Prova por indução fraca sobre o tamanho $n$ do conjunto $\nec\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução.
+
+            \begin{case}
+                \textsc{Caso 1.} Para a base, consideraremos que $\nec\Gamma=\varnothing$ --- ou seja, que possui tamanho $n=0$.
+                Assim, sabemos que $\nec\Gamma\entails\alpha$ e, portanto, que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
+                Pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 2.} 
+                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\nec\Gamma$ de tamanho $n=k$.
+                Demonstraremos, pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\nec\Gamma$ de tamanho $n=k+1$.
+
+                \begin{fitch}
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\beta\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha\\
+                    \fa\nec\Gamma\entails(\nec\alpha\to\nec\nec\alpha)\to(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\beta\\
+                \end{fitch}
+            \end{case}
+        \end{proof}
     \end{theorem}
 
-    \begin{theorem}
+    \begin{theorem}\label{strictdeduction}
         $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
 
         \begin{proof}

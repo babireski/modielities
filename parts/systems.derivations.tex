@@ -147,3 +147,19 @@
             \qedhere
         \end{proof}
     \end{lemma}
+
+    \begin{lemma}
+        $\entails(\alpha\to\beta)\to(\beta\to\gamma)\to\alpha\to\gamma$
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \begin{fitch}
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\\
+            \end{fitch}
+        \end{proof}
+    \end{lemma}
