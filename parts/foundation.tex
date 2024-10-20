@@ -5,26 +5,38 @@
 Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por~\cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
 
 \begin{definition}[Sistema]
-    Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \Vdash}$, onde $\mathcal{L}$ consiste em um conjunto de sentenças bem-formadas e $\, \Vdash \: : \wp(\mathcal{L}) \times \mathcal{L} $ em uma relação sobre as sentenças, sem demais condições.
+    Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$, onde $\mathcal{L}$ consiste em um conjunto e $\, \vdash \: : \wp(\mathcal{L}) \times \mathcal{L}$ em uma relação sobre o produto cartesiano do conjunto das partes de $\mathcal{L}$ e o conjunto $\mathcal{L}$ em si, sem demais condições.
     \qed{}
 \end{definition}
 
-Cabe destacar que a definição de sistema provida foi definida com base em $\Vdash$, uma relação qualquer entre as sentenças, que pode ser uma relação de dedução, denotada $\vdash$, ou uma relação de satisfação, denotada $\vDash$. Propriedades da tradução podem ser provadas sobre qualquer uma dessas relações, como veremos adiante. Entretanto, neste trabalho, serão abordadas somente as relações de dedução.
+Conforme~\cite{Beziau} aponta, a \emph{qualidade} e \emph{quantidade} dos elementos de $\mathbf{L}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Deste modo, a relação $\vdash$ pode ser tanto uma relação de \emph{dedução} --- definida sintaticamente --- quanto uma relação de \emph{satisfação} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de dedução. Cabe destacar, entretanto, que nada impede a tradução entre sistemas definidos sobre relações de satisfação, como veremos futuramente.
+
+Ainda, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ a um conjunto de \emph{sentenças proposicionais bem-formadas} --- doravante ocasionalmente chamadas apenas de sentenças. Estas sentenças, neste trabalho representadas por letras gregas em caixa-baixa, podem ser geradas indutivamente a partir de uma assinatura proposicional --- que consiste em um conjunto de letras proposicionais e um conjunto de operadores com suas aridades ---, conforme definido abaixo. Conjuntos de sentenças serão representados por letras gregas em caixa-alta.
 
 \begin{definition}[Assinatura]
-    Uma assinatura consiste num conjunto de operadores e suas respeitivas aridades. A notação $\circ^n$ denota um operador $\circ$ com aridade $n \in \mathbb{N}$.
+    Uma assinatura consiste num conjunto letras proposicionais --- que podem ser valoradas como verdadeiras ou falsas --- e num conjunto de operadores e suas aridades correspondentes.
     \qed{}
 \end{definition}
 
-Definiremos a noção de profundidade de uma sentença para que possamos realizar indução na profundidade da sentença, conforme~\cite{Troelstra}.
+\begin{definition}[Sentença]
+    Seja $\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma sentença proposicional consiste em qualquer um dos elementos do conjunto $\mathcal{L}$, sendo este o menor conjunto induzido a partir das seguintes regras:
+
+    \begin{align*}
+        &\mathcal{P}\subseteq\mathcal{L}\\
+        &\text{Se    }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}\\
+        &\text{Se }\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid 0<i \leq n}\subseteq\mathcal{L}\text{, então }\bullet^n\sequence{\varphi_i\mid 0<i \leq n}\subseteq\mathcal{L}.
+        \tag*{\qed} 
+    \end{align*}
+\end{definition}
+
+Tendo definidas as noções de assinatura e sentença, pode-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da contrução de uma sentença. A definição abaixo provida consiste numa generalização da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para provar propriedades por meio de indução sobre a profundidade da sentença.
 
 \begin{definition}[Profundidade]
-    A profundidade $|\alpha|$ de uma sentença $\alpha$ consiste no comprimento do maior ramo de sua construção. Seja $\circ$ um operador qualquer, define-se a profundidade recursivamente como:
+    Seja $\mathbf{A} = \sequence{\mathcal{L}, \vdash}$ um sistema, $\alpha\in\mathcal{L}$ uma sentença e $\bullet^n$ um operador de aridade $n\in\mathbb{N}$ que consta na assinatura que define $\mathcal{L}$. Pode-se definir a profundidade $|\alpha|$ de $\alpha$ recursivamente da seguinte maneira:
     \begin{align*}
-        |p|                  & \coloneqq 0                           \\
-        |\bot|               & \coloneqq 0                           \\
-        |\circ \alpha|       & \coloneqq |\alpha| + 1                \\
-        |\alpha \circ \beta| & \coloneqq \max(|\alpha|, |\beta|) + 1.
+        |a|&\coloneqq 0\\
+        |\bullet^0|&\coloneqq 0\\
+        |\bullet^n\sequence{\varphi_i\mid i\leq n}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
         \tag*{\qed} 
     \end{align*}
 \end{definition}
