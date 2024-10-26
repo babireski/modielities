@@ -2,11 +2,11 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 
-\newcommand{\nec}{\Box}
-\newcommand{\pos}{\Diamond}
+\newcommand{\nec}{\mathord{\square}}
+\newcommand{\pos}{\meddiamond}
 % \newcommand{\pos}{{\raisebox{-1pt}{\Diamond}}}
 
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
 % \DeclareMathSymbol{\fishhook}{\mathrel}{symbolsC}{74}
 
-\newcommand{\fishhook}{\mathrel{\tikz{\draw [arrows = {-Hooks[]}, line cap=round, anchor=base] (0,0) -- (3.375mm,0);}}}
+\newcommand{\fishhook}{\mathrel{\tikz{\draw [arrows = {-Hooks[]}, line cap=round, anchor=base] (0,0) -- (3.375mm,0);}}} 

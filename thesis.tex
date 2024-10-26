@@ -14,7 +14,10 @@
 \usepackage{styles/fitch}
 \usepackage{styles/cases}
 \usepackage{styles/functions}
-\usepackage{lipsum}  
+\usepackage{lipsum}
+\usepackage{enumitem} % Para mudar a itemização
+\usepackage{pxfonts}
+\usepackage{MnSymbol}
 
 \usepackage[T1]{fontenc}
 
@@ -71,14 +74,15 @@
     \include{parts/introduction}
     \include{parts/foundation}
 
-    \chapter{Sistemas}
+    \chapter{Definições}
         \input{parts/systems.intuitionistic}
         \input{parts/systems.modal}
-        \input{parts/systems.metatheorems}
-        \input{parts/systems.derivations}
         \input{parts/systems.dualities}
 
-    \chapter{Traduções}
+    \chapter{Formalização}
+        Todas as derivações a seguir serão no sistema $\mathbf{S_4}$, motivo pelo qual denotaremos a relação de derivação $\entails_{\mathbf{4}}$ apenas como $\entails$.
+
+        \input{parts/derivations}
         \input{parts/translations.definitions}
         \input{parts/translations.correctness}
         \input{parts/translations.completeness}

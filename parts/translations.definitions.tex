@@ -12,170 +12,186 @@
         \end{align*}
     \end{definition}
     
-    \begin{definition}[$\bullet^\nec$] Define-se a tradução $\bullet^\nec$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\smallsquare$] Define-se a tradução $\bullet^\smallsquare$ indutivamente da seguinte maneira:
         \begin{align*}
-            p^\nec                     & \coloneqq \nec p                                        \\
-            \bot^\nec                  & \coloneqq \bot                                          \\
-            {(\varphi \wedge \psi)}^\nec & \coloneqq \varphi^\nec \wedge \psi^\nec     \\
-            {(\varphi \vee \psi)}^\nec   & \coloneqq \varphi^\nec \vee \psi^\nec       \\
-            {(\varphi \to \psi)}^\nec    & \coloneqq \nec (\varphi^\nec \to \psi^\nec)
+            p^\smallsquare                     & \coloneqq \nec p                                        \\
+            \bot^\smallsquare                  & \coloneqq \bot                                          \\
+            {(\varphi \wedge \psi)}^\smallsquare & \coloneqq \varphi^\smallsquare \wedge \psi^\smallsquare     \\
+            {(\varphi \vee \psi)}^\smallsquare   & \coloneqq \varphi^\smallsquare \vee \psi^\smallsquare       \\
+            {(\varphi \to \psi)}^\smallsquare    & \coloneqq \nec (\varphi^\smallsquare \to \psi^\smallsquare)
             \tag*{\qed} 
         \end{align*}
     \end{definition}
     
-    Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\nec$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
+    Faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\smallsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}, sendo as primeiras correspondentes a uma ordem de avaliação por nome (\textit{call-by-name}) e as segundas a uma ordem de avaliação por valor (\textit{call-by-value}). 
     Ademais, as duas traduções providas são equivalentes, conforme demonstrado pelo teorema $\mathbf{T_2}$.
 
     \begin{theorem}
-        $\entails\nec\alpha^\circ\leftrightarrow\alpha^\nec$.
+        $\entails\nec\alpha^\circ\leftrightarrow\alpha^\smallsquare$.
 
         \begin{proof}
             Prova por indução forte sobre a profundidade de $\alpha$.
             Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n<k$.
-            Demonstraremos, analisando-se os casos, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
+            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
     
             \begin{case}
                 \textsc{Caso 1.}
-                Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\nec =\nec a$ pelas definições das traduções.
+                Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\smallsquare=\nec a$ pelas definições das traduções.
                 Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
-                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
+                Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
 
             \begin{case}
                 \textsc{Caso 2.}
-                Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\nec=\bot$ pelas definições das traduções.
+                Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\smallsquare=\bot$ pelas definições das traduções.
                 Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
-                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
+                Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
     
             \begin{case}
                 \textsc{Caso 3.}
-                Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e que ${(\varphi\wedge\psi)}^\nec=\varphi^\nec\wedge\psi^\nec$ pelas definições das traduções.
-                Separaremos a prova em dois casos: um para a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ e outro para a volta $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$. Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
+                Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e que ${(\varphi\wedge\psi)}^\smallsquare=\varphi^\smallsquare\wedge\psi^\smallsquare$ pelas definições das traduções.
+                Separaremos a prova em dois casos: um para a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\smallsquare\wedge\psi^\smallsquare$ e outro para a volta $\varphi^\smallsquare\wedge\psi^\smallsquare\to\nec(\varphi^\circ\wedge\psi^\circ)$. Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema da introdução da conjunção \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
 
                 \begin{subcase}
                     \textsc{Caso 3.1.}
-                    Pela premissa de indução, temos que $\mathbf{H_1}=\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e que $\mathbf{H_2}=\nec\psi^\circ\leftrightarrow\psi^\nec$.
-                    Valendo-se dessas sentenças e da regra da relocação em conjunto com alguns lemas, pode-se provar a sentença $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec$ pela seguinte sucessão de dedução:
+                    A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\nec\varphi^\circ\to\varphi^\smallsquare}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\smallsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra da separação.
+                    Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\smallsquare\wedge\psi^\smallsquare$ pela seguinte sucessão de dedução:
 
+                    \footnotesize
                     \begin{fitch}
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fb\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P_1}$\\
                         \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{L_5}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{R_1}\;\sequence{1,2}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{R_1}\;\set{1,2}$\\
                         \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&$\mathbf{A_4}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\mathbf{R_1}\;\sequence{3,4}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\nec&$\mathbf{H}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec&$\mathbf{R_1}\;\sequence{5,6}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\mathbf{R_1}\;\set{3,4}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\smallsquare&$\mathbf{H_1}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\smallsquare&$\mathbf{R_1}\;\set{5,6}$\\
                         \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&$\mathbf{A_4}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\mathbf{R_1}\;\sequence{3,8}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\nec&$\mathbf{H}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\nec&$\mathbf{R_1}\;\sequence{9,10}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec\to\psi^\nec\to\varphi^\nec\wedge\psi^\nec&$\mathbf{A_3}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\nec\to\varphi^\nec\wedge\psi^\nec&$\mathbf{R_1}\;\sequence{7,12}$\\
-                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\nec\wedge\psi^\nec&$\mathbf{R_1}\;\sequence{9,13}$\\
-                        \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\nec\wedge\psi^\nec&$\mathbf{T_1}\;\sequence{14}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\mathbf{R_1}\;\set{3,8}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\smallsquare&$\mathbf{H_2}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\smallsquare&$\mathbf{R_1}\;\set{9,10}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\smallsquare\to\psi^\smallsquare\to\varphi^\smallsquare\wedge\psi^\smallsquare&$\mathbf{A_3}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\smallsquare\to\varphi^\smallsquare\wedge\psi^\smallsquare&$\mathbf{R_1}\;\set{7,12}$\\
+                        \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\smallsquare\wedge\psi^\smallsquare&$\mathbf{R_1}\;\set{9,13}$\\
+                        \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\smallsquare\wedge\psi^\smallsquare&$\mathbf{T_1}\;\set{14}$\\
                     \end{fitch}
                 \end{subcase}
 
                 \begin{subcase}
                     \textsc{Caso 3.2.}
-                    Pela premissa de indução, temos que $\mathbf{H_1}=\nec\varphi^\circ\leftrightarrow\varphi^\nec$ e que $\mathbf{H_2}=\nec\psi^\circ\leftrightarrow\psi^\nec$.
-                    Valendo-se dessas sentenças e da regra da relocação em conjunto com alguns lemas, pode-se provar a sentença $\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
+                    A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\smallsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\smallsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                    Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\smallsquare\wedge\psi^\smallsquare\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
 
+                    \footnotesize
                     \begin{fitch}
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec\to\varphi^\nec&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\to\nec\varphi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\varphi^\nec\wedge\psi^\nec\to\psi^\nec&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\psi^\nec&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\psi^\nec\to\nec\psi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\psi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
-                        \fa\set{\varphi^\nec\wedge\psi^\nec}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
-                        \fa\proves\varphi^\nec\wedge\psi^\nec\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fb\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\varphi^\smallsquare\wedge\psi^\smallsquare&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\varphi^\smallsquare\wedge\psi^\smallsquare\to\varphi^\smallsquare&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\varphi^\smallsquare&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\varphi^\smallsquare\to\nec\varphi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\varphi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\varphi^\smallsquare\wedge\psi^\smallsquare\to\psi^\smallsquare&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\psi^\smallsquare&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\psi^\smallsquare\to\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fa\set{\varphi^\smallsquare\wedge\psi^\smallsquare}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                        \fa\proves\varphi^\smallsquare\wedge\psi^\smallsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
                     \end{fitch}
                 \end{subcase}
 
             \begin{case}
                 \textsc{Caso 4.}
-                Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e que ${(\varphi\vee\psi)}^\nec=\varphi^\nec\vee\psi^\nec$ pelas definições das traduções.
-                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\nec\vee\psi^\nec$ e outro para a volta $\varphi^\nec\vee\psi^\nec\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$.
-                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
+                Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e que ${(\varphi\vee\psi)}^\smallsquare=\varphi^\smallsquare\vee\psi^\smallsquare$ pelas definições das traduções.
+                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\smallsquare\vee\psi^\smallsquare$ e outro para a volta $\varphi^\smallsquare\vee\psi^\smallsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$.
+                Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema da introdução da conjunção \hyperref[MA3]{$\mathbf{A_3}$}.
+            \end{case}
 
+            \begin{subcase}
+                \textsc{Caso 4.1.}
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\nec\varphi^\circ\to\varphi^\smallsquare}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\smallsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra da separação.
+                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\smallsquare\vee\psi^\smallsquare$ pela seguinte sucessão de dedução:
+                \footnotesize
                 \begin{fitch}
+                    \fb\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\to\varphi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\varphi^\circ\to\varphi^\smallsquare)\to\nec\varphi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\psi^\circ\to\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\smallsquare)\to\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+
                     \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
                     \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ\\
                     \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\varphi^\nec\vee\psi^\nec\\
-                    \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\nec\vee\psi^\nec\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\varphi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare)\to(\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\varphi^\smallsquare\vee\psi^\smallsquare\\
+                    \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\smallsquare\vee\psi^\smallsquare\\
                 \end{fitch}
+            \end{subcase}
 
-                \begin{fitch}
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\varphi^\nec\vee\psi^\nec&$\mathbf{P}$\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\varphi^\nec\leftrightarrow\nec\varphi^\circ&$\mathbf{H}$\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\vee\psi^\nec&\refer{replacement}{T}$\;\set{1,2}$\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\psi^\nec\leftrightarrow\nec\psi^\circ&$\mathbf{H}$\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\vee\nec\psi^\circ&\refer{replacement}{T}$\;\set{3,4}$\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\varphi^\circ\leftrightarrow\nec\nec\varphi^\circ\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\psi^\circ\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\psi^\circ\leftrightarrow\nec\nec\psi^\circ\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                    \fa\set{\varphi^\nec\vee\psi^\nec}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                    \fa\entails\varphi^\nec\vee\psi^\nec\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                \end{fitch}
-            \end{case}
+            \begin{subcase}
+                \textsc{Caso 4.2.}
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\smallsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\smallsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\smallsquare\vee\psi^\smallsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ pela seguinte sucessão de dedução:
+            \end{subcase}
 
             \begin{case}
                 \textsc{Caso 5.}
-                Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\nec=\nec(\varphi^\nec\to\psi^\nec)$ pelas definições das traduções.
-                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\nec\to\psi^\nec)$ e outro para a volta $\nec(\varphi^\nec\to\psi^\nec)\to\nec(\nec\varphi^\circ\to\psi^\circ)$.
+                Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\smallsquare=\nec(\varphi^\smallsquare\to\psi^\smallsquare)$ pelas definições das traduções.
+                Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\smallsquare\to\psi^\smallsquare)$ e outro para a volta $\nec(\varphi^\smallsquare\to\psi^\smallsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)$.
                 Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
             \end{case}
 
                 \begin{subcase}
                     \textsc{Caso 5.1.}
+                    A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\smallsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\smallsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                    Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\smallsquare\to\psi^\smallsquare)$ pela seguinte sucessão de dedução:
 
                     \footnotesize
                     \begin{fitch}
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                        \fb\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\nec\to\nec\varphi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\smallsquare\to\nec\varphi^\circ\\
                         \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\psi^\circ\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\nec\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\nec\to\nec\psi^\circ\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\nec\to\nec\psi^\circ\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\nec\to\nec\psi^\circ\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\psi^\circ\to\psi^\nec\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\nec\to\nec\psi^\circ)\to(\nec\psi^\circ\to\psi^\nec)\to\psi^\nec\to\psi^\nec\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\nec)\to\psi^\nec\to\psi^\nec\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\psi^\nec\to\psi^\nec\\
-                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\psi^\nec\to\psi^\nec)\\
-                        \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\nec\to\psi^\nec)\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\smallsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\smallsquare\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\smallsquare\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\smallsquare\to\nec\psi^\circ\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\psi^\circ\to\psi^\smallsquare\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\smallsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\psi^\smallsquare)\to\psi^\smallsquare\to\psi^\smallsquare\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\smallsquare)\to\psi^\smallsquare\to\psi^\smallsquare\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\psi^\smallsquare\to\psi^\smallsquare\\
+                        \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\psi^\smallsquare\to\psi^\smallsquare)\\
+                        \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\smallsquare\to\psi^\smallsquare)\\
                     \end{fitch}
                 \end{subcase}
 
                 \begin{subcase}
                     \textsc{Caso 5.2.}
+                    A partir de $\mathbf{H}$, temos que $\mathbf{H_1}=\varphi^\smallsquare\to\nec\varphi^\circ$ e que $\mathbf{H_2}=\psi^\smallsquare\to\nec\psi^\circ$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                    Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\psi^\smallsquare\to\psi^\smallsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)$ pela seguinte sucessão de dedução:
 
                     \footnotesize
                     \begin{fitch}
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\\
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\nec(\varphi^\nec\to\psi^\nec)\to\varphi^\nec\to\psi^\nec\\
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\varphi^\nec\to\psi^\nec\\
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
-                        \fa\set{\nec(\varphi^\nec\to\psi^\nec)}\entails\\
+                        \fb\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\\
+                        \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\to\varphi^\smallsquare\to\psi^\smallsquare\\
+                        \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\varphi^\smallsquare\to\psi^\smallsquare\\
+                        \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
+                        \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
+                        \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
                     \end{fitch}
                 \end{subcase}
+            \vspace{\baselineskip}
+            Tendo-se provado todos os casos do passo de indução, podemos concluir que ambas as traduções apresentadas equivalem, ou seja, que $\entails\nec\alpha^\circ\leftrightarrow\alpha^\smallsquare$.
         \end{proof}
     \end{theorem}

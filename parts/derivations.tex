@@ -1,0 +1,358 @@
+\section{Derivações}
+    Nesta seção apresentaremos alguns lemas e teoremas para os sistemas modais que permitirão simplificar muito as provas apresentadas no decorrer deste trabalho.
+    Primeiramente, provaremos que, dada uma sentença qualquer, esta sempre implica a si mesma. A este lema daremos o nome de identidade\footnote{Em analogia ao combinador $\mathbf{I}$.} e, em seguida, usaremo-no para a prova da regra da dedução.
+
+    \begin{lemma}\label{identity}
+        $\entails\alpha\to\alpha$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+        
+            \footnotesize
+            \begin{fitch}   
+                \fb\vdash\alpha\to\alpha\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
+                \fa\vdash\alpha\to(\alpha\to\alpha)\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
+                \fa\vdash(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&\hyperref[MA2]{$\mathbf{A_2}$}\\
+                \fa\vdash(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                \fa\vdash\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
+            \end{fitch}
+            \normalsize
+            Estando assim provada a proposição.
+        \end{proof}
+    \end{lemma}
+
+    Tendo-se provado o lema da identidade, agora provaremos a regra da dedução para os sistemas modais com base na prova apresentada por~\cite{Hakli}.
+    Pequenas alterações foram feitas de modo a garantir a adequação da prova com a axiomatização provida na definição \refer{m-axioms}{D}.
+
+    \begin{theorem}\label{deduction}
+        $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
+
+        \begin{proof}
+            Prova por indução forte sobre o tamanho da sucessão de dedução.\footnote{Note que, para a indução forte, não se faz preciso provar nenhuma base \citep{Velleman}.}
+            Assim, suponhamos que o teorema da dedução valha para qualquer sucessão dedução de tamanho $n<k$.
+            Demonstraremos, analisando-se os casos, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k+1$.
+
+            \begin{case}
+                \textsc{Caso 1.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que $\beta\in\Gamma\cup\set{\alpha}$.
+                Deste modo, existem outros dois casos a serem analisados.
+            \end{case}
+
+            \begin{subcase}
+                \textsc{Caso 1.1.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que existe alguma premissa $\mathbf{P_\beta}\in\Gamma$ igual a $\beta$. Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
+
+                \footnotesize
+                \begin{fitch}
+                    \fa\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
+                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
+                \end{fitch}
+            \end{subcase}
+
+            \begin{subcase}
+                \textsc{Caso 1.2.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação da premissa $\alpha$, sabe-se que $\beta=\alpha$.
+                Deste modo, basta demonstrar que $\Gamma\vdash\alpha\to\alpha$ o que consiste num enfraquecimento do lema \refer{identity}{L}.
+            \end{subcase}
+
+            \begin{case}
+                \textsc{Caso 2.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\beta}\in\mathcal{A}$ que gera $\beta$.
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
+
+                \footnotesize
+                \begin{fitch}
+                    \fa\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
+                    \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
+                \end{fitch}
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 3.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}=\varphi$.
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
+
+                \footnotesize
+                \begin{fitch}
+                    \fa\vdash\varphi&$\mathbf{H_1}$\\
+                    \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
+                    \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$.
+                \end{fitch}
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 4.} Seja a sentença $\varphi_n=\beta$ gerada pela aplicação da regra da separação a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
+                Assim, pela premissa da indução temos que $\mathbf{H_1}=\alpha\to\varphi_i$ e que $\mathbf{H_2}=\alpha\to\varphi_i\to\varphi_n$.
+                Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
+
+                \footnotesize
+                \begin{fitch}
+                    \fa\Gamma\entails\alpha\to\varphi_j&$\mathbf{H_1}$\\
+                    \fa\Gamma\entails\alpha\to\varphi_j\to\beta&$\mathbf{H_2}$\\
+                    \fa\Gamma\entails(\alpha\to\varphi_j\to\beta)\to(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[MA2]{\mathbf{A_2}}$\\
+                    \fa\Gamma\entails(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                    \fa\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
+                \end{fitch}
+            \end{case}
+            Uma vez provada a propriedade para todos os casos do passo de indução
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}\label{gen-nec}
+        Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
+
+        \begin{proof}
+            Prova por indução fraca sobre o tamanho $n$ do conjunto $\nec\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução.
+
+            \begin{case}
+                \textsc{Caso 1.} Para a base, consideraremos que $\nec\Gamma=\varnothing$ --- ou seja, que possui tamanho $n=0$.
+                Assim, sabemos que $\nec\Gamma\entails\alpha$ e, portanto, que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
+                Pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 2.} 
+                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\nec\Gamma$ de tamanho $n=k$.
+                Demonstraremos, pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\nec\Gamma$ de tamanho $n=k+1$.
+
+                \footnotesize
+                \begin{fitch}
+                    \fb\nec\Gamma\cup\set{\nec\alpha}\entails\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\beta\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha\\
+                    \fa\nec\Gamma\entails(\nec\alpha\to\nec\nec\alpha)\to(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\to\nec\beta\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\beta\\
+                \end{fitch}
+            \end{case}
+        \end{proof}
+    \end{theorem}
+
+    Uma vez provada a generalização da regra da implicação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra derivada permite simplificar as provas de corretude das traduções, uma vez que uma das traduções que serão apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
+
+    \begin{theorem}\label{strictdeduction}
+        $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fb\nec\Gamma\cup\set{\alpha}\entails\beta&$\mathbf{H_1}$\\
+                \fa\nec\Gamma\entails\alpha\to\beta&\refer{deduction}{T}$\;\set{1}$\\
+                \fa\nec\Gamma\entails\nec(\alpha\to\beta)&\refer{gen-nec}{T}$\;\set{2}$.\qedhere
+            \end{fitch}
+        \end{proof}
+    \end{theorem}
+
+    \begin{lemma}\label{explosion}
+        $\entails\bot\to\alpha$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+        
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\bot}\entails\bot&$\mathbf{P_1}$\\
+                \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\hyperref[MA1]{\mathbf{A_1}}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\hyperref[MANEG]{\mathbf{A_\neg}}$\\
+                \fa\set{\bot}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\entails\bot\to\alpha&$\hyperref[deduction]{\mathbf{T_1}}\;\set{5}$.\qedhere
+            \end{fitch}
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}\label{contrapositive}
+        $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+        
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\mathbf{P_2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\beta\to\bot)\to\alpha\to(\beta\to\bot)&\hyperref[MA1]{$\mathbf{A_1}$}\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta\to\bot)\to(\alpha\to\beta)\to(\alpha\to\bot)&\hyperref[MA2]{$\mathbf{A_2}$}\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta&$\mathbf{P_1}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta)\to(\alpha\to\bot)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,6}$\\
+                \fa\set{\alpha\to\beta}\entails\neg\beta\to\neg\alpha&\refer{deduction}{T}$\;\set{7}$\\
+                \fa\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)&\refer{deduction}{T}$\;\set{8}$.
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}\label{and-intro}
+        $\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\mathbf{P_3}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\beta&$\mathbf{P_1}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma&$\mathbf{P_2}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 4}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\to\gamma\to\beta\wedge\gamma&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma\to\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3, 6}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5, 7}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma}\vdash\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{8}$\\
+                \fa\set{\alpha\to\beta}\vdash(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{9}$\\
+                \fa\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{10}$.
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fb\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
+                \fa\entails\nec(\alpha\wedge\beta\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
+                \fa\entails\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)&\hyperref[MB1]{$\mathbf{B_1}$}\\
+                \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2, 3}$\\
+                \fa\entails\alpha\wedge\beta\to\beta&\hyperref[MA5]{$\mathbf{A_5}$}\\
+                \fa\entails\nec(\alpha\wedge\beta\to\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{5}$\\
+                \fa\entails\nec(\alpha\wedge\beta\to\beta)\to(\nec(\alpha\wedge\beta)\to\nec\beta)&\hyperref[MB1]{$\mathbf{B_1}$}\\
+                \fa\entails\nec(\alpha\wedge\beta)\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6, 7}$\\
+                \fa\entails(\nec(\alpha\wedge\beta)\to\nec\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&\refer{and-intro}{L}\\
+                \fa\entails(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4, 9}$\\
+                \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}    
+        $\vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\alpha&$\mathbf{A_4}$\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\alpha\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\beta&$\mathbf{A_5}$\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\beta\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha&$\mathbf{R_1}\;\set{1, 4}$\\
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\vdash\nec(\alpha\to\beta)\to\nec\alpha\to\beta$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\mathbf{P_1}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,6}$\\
+                \fa\set{\nec(\alpha\to\beta)}\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{7}$\\
+                \fa\entails\nec(\alpha\to\beta)\to\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{8}$.
+            \end{fitch}
+            \vspace*{-18pt-0.7em}
+            \qedhere
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\entails(\alpha\to\beta)\to(\beta\to\gamma)\to\alpha\to\gamma$
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha\to\beta\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta\to\gamma\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\gamma\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma}\entails\alpha\to\gamma\\
+                \fa\set{\alpha\to\beta}\entails(\beta\to\gamma)\to\alpha\to\gamma\\
+                \fa\entails(\alpha\to\beta)\to(\beta\to\gamma)\to\alpha\to\gamma\\
+            \end{fitch}
+            \normalsize
+            Daremos a este lema o nome \emph{lema da composição}.
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\entails\alpha\to\neg\neg\alpha$
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fa\set{\alpha}\entails\alpha\\
+            \end{fitch}
+            \normalsize
+            Daremos a este lema o nome \emph{lema da introdução da dupla negação}.
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\entails(\alpha\to\beta)\to\alpha\to\beta\vee\gamma$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize 
+            \begin{fitch}
+                \fb\set{\alpha\to\beta,\alpha}\entails\alpha\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\to\beta\vee\gamma\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\vee\gamma\\
+                \fa\set{\alpha\to\beta}\entails\alpha\to\beta\vee\gamma\\
+                \fa\entails(\alpha\to\beta)\to\alpha\to\beta\vee\gamma\\
+            \end{fitch}
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}
+        $\entails(\alpha\to\beta)\to\alpha\to\gamma\vee\beta$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize 
+            \begin{fitch}
+                \fb\set{\alpha\to\beta,\alpha}\entails\alpha\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\to\gamma\vee\beta\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\gamma\vee\beta\\
+                \fa\set{\alpha\to\beta}\entails\alpha\to\gamma\vee\beta\\
+                \fa\entails(\alpha\to\beta)\to\alpha\to\gamma\vee\beta\\
+            \end{fitch}
+        \end{proof}
+    \end{lemma}

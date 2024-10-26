@@ -9,25 +9,28 @@ Conforme visto, as noções de sistema variam entre diferentes autores e permane
     \qed{}
 \end{definition}
 
-Conforme~\cite{Beziau} aponta, a \emph{qualidade} e \emph{quantidade} dos elementos de $\mathbf{L}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Deste modo, a relação $\vdash$ pode ser tanto uma relação de \emph{dedução} --- definida sintaticamente --- quanto uma relação de \emph{satisfação} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de dedução. Cabe destacar, entretanto, que nada impede a tradução entre sistemas definidos sobre relações de satisfação, como veremos futuramente.
+Conforme~\cite{Beziau} aponta, a \emph{qualidade} e \emph{quantidade} dos elementos de $\mathbf{L}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Deste modo, a relação $\vdash$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação} --- definida semanticamente.\footnote{Sendo esta denotada por $\mathrel{\vDash}$.} Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada impede a tradução entre sistemas definidos sobre relações de satisfação, como veremos futuramente.
 
-Ainda, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ a um conjunto de \emph{sentenças proposicionais bem-formadas} --- doravante ocasionalmente chamadas apenas de sentenças. Estas sentenças, neste trabalho representadas por letras gregas em caixa-baixa, podem ser geradas indutivamente a partir de uma assinatura proposicional --- que consiste em um conjunto de letras proposicionais e um conjunto de operadores com suas aridades ---, conforme definido abaixo. Conjuntos de sentenças serão representados por letras gregas em caixa-alta.
+Ainda, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ a um conjunto de \emph{sentenças proposicionais bem-formadas} --- doravante ocasionalmente chamadas apenas de sentenças. Estas sentenças, neste trabalho representadas por letras gregas em caixa-baixa, podem ser geradas indutivamente a partir de uma assinatura proposicional --- que consiste em um conjunto de letras proposicionais e um conjunto de operadores com suas aridades ---, conforme definido abaixo. Conjuntos de sentenças serão representados por letras gregas em caixa-alta --- salvo $\Sigma$, usado para representar assinaturas proposicionais.
 
 \begin{definition}[Assinatura]
-    Uma assinatura consiste num conjunto letras proposicionais --- que podem ser valoradas como verdadeiras ou falsas --- e num conjunto de operadores e suas aridades correspondentes.
+    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}$ consiste num conjunto de pares $\sequence{\bullet,n}$, onde $\bullet$ consiste em um operador e $n\in\mathbb{N}$ em sua respeitiva aridade.
     \qed{}
 \end{definition}
 
-Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}$ de um sistema --- chamado de linguagem --- indutivamente. Nesta definição, primeiramente definimos todas as letras proposicionais e operadores de aridade zero como pertencentes ao conjunto e, em seguida, aplicamos recursivamente as sentenças aos operadores de aridade não-nula
+\begin{notation}
+    Seja $\bullet$ um operador e $n$ uma aridade, $\bullet^n$ denota o par $\sequence{\bullet,n}$.
+\end{notation}
+
+Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}$ de um sistema --- chamado de \emph{linguagem} --- indutivamente. Nesta definição, primeiramente definimos todas as letras proposicionais e operadores de aridade zero como pertencentes ao conjunto e, em seguida, aplicamos recursivamente sucessões de sentenças de tamanho $n$ a operadores de aridade $n$. Antes disso, entretanto, introduziremos uma notação para sucessões que será usada no decorrer do trabalho.
 
 \begin{definition}[Sentença]
-    Seja $\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma sentença proposicional consiste em qualquer um dos elementos do conjunto $\mathcal{L}$, sendo este o menor conjunto induzido a partir das seguintes regras:
-    \begin{align*}
-        &\mathcal{P}\subseteq\mathcal{L}\\
-        &\text{Se    }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}\\
-        &\text{Se }\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid 0<i \leq n}\subseteq\mathcal{L}\text{, então }\bullet^n\sequence{\varphi_i\mid 0<i \leq n}\subseteq\mathcal{L}.
-        \tag*{\qed} 
-    \end{align*}
+    Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma sentença proposicional consiste em qualquer um dos elementos do conjunto $\mathcal{L}$, sendo este o menor conjunto induzido a partir das seguintes regras:
+    \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
+        \item$\mathcal{P}\subseteq\mathcal{L}$
+        % \item$\text{Se }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}$
+        \item\text{Se }$\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet^n\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+    \end{enumerate}
 \end{definition}
 
 Tendo definidas as noções de assinatura e sentença, pode-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da contrução de uma sentença. A definição abaixo provida consiste numa generalização da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para provar propriedades por meio de indução sobre a profundidade da sentença.
@@ -80,13 +83,15 @@ Traduções entre sistemas consistem em funções que mapeiam sentenças de um s
     \qed{}
 \end{notation}
 
+A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terço excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em dobre-negar cada subsentença de uma dada sentença, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla} \citep{Coniglio}. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte lógica da passagem por continuações.
+
 \begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
     \begin{align*}
-        p^\neg                     & \coloneqq \neg\neg p                               \\
-        \bot^\neg                  & \coloneqq \bot                                     \\
-        {(\varphi \wedge \psi)}^\neg & \coloneqq \neg\neg (\varphi^\neg \wedge \psi^\neg) \\
-        {(\varphi \vee \psi)}^\neg   & \coloneqq \neg\neg (\varphi^\neg \vee \psi^\neg)   \\
-        {(\varphi \to \psi)}^\neg    & \coloneqq \neg\neg (\varphi^\neg \to \psi^\neg)
+        p^\neg&\coloneqq\neg\neg p\\
+        \bot^\neg&\coloneqq\neg\neg\bot\\
+        {(\varphi\wedge\psi)}^\neg&\coloneqq\neg\neg(\varphi^\neg \wedge \psi^\neg)\\
+        {(\varphi\vee\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \vee \psi^\neg)\\
+        {(\varphi\to\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \to \psi^\neg)
         \tag*{\qed} 
     \end{align*}
 \end{definition}
