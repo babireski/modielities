@@ -1,5 +1,7 @@
 \section{Isomorfismo}
 
+Conforme afirmado anteriormente, ambas as traduções apresentada neste trabalho equivalem --- ou seja, são isomorfas --- na forma $\entails\nec\alpha^\circ\leftrightarrow\alpha^\smallsquare$. Nesta seção, provaremos este isomorfismo que, não somente consititui puramente um resultado de interesse, como permite tornar a prova de propriedades de uma tradução triviais caso tais propriedades valham para a outra tradução.
+
 \begin{theorem}
     $\entails\nec\alpha^\circ\leftrightarrow\alpha^\smallsquare$.
 
@@ -114,6 +116,33 @@
             \textsc{Caso 4.2.}
             A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\smallsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\smallsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
             Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\smallsquare\vee\psi^\smallsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ pela seguinte sucessão de dedução:
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\varphi^\smallsquare\to\nec\varphi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\varphi^\smallsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\smallsquare\to\nec\nec\varphi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\smallsquare\to\nec\nec\varphi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\varphi^\smallsquare\to\nec\nec\varphi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\varphi^\smallsquare\to\nec\nec\varphi^\circ)\to\varphi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\varphi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\psi^\smallsquare\to\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\nec\psi^\circ\to\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\psi^\smallsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\smallsquare\to\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\smallsquare\to\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\psi^\smallsquare\to\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\psi^\smallsquare\to\nec\nec\psi^\circ)\to\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\varphi^\smallsquare\vee\psi^\smallsquare\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\varphi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to(\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to\varphi^\smallsquare\vee\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails(\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to\varphi^\smallsquare\vee\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\varphi^\smallsquare\vee\psi^\smallsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                \fa\set{\varphi^\smallsquare\vee\psi^\smallsquare}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                \fa\entails\varphi^\smallsquare\vee\psi^\smallsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+            \end{fitch}
         \end{subcase}
 
         \begin{case}
@@ -152,20 +181,28 @@
 
             \begin{subcase}
                 \textsc{Caso 5.2.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}=\varphi^\smallsquare\to\nec\varphi^\circ$ e que $\mathbf{H_2}=\psi^\smallsquare\to\nec\psi^\circ$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}=\nec\varphi^\circ\to\varphi^\smallsquare$ e que $\mathbf{H_2}=\psi^\smallsquare\to\nec\psi^\circ$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\psi^\smallsquare\to\psi^\smallsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\\
-                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\to\varphi^\smallsquare\to\psi^\smallsquare\\
-                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\varphi^\smallsquare\to\psi^\smallsquare\\
-                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
-                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
-                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\\
+                    \fb\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\varphi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\to\varphi^\smallsquare\to\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\varphi^\smallsquare\to\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails(\nec\varphi^\circ\to\varphi^\smallsquare)\to(\varphi^\smallsquare\to\psi^\smallsquare)\to\nec\varphi^\circ\to\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails(\varphi^\smallsquare\to\psi^\smallsquare)\to\nec\varphi^\circ\to\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\psi^\smallsquare\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\psi^\smallsquare\to\nec\psi^\circ\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare),\nec\varphi^\circ}\entails\psi^\circ\\
+                    \fa\set{\nec(\varphi^\smallsquare\to\psi^\smallsquare)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                    \fa\entails\nec(\varphi^\smallsquare\to\psi^\smallsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)\\
                 \end{fitch}
             \end{subcase}
-        \vspace{\baselineskip}
+        \vspace{.5\baselineskip}
         Tendo-se provado todos os casos do passo de indução, podemos concluir que ambas as traduções apresentadas equivalem, ou seja, que $\entails\nec\alpha^\circ\leftrightarrow\alpha^\smallsquare$.
     \end{proof}
 \end{theorem}

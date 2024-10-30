@@ -1,21 +1,21 @@
-\section{Corretude}
+\section{Correção}
     \begin{theorem}
-        $\text{Se }\Gamma\vdash_\mathbf{I}\alpha\text{, então }\Gamma^\smallsquare\vdash_\mathbf{M}\alpha^\smallsquare$.
+        $\text{Se }\Gamma\vdash_\mathbf{I}\alpha\text{, então }\Gamma^\smallsquare\vdash_\mathbf{4}\alpha^\smallsquare$.
     \end{theorem}
 
     \begin{proof}
         Prova por indução forte sobre o tamanho da sucessão de dedução.
         Assim, suponhamos que a tradução seja correta para qualquer sucessão dedução de tamanho $n<k$.
-        Demonstraremos, analisando-se os casos, que o a corretude da tradução vale para sucessões de dedução de tamanho $n=k+1$.
+        Demonstraremos, analisando-se os casos, que o a correção da tradução vale para sucessões de dedução de tamanho $n=k+1$.
 
         \begin{case}
             \textsc{Caso 1.}
-            Como $\alpha\in\Gamma$, sabe-se que $\alpha^\smallsquare\in\Gamma^\smallsquare$, uma vez que $\Gamma^\smallsquare = \set{\varphi^\smallsquare\mid\varphi\in\Gamma}$.
-            Desta forma, $\sequence{\alpha^\smallsquare}$ constitui uma prova para $\Gamma^\smallsquare\vdash\alpha^\smallsquare$.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de alguma premissa, sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\smallsquare\in\Gamma^\smallsquare$. Desde modo, pode-se demonstrar que $\Gamma^\smallsquare\vdash\alpha^\smallsquare$ trivialmente pela evocação da premissa \alpha^\smallsquare.
         \end{case}
 
         \begin{case}
             \textsc{Caso 2.}
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que gera $\alpha$. Deste modo, devemos demonstrar que para cada esquema $\mathbf{A}\in\mathcal{A}$, pode-se derivar $\Gamma^\smallsquare\entails_\mathbf{4}\mathbf{A}^\smallsquare$.
         \end{case}
 
             \begin{subcase}
