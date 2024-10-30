@@ -10,7 +10,7 @@
 
         \begin{case}
             \textsc{Caso 1.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de alguma premissa, sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\smallsquare\in\Gamma^\smallsquare$. Desde modo, pode-se demonstrar que $\Gamma^\smallsquare\vdash\alpha^\smallsquare$ trivialmente pela evocação da premissa \alpha^\smallsquare.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de alguma premissa, sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\smallsquare\in\Gamma^\smallsquare$. Desde modo, pode-se demonstrar que $\Gamma^\smallsquare\vdash\alpha^\smallsquare$ trivialmente pela evocação da premissa $\alpha^\smallsquare$.
         \end{case}
 
         \begin{case}
@@ -23,8 +23,8 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\cup\set{\nec{}a,\nec{}b}\entails\nec{}a&$\mathbf{P_1}$\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{}a}\entails\nec{}b\strictif\nec{}a&\refer{strictdeduction}{T}$\;\set{1}$\\
-                    \fa\Gamma^\smallsquare\entails\nec{}a\strictif\nec{}b\strictif\nec{}a&\refer{strictdeduction}{T}$\;\set{2}$.
+                    \fa\Gamma^\smallsquare\cup\set{\nec{}a}\entails\nec{}b\fishhook\nec{}a&\refer{strictdeduction}{T}$\;\set{1}$\\
+                    \fa\Gamma^\smallsquare\entails\nec{}a\fishhook\nec{}b\fishhook\nec{}a&\refer{strictdeduction}{T}$\;\set{2}$.
                 \end{fitch}
             \end{subcase}
 
@@ -32,15 +32,15 @@
                 \textsc{Caso 2.2} ($\mathbf{A_2}$).
 
                 \begin{fitch}
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{}a\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{}a\strictif\nec{}b\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{}b\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{a}\strictif\nec{b}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{b}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b}}\entails\nec{a}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c}}\entails(\nec{a}\strictif\nec{b})\strictif\nec{a}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\entails(\nec{a}\strictif\nec{b}\strictif\nec{c})\strictif(\nec{a}\strictif\nec{b})\strictif\nec{a}\strictif\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{}a\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{}a\fishhook\nec{}b\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{}b\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{a}\fishhook\nec{b}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{b}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b},\nec{a}}\entails\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c},\nec{a}\fishhook\nec{b}}\entails\nec{a}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{b}\fishhook\nec{c}}\entails(\nec{a}\fishhook\nec{b})\fishhook\nec{a}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\entails(\nec{a}\fishhook\nec{b}\fishhook\nec{c})\fishhook(\nec{a}\fishhook\nec{b})\fishhook\nec{a}\fishhook\nec{c}\\
 
                 \end{fitch}
             \end{subcase}
@@ -55,8 +55,8 @@
                     \fa\Gamma^\smallsquare\cup\set{\nec{a},\nec{b}}\entails\nec{b}\to\nec{a}\wedge\nec{b}\\
                     \fa\Gamma^\smallsquare\cup\set{\nec{a},\nec{b}}\entails\nec{a}\wedge\nec{b}\\
                     \fa\Gamma^\smallsquare\cup\set{\nec{a},\nec{b}}\entails\nec{a}\wedge\nec{b}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}}\entails\nec{b}\strictif\nec{a}\wedge\nec{b}\\
-                    \fa\Gamma^\smallsquare\entails\nec{a}\strictif\nec{b}\strictif\nec{a}\wedge\nec{b}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}}\entails\nec{b}\fishhook\nec{a}\wedge\nec{b}\\
+                    \fa\Gamma^\smallsquare\entails\nec{a}\fishhook\nec{b}\fishhook\nec{a}\wedge\nec{b}\\
                 \end{fitch} 
             \end{subcase}
 
@@ -65,7 +65,7 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\to\nec{a}&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\strictif\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\fishhook\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
@@ -74,7 +74,7 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\to\nec{b}&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\strictif\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\smallsquare\entails\nec{a}\wedge\nec{b}\fishhook\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
@@ -83,7 +83,7 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\entails\nec{a}\to\nec{a}\vee\nec{b}&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\smallsquare\entails\nec{a}\strictif\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\smallsquare\entails\nec{a}\fishhook\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
@@ -92,7 +92,7 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\entails\nec{b}\to\nec{a}\vee\nec{b}&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\smallsquare\entails\nec{b}\strictif\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\smallsquare\entails\nec{b}\fishhook\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
@@ -101,19 +101,19 @@
                 
                 \footnotesize
                 \begin{fitch}
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{a}\strictif\nec{c})\to\nec{a}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{b}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{b}\strictif\nec{c})\to\nec{b}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{b}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\vee\nec{b}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{a}\to\nec{c})\to(\nec{b}\to\nec{c})\to\nec{a}\vee\nec{b}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{b}\to\nec{c})\to\nec{a}\vee\nec{b}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\vee\nec{b}\to\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c},\nec{b}\strictif\nec{c}}\entails\nec{a}\vee\nec{b}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\strictif\nec{c}}\entails(\nec{b}\strictif\nec{c})\strictif\nec{a}\vee\nec{b}\strictif\nec{c}\\
-                    \fa\Gamma^\smallsquare\entails(\nec{a}\strictif\nec{c})\strictif(\nec{b}\strictif\nec{c})\strictif\nec{a}\vee\nec{b}\strictif\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{a}\fishhook\nec{c})\to\nec{a}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{b}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{b}\fishhook\nec{c})\to\nec{b}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{b}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\vee\nec{b}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{a}\to\nec{c})\to(\nec{b}\to\nec{c})\to\nec{a}\vee\nec{b}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails(\nec{b}\to\nec{c})\to\nec{a}\vee\nec{b}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c},\nec{a}\vee\nec{b}}\entails\nec{a}\vee\nec{b}\to\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c},\nec{b}\fishhook\nec{c}}\entails\nec{a}\vee\nec{b}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\cup\set{\nec{a}\fishhook\nec{c}}\entails(\nec{b}\fishhook\nec{c})\fishhook\nec{a}\vee\nec{b}\fishhook\nec{c}\\
+                    \fa\Gamma^\smallsquare\entails(\nec{a}\fishhook\nec{c})\fishhook(\nec{b}\fishhook\nec{c})\fishhook\nec{a}\vee\nec{b}\fishhook\nec{c}\\
                 \end{fitch}
             \end{subcase}
 
@@ -122,7 +122,7 @@
 
                 \begin{fitch}
                     \fa\Gamma^\smallsquare\entails\bot\to\nec{a}&\refer{explosion}{L}\\
-                    \fa\Gamma^\smallsquare\entails\bot\strictif\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
+                    \fa\Gamma^\smallsquare\entails\bot\fishhook\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
                 \end{fitch}
             \end{subcase}
 

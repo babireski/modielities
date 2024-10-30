@@ -2,7 +2,7 @@
 
 \section{Sistemas}
 
-Sistemas podem ser definidos tanto sobre operadores de conseguimento $C:\wp(\mathcal{L})\to\wp(\mathcal{L})$ quanto sobre relações de conseguimento $\entails\: :\wp(\mathcal{L})\times\mathcal{L}$. Ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha\Leftrightarrow \alpha\in C(\Gamma)$. Desde modo, quaisquer propriedades provadas para um dos conceitos pode ser trivialmente provada para o outro.
+Sistemas podem ser definidos tanto sobre fechos $C:\wp(\mathcal{L})\to\wp(\mathcal{L})$ quanto sobre relações $\entails\: :\wp(\mathcal{L})\times\mathcal{L}$. Ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in C(\Gamma)$. Desde modo, quaisquer propriedades provadas para um dos conceitos pode ser trivialmente provada para o outro.
 
 Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por~\cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
 
@@ -46,6 +46,8 @@ Tendo definidas as noções de assinatura e sentença, pode-se definir a noção
         \tag*{\qed} 
     \end{align*}
 \end{definition}
+
+Definindo-se profundidade, encerramos as definições desta fundamentação que dizem respeito ao primeiro elemento de um sistema: a linguagem. Agora as definições fornecidas dirão respeito a relações de derivação. Neste trabalho, as relações de derivação abordadas serão baseadas em axiomatizações, ou seja, em pares de esquemas de axiomas e regras de dedução.
 
 \begin{definition}[Esquema]
     Um esquema consiste em um padrão com metavariaveis que permitem representar um conjunto, geralmente infinito, de sentenças.
