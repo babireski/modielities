@@ -29,7 +29,7 @@
         \begin{proof}
             Prova por indução forte sobre o tamanho da sucessão de dedução.\footnote{Note que, para a indução forte, não se faz preciso provar nenhuma base \citep{Velleman}.}
             Assim, suponhamos que o teorema da dedução valha para qualquer sucessão dedução de tamanho $n<k$.
-            Demonstraremos, analisando-se os casos, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k+1$.
+            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k+1$.
 
             \begin{case}
                 \textsc{Caso 1.}
@@ -39,11 +39,11 @@
 
             \begin{subcase}
                 \textsc{Caso 1.1.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que existe alguma premissa $\mathbf{P_\beta}\in\Gamma$ igual a $\beta$. Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa do conjunto $\Gamma$, sabe-se que $\beta\in\Gamma$. Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fa\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
+                    \fb\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
@@ -52,17 +52,17 @@
             \begin{subcase}
                 \textsc{Caso 1.2.}
                 Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação da premissa $\alpha$, sabe-se que $\beta=\alpha$.
-                Deste modo, basta demonstrar que $\Gamma\vdash\alpha\to\alpha$ o que consiste num enfraquecimento do lema \refer{identity}{L}.
+                Deste modo, basta demonstrar que $\Gamma\vdash\alpha\to\alpha$, que consiste num enfraquecimento do lema \refer{identity}{L}.
             \end{subcase}
 
             \begin{case}
                 \textsc{Caso 2.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\beta}\in\mathcal{A}$ que gera $\beta$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\beta}\in\mathcal{A}$ que instancia $\beta$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\beta$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fa\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
+                    \fb\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
                 \end{fitch}
@@ -70,12 +70,12 @@
 
             \begin{case}
                 \textsc{Caso 3.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}=\varphi$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}={\entails\varphi}$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fa\vdash\varphi&$\mathbf{H_1}$\\
+                    \fb\vdash\varphi&$\mathbf{H_1}$\\
                     \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
                     \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\hyperref[MA1]{\mathbf{A_1}}$\\
                     \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$.
@@ -84,19 +84,19 @@
 
             \begin{case}
                 \textsc{Caso 4.} Seja a sentença $\varphi_n=\beta$ gerada pela aplicação da regra da separação a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
-                Assim, pela premissa da indução temos que $\mathbf{H_1}=\alpha\to\varphi_i$ e que $\mathbf{H_2}=\alpha\to\varphi_i\to\varphi_n$.
+                Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma\entails\alpha\to\varphi_i$ e que $\mathbf{H_2}=\Gamma\entails\alpha\to\varphi_i\to\varphi_n$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fa\Gamma\entails\alpha\to\varphi_j&$\mathbf{H_1}$\\
+                    \fb\Gamma\entails\alpha\to\varphi_j&$\mathbf{H_1}$\\
                     \fa\Gamma\entails\alpha\to\varphi_j\to\beta&$\mathbf{H_2}$\\
                     \fa\Gamma\entails(\alpha\to\varphi_j\to\beta)\to(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[MA2]{\mathbf{A_2}}$\\
                     \fa\Gamma\entails(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
-                    \fa\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
+                    \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
                 \end{fitch}
             \end{case}
-            Uma vez provada a propriedade para todos os casos do passo de indução
+            Uma vez provada a propriedade para todos os casos do passo de indução, provamos que o teorema da dedução vale para o sistema $\mathbf{S_4}$.
         \end{proof}
     \end{theorem}
 
@@ -104,18 +104,18 @@
         Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
 
         \begin{proof}
-            Prova por indução fraca sobre o tamanho $n$ do conjunto $\nec\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução.
+            Prova por indução fraca sobre o tamanho $n$ do conjunto $\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução.
 
             \begin{case}
-                \textsc{Caso 1.} Para a base, consideraremos que $\nec\Gamma=\varnothing$ --- ou seja, que possui tamanho $n=0$.
-                Assim, sabemos que $\nec\Gamma\entails\alpha$ e, portanto, que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
-                Pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+                \textsc{Caso 1.} Para a base, consideraremos que $\Gamma=\varnothing$.
+                Assim, sabemos que o conjunto possui tamanho nulo e que $\entails\alpha$. Portanto, sabe-se que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
+                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
             \end{case}
 
             \begin{case}
                 \textsc{Caso 2.} 
-                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\nec\Gamma$ de tamanho $n=k$.
-                Demonstraremos, pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\nec\Gamma$ de tamanho $n=k+1$.
+                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
+                Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
 
                 \footnotesize
                 \begin{fitch}
