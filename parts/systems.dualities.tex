@@ -2,21 +2,21 @@
 
     \babireski{Ver~\cite{Zach} acerca dos axiomas duais e suas derivações.}
 
-    \begin{theorem}
-        $\vdash\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$.
+    % \begin{theorem}
+    %     $\vdash\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$.
 
-        \begin{proof}
-            Pode ser provado pela seguinte sucessão de dedução:
+    %     \begin{proof}
+    %         Pode ser provado pela seguinte sucessão de dedução:
 
-            \begin{fitch}
-                \fa\set{\nec(\alpha\to\beta),\pos\alpha}\vdash\pos\beta\\
-                \fa\set{\nec(\alpha\to\beta)}\vdash\pos\alpha\to\pos\beta\\
-                \fa\vdash\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta\\
-            \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
-        \end{proof}
-    \end{theorem}
+    %         \begin{fitch}
+    %             \fa\set{\nec(\alpha\to\beta),\pos\alpha}\vdash\pos\beta\\
+    %             \fa\set{\nec(\alpha\to\beta)}\vdash\pos\alpha\to\pos\beta\\
+    %             \fa\vdash\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta\\
+    %         \end{fitch}
+    %         \vspace*{-18pt-0.7em}
+    %         \qedhere
+    %     \end{proof}
+    % \end{theorem}
 
     \begin{theorem}
         $\vdash\alpha\to\pos\alpha$.
@@ -56,11 +56,21 @@
 
     Apesar da similaridades com as transformações naturais, deve-se destacar que as noções de computação não podem ser interpretadas simplesmente como necessidade ou possibilidade, uma vez que apresenta propriedades presente em ambas as modalidades. Neste sentido, a modalidade de \emph{laxidade} --- que combina noções de necessidade e possibilidade --- mostra-se uma melhor representação de efeitos computacionais sobre a interpretação programa-prova.
     
-    Ao sistema que comporta a modalidade de laxidade damos o nome de sistema laxo. Este sistema consiste numa extensão do sistema intuicionista com o operador $\lax^1$ e os seguintes axiomas e regras definidos abaixo \citep{Fairtlough}. A sentença $\lax\alpha$ pode ser lida como \emph{laxamente} $\alpha$.
+    Ao sistema que comporta a modalidade de laxidade damos o nome de sistema laxo. Este sistema consiste numa extensão do sistema intuicionista com a adição da modalidade $\lax^1$ definida por~\cite{Fairtlough,Mendler}. A sentença $\lax\alpha$ --- lida como \emph{laxamente} $\alpha$ --- pode ser axiomatizada pelos seguintes esquemas:
     \begin{alignat*}{3}
         &\mathbf{C_1}\quad&&\alpha\to\lax\alpha\\
         &\mathbf{C_2}\quad&&\lax\lax\alpha\to\lax\alpha\\
         &\mathbf{C_3}\quad&&(\alpha\to\beta)\to\lax\alpha\to\lax\beta
     \end{alignat*}
 
-    Continuar.
+    Esse sistema, entretanto, pode ser interpretado modalmente por meio da seguinte tradução \citep{Pfenning}:
+
+    \begin{definition}[$\bullet^+$] A tradução $\bullet^+:\mathcal{L}_\mathbf{M}\to\mathcal{L}_\mathbf{L}$ do sistema $\mathbf{S_4}$ intuicionista ao sistema $\mathbf{L}$ pode ser definida indutivamente da seguinte maneira:
+        \begin{align*}
+            a^+&\coloneq a\\
+            \bot^+&\coloneq\bot\\
+            {(\lax\alpha)}^+&\coloneq\pos\nec\alpha^+\\
+            {(\alpha\to\beta)}^+&\coloneq\nec\alpha^+\to\beta^+
+            \tag*{\qed} 
+        \end{align*}
+    \end{definition}
