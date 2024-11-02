@@ -16,12 +16,15 @@ Conforme~\cite{Beziau} aponta, a \emph{qualidade} e \emph{quantidade} dos elemen
 Ainda, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ a um conjunto de \emph{sentenças proposicionais bem-formadas} --- doravante ocasionalmente chamadas apenas de sentenças. Estas sentenças, neste trabalho representadas por letras gregas em caixa-baixa, podem ser geradas indutivamente a partir de uma assinatura proposicional --- que consiste em um conjunto de letras proposicionais e um conjunto de operadores com suas aridades ---, conforme definido abaixo. Conjuntos de sentenças serão representados por letras gregas em caixa-alta --- salvo $\Sigma$, usado para representar assinaturas proposicionais.
 
 \begin{definition}[Assinatura]
-    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}$ consiste num conjunto de pares $\sequence{\bullet,n}$, onde $\bullet$ consiste em um operador e $n\in\mathbb{N}$ em sua respeitiva aridade.
+    % Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}$ consiste num conjunto de pares $\sequence{\bullet,n}$, onde $\bullet$ consiste em um operador e $n\in\mathbb{N}$ em sua respeitiva aridade.
+    % \qed{}
+
+    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}=\bigcup\limits_{i\in\mathbb{N}}\mathcal{C}_i$ consiste num conjunto de operadores de modo que $\bullet\in\mathcal{C}_n$ se e somente se $\bullet$ possuir aridade $n$.
     \qed{}
 \end{definition}
 
 \begin{notation}
-    Seja $\bullet$ um operador e $n$ uma aridade, $\bullet^n$ denota o par $\sequence{\bullet,n}$.
+    Seja $\mathcal{C}$ um conjunto de operadores e $\bullet\in\mathcal{C}$ um operador. A notação $\bullet^n$ denota que $\bullet\in\mathcal{C}_n$.
 \end{notation}
 
 Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}$ de um sistema --- chamado de \emph{linguagem} --- indutivamente. Nesta definição, primeiramente definimos todas as letras proposicionais e operadores de aridade zero como pertencentes ao conjunto e, em seguida, aplicamos recursivamente sucessões de sentenças de tamanho $n$ a operadores de aridade $n$. Antes disso, entretanto, introduziremos uma notação para sucessões que será usada no decorrer do trabalho.
@@ -31,7 +34,7 @@ Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
         \item$\mathcal{P}\subseteq\mathcal{L}$
         % \item$\text{Se }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}$
-        \item\text{Se }$\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet^n\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+        \item\text{Se }$\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
     \end{enumerate}
 \end{definition}
 

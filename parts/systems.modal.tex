@@ -3,6 +3,10 @@
 
     Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respeitivamente. Intuitivamente, a necessidade representa algo que deve ser verdade em todos os casos, enquanto a possibilidade representa algo que deve ser verdade em algum caso.
 
+    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente. O fundador do modalismo moderno foi~\cite{Lewis}, baseado em sua insatisfação com a implicação material, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
+
+    Primeiramente, definiremos a assinatura proposicional dos sistemas modais, a partir da qual sua linguagem deriva trivialmente.
+
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
         A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, consiste no menor conjunto induzido a partir das seguintes regras:
         \begin{align*}
@@ -53,6 +57,6 @@
     \babireski{Falar aqui sobre como a axiomatização consiste nos esquemas clássicos mais os esquemas modais}. 
 
     Assim como feito para o sistema intuicionista, nomearemos os esquemas e regras acima de modo a facilitar a comunicação.
-    Aos axiomas e regras que correspondem aos axiomas e regras intuicionistas receberão os mesmos nomes. Ademais, chamaremos $\mathbf{B_1}$ de axiomas da normalidade, $\mathbf{B_2}$ de axiomas da reflexividade e $\mathbf{B_3}$ de axiomas da transitividade.\footnote{Em analogia às condições relacionais impostas nos quadros.} Nomearemos $\mathbf{A_\neg}$ como chamaremos de axiomas da eliminação da negação e a $\mathbf{R_2}$ como regra da necessitação.
+    Aos axiomas e regras que correspondem aos axiomas e regras intuicionistas receberão os mesmos nomes. Ademais, chamaremos $\mathbf{B_1}$ de axiomas da normalidade, $\mathbf{B_2}$ de axiomas da reflexividade e $\mathbf{B_3}$ de axiomas da transitividade.\footnote{Em analogia às condições relacionais impostas nos enquadramentos.} Nomearemos $\mathbf{A_\neg}$ como chamaremos de axiomas da eliminação da negação e a $\mathbf{R_2}$ como regra da necessitação.
 
-    A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. Ao decorrer do texto, ocasionalmente chamaremos $\mathbf{R_1}$ de \emph{regra da separação} e $\mathbf{R_2}$ de \emph{regra da necessitação}.
+    A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. Ao decorrer do texto, ocasionalmente chamaremos $\mathbf{R_1}$ de \emph{regra da separação} e $\mathbf{R_2}$ de \emph{regra da necessitação}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}
