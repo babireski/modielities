@@ -1,6 +1,18 @@
 \chapter{Fundamentação}
 
+Nesta parte do trabalho, serão apresentadas definições gerais que fundamentarão as definições mais estritas que serão apresentadas futuramente. Notadamente, fundamentaremos as noções de sistemas e traduções. Ademais, discorreremos acerca da noção de provadores, que serão usados para certificar as provas apresentadas posteriormente. Antes disso, entretanto, introduziremos duas notações que serão usadas copiosamente, uma para o conjunto das partes e outra para sucessões.
+
+\begin{notation}
+    Sendo $A$ um conjunto, $\wp(A)$ denota o conjunto das partes de $A$.
+\end{notation}
+
+\begin{notation}
+    Sendo $i,n\in\mathbb{N}^+$, $\sequence{a_i\mid i\leq n}$ denota uma sucessão de $n$ elementos de modo que o elemento $a_i$ encontra-se na posição $i$.
+\end{notation}
+
 \section{Sistemas}
+
+Sistemas lógicos buscam formalizar e sistematizar o processo de razoamento. Estudos acerca disso datam da antiguidade, dentre os quais se destaca o trabalho de~\cite{Aristotle}. Considera-se que os estudos modernos neste campo foram fundados por~\cite{Frege} e continuados por~\cite{Russel-A,Russel-B,Russel-C}.
 
 Sistemas podem ser definidos tanto sobre fechos $C:\wp(\mathcal{L})\to\wp(\mathcal{L})$ quanto sobre relações $\entails\: :\wp(\mathcal{L})\times\mathcal{L}$. Ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in C(\Gamma)$. Desde modo, quaisquer propriedades provadas para um dos conceitos pode ser trivialmente provada para o outro.
 
