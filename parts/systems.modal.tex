@@ -1,21 +1,14 @@
 \section{Modalismo}
     \babireski{\cite{Blackburn} traz uma visão da evolução dos sistemas modais.}
 
-    Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respeitivamente. Intuitivamente, a necessidade representa algo que deve ser verdade em todos os casos, enquanto a possibilidade representa algo que deve ser verdade em algum caso.
+    Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respeitivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso.
 
-    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente. O fundador do modalismo moderno foi~\cite{Lewis}, baseado em sua insatisfação com a implicação material, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
+    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente. O fundador do modalismo moderno foi~\cite{Lewis}, motivado pela sua insatisfação com a implicação material, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
 
     Primeiramente, definiremos a assinatura proposicional dos sistemas modais, a partir da qual sua linguagem deriva trivialmente.
 
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
-        A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, consiste no menor conjunto induzido a partir das seguintes regras:
-        \begin{align*}
-            &\bot\in\mathcal{L}_\mathbf{M} \\
-            &\mathcal{P}\subseteq\mathcal{L}_\mathbf{M} \\
-            &\alpha\in\mathcal{L}_\mathbf{M}\Rightarrow\nec\alpha\in\mathcal{L}_\mathbf{M} \\
-            &\alpha,\beta\in\mathcal{L}_\mathbf{M}\Rightarrow\alpha\circ\beta\in\mathcal{L}_\mathbf{M}\text{, para }\circ\in\set{\wedge,\vee,\to}\text{.}
-            \tag*{\qed}
-        \end{align*}
+        A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{M}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{M}}$, onde $\mathcal{C}_\mathbf{M}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
     \end{definition}
 
     \begin{notation}
@@ -24,7 +17,7 @@
             \top&\coloneqq\bot\to\bot\\
             \neg\alpha&\coloneqq\alpha\to\bot\\
             \pos\alpha&\coloneqq\neg\nec\neg\alpha\\
-            \alpha\fishhook\beta&\coloneqq\nec(\alpha\to\beta)\\
+            \alpha\strictif\beta&\coloneqq\nec(\alpha\to\beta)\\
             \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
         \end{align*}
     \end{notation}

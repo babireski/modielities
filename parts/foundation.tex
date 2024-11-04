@@ -28,25 +28,25 @@ Conforme~\cite{Beziau} aponta, a \emph{qualidade} e \emph{quantidade} dos elemen
 Ainda, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ a um conjunto de \emph{sentenças proposicionais bem-formadas} --- doravante ocasionalmente chamadas apenas de sentenças. Estas sentenças, neste trabalho representadas por letras gregas em caixa-baixa, podem ser geradas indutivamente a partir de uma assinatura proposicional --- que consiste em um conjunto de letras proposicionais e um conjunto de operadores com suas aridades ---, conforme definido abaixo. Conjuntos de sentenças serão representados por letras gregas em caixa-alta --- salvo $\Sigma$, usado para representar assinaturas proposicionais.
 
 \begin{definition}[Assinatura]
-    % Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}$ consiste num conjunto de pares $\sequence{\bullet,n}$, onde $\bullet$ consiste em um operador e $n\in\mathbb{N}$ em sua respeitiva aridade.
-    % \qed{}
-
-    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ onde $\mathcal{P}$ consiste num conjunto letras proposicionais e $\mathcal{C}=\bigcup\limits_{i\in\mathbb{N}}\mathcal{C}_i$ consiste num conjunto de operadores de modo que $\bullet\in\mathcal{C}_n$ se e somente se $\bullet$ possuir aridade $n$.
+    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\bullet}\in\mathcal{C}_n$ se e somente se $\mathalpha{\bullet}$ possuir aridade $n$.
     \qed{}
 \end{definition}
 
 \begin{notation}
-    Seja $\mathcal{C}$ um conjunto de operadores e $\bullet\in\mathcal{C}$ um operador. A notação $\bullet^n$ denota que $\bullet\in\mathcal{C}_n$.
+    Seja $\mathcal{C}$ um conjunto de operadores, $\mathalpha{\bullet}^n$ denota um operador $\mathalpha{\bullet}\in\mathcal{C}_n$.
 \end{notation}
 
-Tendo-se a uma assinatura proposicional, podemos definir o conjunto $\mathcal{L}$ de um sistema --- chamado de \emph{linguagem} --- indutivamente. Nesta definição, primeiramente definimos todas as letras proposicionais e operadores de aridade zero como pertencentes ao conjunto e, em seguida, aplicamos recursivamente sucessões de sentenças de tamanho $n$ a operadores de aridade $n$. Antes disso, entretanto, introduziremos uma notação para sucessões que será usada no decorrer do trabalho.
+Podemos interpretar o conjunto de letras $\mathcal{P}$ como blocos que poderão ser ligados pelos elementos do conjunto de operadores $\mathcal{C}$ de modo a formar sentenças.
+Neste sentido, os operadores $\mathalpha{\bullet}\in\mathcal{C}_0$ são degenerados por não gerarem ligações, motivo pelo qual os chamaremos de \emph{constantes}.
+Nota-se que uma assinatura constitui um elemento suficiente para definirmos indutivamente a linguagem --- ou seja, o conjunto de sentenças --- de um sistema, conforme definido abaixo.
+Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
 
 \begin{definition}[Linguagem]
     Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
         \item$\mathcal{P}\subseteq\mathcal{L}$
         % \item$\text{Se }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}$
-        \item\text{Se }$\bullet^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+        \item\text{Se }$\mathalpha{\bullet}^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
     \end{enumerate}
 \end{definition}
 
