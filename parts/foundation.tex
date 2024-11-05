@@ -3,23 +3,21 @@
 Nesta parte do trabalho, serão apresentadas definições gerais que fundamentarão as definições mais estritas que serão apresentadas futuramente. Notadamente, fundamentaremos as noções de sistemas e traduções. Ademais, discorreremos acerca da noção de provadores, que serão usados para certificar as provas apresentadas posteriormente. Antes disso, entretanto, introduziremos duas notações que serão usadas copiosamente, uma para o conjunto das partes e outra para sucessões.
 
 \begin{notation}
-    Sendo $A$ um conjunto, $\wp(A)$ denota o conjunto das partes de $A$.
+    Seja $A$ um conjunto, $\wp(A)$ denota o conjunto das partes de $A$.
 \end{notation}
 
 \begin{notation}
-    Sendo $i,n\in\mathbb{N}^+$, $\sequence{a_i\mid i\leq n}$ denota uma sucessão de $n$ elementos de modo que o elemento $a_i$ encontra-se na posição $i$.
+    Sejam $i,n\in\mathbb{N}$, $\sequence{a_i\mid i\leq n}$ denota uma sucessão de $n$ elementos de modo que o elemento $a_i$ encontra-se na posição $i$.
 \end{notation}
 
 \section{Sistemas}
 
-Sistemas lógicos buscam formalizar e sistematizar o processo de razoamento. Estudos acerca disso datam da antiguidade, dentre os quais se destaca o trabalho de~\cite{Aristotle}. Considera-se que os estudos modernos neste campo foram fundados por~\cite{Frege} e continuados por~\cite{Russel-A,Russel-B,Russel-C}.
+Sistemas de dedução buscam formalizar e sistematizar o processo de razoamento. Estudos acerca disso datam da antiguidade, dentre os quais destaca-se~\cite{Aristotle}. Considera-se que os estudos modernos neste campo foram, dentre outras pessoas, fundados por~\cite{Frege} e continuados por~\cite{Russel-A,Russel-B,Russel-C}. Estas investigações --- bem como outras --- levaram ao desenvolvimento do que hoje se conhece por sistema padrão. Posteriormente a isso, viu-se o surgimento de diversos sistemas não-padrões, fato que --- conforme~\cite{Beziau-B} --- justifica uma conceituação de sistema de dedução, apresentada nesta seção.
 
-Sistemas podem ser definidos tanto sobre fechos $C:\wp(\mathcal{L})\to\wp(\mathcal{L})$ quanto sobre relações $\entails\: :\wp(\mathcal{L})\times\mathcal{L}$. Ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in C(\Gamma)$. Desde modo, quaisquer propriedades provadas para um dos conceitos pode ser trivialmente provada para o outro.
-
-Conforme visto, as noções de sistema variam entre diferentes autores e permanece um campo em aberto. Para as necessidades deste trabalho, usaremos a definição proposta por~\cite{Beziau}, uma vez que se trata de uma definição simples e que, portanto, não traz elementos irrelevantes aos intuitos deste trabalho.
+Ainda segundo~\cite{Beziau-B}, os primeiros desenvolvimentos neste sentido foram feitos por~\cite{Tarski}, que define o conceito de dedução sobre um operador de fecho $C\mathrel{:}\wp(\mathcal{L})\to\wp(\mathcal{L})$, sendo $\mathcal{L}$ um conjunto qualquer. Neste trabalho entretanto usaremos a definição proposta por~\cite{Beziau} baseada numa relação de dedução $\mathalpha{\vdash}\mathrel{:}\wp(\mathcal{L})\times\mathcal{L}$, uma vez que, por sua simplicidade, não traz elementos irrelevantes aos intuitos deste. Cabe destacar, conforme apontam~\cite{Font}, ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in C(\Gamma)$.\footnote{Destaca-se, entretanto, que a definição de~\cite{Tarski} requer a satisfação de postulados não requeridos por~\cite{Beziau}, sendo portanto menos geralista.}
 
 \begin{definition}[Sistema]
-    Um sistema consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$, onde $\mathcal{L}$ consiste em um conjunto e $\, \vdash \: : \wp(\mathcal{L}) \times \mathcal{L}$ em uma relação sobre o produto cartesiano do conjunto das partes de $\mathcal{L}$ e o conjunto $\mathcal{L}$ em si, sem demais condições.
+    Um sistema de dedução consiste num par $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$, onde $\mathcal{L}$ consiste em um conjunto e $\, \vdash \: : \wp(\mathcal{L}) \times \mathcal{L}$ em uma relação sobre o produto cartesiano do conjunto das partes de $\mathcal{L}$ e o conjunto $\mathcal{L}$, sem demais condições.
     \qed{}
 \end{definition}
 
@@ -70,7 +68,7 @@ Definindo-se profundidade, encerramos as definições desta fundamentação que 
 \end{definition}
 
 \begin{definition}[Regra]
-    Uma regra de dedução consiste num par $\sequence{\Gamma, \alpha}$, sendo $\Gamma$ um conjunto de sentenças chamadas de \textit{premissas} e $\alpha$ uma sentença chamada \textit{conclusão}.
+    Uma regra de dedução consiste num par $\sequence{A, a}$, sendo $A$ um conjunto de asserções chamadas de \textit{premissas} e $a$ uma asserção chamada \textit{conclusão}.
     \qed{}
 \end{definition}
 
