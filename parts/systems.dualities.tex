@@ -23,6 +23,7 @@
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
 
+            \footnotesize
             \begin{fitch}
                 \fa\entails\nec\neg\alpha\to\neg\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\entails(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\pos\alpha&$\hyperref[contrapositive]{\mathbf{L_3}}$\\
@@ -34,8 +35,6 @@
                 \fa\entails(\alpha\to\neg\neg\alpha)\to(\alpha\to\pos\alpha)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,6}$\\
                 \fa\entails\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$.
             \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
         \end{proof}
     \end{theorem}
 
@@ -44,13 +43,11 @@
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
 
+            \footnotesize
             \begin{fitch}
-                
                 \fa\entails\neg\nec\alpha\to\neg\nec\pos\alpha\\
                 \fa\entails\pos\pos\alpha\to\pos\alpha\\
             \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
         \end{proof}
     \end{theorem}
 
@@ -63,14 +60,14 @@
         &\mathbf{C_3}\quad&&(\alpha\to\beta)\to\lax\alpha\to\lax\beta
     \end{alignat*}
 
-    Esse sistema, entretanto, pode ser interpretado modalmente por meio da seguinte tradução \citep{Pfenning}:
+~\cite{Benton} e~\cite{Pfenning} notam a capacidade deste sistema de representar a metalinguagem de computação apresentada por~\cite{Moggi}.
+    Ainda,~\cite{Pfenning} apresenta a seguinte tradução desse sistema a um sistema $\mathbf{S_4}$ intuicionista:
 
     \begin{definition}[$\bullet^+$] A tradução $\bullet^+:\mathcal{L}_\mathbf{M}\to\mathcal{L}_\mathbf{L}$ do sistema $\mathbf{S_4}$ intuicionista ao sistema $\mathbf{L}$ pode ser definida indutivamente da seguinte maneira:
         \begin{align*}
-            a^+&\coloneq a\\
-            \bot^+&\coloneq\bot\\
-            {(\lax\alpha)}^+&\coloneq\pos\nec\alpha^+\\
-            {(\alpha\to\beta)}^+&\coloneq\nec\alpha^+\to\beta^+
+            a^+&\coloneqq a\\
+            {(\lax\alpha)}^+&\coloneqq\pos\nec\alpha^+\\
+            {(\alpha\to\beta)}^+&\coloneqq\nec\alpha^+\to\beta^+
             \tag*{\qed} 
         \end{align*}
     \end{definition}
