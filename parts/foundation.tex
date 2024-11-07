@@ -21,7 +21,7 @@ Ainda segundo~\cite{Beziau-B}, os primeiros desenvolvimentos neste sentido foram
     \qed{}
 \end{definition}
 
-Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathbf{L}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Estas notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. A cada uma dessas proposições daremos o nome de \emph{sentenças} e ao par formado por letras e operadores o nome de \emph{assinatura}, conforme abaixo.
+Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathbf{L}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. Ao par formado por letras e operadores o daremos nome de \emph{assinatura}, conforme abaixo.
 
 \begin{definition}[Assinatura]
     Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\bullet}\in\mathcal{C}_n$ se e somente se $\mathalpha{\bullet}$ possuir aridade $n$.
@@ -35,7 +35,7 @@ Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sist
 Podemos interpretar os conjuntos $\mathcal{P}$ e $\mathcal{C}$ de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ como contrutores de sentenças.
 Neste sentido, o conjunto $\mathcal{C}_0$ assemelha-se mais ao conjunto $\mathcal{P}$, uma vez que seus elementos --- ditos \emph{constantes} --- não geram sentenças maiores partindo de sentenças menores.
 Nota-se que uma assinatura constitui um elemento suficiente para definirmos indutivamente a linguagem de um sistema, conforme definido abaixo de maneira similar a~\cite{Franks}.
-Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
+Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos o conjunto de letras $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
 
 \begin{definition}[Linguagem]
     Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
@@ -46,14 +46,15 @@ Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usa
     \end{enumerate}
 \end{definition}
 
-Tendo definidas as noções de assinatura e sentença, pode-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da contrução da sentença. A definição abaixo provida consiste numa generalização da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para provar propriedades por meio de indução sobre esta propriedade.
+Neste trabalho, representaremos sentenças por letras gregas em caixa-baixa e conjuntos de sentenças por letras gregas em caixa-alta.\footnote{Desconsiderando-se o $\Sigma$, usado para representar assinaturas.}
+Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da construção da dada sentença. A definição provida abaixo consiste numa generalização para quaisquer aridades da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para fazer demonstrações por meio provas indutivas sobre esta propriedade.
 
 \begin{definition}[Profundidade]
-    Seja $\mathbf{A} = \sequence{\mathcal{L}, \vdash}$ um sistema, $\alpha\in\mathcal{L}$ uma sentença e $\bullet^n$ um operador de aridade $n\in\mathbb{N}$ que consta na assinatura que define $\mathcal{L}$. Pode-se definir a profundidade $|\alpha|$ de $\alpha$ recursivamente da seguinte maneira:
+    Seja $\mathbf{A} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma sentença $\alpha\in\mathcal{L}$, uma letra $a\in\mathcal{P}$, um operador ${\bullet}\in\mathcal{C}$ e uma aridade $n>0$, define-se a profundidade $|\alpha|$ da sentença $\alpha$ indutivamente da seguinte maneira:
     \begin{align*}
         |a|&\coloneqq 0\\
-        |\bullet^0|&\coloneqq 0\\
-        |\bullet^n\sequence{\varphi_i\mid i\leq n}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
+        |{\bullet^0}|&\coloneqq 0\\
+        |{\bullet^n\sequence{\varphi_i\mid i\leq n}}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
         \tag*{\qed} 
     \end{align*}
 \end{definition}
