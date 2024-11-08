@@ -21,7 +21,7 @@ Ainda segundo~\cite{Beziau-B}, os primeiros desenvolvimentos neste sentido foram
     \qed{}
 \end{definition}
 
-Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathbf{L}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. Ao par formado por letras e operadores o daremos nome de \emph{assinatura}, conforme abaixo.
+Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathbf{L}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. Ao par formado por letras e operadores daremos o nome \emph{assinatura}, conforme abaixo.
 
 \begin{definition}[Assinatura]
     Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\bullet}\in\mathcal{C}_n$ se e somente se $\mathalpha{\bullet}$ possuir aridade $n$.
@@ -38,10 +38,9 @@ Nota-se que uma assinatura constitui um elemento suficiente para definirmos indu
 Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos o conjunto de letras $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
 
 \begin{definition}[Linguagem]
-    Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
+    Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ induzida a partir de $\Sigma$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
         \item$\mathcal{P}\subseteq\mathcal{L}$
-        % \item$\text{Se }\bullet^0\in\mathcal{C}\text{, então }\bullet^0\in\mathcal{L}$
         \item\text{Se }$\mathalpha{\bullet}^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
     \end{enumerate}
 \end{definition}
@@ -50,7 +49,7 @@ Neste trabalho, representaremos sentenças por letras gregas em caixa-baixa e co
 Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da construção da dada sentença. A definição provida abaixo consiste numa generalização para quaisquer aridades da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para fazer demonstrações por meio provas indutivas sobre esta propriedade.
 
 \begin{definition}[Profundidade]
-    Seja $\mathbf{A} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma sentença $\alpha\in\mathcal{L}$, uma letra $a\in\mathcal{P}$, um operador ${\bullet}\in\mathcal{C}$ e uma aridade $n>0$, define-se a profundidade $|\alpha|$ da sentença $\alpha$ indutivamente da seguinte maneira:
+    Seja $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma proposição $a\in\mathcal{P}$, um operador ${\bullet}\in\mathcal{C}$ e uma aridade $n>0$, definimos a profundidade $|\alpha|$ de uma sentença $\alpha\in\mathcal{L}$ indutivamente da seguinte maneira:
     \begin{align*}
         |a|&\coloneqq 0\\
         |{\bullet^0}|&\coloneqq 0\\
@@ -59,9 +58,7 @@ Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noç
     \end{align*}
 \end{definition}
 
-Definindo-se profundidade, encerramos as definições desta fundamentação que dizem respeito ao primeiro elemento de um sistema: a linguagem. Agora as definições fornecidas dirão respeito a relações de derivação. Neste trabalho, as relações de derivação abordadas serão baseadas em axiomatizações, ou seja, em pares de esquemas de axiomas e regras de dedução.
-
-Deste modo, a relação $\mathalpha{\vdash}$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação}\footnote{Sendo esta denotada por $\mathalpha{\vDash}$.} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada na definição de tradução impede que esta seja feita sobre relações de satisfação, como veremos futuramente.
+Com isso, encerram-se as definições relacionadas a linguagens de sistemas de dedução. Agora, apresentaremos definições relacionadas a relações de dedução, que gozam da mesma generalidade dada a liguagens. Deste modo, a relação $\mathalpha{\vdash}$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação}\footnote{Sendo esta denotada por $\mathalpha{\vDash}$.} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada na definição de tradução impede que esta seja feita sobre relações de satisfação, conforme veremos com mais detalhes futuramente.
 
 \begin{definition}[Esquema]
     Um esquema consiste em um padrão com metavariaveis que permitem representar um conjunto, geralmente infinito, de sentenças.
@@ -117,3 +114,5 @@ A primeira tradução entre dois sistemas conhecida na literatura foi definida p
 \end{definition}
 
 \section{Provadores}
+
+A primeira prova de destaque a ser realizada com o   uso de computadores foi a do teorema das quatro cores, feita por~\cite{Appel}, motivado pela grande quantidade de casos a serem analisados. Conforme~\cite{Wilson} afirma, esta prova foi por uns recebida com entusiasmo e por outros, devido ao uso de computadores, com cetistismo e desapontamento.
