@@ -2,17 +2,17 @@
 
 Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalho equivalem --- ou seja, são isomorfas --- na forma $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$. Nesta seção, provaremos este isomorfismo que, não somente constitui puramente um resultado de interesse, como permite tornar a prova de propriedades de uma tradução triviais caso tais propriedades valham para a outra tradução.
 
-\begin{theorem}
+\begin{theorem}\label{isomorphism}
     $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
 
     \begin{proof}
-        Prova por indução forte sobre a profundidade de $\alpha$.
+        Prova por indução forte sobre a profundidade de $\alpha$ \citep{Troelstra}.
         Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n<k$.
         Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
 
         \begin{case}
             \textsc{Caso 1.}
-            Se a sentença $\alpha$ for uma proposição $a$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\medsquare=\nec a$ pelas definições das traduções.
+            Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\medsquare=\nec a$ pelas definições das traduções.
             Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
             Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
         \end{case}
