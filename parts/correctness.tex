@@ -15,11 +15,11 @@
 
         \begin{case}
             \textsc{Caso 2.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que gera $\alpha$. Deste modo, devemos demonstrar que para cada esquema $\mathbf{A}\in\mathcal{A}$, pode-se derivar $\Gamma^\medsquare\entails_\mathbf{4}\mathbf{A}^\medsquare$.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que gera $\alpha$. Deste modo, devemos demonstrar que para cada esquema $\mathbf{A}\in\mathcal{A}$, pode-se derivar $\Gamma^\medsquare\entails_\mathbf{4}\mathbf{A}^\medsquare$. Nos casos abaixo, usaremos ocasionalmente a implicação estrita de modo a diminuir o espaço ocupado pelas provas.
         \end{case}
 
             \begin{subcase}
-                \textsc{Caso 2.1} ($\mathbf{A_1}$).
+                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_1}$, sabemos que $\alpha=\alpha\to\beta\to\alpha$ e que $\alpha^\medsquare=\alpha\strictif\beta\strictif\alpha$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\alpha\strictif\beta\strictif\alpha$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
                     \fa\Gamma^\medsquare\cup\set{\nec{}a,\nec{}b}\entails\nec{}a&$\mathbf{P_1}$\\
@@ -29,7 +29,7 @@
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.2} ($\mathbf{A_2}$).
+                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_2}$, sabemos que $\alpha=(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$ e que $\alpha^\medsquare=(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
                     \fa\Gamma^\medsquare\cup\set{\nec{a}\strictif\nec{b}\strictif\nec{c},\nec{a}\strictif\nec{b},\nec{a}}\entails\nec{}a\\
@@ -46,7 +46,7 @@
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.3} ($\mathbf{A_3}$).
+                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_3}$, sabemos que $\alpha=\alpha\to\beta\to\alpha\wedge\beta$ e que $\alpha^\medsquare=\alpha\strictif\beta\strictif\alpha\wedge\beta$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\alpha\strictif\beta\strictif\alpha\wedge\beta$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
                     \fa\Gamma^\medsquare\cup\set{\nec{a},\nec{b}}\entails\nec{a}\\
@@ -61,43 +61,43 @@
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.4} ($\mathbf{A_4}$).
+                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_4}$, sabemos que $\alpha=\alpha\wedge\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha\wedge\beta\to\alpha)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\alpha)$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma^\medsquare\entails\nec{a}\wedge\nec{b}\to\nec{a}&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\medsquare\entails\nec{a}\wedge\nec{b}\strictif\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\alpha\wedge\beta\to\alpha&$\hyperref[MA4]{\mathbf{A_4}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.5} ($\mathbf{A_5}$).
+                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_5}$, sabemos que $\alpha=\alpha\wedge\beta\to\beta$ e que $\alpha^\medsquare=\nec(\alpha\wedge\beta\to\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\beta)$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma^\medsquare\entails\nec{a}\wedge\nec{b}\to\nec{b}&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\medsquare\entails\nec{a}\wedge\nec{b}\strictif\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\alpha\wedge\beta\to\beta&$\hyperref[MA5]{\mathbf{A_5}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.6} ($\mathbf{A_6}$).
+                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_6}$, sabemos que $\alpha=\alpha\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\alpha\to\alpha\vee\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\to\alpha\vee\beta)$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma^\medsquare\entails\nec{a}\to\nec{a}\vee\nec{b}&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\medsquare\entails\nec{a}\strictif\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\alpha\to\alpha\vee\beta&$\hyperref[MA6]{\mathbf{A_6}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\alpha\to\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.7} ($\mathbf{A_7}$).
+                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_7}$, sabemos que $\alpha=\beta\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\beta\to\alpha\vee\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\beta\to\alpha\vee\beta)$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma^\medsquare\entails\nec{b}\to\nec{a}\vee\nec{b}&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\medsquare\entails\nec{b}\strictif\nec{a}\vee\nec{b}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\beta\to\alpha\vee\beta&$\hyperref[MA7]{\mathbf{A_7}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\beta\to\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.8} ($\mathbf{A_8}$).
+                \textsc{Caso 2.8.} ($\mathbf{A_8}$).
                 
                 \footnotesize
                 \begin{fitch}
@@ -118,11 +118,11 @@
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.9} ($\mathbf{A_\bot}$).
+                \textsc{Caso 2.9.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_{\bot}}$, sabemos que $\alpha=\bot\to\alpha$ e que $\alpha^\medsquare=\nec(\bot\to\alpha)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\bot\to\alpha)$ pela seguinte sucessão de dedução:
 
                 \begin{fitch}
-                    \fa\Gamma^\medsquare\entails\bot\to\nec{a}&\refer{explosion}{L}\\
-                    \fa\Gamma^\medsquare\entails\bot\strictif\nec{a}&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
+                    \fa\Gamma^\medsquare\entails\bot\to\alpha&\refer{explosion}{L}\\
+                    \fa\Gamma^\medsquare\entails\nec(\bot\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
                 \end{fitch}
             \end{subcase}
 

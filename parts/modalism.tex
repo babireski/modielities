@@ -25,6 +25,8 @@
         $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_\mathbf{M})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
     \end{notation}
 
+    Definição abaixo segundo~\cite{Troelstra}.
+
     \begin{definition}\label{m-axioms}
         A axiomatização do sistema modal consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat}{3}
@@ -40,6 +42,7 @@
             &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\\
             &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\\
             &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\\
+            &\mathbf{R_E}\quad&&\text{Se }\Gamma\entails\alpha\text{, então }\Gamma\cup\Delta\entails\alpha\\
             &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\\
             &\mathbf{R_2}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
         \end{alignat}   

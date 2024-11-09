@@ -13,6 +13,8 @@
         \end{align*}
     \end{notation}
 
+    Definição abaixo segundo~\cite{Troelstra}.
+
     \begin{definition}
         A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1}}$, definidos abaixo:
         \begin{alignat*}{3}
@@ -25,6 +27,7 @@
             & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
             & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
             & \mathbf{A_\bot}\quad && \bot\to\alpha \\
+            & \mathbf{R_E}\quad && \text{Se }\Gamma\entails\alpha\text{, então }\Gamma\cup\Delta\entails\alpha\\
             & \mathbf{R_1}\quad && \text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\text{.} & \tag*{\qed}
         \end{alignat*}   
     \end{definition}

@@ -60,27 +60,22 @@ Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noç
 
 Com isso, encerram-se as definições relacionadas a linguagens de sistemas de dedução. Agora, apresentaremos definições relacionadas a relações de dedução, que gozam da mesma generalidade dada a liguagens. Deste modo, a relação $\mathalpha{\vdash}$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação}\footnote{Sendo esta denotada por $\mathalpha{\vDash}$.} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada na definição de tradução impede que esta seja feita sobre relações de satisfação, conforme veremos com mais detalhes futuramente.
 
-\begin{definition}[Esquema]
-    Um esquema consiste em um padrão com metavariaveis que permitem representar um conjunto, geralmente infinito, de sentenças.
-    \qed{}
-\end{definition}
-
-\begin{definition}[Regra]
-    Uma regra de dedução consiste num par $\sequence{A, a}$, sendo $A$ um conjunto de asserções chamadas de \textit{premissas} e $a$ uma asserção chamada \textit{conclusão}.
-    \qed{}
-\end{definition}
+Neste trabalho, definiremos a relação de dedução baseada em uma axiomatização, que consiste em um par composto por um conjunto de axiomas ou esquemas de axiomas e por um conjunto de regras de derivação. Baseando-se na abordagem de~\cite{Troelstra}, preferiremos esquemas de axiomas a axiomas.
+Ainda, seguiremos uma abordagem hilbertiana de axiomatização, que se destaca por conter um conjunto pequeno de regras de dedução que nunca descartam premissas~\citep{Troelstra}, com especificidades definidas abaixo.
 
 \begin{definition}[Axiomatização]
-    Um sistema de Hilbert para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas de axiomas e $\mathcal{R}_0\subseteq\mathcal{R}$ o conjunto de regras de dedução abaixo.
+    Uma axiomatização para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas de axiomas e $\mathcal{R}_0\subseteq\mathcal{R}$ o conjunto de regras de dedução abaixo.
     \begin{alignat}{3}
-        &\mathbf{A}\quad&&\text{Se }\alpha\in\mathcal{A}\text{, então }\Gamma\entails\alpha\tag*{}\\
-        &\mathbf{P}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha\tag*{}\\
-        &\mathbf{E}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\alpha.\tag*{\qed}
+        &\mathbf{A_\bullet}\quad&&\text{Se }\alpha\in\mathbf{A_\bullet}\text{, então }\Gamma\entails\alpha\tag*{}\\
+        &\mathbf{R_P}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha.\tag*{\qed}
     \end{alignat}
 \end{definition}
 
+Uma vez definida o conceito de axiomatização podemos, finalmente, definir a relação de dedução.
+
 \begin{definition}[Dedução]
-    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão de sentenças $\sequence{\varphi_i\mid 1 \leq i\leq n}$ de modo que $\varphi_n=\alpha$ e cada sentença $\varphi_i$ foi gerada a partir da aplicação de uma regra a axiomas, premissas ou sentenças anteriores.
+    Seja um sistema $\mathbf{L} = \sequence{\mathcal{L},{\vdash}}$ com axiomatização feita pelo par $\mathcal{H} = \sequence{\mathcal{A},\mathcal{R}}$,  um conjunto de sentenças $\Gamma\subseteq\mathcal{L}$ e uma sentença $\alpha\in\mathcal{L}$.
+    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ tenha sido gerada a partir da aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.
     \qed{}
 \end{definition}
 
@@ -105,7 +100,7 @@ A primeira tradução entre dois sistemas conhecida na literatura foi definida p
 \begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
     \begin{align*}
         p^\neg&\coloneqq\neg\neg p\\
-        \bot^\neg&\coloneqq\neg\neg\bot\\
+        \bot^\neg&\coloneqq\bot\\
         {(\varphi\wedge\psi)}^\neg&\coloneqq\neg\neg(\varphi^\neg \wedge \psi^\neg)\\
         {(\varphi\vee\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \vee \psi^\neg)\\
         {(\varphi\to\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \to \psi^\neg)
@@ -117,7 +112,7 @@ A primeira tradução entre dois sistemas conhecida na literatura foi definida p
 
 A primeira prova de destaque a ser realizada com grande uso de computadores foi a do teorema das quatro cores\footnote{Que afirma que \emph{qualquer mapa planar tem uma quatro-coloração}.}, feita por~\cite{Appel}, motivado pela grande quantidade de casos a serem analisados.
 Conforme~\cite{Wilson} afirma, esta prova foi por uns recebida com entusiasmo e por outros, devido ao uso de computadores, com cetistismo e desapontamento.
-Dentre aqueles que compartilharam destas visões opositoras, destaca-se de~\cite{Tymoczko}.
-Ainda segundo~\cite{Wilson}, a prova tornou-se mais aceita com o passar do tempo e foi, posteriormente, formalizada em um provador de teoremas por~\cite{Gonthier}.
+Dentre aqueles que compartilharam destas visões opositoras, destaca-se~\cite{Tymoczko}.
+Ainda segundo~\cite{Wilson}, o teorema tornou-se mais aceito com o passar do tempo e foi, posteriormente, formalizado em um provador de teoremas por~\cite{Gonthier}.
 
-Dentre provadores de teoremas, podemos destacar provadores automados e provadores interativos.
+Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automados} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem~(\babireski{Citação}). Formalizaremos das provas apresentadas neste trabalho no provador de teoremas interativo \texttt{Coq}.
