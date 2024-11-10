@@ -1,0 +1,54 @@
+\documentclass[12pt]{report}
+
+% Package imports
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epigraph}
+\usepackage{ragged2e}
+\usepackage[round]{natbib}
+\usepackage[french, brazil]{babel}
+\usepackage{styles/cases}
+\usepackage{styles/fitch}
+\usepackage{styles/functions}
+\usepackage{styles/modalities}
+\usepackage{enumitem}
+\usepackage[bottom]{footmisc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=1.2in]{geometry}
+\usepackage{dirtytalk}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+% Math font settings
+\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+
+% Command definitions
+\newcommand{\entails}{\mathrel{\vdash}}
+\newcommand{\point}{\mathpunct{.}}
+
+% Theorem styles
+\newtheorem*{notation}{Notação}
+\newtheorem{definition}{Definição}
+\newtheorem{lemma}{Lema}
+\newtheorem{theorem}{Teorema}
+
+% Chapter title formatting
+\titleformat{\chapter}[block]
+  {\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}
+\titlespacing*{\chapter}{0pt}{-19pt}{20pt}
+
+% Hyperref settings
+\hypersetup{
+    pdftitle={Uma formalização da interpretação modal do sistema intuicionista},
+    pdfauthor={Elian Babireski},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue
+}
+
+% Spacing settings
+\onehalfspacing{}

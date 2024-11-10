@@ -1,60 +1,4 @@
-\documentclass[12pt]{report}
-
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{epigraph}
-\usepackage{ragged2e}
-\usepackage[round]{natbib}
-\usepackage[french, brazil]{babel}
-\usepackage{styles/cases}
-\usepackage{styles/fitch}
-\usepackage{styles/functions}
-\usepackage{styles/modalities}
-\usepackage{enumitem} % Para mudar a itemização
-\usepackage[bottom]{footmisc}
-
-\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
-
-\usepackage[T1]{fontenc}
-
-\usepackage[a4paper, margin=1.2in]{geometry}
-
-\usepackage[
-    left = \flqq{},% 
-    right = \frqq{},% 
-    leftsub = \flq{},% 
-    rightsub = \frq{} %
-]{dirtytalk}
-
-\newcommand{\entails}{\mathrel{\vdash}}
-\newcommand{\point}{\mathpunct{.}}
-
-\newtheorem*{notation}{Notação}
-\newtheorem{definition}{Definição}
-\newtheorem{lemma}{Lema}
-\newtheorem{theorem}{Teorema}
-
-\usepackage{titlesec}
-
-\titleformat{\chapter}[block]
-  {\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}
-\titlespacing*{\chapter}{0pt}{-19pt}{20pt}
-
-\usepackage{setspace}
-\usepackage{hyperref}
-
-\hypersetup{
-    pdftitle={Uma formalização da interpretação modal do sistema intuicionista},
-    pdfauthor={Elian Babireski},
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    filecolor=blue,
-    urlcolor=blue
-}
-
-\onehalfspacing{}
+\input{configurations}
 
 \begin{document}
     \title{Uma formalização da interpretação modal do sistema intuicionista}
@@ -90,6 +34,6 @@
         \input{parts/correctness}
         % \input{parts/translations.completeness}
 
-    \bibliographystyle{plainnat}
+    \bibliographystyle{bibliography}
     \bibliography{bibliography}
 \end{document}
