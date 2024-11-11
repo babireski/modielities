@@ -7,7 +7,7 @@
 \usepackage{epigraph}
 \usepackage{ragged2e}
 \usepackage[round]{natbib}
-\usepackage[french, brazil]{babel}
+\usepackage[english, french, brazil]{babel}
 \usepackage{styles/cases}
 \usepackage{styles/fitch}
 \usepackage{styles/functions}
@@ -20,6 +20,8 @@
 \usepackage{titlesec}
 \usepackage{setspace}
 \usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{stackengine}
 
 % Math font settings
 \DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
@@ -38,6 +40,11 @@
 \titleformat{\chapter}[block]
   {\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}
 \titlespacing*{\chapter}{0pt}{-19pt}{20pt}
+
+% Abstract title formatting
+\titleformat{\abstract}[block]
+  {\normalfont\huge\bfseries}{\abstractname}{1em}{\Huge}
+\titlespacing*{\abstract}{0pt}{-19pt}{20pt}
 
 % Hyperref settings
 \hypersetup{

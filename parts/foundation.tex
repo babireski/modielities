@@ -41,7 +41,7 @@ Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usa
     Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ induzida a partir de $\Sigma$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
         \item$\mathcal{P}\subseteq\mathcal{L}$
-        \item\text{Se }$\mathalpha{\bullet}^n\in\mathcal{C}\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+        \item\text{Se }$\mathalpha{\bullet}\in\mathcal{C}_n\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
     \end{enumerate}
 \end{definition}
 
@@ -60,22 +60,20 @@ Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noç
 
 Com isso, encerram-se as definições relacionadas a linguagens de sistemas de dedução. Agora, apresentaremos definições relacionadas a relações de dedução, que gozam da mesma generalidade dada a liguagens. Deste modo, a relação $\mathalpha{\vdash}$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação}\footnote{Sendo esta denotada por $\mathalpha{\vDash}$.} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada na definição de tradução impede que esta seja feita sobre relações de satisfação, conforme veremos com mais detalhes futuramente.
 
-Neste trabalho, definiremos a relação de dedução baseada em uma axiomatização, que consiste em um par composto por um conjunto de axiomas ou esquemas de axiomas e por um conjunto de regras de derivação. Baseando-se na abordagem de~\cite{Troelstra}, preferiremos esquemas de axiomas a axiomas.
-Ainda, seguiremos uma abordagem hilbertiana de axiomatização, que se destaca por conter um conjunto reduzido de regras de dedução que nunca descartam premissas~\citep{Troelstra}, com especificidades definidas abaixo.
+Neste trabalho, definiremos a relações de dedução baseada em axiomatizações, ou seja, em conjuntos de \emph{axiomas} --- sentenças postuladas como verdadeiras --- e conjuntos de \emph{regras de dedução} --- que permitem derivar mais sentenças verdadeiras caso certas condições sejam satisfeitas. Axiomatizações consistem numa abordagem hilbertiana de dedução que, segundo~\cite{Troelstra}, distinguem-se por conter um conjunto reduzido de regras de dedução que nunca descartam premissas. Ainda baseando-se em~\cite{Troelstra} e em contraste a~\cite{Frege} e~\cite{Hilbert-A, Hilbert-B}, preferiremos esquemas de axiomas a axiomas individuais de modo a eliminarmos a necessidade de instanciações.
 
 \begin{definition}[Axiomatização]
-    Uma axiomatização para um sistema $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ consiste em um par $\mathcal{H} = \sequence{\mathcal{A}, \mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas de axiomas e $\mathcal{R}_0\subseteq\mathcal{R}$ o conjunto de regras de dedução abaixo.
-    \begin{alignat}{3}
-        &\mathbf{A_\bullet}\quad&&\text{Se }\alpha\in\mathbf{A_\bullet}\text{, então }\Gamma\entails\alpha\tag*{}\\
-        &\mathbf{R_P}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha.\tag*{\qed}
-    \end{alignat}
+    Seja $\mathbf{L}=\sequence{\mathcal{L},\vdash}$ um sistema. Uma axiomatização para o sistema $\mathbf{L}$ consiste num par $\mathcal{H}=\sequence{\mathcal{A},\mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas de axiomas e $\mathcal{R}$ um conjunto de regras de dedução.
 \end{definition}
 
-Uma vez definida o conceito de axiomatização podemos, finalmente, definir a relação de dedução.
+
+Neste trabalho, consideraremos axiomatizações definidas em relação a conjuntos de premissas $\Gamma\subseteq\mathcal{L}$. 
+Por este motivo, todas as axiomatizações apresentadas futuramente neste trabalho conterão implicitamente a \emph{regra da premissa} $\mathbf{P}$ --- sendo esta regra definida como se $\alpha\in\Gamma$, então $\Gamma\entails\alpha$.
+Similarmente, faremos o mesmo para a \emph{regra do enfraquecimento} $\mathbf{E}$ --- definida aqui como se $\Gamma\entails\alpha$, então $\Gamma\cup\Delta\entails\alpha$ ---, tendo em vista que todos os sistemas apresentados neste trabaho são estruturais. Assim, tendo-se claro o conceito de axiomatização, podemos finalmente o conceito de dedução.
 
 \begin{definition}[Dedução]
-    Seja um sistema $\mathbf{L} = \sequence{\mathcal{L},{\vdash}}$ com axiomatização feita pelo par $\mathcal{H} = \sequence{\mathcal{A},\mathcal{R}}$,  um conjunto de sentenças $\Gamma\subseteq\mathcal{L}$ e uma sentença $\alpha\in\mathcal{L}$.
-    Uma dedução de $\Gamma\vdash\alpha$ consiste numa sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ tenha sido gerada a partir da aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.
+    Seja um sistema $\mathbf{L} = \sequence{\mathcal{L},{\vdash}}$ com uma relação de dedução definida sobre uma axiomatização $\mathcal{H} = \sequence{\mathcal{A},\mathcal{R}}$ e  seja um conjunto de sentenças $\Gamma\cup\set{\alpha}\subseteq\mathcal{L}$.
+    A dedução $\Gamma\vdash\alpha$ vale se e somente se houver sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ ou tenha sido gerada ou por algum esquema $\mathbf{A}\in\mathcal{A}$ ou pela aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.
     \qed{}
 \end{definition}
 
@@ -83,7 +81,11 @@ Uma vez definida o conceito de axiomatização podemos, finalmente, definir a re
 
 Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro, garantindo certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção e as necessidades de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
 
-Neste trabalho, adotaremos uma noção forte de tradução que requer tanto a correção forte quanto a completude forte, conforme~\cite{Coniglio}. Definiremos, ainda, uma notação que nos permite aplicar sucintamente a tradução a todos os elementos de um conjunto.
+\begin{definition}[Condições]
+    Chamaremos a condição $\varnothing\entails_\mathbf{A}\alpha$ implica em $\varnothing\entails_\mathbf{B}\alpha^*$ de correção fraca e a condição $\varnothing\entails_\mathbf{B}\alpha^*$ implica em $\varnothing\entails_\mathbf{A}\alpha$ de completude fraca. Analogamente, considerando-se dedução com premissas, chamaremos a condição $\Gamma\entails_\mathbf{A}\alpha$ implica em $\Gamma^*\entails_\mathbf{B}\alpha^*$ de correção forte e a condição $\Gamma^*\entails_\mathbf{B}\alpha^*$ implica em $\Gamma\entails_\mathbf{A}\alpha$ de completude forte.
+\end{definition}
+
+Historicamente, autores usaram diferentes combinações das condições apresentadas acima e, em certos casos, outras. Neste trabalho, adotaremos uma noção forte de tradução que requer tanto a correção forte quanto a completude forte, conforme~\cite{Coniglio}. Definiremos, ainda, uma notação que nos permite aplicar sucintamente a tradução a todos os elementos de um conjunto.
 
 \begin{definition}[Tradução] 
     Uma sentença $\varphi$ de um sistema $\mathbf{A} = \langle \mathcal{L}_\mathbf{A}, \vdash_\mathbf{A}\rangle$ pode ser traduzida a uma sentença $\varphi^*$ em um sistema $\mathbf{B} = \langle \mathcal{L}_\mathbf{B}, \vdash_\mathbf{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{L}_\mathbf{A} \to \mathcal{L}_\mathbf{B}$ que garanta que $\Gamma \vdash_\mathbf{A} \varphi \Leftrightarrow \Gamma^* \vdash_\mathbf{B} \varphi^*$.
@@ -95,9 +97,9 @@ Neste trabalho, adotaremos uma noção forte de tradução que requer tanto a co
     \qed{}
 \end{notation}
 
-A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terço excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em dobre-negar cada elemento da construção de uma dada sentença, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla} \citep{Coniglio}. Essa mesma tradução foi também descoberta independentemente por Gödel e por Getzen. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte da passagem por continuações segundo a interpretação prova-programa.
+A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terceiro excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em prefixar uma dupla negação a cada elemento da construção de uma dada sentença, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla} \citep{Coniglio}. Essa mesma tradução foi também descoberta independentemente por Gödel e por Getzen. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte da passagem por continuações segundo a interpretação prova-programa.
 
-\begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg$ indutivamente da seguinte maneira:
+\begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg:\mathcal{L}_\mathbf{C}\to\mathcal{L}_\mathbf{I}$ do sistema clássico ao sistema intuicionista indutivamente da seguinte maneira:
     \begin{align*}
         p^\neg&\coloneqq\neg\neg p\\
         \bot^\neg&\coloneqq\bot\\
@@ -115,4 +117,4 @@ Conforme~\cite{Wilson} afirma, esta prova foi por uns recebida com entusiasmo e 
 Dentre aqueles que compartilharam destas visões opositoras, destaca-se~\cite{Tymoczko}.
 Ainda segundo~\cite{Wilson}, o teorema tornou-se mais aceito com o passar do tempo e foi, posteriormente, formalizado em um provador de teoremas por~\cite{Gonthier}.
 
-Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automados} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem~(\babireski{Citação}). Formalizaremos das provas apresentadas neste trabalho no provador de teoremas interativo \texttt{Coq}.
+Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automados} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem~(\babireski{Citação}). Formalizaremos das provas apresentadas neste trabalho no provador de teoremas interativo \textsc{coq}.
