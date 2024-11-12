@@ -38,22 +38,22 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                 \footnotesize
                 \begin{fitch}
                     \fb\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P_1}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{L_5}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{R_1}\;\set{1,2}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&$\mathbf{A_4}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\mathbf{R_1}\;\set{3,4}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&\refer{nec-distr}{L}\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&\hyperref[MA4]{${\mathbf{A_4}}$}\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare&$\mathbf{R_1}\;\set{5,6}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&$\mathbf{A_4}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\mathbf{R_1}\;\set{3,8}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,6}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&\hyperref[MA4]{$\mathbf{A_4}$}\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare&$\mathbf{R_1}\;\set{9,10}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{A_3}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{R_1}\;\set{7,12}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{R_1}\;\set{9,13}$\\
-                    \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{T_1}\;\set{14}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,10}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,12}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,13}$\\
+                    \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
                 \end{fitch}
-            \end{subcase}
+            \end{subcase} 
 
             \begin{subcase}
                 \textsc{Caso 3.2.}
@@ -62,21 +62,21 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&$\mathbf{P}$\\
+                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&\hyperref[MA5]{${\mathbf{A_5}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&\hyperref[MA3]{${\mathbf{A_3}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,10}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,11}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&\refer{nec-undistr}{L}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{12,13}$\\
+                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
                 \end{fitch}
             \end{subcase}
 
@@ -90,58 +90,47 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
         \begin{subcase}
             \textsc{Caso 4.1.}
             A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\nec\varphi^\circ\to\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra da separação.
-            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare$ pela seguinte sucessão de dedução:
+            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare$ pela seguinte sucessão de dedução, sendo $\chi=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$:
             \footnotesize
             \begin{fitch}
-                \fb\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\to\varphi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to\nec\varphi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\psi^\circ\to\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\medsquare)\to\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\varphi^\circ\to\varphi^\medsquare\vee\psi^\medsquare)\to(\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails(\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare\\
+                \fb\set{\chi}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
+                \fa\set{\chi}\entails\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
+                \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\mathbf{P_1}$\\
+                \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                \fa\set{\chi}\entails\nec\varphi^\circ\vee\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\set{\chi}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to(\nec\psi^\circ\to\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&\refer{or-subst}{L}\\
+                \fa\set{\chi}\entails(\nec\psi^\circ\to\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                \fa\set{\chi}\entails\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,7}$\\
+                \fa\set{\chi}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,8}$\\
+                \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
             \end{fitch}
         \end{subcase}
 
         \begin{subcase}
             \textsc{Caso 4.2.}
             A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
-            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ pela seguinte sucessão de dedução:
+            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ pela seguinte sucessão de dedução, sendo $\chi=\varphi^\medsquare\vee\psi^\medsquare$.
             \footnotesize
             \begin{fitch}
-                \fb\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\varphi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\nec\varphi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\psi^\circ\to\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
+                \fb\set{\chi}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
+                \fa\set{\chi}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
+                \fa\set{\chi}\entails(\varphi^\medsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ&\refer{comp}{L}\\
+                \fa\set{\chi}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,3}$\\
+                \fa\set{\chi}\entails\varphi^\medsquare\to\nec\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,4}$\\
+                \fa\set{\chi}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
+                \fa\set{\chi}\entails\nec\psi^\circ\to\nec\nec\psi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
+                \fa\set{\chi}\entails(\psi^\medsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ&\refer{comp}{L}\\
+                \fa\set{\chi}\entails(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,8}$\\
+                \fa\set{\chi}\entails\psi^\medsquare\to\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,9}$\\
 
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to(\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
-                \fa\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\\
+                \fa\set{\chi}\entails\varphi^\medsquare\vee\psi^\medsquare&$\mathbf{P_1}$\\
+                \fa\set{\chi}\entails(\varphi^\medsquare\to\nec^2\varphi^\circ)\to(\psi^\medsquare\to\nec^2\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec^2\varphi^\circ\vee\nec^2\psi^\circ&\refer{or-subst}{L}\\
+                \fa\set{\chi}\entails(\psi^\medsquare\to\nec\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,12}$\\
+                \fa\set{\chi}\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{10,13}$\\
+                \fa\set{\chi}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{11,14}$\\
+                \fa\set{\chi}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&\refer{or-undistr}{L}\\
+                \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{15,16}$\\
+                \fa\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{17}$
             \end{fitch}
         \end{subcase}
 
@@ -154,28 +143,28 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
 
             \begin{subcase}
                 \textsc{Caso 5.1.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra da separação.
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\medsquare\to\psi^\medsquare)$ pela seguinte sucessão de dedução:
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\nec\varphi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\medsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\medsquare\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\medsquare\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\nec\psi^\circ\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\psi^\circ\to\psi^\medsquare\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\medsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\psi^\medsquare)\to\psi^\medsquare\to\psi^\medsquare\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\medsquare)\to\psi^\medsquare\to\psi^\medsquare\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\psi^\medsquare\to\psi^\medsquare\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\psi^\medsquare\to\psi^\medsquare)\\
-                    \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\medsquare\to\psi^\medsquare)\\
+                    \fb\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\mathbf{P_1}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB1]{${\mathbf{B_1}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec^2\varphi^\circ)\to(\nec^2\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ&\refer{comp}{L}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,5}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,6}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\medsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\medsquare\to\nec\psi^\circ&\refer{comp}{L}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec\psi^\circ)\to\varphi^\medsquare\to\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,9}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{8,10}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\varphi^\medsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&\refer{comp}{L}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\psi^\circ\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{11,13}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{12,14}$\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{15}$\\
+                    \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\medsquare\to\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{16}$
                 \end{fitch}
             \end{subcase}
 
@@ -186,20 +175,21 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\varphi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\varphi^\medsquare\to\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare\to\nec\psi^\circ\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\circ\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)\\
+                    \fb\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)&$\mathbf{P_2}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\varphi^\medsquare\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare&\refer{comp}{L}\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,5}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ&$\mathbf{P_1}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,6}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,10}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{11,12}$\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[strictdeduction]{\mathbf{R_\getrefnumber{strictdeduction}}}\;\set{13}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$
                 \end{fitch}
             \end{subcase}
         \vspace{.5\baselineskip}

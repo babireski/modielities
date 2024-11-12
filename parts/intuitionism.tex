@@ -25,16 +25,15 @@
     \begin{definition}
         A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1}}$, definidos abaixo:
         \begin{alignat*}{3}
-            & \mathbf{A_1}\quad && \alpha\to\beta\to\alpha \\
-            & \mathbf{A_2}\quad && (\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma) \\
-            & \mathbf{A_3}\quad && \alpha\to\beta\to\alpha\wedge\beta \\
-            & \mathbf{A_4}\quad && \alpha\wedge\beta\to\alpha \\
-            & \mathbf{A_5}\quad && \alpha\wedge\beta\to\beta \\
-            & \mathbf{A_6}\quad && \alpha\to\alpha\vee\beta \\
-            & \mathbf{A_7}\quad && \beta\to\alpha\vee\beta \\
-            & \mathbf{A_8}\quad && (\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma) \\
-            & \mathbf{A_\bot}\quad && \bot\to\alpha \\
-            & \mathbf{R_E}\quad && \text{Se }\Gamma\entails\alpha\text{, então }\Gamma\cup\Delta\entails\alpha\\
+            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{IA1}\tag*{}\\
+            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{IA2}\tag*{}\\
+            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{IA3}\tag*{}\\
+            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{IA4}\tag*{}\\
+            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{IA5}\tag*{}\\
+            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{IA6}\tag*{}\\
+            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{IA7}\tag*{}\\
+            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{IA8}\tag*{}\\
+            &\mathbf{A_\bot}\quad&&\bot\to\alpha\label{IABOT}\tag*{}\\
             & \mathbf{R_1}\quad && \text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\text{.} & \tag*{\qed}
         \end{alignat*}   
     \end{definition}

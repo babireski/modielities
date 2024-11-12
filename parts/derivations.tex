@@ -115,7 +115,6 @@
                 \textsc{Caso 2.} 
                 Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
                 Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
-
                 \footnotesize
                 \begin{fitch}
                     \fb\nec\Gamma\cup\set{\nec\alpha}\entails\beta\\
@@ -149,7 +148,26 @@
             \begin{fitch}
                 \fb\nec\Gamma\cup\set{\alpha}\entails\beta&$\mathbf{H_1}$\\
                 \fa\nec\Gamma\entails\alpha\to\beta&\refer{deduction}{T}$\;\set{1}$\\
-                \fa\nec\Gamma\entails\nec(\alpha\to\beta)&\refer{gen-nec}{T}$\;\set{2}$.
+                \fa\nec\Gamma\entails\nec(\alpha\to\beta)&\refer{gen-nec}{T}$\;\set{2}$
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}\label{strictsep}
+        Se $\Gamma\entails\alpha$ e $\Gamma\entails\nec(\alpha\to\beta)$, então $\Gamma\entails\beta$.
+
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+
+            \footnotesize
+            \begin{fitch}
+                \fb\Gamma\entails\alpha&$\mathbf{H_1}$\\
+                \fa\Gamma\entails\nec(\alpha\to\beta)&$\mathbf{H_2}$\\
+                \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                \fa\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -218,7 +236,7 @@
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}
+    \begin{lemma}\label{nec-distr}
         $\vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
@@ -241,7 +259,7 @@
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}    
+    \begin{lemma}\label{nec-undistr}    
         $\vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
 
         \begin{proof}
@@ -249,12 +267,18 @@
 
             \footnotesize
             \begin{fitch}
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\alpha&$\mathbf{A_4}$\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\alpha\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\wedge\nec\beta\to\nec\beta&$\mathbf{A_5}$\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha\to\beta\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\vdash\nec\alpha&$\mathbf{R_1}\;\set{1, 4}$\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\alpha\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\alpha\to\alpha\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\alpha\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta\to\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\alpha\to\beta\to\alpha\wedge\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\beta\to\alpha\wedge\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\alpha\wedge\beta\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec(\alpha\wedge\beta)\\
+                \fa\set{\nec\alpha\wedge\nec\beta}\entails\nec(\alpha\wedge\beta)\\
+                \fa\entails\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -284,7 +308,7 @@
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}
+    \begin{lemma}\label{comp}
         $\entails(\alpha\to\beta)\to(\beta\to\gamma)\to\alpha\to\gamma$
 
         \begin{proof}
@@ -335,6 +359,8 @@
                 \fa\set{\alpha\to\beta}\entails\alpha\to\beta\vee\gamma\\
                 \fa\entails(\alpha\to\beta)\to\alpha\to\beta\vee\gamma\\
             \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
         \end{proof}
     \end{lemma}
 
@@ -352,5 +378,74 @@
                 \fa\set{\alpha\to\beta}\entails\alpha\to\gamma\vee\beta\\
                 \fa\entails(\alpha\to\beta)\to\alpha\to\gamma\vee\beta\\
             \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
         \end{proof}
     \end{lemma}
+
+    \begin{lemma}\label{or-subst}
+        $\entails(\alpha\to\gamma)\to(\beta\to\delta)\to\alpha\vee\beta\to\gamma\vee\delta$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize 
+            \begin{fitch}
+                \fb\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\alpha\to\gamma)\to\alpha\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\beta\to\delta)\to\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\alpha\to\gamma\to\gamma\vee\delta)\to(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta}\entails\alpha\vee\beta\to\gamma\vee\delta\\
+                \fa\set{\alpha\to\gamma}\entails(\beta\to\delta)\to\alpha\vee\beta\to\gamma\vee\delta\\
+                \fa\entails(\alpha\to\gamma)\to(\beta\to\delta)\to\alpha\vee\beta\to\gamma\vee\delta\\
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}\label{or-undistr}
+        $\entails\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize 
+            \begin{fitch}
+                \fb\set{\nec\alpha}\entails\nec\alpha\\
+                \fa\set{\nec\alpha}\entails\nec\alpha\to\alpha\\
+                \fa\set{\nec\alpha}\entails\alpha\\
+                \fa\set{\nec\alpha}\entails\alpha\to\alpha\vee\beta\\
+                \fa\set{\nec\alpha}\entails\alpha\vee\beta\\
+                \fa\set{\nec\alpha}\entails\nec(\alpha\vee\beta)\\
+                \fa\set{\nec\beta}\entails\nec\beta\\
+                \fa\set{\nec\beta}\entails\nec\beta\to\beta\\
+                \fa\set{\nec\beta}\entails\beta\\
+                \fa\set{\nec\beta}\entails\beta\to\alpha\vee\beta\\
+                \fa\set{\nec\beta}\entails\alpha\vee\beta\\
+                \fa\set{\nec\beta}\entails\nec(\alpha\vee\beta)\\
+                \fa\set{\nec\alpha\vee\nec\beta}\entails\nec(\alpha\vee\beta)\\
+                \fa\set{\nec\alpha\vee\nec\beta}\entails\nec(\alpha\vee\beta)\\
+                \fa\entails\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+
+    % \begin{lemma}
+    %     $\entails(\neg\alpha\to\neg\beta)\to\beta\to\alpha$.
+    %     \begin{proof}
+    %         Pode ser provado pela seguinte sucessão de dedução:
+    %         \footnotesize 
+    %         \begin{fitch}
+    %             \fb\set{\neg\alpha\to\neg\beta}\entails\neg\alpha\to\neg\beta\\
+    %             \fa\set{\neg\alpha\to\neg\beta}\entails(\neg\alpha\to\neg\beta)\to\neg\neg\beta\to\neg\neg\alpha\\
+    %             \fa\set{\neg\alpha\to\neg\beta}\entails\neg\neg\beta\to\neg\neg\alpha\\
+    %         \end{fitch}
+    %         \normalsize
+    %         Estando assim demonstrada a proposição.
+    %     \end{proof}
+    % \end{lemma}

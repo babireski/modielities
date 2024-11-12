@@ -1,4 +1,4 @@
-\section{Dualidades}
+\section{Interpretações computacionais}
 
     \babireski{Ver~\cite{Zach} acerca dos axiomas duais e suas derivações.}
 
@@ -37,7 +37,7 @@
 
     Apesar da similaridades com as transformações naturais, deve-se destacar que as noções de computação não podem ser interpretadas simplesmente como necessidade ou possibilidade, uma vez que apresenta propriedades presente em ambas as modalidades. Neste sentido, a modalidade de \emph{laxidade} --- que combina noções de necessidade e possibilidade --- mostra-se uma melhor representação de efeitos computacionais sobre a interpretação programa-prova.
     
-    Ao sistema que comporta essa modalidade --- denotada $\lax$ --- damos o nome de sistema laxo ou simplesmente $\mathbf{L}$. Este sistema foi primeiramente considerado por~\cite{Curry-A,Curry-B} e posteriormente redescoberto por~\cite{Fairtlough,Mendler} como uma tentativa de representar correção dentro de restrições na verificação formal de \emph{hardware} de computadores. Pode ser definido formalmente por meio da assinatura $\Sigma_\mathbf{L}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{L}}$ e da axiomatização $\mathcal{H}=\sequence{\mathcal{A}_\mathbf{L},\mathcal{R}_\mathbf{I}}$, onde $\mathcal{C}_\mathbf{L}=\mathcal{C}_\mathbf{I}\cup\set{\circ^1}$ e $\mathcal{A}_\mathbf{L}=\mathcal{A}_\mathbf{I}\cup\set{\mathbf{C_1},\mathbf{C_2},\mathbf{C_3}}$, considerando-se os esquemas abaixo:
+    Ao sistema que comporta essa modalidade --- denotada $\lax$ --- damos o nome de sistema laxo ou simplesmente $\mathbf{L}$. Este sistema foi primeiramente considerado por~\cite{Curry-A,Curry-B} e posteriormente redescoberto por~\cite{Fairtlough,Mendler} como uma tentativa de representar correção dentro de restrições na verificação formal de \emph{hardware} de computadores. Pode ser definido formalmente por meio da assinatura $\Sigma_\mathbf{L}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{L}}$ e da axiomatização $\mathcal{H}=\sequence{\mathcal{A}_\mathbf{L},\mathcal{R}_\mathbf{I}}$, onde $\mathcal{C}_\mathbf{L}=\mathcal{C}_\mathbf{I}\cup\set{\lax^1}$ e $\mathcal{A}_\mathbf{L}=\mathcal{A}_\mathbf{I}\cup\set{\mathbf{C_1},\mathbf{C_2},\mathbf{C_3}}$, considerando-se os esquemas abaixo:
     \begin{alignat*}{3}
         &\mathbf{C_1}\quad&&\alpha\to\lax\alpha\\
         &\mathbf{C_2}\quad&&\lax\lax\alpha\to\lax\alpha\\
@@ -45,13 +45,4 @@
     \end{alignat*}
 
 ~\cite{Benton} e~\cite{Pfenning} notam a capacidade deste sistema de representar a metalinguagem de computação apresentada por~\cite{Moggi}.
-    Ainda,~\cite{Pfenning} apresenta a seguinte tradução desse sistema a um sistema $\mathbf{S_4}$ intuicionista:
-
-    \begin{definition}[$\bullet^+$] A tradução $\bullet^+:\mathcal{L}_\mathbf{M}\to\mathcal{L}_\mathbf{L}$ do sistema $\mathbf{S_4}$ intuicionista ao sistema $\mathbf{L}$ pode ser definida indutivamente da seguinte maneira:
-        \begin{align*}
-            a^+&\coloneqq a\\
-            {(\lax\alpha)}^+&\coloneqq\pos\nec\alpha^+\\
-            {(\alpha\to\beta)}^+&\coloneqq\nec\alpha^+\to\beta^+
-            \tag*{\qed} 
-        \end{align*}
-    \end{definition}
+    Ainda,~\cite{Pfenning} apresenta uma tradução desse sistema a um sistema $\mathbf{S_4}$ intuicionista.

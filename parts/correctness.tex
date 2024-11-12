@@ -1,10 +1,10 @@
 \section{Correção}
 
-    \begin{theorem}
+    \begin{lemma}\label{square-nec}
         $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
 
         \begin{proof}
-            Prova por indução forte sobre a profundidade de $\alpha$ \cite{Troelstra}.
+            Prova por indução forte sobre a profundidade de $\alpha$ \citep{Troelstra}.
             Assim, suponhamos que a proposição valha para qualquer sentença $\alpha$ de profundidade $n<k$.
             Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que a proposição vale para qualquer $\alpha$ de profundidade $n=k$.
 
@@ -27,21 +27,21 @@
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\to\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\mathbf{P}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\mathbf{P}$\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\mathbf{P}$\\
+                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{H_1}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&\hyperref[MA5]{${\mathbf{A_5}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{H_2}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\to\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,10}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,11}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&\refer{nec-undistr}{L}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{12,13}$\\
+                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$
                 \end{fitch}
             \end{case}
 
@@ -60,7 +60,7 @@
             \vspace{.5\baselineskip}
             Tendo-se provado todos os casos do passo de indução, podemos concluir que a propriedade vale, ou seja, que $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
         \end{proof}
-    \end{theorem}
+    \end{lemma}
 
 
     \begin{theorem}\label{square-correctness}
@@ -83,110 +83,109 @@
         \end{case}
 
             \begin{subcase}
-                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_1}$, sabemos que $\alpha=\alpha\to\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA1]{\mathbf{A_1}}$, sabemos que $\alpha=\alpha\to\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare\\
-                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\entails(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\\
+                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare&\refer{square-nec}{L}\\
+                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare&\hyperref[MA1]{${\mathbf{A_1}}$}\\
+                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
+                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
+                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&\refer{comp}{L}\\
+                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_2}$, sabemos que $\alpha=(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$ e que $\alpha^\medsquare=(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA2]{\mathbf{A_2}}$, sabemos que $\alpha=(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$ e que $\alpha^\medsquare=(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare}\entails(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\strictif(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\strictif(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare\\
-
+                    \fb\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare&$\mathbf{P_2}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,2}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_3}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,4}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\gamma^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{3,5}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{6}$\\
+                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare}\entails(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{7}$\\
+                    \fa\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\to(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
+                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\strictif(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{9}$\\
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_3}$, sabemos que $\alpha=\alpha\to\beta\to\alpha\wedge\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA3]{\mathbf{A_3}}$, sabemos que $\alpha=\alpha\to\beta\to\alpha\wedge\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare\\
-                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))\\
+                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare&\refer{square-nec}{L}\\
+                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
+                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
+                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
+                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\beta^\medsquare\strictif\alpha^\medsquare\wedge\beta^\medsquare)\to\alpha^\medsquare\to\beta^\medsquare\strictif\alpha^\medsquare\wedge\beta^\medsquare&\refer{comp}{L}\\
+                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
                 \end{fitch} 
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_4}$, sabemos que $\alpha=\alpha\wedge\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA4]{\mathbf{A_4}}$, sabemos que $\alpha=\alpha\wedge\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
                     \fa\entails\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_5}$, sabemos que $\alpha=\alpha\wedge\beta\to\beta$ e que $\alpha^\medsquare=\nec(\alpha\wedge\beta\to\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\beta)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA5]{\mathbf{A_5}}$, sabemos que $\alpha=\alpha\wedge\beta\to\beta$ e que $\alpha^\medsquare=\nec(\alpha\wedge\beta\to\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\beta)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_6}$, sabemos que $\alpha=\alpha\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA6]{\mathbf{A_6}}$, sabemos que $\alpha=\alpha\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_7}$, sabemos que $\alpha=\beta\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA7]{\mathbf{A_7}}$, sabemos que $\alpha=\beta\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.
+                    \fa\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_8}$, sabemos que $\alpha=(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$ e que $\alpha^\medsquare=(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA8]{\mathbf{A_8}}$, sabemos que $\alpha=(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$ e que $\alpha^\medsquare=(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\to\alpha^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\to\beta^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare\\
-                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare\\
+                    \fb\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_3}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\to\alpha^\medsquare\to\gamma^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_2}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\to\beta^\medsquare\to\gamma^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&\hyperref[MA8]{${\mathbf{A_8}}$}\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
+                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{12}$\\
+                    \fa\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\to(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
+                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{14}$
                 \end{fitch}
             \end{subcase}
 
@@ -195,7 +194,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\bot\to\alpha^\medsquare&\refer{explosion}{L}\\
-                    \fa\Gamma^\medsquare\entails\nec(\bot\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$.\\
+                    \fa\Gamma^\medsquare\entails\nec(\bot\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -208,9 +207,9 @@
             \begin{fitch}
                 \fb\varphi_i^\medsquare&$\mathbf{H_2}$\\
                 \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)&$\mathbf{H_1}$\\
-                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&$\mathbf{B_2}$\\
-                \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\mathbf{R_1}\;\set{1, 2}$\\
-                \fa\alpha^\medsquare&$\mathbf{R_1}\;\set{3, 4}$.
+                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
+                \fa\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3, 4}$
             \end{fitch}
         \end{case}
         \vspace{.5\baselineskip}

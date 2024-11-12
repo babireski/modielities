@@ -97,9 +97,9 @@ Historicamente, autores usaram diferentes combinações das condições apresent
     \qed{}
 \end{notation}
 
-A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terceiro excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em prefixar uma dupla negação a cada elemento da construção de uma dada sentença, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla} \citep{Coniglio}. Essa mesma tradução foi também descoberta independentemente por Gödel e por Getzen. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte da passagem por continuações segundo a interpretação prova-programa.
+A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terceiro excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em prefixar uma dupla negação a cada elemento da construção de uma dada sentença \citep{Coniglio}, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla}. Essa mesma tradução foi também descoberta independentemente por Gödel e por Getzen. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte da passagem por continuações segundo a interpretação prova-programa.
 
-\begin{definition}[$\bullet^\neg$] Define-se a tradução $\bullet^\neg:\mathcal{L}_\mathbf{C}\to\mathcal{L}_\mathbf{I}$ do sistema clássico ao sistema intuicionista indutivamente da seguinte maneira:
+\begin{example} Define-se a tradução $\bullet^\neg:\mathcal{L}_\mathbf{C}\to\mathcal{L}_\mathbf{I}$ do sistema clássico ao sistema intuicionista indutivamente da seguinte maneira:
     \begin{align*}
         p^\neg&\coloneqq\neg\neg p\\
         \bot^\neg&\coloneqq\bot\\
@@ -108,7 +108,7 @@ A primeira tradução entre dois sistemas conhecida na literatura foi definida p
         {(\varphi\to\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \to \psi^\neg)
         \tag*{\qed} 
     \end{align*}
-\end{definition}
+\end{example}
 
 \section{Provadores}
 
@@ -117,4 +117,4 @@ Conforme~\cite{Wilson} afirma, esta prova foi por uns recebida com entusiasmo e 
 Dentre aqueles que compartilharam destas visões opositoras, destaca-se~\cite{Tymoczko}.
 Ainda segundo~\cite{Wilson}, o teorema tornou-se mais aceito com o passar do tempo e foi, posteriormente, formalizado em um provador de teoremas por~\cite{Gonthier}.
 
-Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automados} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem~(\babireski{Citação}). Formalizaremos das provas apresentadas neste trabalho no provador de teoremas interativo \textsc{coq}.
+Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automados} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem. Formalizaremos das provas apresentadas neste trabalho no provador de teoremas interativo \textsc{coq}, o mesmo \emph{software} usado por~\cite{Gonthier}.
