@@ -1,7 +1,7 @@
-\section{Modalismo}
+\section{Sistemas modais}
     Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respeitivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso. Nesta seção, contextualizaremos esses sistemas e, em seguida, definiremo-lo formalmente na sua versão $\mathbf{S_4}$.
 
-    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador do modalismo moderno foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
+    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
 
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
         A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{M}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{M}}$, onde $\mathcal{C}_\mathbf{M}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
@@ -28,24 +28,22 @@
     \begin{definition}\label{m-axioms}
         A axiomatização do sistema modal consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat}{3}
-            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{MA1}\tag*{}\\
-            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{MA2}\tag*{}\\
-            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{MA3}\tag*{}\\
-            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{MA4}\tag*{}\\
-            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{MA5}\tag*{}\\
-            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{MA6}\tag*{}\\
-            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{MA7}\tag*{}\\
-            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{MA8}\tag*{}\\
-            &\mathbf{A_\neg}\quad&&\neg\neg\alpha\to\alpha\label{MANEG}\tag*{}\\
-            &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\\
-            &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\\
-            &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\\
-            &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\\
+            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{MA1}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{MA2}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{MA3}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{MA4}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{MA5}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{MA6}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{MA7}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{MA8}\tag*{}\displaybreak[0]\\
+            &\mathbf{A_\neg}\quad&&\neg\neg\alpha\to\alpha\label{MANEG}\tag*{}\displaybreak[0]\\
+            &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\displaybreak[0]\\
+            &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\displaybreak[0]\\
+            &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\displaybreak[0]\\
+            &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\displaybreak[0]\\
             &\mathbf{R_2}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
         \end{alignat}   
     \end{definition}
-
-    \babireski{Falar aqui sobre como a axiomatização consiste nos esquemas clássicos mais os esquemas modais}. 
 
     Assim como feito para o sistema intuicionista, nomearemos os esquemas e regras acima de modo a facilitar a comunicação.
     Aos axiomas e regras que correspondem aos axiomas e regras intuicionistas receberão os mesmos nomes. Ademais, chamaremos $\mathbf{B_1}$ de axiomas da normalidade, $\mathbf{B_2}$ de axiomas da reflexividade e $\mathbf{B_3}$ de axiomas da transitividade.\footnote{Em analogia às condições relacionais impostas nos enquadramentos.} Nomearemos $\mathbf{A_\neg}$ como chamaremos de axiomas da eliminação da negação e a $\mathbf{R_2}$ como regra da necessitação.

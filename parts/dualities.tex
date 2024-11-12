@@ -6,19 +6,18 @@
         $\vdash\alpha\to\pos\alpha$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
-
             \footnotesize
             \begin{fitch}
+                \fa\entails\alpha\to\neg\neg\alpha&\refer{neg-intro}{L}\\
                 \fa\entails\nec\neg\alpha\to\neg\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\entails(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\pos\alpha&$\hyperref[contrapositive]{\mathbf{L_3}}$\\
-                \fa\entails\neg\neg\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                \fa\entails(\neg\neg\alpha\to\neg\nec\neg\alpha)\to\alpha\to(\neg\neg\alpha\to\pos\alpha)&$\hyperref[MA1]{\mathbf{A_1}}$\\
-                \fa\entails\alpha\to\neg\neg\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                \fa\entails(\alpha\to\neg\neg\alpha\to\pos\alpha)\to(\alpha\to\neg\neg\alpha)\to(\alpha\to\pos\alpha)&$\hyperref[MA2]{\mathbf{A_2}}$\\
-                \fa\entails\alpha\to\neg\neg\alpha&\babireski{Provar.}\\
-                \fa\entails(\alpha\to\neg\neg\alpha)\to(\alpha\to\pos\alpha)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,6}$\\
-                \fa\entails\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$.
+                \fa\entails\neg\neg\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
+                \fa\entails(\alpha\to\neg\neg\alpha)\to(\neg\neg\alpha\to\pos\alpha)\to\alpha\to\pos\alpha&\refer{comp}{L}\\
+                \fa\entails(\neg\neg\alpha\to\pos\alpha)\to\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,5}$\\
+                \fa\entails\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,6}$
             \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
         \end{proof}
     \end{theorem}
 
@@ -32,6 +31,8 @@
                 \fa\entails\neg\nec\alpha\to\neg\nec\pos\alpha\\
                 \fa\entails\pos\pos\alpha\to\pos\alpha\\
             \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
         \end{proof}
     \end{theorem}
 
