@@ -157,10 +157,8 @@
 
     \begin{theorem}\label{strictsep}
         Se $\Gamma\entails\alpha$ e $\Gamma\entails\nec(\alpha\to\beta)$, então $\Gamma\entails\beta$.
-
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
-
             \footnotesize
             \begin{fitch}
                 \fb\Gamma\entails\alpha&$\mathbf{H_1}$\\
@@ -168,6 +166,52 @@
                 \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
                 \fa\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}\label{conjunctiondeduction}
+        Se $\set{\alpha,\beta}\entails\gamma$, então $\set{\alpha\wedge\beta}\entails\gamma$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha,\beta}\entails\gamma\\
+                \fa\set{\alpha}\entails\beta\to\gamma\\
+                \fa\entails\alpha\to\beta\to\gamma\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta\to\alpha\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta\to\beta\\
+                \fa\set{\alpha\wedge\beta}\entails\beta\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\to\beta\to\gamma\\
+                \fa\set{\alpha\wedge\beta}\entails\beta\to\gamma\\
+                \fa\set{\alpha\wedge\beta}\entails\gamma\\
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}\label{disjunctiondeduction}
+        Se $\set{\alpha}\entails \gamma$ e $\set{\beta}\entails \gamma$, então $\set{\alpha \vee \beta}\entails \gamma$.
+        \begin{proof}
+            Pode ser provado pela seguinte sucessão de dedução:
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha}\entails\gamma\\
+                \fa\set{\beta}\entails\gamma\\
+                \fa\entails\alpha\to\gamma\\
+                \fa\entails\beta\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails\beta\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta\\
+                \fa\set{\alpha\vee\beta}\entails(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails(\beta\to\gamma)\to\alpha\vee\beta\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma\\
+                \fa\set{\alpha\vee\beta}\entails\gamma\\
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
