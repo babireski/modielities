@@ -1,6 +1,6 @@
 \section{Interpretações computacionais}
 
-    \babireski{Ver~\cite{Zach} acerca dos axiomas duais e suas derivações.}
+    Conforme~\cite{Zach} aponta, pode-se derivar sentenças duais aos axiomas modais por meio da contraposição das implicações e da definição da possibilidade.
 
     \begin{theorem}
         $\vdash\alpha\to\pos\alpha$.
@@ -8,7 +8,7 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fa\entails\alpha\to\neg\neg\alpha&\refer{neg-intro}{L}\\
+                \fb\entails\alpha\to\neg\neg\alpha&\refer{neg-intro}{L}\\
                 \fa\entails\nec\neg\alpha\to\neg\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\entails(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\pos\alpha&$\hyperref[contrapositive]{\mathbf{L_3}}$\\
                 \fa\entails\neg\neg\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
@@ -25,11 +25,18 @@
         $\vdash\pos\pos\alpha\to\pos\alpha$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
-
             \footnotesize
             \begin{fitch}
-                \fa\entails\neg\nec\alpha\to\neg\nec\pos\alpha\\
-                \fa\entails\pos\pos\alpha\to\pos\alpha\\
+                \fb\entails\nec\neg\alpha\to\nec\nec\neg\alpha&$\hyperref[MB3]{\mathbf{B_3}}$\\
+                \fa\entails\nec\neg\alpha\to\neg\pos\alpha&$\hyperref[neg-intro]{\mathbf{L_{\getrefnumber{neg-intro}}}}$\\
+                \fa\entails\nec(\nec\neg\alpha\to\neg\pos\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
+                \fa\entails\nec(\neg\pos\alpha\to\nec\neg\alpha)\to\nec\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[MB1]{\mathbf{B_1}}$\\
+                \fa\entails\nec\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\entails(\nec\neg\alpha\to\nec\nec\neg\alpha)\to(\nec\nec\neg\alpha\to\nec\neg\pos\alpha)\to\nec\neg\alpha\to\nec\neg\pos\alpha&\refer{comp}{L}\\
+                \fa\entails(\nec\nec\neg\alpha\to\nec\neg\pos\alpha)\to\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                \fa\entails\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
+                \fa\entails(\nec\neg\alpha\to\nec\neg\pos\alpha)\to\pos\pos\alpha\to\pos\alpha&\refer{contrapositive}{L}\\
+                \fa\entails\pos\pos\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{8,9}$\\
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
