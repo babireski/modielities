@@ -100,7 +100,7 @@
     \end{theorem}
 
     Uma vez provado o teorema da dedução, agora provaremos o teorema da generalização da regra da necessitação, conforme sugerido por~\cite{Troelstra}.
-    Como apresentado abaixo, este teorema afirma que, caso possamos deduzir alguma sentença  a partir de um conjunto necessariamente verdadeiro de premissas, podemos concluir a necessidade desta sentença.
+    Como apresentado abaixo, este teorema afirma que, caso possamos deduzir alguma sentença $\alpha$ a partir de um conjunto necessariamente verdadeiro de premissas, podemos concluir a necessidade desta sentença $\alpha$.
 
     \begin{theorem}\label{gen-nec}
         Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
@@ -172,6 +172,8 @@
         \end{proof}
     \end{theorem}
 
+    Abaixo, demonstraremos que, caso haja uma prova de alguma sentença $\alpha$ a partir de um par de premissas, sabe-se que deve haver alguma prova desta mesma sentença $\alpha$ a partir da conjunção deste par de premissas.
+
     \begin{theorem}\label{conjunctiondeduction}
         Se $\set{\alpha,\beta}\entails\gamma$, então $\set{\alpha\wedge\beta}\entails\gamma$.
         \begin{proof}
@@ -195,6 +197,8 @@
         \end{proof}
     \end{theorem}
 
+    Analogamente ao teorema anterior, demonstraremos que, caso hava uma prova de $\gamma$ partindo-se da premissa $\alpha$ e uma prova de $\gamma$ partindo-se da premissa $\beta$, então sabe-se que deve haver uma prova de $\gamma$ partindo-se da premissa $\alpha\vee\beta$.
+
     \begin{theorem}\label{disjunctiondeduction}
         Se $\set{\alpha}\entails \gamma$ e $\set{\beta}\entails \gamma$, então $\set{\alpha \vee \beta}\entails \gamma$.
         \begin{proof}
@@ -217,6 +221,8 @@
             Estando assim demonstrada a proposição.
         \end{proof}
     \end{theorem}
+
+    Os lemas 2 a 13 abaixo serão demonstrados a fim de diminuir o tamanho das provas futuras acerca do isomorfismo entre as traduções e a correção da tradução \emph{call-by-value}.
 
     \begin{lemma}\label{explosion}
         $\entails\bot\to\alpha$.
