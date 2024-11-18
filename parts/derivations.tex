@@ -20,7 +20,7 @@
     \end{lemma}
 
     Tendo-se provado o lema da identidade, agora provaremos a regra da dedução para os sistemas modais com base na prova apresentada por~\cite{Hakli}.
-    Pequenas alterações foram feitas de modo a garantir a adequação da prova com a axiomatização provida na definição \refer{m-axioms}{D}.
+    Pequenas alterações foram feitas de modo a garantir a adequação da prova com a axiomatização provida na Definição~\ref{m-axioms}.
 
     \begin{theorem}\label{deduction}
         $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
@@ -69,7 +69,7 @@
 
             \begin{case}
                 \textsc{Caso 3.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}={\entails\varphi}$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}={\entails\varphi}$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \footnotesize
@@ -95,26 +95,26 @@
                     \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
                 \end{fitch}
             \end{case}
-            Uma vez provada a propriedade para todos os casos do passo de indução, provamos que o teorema da dedução vale para o sistema $\mathbf{S_4}$.
+            Uma vez provada a propriedade para todos os casos do passo de indução, provamos que o teorema da dedução vale para o sistema $\mathbf{S4}$.
         \end{proof}
     \end{theorem}
 
+    Uma vez provado o teorema da dedução, agora provaremos o teorema da generalização da regra da necessitação, conforme sugerido por~\cite{Troelstra}.
+    Como apresentado abaixo, este teorema afirma que, caso possamos deduzir alguma sentença  a partir de um conjunto necessariamente verdadeiro de premissas, podemos concluir a necessidade desta sentença.
+
     \begin{theorem}\label{gen-nec}
         Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
-
         \begin{proof}
             Prova por indução fraca sobre o tamanho $n$ do conjunto $\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução, considerando-se $\mathbf{H_1}=\nec\Gamma\entails\alpha$.
-
             \begin{case}
                 \textsc{Caso 1.} Para a base, consideraremos que $\Gamma=\varnothing$.
                 Assim, sabemos que o conjunto possui tamanho nulo e que $\entails\alpha$. Portanto, sabe-se que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
-                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra do \emph{modus ponens} \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
             \end{case}
-
             \begin{case}
                 \textsc{Caso 2.} 
-                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
-                Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H_2}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
+                Para o passo, suponhamos que a generalização da regra do \emph{modus ponens} valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
+                Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H_2}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra do \emph{modus ponens} vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
                 \footnotesize
                 \begin{fitch}
                     \fb\nec\Gamma\cup\set{\nec\alpha}\entails\beta&$\mathbf{H_1}$\\
@@ -132,11 +132,11 @@
                 \end{fitch}
             \end{case}
             \vspace{.5\baselineskip}
-            Tendo-se provado a base e o passo de indução, podemos concluir que generalização da regra da necessitação vale, ou seja, que se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
+            Tendo-se provado a base e o passo de indução, podemos concluir que generalização da regra do \emph{modus ponens} vale, ou seja, que se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
         \end{proof}
     \end{theorem}
 
-    Uma vez provada a generalização da regra da implicação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra derivada permite simplificar as provas de corretude das traduções, uma vez que uma das traduções que serão apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
+    Uma vez provada a generalização da regra da necessitação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra afirma que, dada uma dedução de $\beta$ partindo conjunto de premissas necessariamente verdadeiro em conjunto com uma premissa $\alpha$, podemos deduzir $\nec(\alpha\to\beta)$ a partir desse conjunto de premissas necessariamente verdadeiro. Isso nos permite simplificar as provas de correção das traduções, uma vez que uma das traduções que serão apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
 
     \begin{theorem}\label{strictdeduction}
         $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
