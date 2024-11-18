@@ -8,10 +8,18 @@ As mônadas ganharam destaque na área de linguagens de programação desde que~
 
 Durante grande parte da história, provas lógicas e matemáticas eram validadas manualmente pela comunidade acadêmica, o que muitas vezes --- a depender do tamanho e complexidade da prova --- se mostrava ser um trabalho complexo e sujeito a erros. Hoje em dia, exitem \textit{softwares} chamados assistentes de provas que permitem verificar --- graças ao isomorfismo de Curry-Howard --- a corretude de provas~\citep{Chlipala}. O assistente de provas que será usado neste trabalho é o \textsc{coq}, que utiliza o cálculo de construções indutivas e um conjunto axiomático pequeno para permitir a escrita de provas simples e intuitivas~\citep{Coq}.
 
-Este trabalho consiste numa continuação do desenvolvimento da biblioteca de formalização de sistemas modais normais iniciado por~\cite{Silveira} e posteriormente expandida de forma a permitir a fusão de sistemas modais por~\cite{Nunes}. Uma formalização de traduções entre sistemas de dedução similar a nossa foi feita por~\cite{Sehnem}, neste caso tendo como alvo o sistema linear de~\cite{Girard}. Todas as formalizações citadas acima deram-se no assistente de provas \textsc{coq}, o mesmo assistente usado neste trabalho.
+    \section{Objetivos}
+    Este trabalho consiste numa continuação do desenvolvimento da biblioteca de formalização de sistemas modais normais iniciado por~\cite{Silveira} e posteriormente expandida de forma a permitir a fusão de sistemas modais por~\cite{Nunes}. Nele, formalizaremos as traduções do sistema intuicionista ao sistema modal $\mathbf{S4}$ no asssitente de provas \textsc{coq} e provaremos suas propriedades. Uma formalização de traduções entre sistemas de dedução similar a nossa foi feita por~\cite{Sehnem}, neste caso tendo como alvo o sistema linear de~\cite{Girard}. Todas as formalizações citadas acima deram-se no assistente de provas \textsc{coq}, o mesmo assistente usado neste trabalho. Como objetivos específicos, listamos:
 
-    \section{Justificativa}
-    \section{Metas}
+    \begin{itemize}
+        \item Fornecer uma introdução ao conceito de sistemas de dedução;
+        \item Fornecer uma introdução ao conceito de traduções entre sistemas;
+        \item Fornecer uma introdução ao sistema intuicionista;
+        \item Fornecer uma introdução aos sistemas modais, em especial o $\mathbf{S4}$;
+        \item Apresentar as traduções do sistema intuicionista ao sistema $\mathbf{S4}$;
+        \item Provar manualmente a correção das traduções providas bem como outras propriedades pertinentes;
+        \item Formalizar as provas no provador de teoremas interativo \textsc{coq}.
+    \end{itemize}
 
     \section{Estruturação}
     Estruturaremos este trabalho em cinco partes. A parte \textbf{(1)} trata-se desta introdução. A parte \textbf{(2)} consiste numa fundamentação de conceitos basilares ao desenvolvimento deste trabalho, notadamente os conceitos de \emph{sistemas de dedução}, \emph{traduções} e \emph{provadores de teoremas}. A parte \textbf{(3)} apresenta as definições dos sistemas e traduções relevantes a este trabalho. Na parte \textbf{(4)} são provadas todas as propriedades abarcadas no escopo deste trabalho. Por fim, a parte \textbf{(5)} compreende considerações parciais acerca do desenvolvido até o momento.
