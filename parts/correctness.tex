@@ -1,6 +1,6 @@
 \section{Correção}
 
-    Neste sessão, apresentaremos uma prova de correção para a $\nec$-tradução. Antes disso, entretanto, apresentaremos uma prova de $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$, que usaremos como lema para a prova da correção. Provaremos o lema por indução sobre a profundidade da sentença e a correção por indução sobre o tamanho da prova.
+    Neste sessão, apresentaremos uma prova de correção para a $\nec$-tradução. Antes disso, entretanto, apresentaremos uma prova de $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$, que usaremos como lema para a prova da correção conforme sugerido por~\cite{Troelstra}. Provaremos o lema por indução sobre a profundidade da sentença e a correção por indução sobre o tamanho da prova.
 
     \begin{lemma}\label{square-nec}
         $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
@@ -25,7 +25,7 @@
             \begin{case}
                 \textsc{Caso 3.}
                 Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que ${(\varphi\wedge\psi)}^\medsquare=\varphi^\medsquare\wedge\psi^\medsquare$ pela definição da tradução.
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra da separação.
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
@@ -50,7 +50,7 @@
             \begin{case}
                 \textsc{Caso 4.}
                 Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que ${(\varphi\vee\psi)}^\medsquare=\varphi^\medsquare\vee\psi^\medsquare$ pela definição da tradução.
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra da separação.
+                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
             \end{case}
 
@@ -64,6 +64,7 @@
         \end{proof}
     \end{lemma}
 
+    Uma vez provado o lema podemos, por fim, provar a correção da $\nec$-tradução.
 
     \begin{theorem}\label{square-correctness}
         Se $\Gamma\entails\alpha$, então $\Gamma^\medsquare\entails\alpha^\medsquare$.
@@ -202,7 +203,7 @@
 
         \begin{case}
             \textsc{Caso 3.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido gerada pela aplicação da regra da separação a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$ pode-se assumir, sem perda de generalidade, que $\varphi_j=\varphi_i\to\alpha$.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$ pode-se assumir, sem perda de generalidade, que $\varphi_j=\varphi_i\to\alpha$.
             Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma^\medsquare\entails\varphi_i^\medsquare$ e que $\mathbf{H_2}=\Gamma^\medsquare\entails\nec(\varphi_i^\medsquare\to\alpha^\medsquare)$.
             Deste modo, podemos demonstrar que $\Gamma^\medsquare\entails\alpha^\medsquare$ pela seguinte sucessão de dedução:
             \footnotesize
