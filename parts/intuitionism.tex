@@ -1,4 +1,9 @@
 \section{Sistema intuicionista}
+
+    O sistema intuicionista consiste no sistema resultante da rejeição de algumas sentenças classicamente tidas como verdadeiras, como a sentença $\alpha\vee\neg\alpha$ e a sentença $\neg\neg\alpha\to\alpha$.
+    Esse sistema foi inicialmente formalizado por~\cite{Kolmogorov}, Heyting e~\cite{Glivenko-A, Glivenko-B} com inspiração nos trabalhos de~\cite{Brouwer-A, Brouwer-B} acerca do intuicionismo.
+    Nesta seção, definiremos este sistema conforme~\cite{Troelstra} e traremos um breve contexto de seu uso na computação.
+
     \begin{definition}[$\mathcal{L}_\mathbf{I}$]
         A linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{I}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{I}}$, onde $\mathcal{C}_\mathbf{I}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
         \qed{}
@@ -12,15 +17,6 @@
             \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
         \end{align*}
     \end{notation}
-
-    \begin{enumerate}[label=\textbf{(\alph*)}, left=\parindent]
-        \item Não existe prova de $\bot$.
-        \item Uma prova de $\alpha\wedge\beta$ consiste num par $\sequence{A,B}$, sendo $A$ uma prova de $\alpha$ e $B$ uma prova de $\beta$.
-        \item Uma prova de $\alpha\vee\beta$ consiste ou num par $\sequence{0,A}$, sendo $A$ uma prova de $\alpha$, ou num par $\sequence{1,B}$, sendo $B$ uma prova de $\beta$.
-        \item Uma prova de $\alpha\to\beta$ consiste numa construção $C$ que transforma uma prova $A$ de $\alpha$ numa prova $B$ de $\beta$.
-    \end{enumerate}
-
-    Definição abaixo segundo~\cite{Troelstra}.
 
     \begin{definition}
         A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1}}$, definidos abaixo:
@@ -38,5 +34,11 @@
         \end{alignat*}   
     \end{definition}
 
-    Daremos nomes aos esquemas e regras acima de modo a facilitar a comunicação no decorrer deste trabalho. Chamaremos o esquema $\mathbf{A_1}$ de esquema da constante e o esquema $\mathbf{A_1}$ de esquema da aplicação.\footnote{Em analogia aos combinadores $\mathbf{K}$ e $\mathbf{S}$.} Ao esquema $\mathbf{A_3}$ daremos o nome de introdução da conjunção, enquanto os esquemas $\mathbf{A_4}$ e $\mathbf{A_5}$ serão chamados de eliminação da conjunção. Analogamente, os esquemas $\mathbf{A_6}$ e $\mathbf{A_7}$ serão chamados de introdução da disjunção, enquanto ao esquema $\mathbf{A_8}$ chamaremos de eliminação da disjunção.
-    Por fim, chamaremos $\mathbf{A_\bot}$ de esquema da explosão e $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens}.
+    De modo a facilitar a comunicação no decorrer deste trabalho, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens}.
+
+    \begin{enumerate}[label=\textbf{(\alph*)}, left=\parindent]
+        \item Não existe prova de $\bot$.
+        \item Uma prova de $\alpha\wedge\beta$ consiste num par $\sequence{A,B}$, sendo $A$ uma prova de $\alpha$ e $B$ uma prova de $\beta$.
+        \item Uma prova de $\alpha\vee\beta$ consiste ou num par $\sequence{0,A}$, sendo $A$ uma prova de $\alpha$, ou num par $\sequence{1,B}$, sendo $B$ uma prova de $\beta$.
+        \item Uma prova de $\alpha\to\beta$ consiste numa construção $C$ que transforma uma prova $A$ de $\alpha$ numa prova $B$ de $\beta$.
+    \end{enumerate}

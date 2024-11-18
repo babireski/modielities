@@ -1,5 +1,5 @@
 \section{Sistemas modais}
-    Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respeitivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso. Nesta seção, contextualizaremos esses sistemas e, em seguida, definiremo-lo formalmente na sua versão $\mathbf{S_4}$.
+    Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respectivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso. Nesta seção, contextualizaremos esses sistemas e, em seguida, definiremo-lo formalmente na sua versão $\mathbf{S_4}$.
 
     Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S_1}$ a $\mathbf{S_5}$ --- sendo $\mathbf{S_4}$ o abordado neste trabalho.
 
@@ -23,8 +23,6 @@
         $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_\mathbf{M})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
     \end{notation}
 
-    Definição abaixo segundo~\cite{Troelstra}.
-
     \begin{definition}\label{m-axioms}
         A axiomatização do sistema modal consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat}{3}
@@ -45,7 +43,5 @@
         \end{alignat}   
     \end{definition}
 
-    Assim como feito para o sistema intuicionista, nomearemos os esquemas e regras acima de modo a facilitar a comunicação.
-    Aos axiomas e regras que correspondem aos axiomas e regras intuicionistas receberão os mesmos nomes. Ademais, chamaremos $\mathbf{B_1}$ de axiomas da normalidade, $\mathbf{B_2}$ de axiomas da reflexividade e $\mathbf{B_3}$ de axiomas da transitividade.\footnote{Em analogia às condições relacionais impostas nos enquadramentos.} Nomearemos $\mathbf{A_\neg}$ como chamaremos de axiomas da eliminação da negação e a $\mathbf{R_2}$ como regra da necessitação.
-
-    A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. Ao decorrer do texto, ocasionalmente chamaremos $\mathbf{R_1}$ de \emph{regra da separação} e $\mathbf{R_2}$ de \emph{regra da necessitação}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}
+    Assim como feito para o sistema intuicionista, nomearemos as regras acima de modo a facilitar a comunicação.
+    Deste modo, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens} e $\mathbf{R_2}$ de regra da necessitação. A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.

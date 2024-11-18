@@ -8,12 +8,12 @@
     \maketitle
 
     \begin{abstract}
-        Uma das primeiras traduções de um sistema de dedução a outro apresentadas na literatura consiste na tradução do sistema intuicionista ao sistema modal $\mathbf{S4}$ com o intuito de interpretar a modalidade da \emph{necessidade} como uma modalidade de \emph{provabilidade}. Dezenas de anos depois, foi apresentada uma metalinguagem que se dedicava a representar semanticamente noções de computação como parcialidade, não-determinismo, exceções e continuações. A codificação dessas noções apresenta grandes similaridades com os axiomas modais do sistema $\mathbf{S4}$ e, [...].  Assim, com inspiração nos diversos casos de sucesso de formalizações assistidas por computador, este trabalho busca verificar formalmente esta tradução.
+        Uma das primeiras traduções de um sistema de dedução a outro apresentadas na literatura consiste na tradução do sistema intuicionista ao sistema modal $\mathbf{S4}$ com o intuito de interpretar a modalidade da \emph{necessidade} como uma modalidade de \emph{provabilidade}. Dezenas de anos depois, foi apresentada uma metalinguagem que se dedicava a representar semanticamente noções de computação como parcialidade, não-determinismo, exceções e continuações. A codificação dessas noções apresenta grandes similaridades com os axiomas modais do sistema $\mathbf{S4}$ e, deste modo, a dita tradução torna-se relevante numa visão baseada na interpretação prova-programa. Assim, com inspiração nos diversos casos de sucesso de formalizações assistidas por computador, este trabalho busca verificar formalmente esta tradução.
     \end{abstract}
 
     \begin{otherlanguage}{english} 
         \begin{abstract}
-            \lipsum[1]
+            One of the first translations of a deduction system into another presented in the literature involves the translation of the intuitionistic system into the modal system $\mathbf{S4}$ to interpret the modality of \emph{necessity} as a modality of \emph{provability}. Decades later, a metalanguage was introduced to semantically represent notions of computation such as partiality, non-determinism, exceptions, and continuations. The encoding of these notions shows great similarities with the modal axioms of the $\mathbf{S4}$ system, making the mentioned translation relevant within a proof-program interpretation perspective. Thus, inspired by the various successful cases of computer-assisted formalizations, this work aims to formally verify this translation.
         \end{abstract}
     \end{otherlanguage}
 
@@ -25,13 +25,13 @@
 
     \chapter{Sistemas e traduções}
 
-        Nesta parte do trabalho, uma vez apresentada a fundamentação, introduziremos as definições dos sistemas e traduções que serão de fato abordados. Serão elas: os sistemas intuicionista  e modais --- mais especificamente o $\mathbf{S_4}$ ---, bem como duas traduções equivalentes do primeiro sistema ao segundo.
+        Nesta parte do trabalho, uma vez apresentada a fundamentação, introduziremos as definições dos sistemas e traduções que serão de fato abordados. Serão elas: os sistemas intuicionista  e modais --- mais especificamente o $\mathbf{S4}$ ---, bem como duas traduções equivalentes do primeiro sistema ao segundo.
 
         \input{parts/intuitionism}
         \input{parts/modalism}
-        \input{parts/translations.definitions}
+        \input{parts/translations}
 
-    \chapter{Formalização}
+    \chapter{Propriedades}
         Uma vez definidos os conceitos precisos para o desenvolvimento deste trabalho, aqui apresentaremos diversas provas que os dizem respeito. Notadamente, serão provados metateoremas acerca de $\mathbf{S_4}$, serão derivadas sentenças que possuem interpretações computacionais e serão demonstradas a correção e completude das traduções. Todas as derivações a seguir serão --- a menos quando indicado --- no sistema $\mathbf{S_4}$, motivo pelo qual denotaremos a relação de derivação $\entails_{\mathbf{4}}$ apenas como $\entails$.
 
         \input{parts/derivations}
