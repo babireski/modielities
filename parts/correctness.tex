@@ -6,14 +6,14 @@
         $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
 
         \begin{proof}
-            Prova por indução forte sobre a profundidade de $\alpha$ \citep{Troelstra}.
+            Prova por indução forte sobre a profundidade de $\alpha\in\mathcal{L}_\mathbf{I}$ \citep{Troelstra}.
             Assim, suponhamos que a proposição valha para qualquer sentença $\alpha$ de profundidade $n<k$.
             Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que a proposição vale para qualquer $\alpha$ de profundidade $n=k$.
 
             \begin{case}
                 \textsc{Caso 1.}
                 Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $a^\medsquare=\nec a$ pela definição da tradução.
-                Deste modo, $\nec{a}\to\nec\nec{a}$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim $\entails\nec{a}\to\nec\nec{a}$ provado trivialmente.
+                Deste modo, $\nec{a}\to\nec\nec{a}$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim $\entails\nec{a}\to\nec\nec{a}$ provado trivialmente.
             \end{case}
 
             \begin{case}
@@ -57,7 +57,7 @@
             \begin{case}
                 \textsc{Caso 5.}
                 Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que ${(\varphi\to\psi)}^\medsquare=\nec(\varphi^\medsquare\to\psi^\medsquare)$ pela definição da tradução.
-                Deste modo, $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim $\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ provado trivialmente.
+                Deste modo, $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim $\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ provado trivialmente.
             \end{case}
             \vspace{.5\baselineskip}
             Tendo-se provado todos os casos do passo de indução, podemos concluir que a propriedade vale, ou seja, que $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
@@ -67,154 +67,154 @@
     Uma vez provado o lema podemos, por fim, provar a correção da $\nec$-tradução.
 
     \begin{theorem}\label{square-correctness}
-        Se $\Gamma\entails\alpha$, então $\Gamma^\medsquare\entails\alpha^\medsquare$.
+        Se $\Gamma\entails_\mathbf{I}\alpha$, então $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$.
     \end{theorem}
 
     \begin{proof}
         Prova por indução forte sobre o tamanho da sucessão de dedução.
         Assim, suponhamos que a tradução seja correta para qualquer sucessão dedução de tamanho $n<k$.
-        Demonstraremos, analisando-se os casos, que o a correção da tradução vale para sucessões de dedução de tamanho $n=k+1$.
+        Demonstraremos, analisando-se os casos, que o a correção da tradução vale para sucessões de dedução de tamanho $n=k$.
 
         \begin{case}
             \textsc{Caso 1.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de alguma premissa, sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\medsquare\in\Gamma^\medsquare$. Desde modo, pode-se demonstrar que $\Gamma^\medsquare\entails\alpha^\medsquare$ trivialmente pela evocação da premissa $\alpha^\medsquare$.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de alguma premissa, sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\medsquare\in\Gamma^\medsquare$. Desde modo, pode-se demonstrar que $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$ trivialmente pela evocação da premissa $\alpha^\medsquare$.
         \end{case}
 
         \begin{case}
             \textsc{Caso 2.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que gera $\alpha$. Deste modo, devemos demonstrar que para cada esquema $\mathbf{A}\in\mathcal{A}$, pode-se derivar $\Gamma^\medsquare\entails_\mathbf{4}\mathbf{A}^\medsquare$. Nos casos abaixo, usaremos ocasionalmente a implicação estrita de modo a diminuir o espaço ocupado pelas provas.
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que gera $\alpha$. Deste modo, devemos demonstrar que para cada esquema $\mathbf{A}\in\mathcal{A}$, pode-se derivar $\Gamma^\medsquare\entails_\mathbf{S4}\mathbf{A}^\medsquare$. Nos casos abaixo, usaremos ocasionalmente a implicação estrita de modo a diminuir o espaço ocupado pelas provas.
         \end{case}
 
             \begin{subcase}
-                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA1]{\mathbf{A_1}}$, sabemos que $\alpha=\alpha\to\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA1]{\mathbf{A_1}}$, sabemos que $\alpha=\varphi\to\psi\to\varphi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare&\refer{square-nec}{L}\\
-                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare&\hyperref[MA1]{${\mathbf{A_1}}$}\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
-                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&\refer{comp}{L}\\
-                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
-                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
+                    \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
+                    \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA1]{${\mathbf{A_1}}$}\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\hyperref[MB1]{${\mathbf{K}}$}\\
+                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\refer{comp}{L}\\
+                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA2]{\mathbf{A_2}}$, sabemos que $\alpha=(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$ e que $\alpha^\medsquare=(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha\strictif\beta\strictif\gamma)\strictif(\alpha\strictif\beta)\strictif\alpha\strictif\gamma$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA2]{\mathbf{A_2}}$, sabemos que $\alpha=(\varphi\to\psi\to\chi)\to(\varphi\to\psi)\to\varphi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare&$\mathbf{P_1}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare&$\mathbf{P_2}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,2}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_3}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,4}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare,\alpha^\medsquare}\entails\gamma^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{3,5}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\strictif\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{6}$\\
-                    \fa\set{\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare}\entails(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{7}$\\
-                    \fa\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\to(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
-                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\beta^\medsquare\strictif\gamma^\medsquare)\strictif(\alpha^\medsquare\strictif\beta^\medsquare)\strictif\alpha^\medsquare\strictif\gamma^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{9}$\\
+                    \fb\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare&$\mathbf{P_2}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_3}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,4}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{3,5}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{6}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare}\entails(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{7}$\\
+                    \fa\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\to(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
+                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{9}$\\
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA3]{\mathbf{A_3}}$, sabemos que $\alpha=\alpha\to\beta\to\alpha\wedge\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA3]{\mathbf{A_3}}$, sabemos que $\alpha=\varphi\to\psi\to\varphi\wedge\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\to\nec\alpha^\medsquare&\refer{square-nec}{L}\\
-                    \fa\entails\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
-                    \fa\entails\nec(\alpha^\medsquare\to\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)\to\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
-                    \fa\entails\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                    \fa\entails(\alpha^\medsquare\to\nec\alpha^\medsquare)\to(\nec\alpha^\medsquare\to\beta^\medsquare\strictif\alpha^\medsquare\wedge\beta^\medsquare)\to\alpha^\medsquare\to\beta^\medsquare\strictif\alpha^\medsquare\wedge\beta^\medsquare&\refer{comp}{L}\\
-                    \fa\entails(\nec\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))\to\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
-                    \fa\entails\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\nec(\beta^\medsquare\to\alpha^\medsquare\wedge\beta^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
+                    \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
+                    \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&\hyperref[MB1]{${\mathbf{K}}$}\\
+                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare&\refer{comp}{L}\\
+                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
                 \end{fitch} 
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA4]{\mathbf{A_4}}$, sabemos que $\alpha=\alpha\wedge\beta\to\alpha$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA4]{\mathbf{A_4}}$, sabemos que $\alpha=\varphi\wedge\psi\to\varphi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fa\entails\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\entails\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&$\hyperref[MA4]{\mathbf{A_4}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA5]{\mathbf{A_5}}$, sabemos que $\alpha=\alpha\wedge\beta\to\beta$ e que $\alpha^\medsquare=\nec(\alpha\wedge\beta\to\beta)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha\wedge\beta\to\beta)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA5]{\mathbf{A_5}}$, sabemos que $\alpha=\varphi\wedge\psi\to\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\wedge\beta^\medsquare\to\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fb\entails\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&$\hyperref[MA5]{\mathbf{A_5}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA6]{\mathbf{A_6}}$, sabemos que $\alpha=\alpha\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA6]{\mathbf{A_6}}$, sabemos que $\alpha=\varphi\to\varphi\vee\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\alpha^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fb\entails\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA6]{\mathbf{A_6}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA7]{\mathbf{A_7}}$, sabemos que $\alpha=\beta\to\alpha\vee\beta$ e que $\alpha^\medsquare=\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA7]{\mathbf{A_7}}$, sabemos que $\alpha=\psi\to\varphi\vee\psi$ e que $\alpha^\medsquare=\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\beta^\medsquare\to\alpha^\medsquare\vee\beta^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fb\entails\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA7]{\mathbf{A_7}}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA8]{\mathbf{A_8}}$, sabemos que $\alpha=(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$ e que $\alpha^\medsquare=(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA8]{\mathbf{A_8}}$, sabemos que $\alpha=(\varphi\to\chi)\to(\psi\to\chi)\to\varphi\vee\psi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_3}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\to\alpha^\medsquare\to\gamma^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\strictif\gamma^\medsquare&$\mathbf{P_2}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\to\beta^\medsquare\to\gamma^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare&$\mathbf{P_1}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\alpha^\medsquare\to\gamma^\medsquare)\to(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&\hyperref[MA8]{${\mathbf{A_8}}$}\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails(\beta^\medsquare\to\gamma^\medsquare)\to\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\to\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare,\alpha^\medsquare\vee\beta^\medsquare}\entails\gamma^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare,\beta^\medsquare\strictif\gamma^\medsquare}\entails\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
-                    \fa\set{\alpha^\medsquare\strictif\gamma^\medsquare}\entails(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{12}$\\
-                    \fa\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\to(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
-                    \fa\Gamma^\medsquare\entails(\alpha^\medsquare\strictif\gamma^\medsquare)\strictif(\beta^\medsquare\strictif\gamma^\medsquare)\strictif\alpha^\medsquare\vee\beta^\medsquare\strictif\gamma^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{14}$
+                    \fb\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_3}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to\varphi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_2}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\to\psi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\mathbf{P_1}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\chi^\medsquare)\to(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&\hyperref[MA8]{${\mathbf{A_8}}$}\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{12}$\\
+                    \fa\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
+                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{14}$
                 \end{fitch}
             \end{subcase}
 
             \begin{subcase}
-                \textsc{Caso 2.9.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_{\bot}}$, sabemos que $\alpha=\bot\to\alpha$ e que $\alpha^\medsquare=\nec(\bot\to\alpha^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails\nec(\bot\to\alpha^\medsquare)$ pela seguinte sucessão de dedução:
+                \textsc{Caso 2.9.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_{\bot}}$, sabemos que $\alpha=\bot\to\varphi$ e que $\alpha^\medsquare=\nec(\bot\to\varphi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\bot\to\varphi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\entails\bot\to\alpha^\medsquare&\refer{explosion}{L}\\
-                    \fa\Gamma^\medsquare\entails\nec(\bot\to\alpha^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fb\entails\bot\to\varphi^\medsquare&\refer{explosion}{L}\\
+                    \fa\Gamma^\medsquare\entails\nec(\bot\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
         \begin{case}
             \textsc{Caso 3.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$ pode-se assumir, sem perda de generalidade, que $\varphi_j=\varphi_i\to\alpha$.
-            Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma^\medsquare\entails\varphi_i^\medsquare$ e que $\mathbf{H_2}=\Gamma^\medsquare\entails\nec(\varphi_i^\medsquare\to\alpha^\medsquare)$.
-            Deste modo, podemos demonstrar que $\Gamma^\medsquare\entails\alpha^\medsquare$ pela seguinte sucessão de dedução:
+            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$ pode-se assumir, sem perda de generalidade, que $\varphi_j=\varphi_i\to\alpha$.
+            Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma^\medsquare\entails_\mathbf{S4}\varphi_i^\medsquare$ e que $\mathbf{H_2}=\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi_i^\medsquare\to\alpha^\medsquare)$.
+            Deste modo, podemos demonstrar que $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$ pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
                 \fb\varphi_i^\medsquare&$\mathbf{H_2}$\\
                 \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)&$\mathbf{H_1}$\\
-                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
                 \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
                 \fa\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3, 4}$
             \end{fitch}
         \end{case}
         \vspace{.5\baselineskip}
-        Tendo-se provado todos os casos do passo de indução, podemos concluir que a correção da $\nec$-tradução, ou seja, que se $\Gamma\entails\alpha$, então $\Gamma^\medsquare\entails\alpha^\medsquare$.
+        Tendo-se provado todos os casos do passo de indução, podemos concluir que a correção da $\nec$-tradução, ou seja, que se $\Gamma\entails_\mathbf{I}\alpha$, então $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$.
     \end{proof}

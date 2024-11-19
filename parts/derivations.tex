@@ -22,18 +22,18 @@
     Tendo-se provado o lema da identidade, agora provaremos a regra da dedução para os sistemas modais com base na prova apresentada por~\cite{Hakli}.
     Pequenas alterações foram feitas de modo a garantir a adequação da prova com a axiomatização provida na Definição~\ref{m-axioms}.
 
-    \begin{theorem}\label{deduction}
+    \begin{theorem}[Metateorema da dedução]\label{deduction}
         $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
 
         \begin{proof}
             Prova por indução forte sobre o tamanho da sucessão de dedução.\footnote{Nota-se que, para a indução forte, não se faz preciso provar nenhuma base \citep{Velleman}.}
-            Assim, suponhamos que o teorema da dedução valha para qualquer sucessão dedução de tamanho $n<k$.
-            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k+1$.
+            Assim, suponhamos que o teorema da dedução valha para qualquer sucessão de dedução de tamanho $n<k$.
+            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que o teorema da dedução vale para sucessões de dedução de tamanho $n=k$.
 
             \begin{case}
                 \textsc{Caso 1.}
                 Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido a evocação de alguma premissa, sabe-se que $\beta\in\Gamma\cup\set{\alpha}$.
-                Deste modo, existem outros dois casos a serem analisados.
+                Deste modo, existem dois casos a serem analisados.
             \end{case}
 
             \begin{subcase}
@@ -69,7 +69,7 @@
 
             \begin{case}
                 \textsc{Caso 3.}
-                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a uma linha anterior, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}={\entails\varphi}$.
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\cup\set{\alpha}\vdash\beta$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior $\mathbf{H_1}$, sabe-se que $\beta=\nec\varphi$ e que $\mathbf{H_1}={\entails\varphi}$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
                 \footnotesize
@@ -82,7 +82,7 @@
             \end{case}
 
             \begin{case}
-                \textsc{Caso 4.} Seja a sentença $\varphi_n=\beta$ gerada pela aplicação da regra da separação a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
+                \textsc{Caso 4.} Seja a sentença $\varphi_n=\beta$ gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
                 Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma\entails\alpha\to\varphi_i$ e que $\mathbf{H_2}=\Gamma\entails\alpha\to\varphi_i\to\varphi_n$.
                 Deste modo, podemos demonstrar que $\Gamma\vdash\alpha\to\nec\varphi$ pela seguinte sucessão de dedução:
 
@@ -99,30 +99,30 @@
         \end{proof}
     \end{theorem}
 
-    Uma vez provado o teorema da dedução, agora provaremos o teorema da generalização da regra da necessitação, conforme sugerido por~\cite{Troelstra}.
+    Tendo-se provado o teorema da dedução, provaremos o teorema da generalização da regra da necessitação, conforme sugerido por~\cite{Troelstra}.
     Como apresentado abaixo, este teorema afirma que, caso possamos deduzir alguma sentença $\alpha$ a partir de um conjunto necessariamente verdadeiro de premissas, podemos concluir a necessidade desta sentença $\alpha$.
 
-    \begin{theorem}\label{gen-nec}
+    \begin{theorem}[Generalização da necessitação]\label{gen-nec}
         Se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
         \begin{proof}
-            Prova por indução fraca sobre o tamanho $n$ do conjunto $\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução, considerando-se $\mathbf{H_1}=\nec\Gamma\entails\alpha$.
+            Prova por indução fraca sobre o tamanho $n$ do conjunto $\Gamma$ \citep{Troelstra}. A prova consiste em dois casos: um para a base da indução e outro para o passo da indução. No que segue, denotaremos $\mathbf{H_1}=\nec\Gamma\entails\alpha$.
             \begin{case}
                 \textsc{Caso 1.} Para a base, consideraremos que $\Gamma=\varnothing$.
                 Assim, sabemos que o conjunto possui tamanho nulo e que $\entails\alpha$. Portanto, sabe-se que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
-                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra do \emph{modus ponens} \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
             \end{case}
             \begin{case}
                 \textsc{Caso 2.} 
-                Para o passo, suponhamos que a generalização da regra do \emph{modus ponens} valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
-                Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H_2}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra do \emph{modus ponens} vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
+                Para o passo, suponhamos que a generalização da regra da necessitação valha para qualquer conjunto $\Gamma$ de tamanho $n=k$.
+                Demonstraremos, valendo-se da suposição acima --- doravante chamada $\mathbf{H_2}$ --- e pela sucessão de dedução apresentada abaixo, que a generalização da regra da necessitação vale para conjuntos $\Gamma$ de tamanho $n=k+1$.
                 \footnotesize
                 \begin{fitch}
                     \fb\nec\Gamma\cup\set{\nec\alpha}\entails\beta&$\mathbf{H_1}$\\
                     \fa\nec\Gamma\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{1}$\\
                     \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)&$\mathbf{H_2}\;\set{2}$\\
-                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta&$\hyperref[MB1]{\mathbf{B_1}}$\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta&$\hyperref[MB1]{\mathbf{K}}$\\
                     \fa\nec\Gamma\entails\nec\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha&$\hyperref[MB3]{\mathbf{B_3}}$\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha&$\hyperref[MB3]{\mathbf{4}}$\\
                     \fa\nec\Gamma\entails(\nec\alpha\to\nec\nec\alpha)\to(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta&$\hyperref[MA2]{\mathbf{A_2}}$\\
                     \fa\nec\Gamma\entails(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,7}$\\
                     \fa\nec\Gamma\entails\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,8}$\\
@@ -132,18 +132,16 @@
                 \end{fitch}
             \end{case}
             \vspace{.5\baselineskip}
-            Tendo-se provado a base e o passo de indução, podemos concluir que generalização da regra do \emph{modus ponens} vale, ou seja, que se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
+            Tendo-se provado a base e o passo de indução, podemos concluir que generalização da regra da necessitação vale, ou seja, que se $\nec\Gamma\entails\alpha$, então $\nec\Gamma\entails\nec\alpha$.
         \end{proof}
     \end{theorem}
 
-    Uma vez provada a generalização da regra da necessitação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra afirma que, dada uma dedução de $\beta$ partindo conjunto de premissas necessariamente verdadeiro em conjunto com uma premissa $\alpha$, podemos deduzir $\nec(\alpha\to\beta)$ a partir desse conjunto de premissas necessariamente verdadeiro. Isso nos permite simplificar as provas de correção das traduções, uma vez que uma das traduções que serão apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
+    Uma vez provada a generalização da regra da necessitação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra afirma que, dada uma dedução de $\beta$ partindo conjunto de um premissas necessariamente verdadeiras e com uma premissa $\alpha$, podemos deduzir $\nec(\alpha\to\beta)$ a partir desse conjunto de premissas necessariamente verdadeiras. Isso nos permite simplificar as provas de correção das traduções, uma vez que uma das traduções apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
 
     \begin{theorem}\label{strictdeduction}
         $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
-
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
-
             \footnotesize
             \begin{fitch}
                 \fb\nec\Gamma\cup\set{\alpha}\entails\beta&$\mathbf{H_1}$\\
@@ -155,6 +153,8 @@
         \end{proof}
     \end{theorem}
 
+    Agora, provaremos a aplicação da regra do \emph{modus ponens} a uma implicação estrita. Essa regra afirma que, dada uma prova de $\alpha$ e uma prova de $\nec(\alpha\to\beta)$ a partir de um conjunto de premissas, sabe-se que deve haver alguma prova de $\beta$ a partir desse mesmo conjunto de premissas.
+
     \begin{theorem}\label{strictsep}
         Se $\Gamma\entails\alpha$ e $\Gamma\entails\nec(\alpha\to\beta)$, então $\Gamma\entails\beta$.
         \begin{proof}
@@ -163,7 +163,7 @@
             \begin{fitch}
                 \fb\Gamma\entails\alpha&$\mathbf{H_1}$\\
                 \fa\Gamma\entails\nec(\alpha\to\beta)&$\mathbf{H_2}$\\
-                \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
                 \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
                 \fa\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
             \end{fitch}
@@ -172,7 +172,7 @@
         \end{proof}
     \end{theorem}
 
-    Abaixo, demonstraremos que, caso haja uma prova de alguma sentença $\alpha$ a partir de um par de premissas, sabe-se que deve haver alguma prova desta mesma sentença $\alpha$ a partir da conjunção deste par de premissas.
+    Abaixo, demonstraremos que, caso haja uma prova de alguma sentença $\gamma$ a partir de um par de premissas, sabe-se que deve haver alguma prova desta mesma sentença $\gamma$ a partir da conjunção deste par de premissas.
 
     \begin{theorem}\label{conjunctiondeduction}
         Se $\set{\alpha,\beta}\entails\gamma$, então $\set{\alpha\wedge\beta}\entails\gamma$.
@@ -197,7 +197,7 @@
         \end{proof}
     \end{theorem}
 
-    Analogamente ao teorema anterior, demonstraremos que, caso hava uma prova de $\gamma$ partindo-se da premissa $\alpha$ e uma prova de $\gamma$ partindo-se da premissa $\beta$, então sabe-se que deve haver uma prova de $\gamma$ partindo-se da premissa $\alpha\vee\beta$.
+    Analogamente ao teorema anterior, demonstraremos que, caso haja uma prova de $\gamma$ partindo-se da premissa $\alpha$ e uma prova de $\gamma$ partindo-se da premissa $\beta$, então sabe-se que deve haver uma prova de $\gamma$ partindo-se da premissa $\alpha\vee\beta$.
 
     \begin{theorem}\label{disjunctiondeduction}
         Se $\set{\alpha}\entails \gamma$ e $\set{\beta}\entails \gamma$, então $\set{\alpha \vee \beta}\entails \gamma$.
@@ -294,11 +294,11 @@
             \begin{fitch}
                 \fb\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
                 \fa\entails\nec(\alpha\wedge\beta\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
-                \fa\entails\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)&\hyperref[MB1]{$\mathbf{B_1}$}\\
+                \fa\entails\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)&\hyperref[MB1]{$\mathbf{K}$}\\
                 \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2, 3}$\\
                 \fa\entails\alpha\wedge\beta\to\beta&\hyperref[MA5]{$\mathbf{A_5}$}\\
                 \fa\entails\nec(\alpha\wedge\beta\to\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{5}$\\
-                \fa\entails\nec(\alpha\wedge\beta\to\beta)\to(\nec(\alpha\wedge\beta)\to\nec\beta)&\hyperref[MB1]{$\mathbf{B_1}$}\\
+                \fa\entails\nec(\alpha\wedge\beta\to\beta)\to(\nec(\alpha\wedge\beta)\to\nec\beta)&\hyperref[MB1]{$\mathbf{K}$}\\
                 \fa\entails\nec(\alpha\wedge\beta)\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6, 7}$\\
                 \fa\entails(\nec(\alpha\wedge\beta)\to\nec\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&\refer{and-intro}{L}\\
                 \fa\entails(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4, 9}$\\
@@ -316,10 +316,10 @@
             \footnotesize
             \begin{fitch}
                 \fb\set{\nec\alpha,\nec\beta}\entails\nec\alpha&$\mathbf{P_2}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec\alpha\to\alpha&\hyperref[MB2]{$\mathbf{B_2}$}\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\alpha\to\alpha&\hyperref[MB2]{$\mathbf{T}$}\\
                 \fa\set{\nec\alpha,\nec\beta}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta&$\mathbf{P_1}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta\to\beta&\hyperref[MB2]{$\mathbf{B_2}$}\\
+                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta\to\beta&\hyperref[MB2]{$\mathbf{T}$}\\
                 \fa\set{\nec\alpha,\nec\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
                 \fa\set{\nec\alpha,\nec\beta}\entails\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
                 \fa\set{\nec\alpha,\nec\beta}\entails\beta\to\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,7}$\\
@@ -340,10 +340,10 @@
             \footnotesize
             \begin{fitch}
                 \fb\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{T}}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\mathbf{P_1}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
                 \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,6}$\\
                 \fa\set{\nec(\alpha\to\beta)}\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{7}$\\
@@ -462,13 +462,13 @@
             \footnotesize 
             \begin{fitch}
                 \fb\set{\nec\alpha}\entails\nec\alpha&$\mathbf{P_1}$\\
-                \fa\set{\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{T}}$\\
                 \fa\set{\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
                 \fa\set{\nec\alpha}\entails\alpha\to\alpha\vee\beta&$\hyperref[MA4]{\mathbf{A_4}}$\\
                 \fa\set{\nec\alpha}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
                 \fa\set{\nec\alpha}\entails\nec(\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{5}$\\
                 \fa\set{\nec\beta}\entails\nec\beta&$\mathbf{P_1}$\\
-                \fa\set{\nec\beta}\entails\nec\beta\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec\beta}\entails\nec\beta\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
                 \fa\set{\nec\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
                 \fa\set{\nec\beta}\entails\beta\to\alpha\vee\beta&$\hyperref[MA5]{\mathbf{A_5}}$\\
                 \fa\set{\nec\beta}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,10}$\\

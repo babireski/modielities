@@ -1,7 +1,7 @@
 \section{Sistemas modais}
     Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respectivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso. Nesta seção, contextualizaremos esses sistemas e, em seguida, definiremo-lo formalmente na sua versão $\mathbf{S4}$.
 
-    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que sua definição\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdade. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S1}$ a $\mathbf{S5}$ --- sendo $\mathbf{S4}$ o abordado neste trabalho.
+    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que a definição clássica desse operador\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdadeiras. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S1}$ a $\mathbf{S5}$ --- sendo $\mathbf{S4}$ o abordado neste trabalho.
 
     \begin{definition}[$\mathcal{L}_\mathbf{M}$]
         A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{M}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{M}}$, onde $\mathcal{C}_\mathbf{M}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
@@ -23,7 +23,7 @@
         $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_\mathbf{M})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
     \end{notation}
 
-    \begin{definition}[$\entails_\mathbf{4}$]\label{m-axioms}
+    \begin{definition}[$\entails_\mathbf{S4}$]\label{m-axioms}
         A axiomatização do sistema modal $\mathbf{S4}$ consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat}{3}
             &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{MA1}\tag*{}\displaybreak[0]\\
@@ -35,9 +35,9 @@
             &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{MA7}\tag*{}\displaybreak[0]\\
             &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{MA8}\tag*{}\displaybreak[0]\\
             &\mathbf{A_\neg}\quad&&\neg\neg\alpha\to\alpha\label{MANEG}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\displaybreak[0]\\
+            &\mathbf{K}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\displaybreak[0]\\
+            &\mathbf{T}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\displaybreak[0]\\
+            &\mathbf{4}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\displaybreak[0]\\
             &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\displaybreak[0]\\
             &\mathbf{R_2}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
         \end{alignat}   

@@ -6,7 +6,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
     $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
 
     \begin{proof}
-        Prova por indução forte sobre a profundidade de $\alpha$ \citep{Troelstra}.
+        Prova por indução forte sobre a profundidade de $\alpha\in\mathcal{L}_\mathbf{I}$ \citep{Troelstra}.
         Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n<k$.
         Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
 
@@ -20,7 +20,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
         \begin{case}
             \textsc{Caso 2.}
             Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\medsquare=\bot$ pelas definições das traduções.
-            Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
+            Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
             Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
         \end{case}
 
@@ -96,7 +96,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                 \fb\set{\chi}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
                 \fa\set{\chi}\entails\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
                 \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\mathbf{P_1}$\\
-                \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                \fa\set{\chi}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ&\hyperref[MB2]{${\mathbf{T}}$}\\
                 \fa\set{\chi}\entails\nec\varphi^\circ\vee\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
                 \fa\set{\chi}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to(\nec\psi^\circ\to\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&\refer{or-subst}{L}\\
                 \fa\set{\chi}\entails(\nec\psi^\circ\to\psi^\medsquare)\to\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
@@ -113,12 +113,12 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
             \footnotesize
             \begin{fitch}
                 \fb\set{\chi}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
-                \fa\set{\chi}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
+                \fa\set{\chi}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{4}}$}\\
                 \fa\set{\chi}\entails(\varphi^\medsquare\to\nec\varphi^\circ)\to(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ&\refer{comp}{L}\\
                 \fa\set{\chi}\entails(\nec\varphi^\circ\to\nec\nec\varphi^\circ)\to\varphi^\medsquare\to\nec\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,3}$\\
                 \fa\set{\chi}\entails\varphi^\medsquare\to\nec\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,4}$\\
                 \fa\set{\chi}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
-                \fa\set{\chi}\entails\nec\psi^\circ\to\nec\nec\psi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
+                \fa\set{\chi}\entails\nec\psi^\circ\to\nec\nec\psi^\circ&\hyperref[MB3]{${\mathbf{4}}$}\\
                 \fa\set{\chi}\entails(\psi^\medsquare\to\nec\psi^\circ)\to(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ&\refer{comp}{L}\\
                 \fa\set{\chi}\entails(\nec\psi^\circ\to\nec\nec\psi^\circ)\to\psi^\medsquare\to\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,8}$\\
                 \fa\set{\chi}\entails\psi^\medsquare\to\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,9}$\\
@@ -149,9 +149,9 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                 \footnotesize
                 \begin{fitch}
                     \fb\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\mathbf{P_1}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB1]{${\mathbf{B_1}}$}\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB1]{${\mathbf{K}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{4}}$}\\
+                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\nec\varphi^\circ\to\nec\psi^\circ&\hyperref[MB2]{${\mathbf{T}}$}\\
                     \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\varphi^\circ\to\nec^2\varphi^\circ)\to(\nec^2\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ&\refer{comp}{L}\\
                     \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails(\nec\nec\varphi^\circ\to\nec\psi^\circ)\to\nec\varphi^\circ\to\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,5}$\\
                     \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
@@ -177,7 +177,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                 \begin{fitch}
                     \fb\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)&$\mathbf{P_2}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\varphi^\medsquare\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\nec\varphi^\circ\to\varphi^\medsquare)\to(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare&\refer{comp}{L}\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails(\varphi^\medsquare\to\psi^\medsquare)\to\nec\varphi^\circ\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,5}$\\
@@ -186,7 +186,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,10}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ&\hyperref[MB2]{${\mathbf{T}}$}\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\circ&$\hyperref[detachment]{\mathbf{R_1}}\;\set{11,12}$\\
                     \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[strictdeduction]{\mathbf{R_\getrefnumber{strictdeduction}}}\;\set{13}$\\
                     \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$

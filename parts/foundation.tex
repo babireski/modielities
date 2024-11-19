@@ -32,7 +32,7 @@ Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sist
     Seja $\mathcal{C}$ um conjunto de operadores, $\mathalpha{\circ}^n$ denota um operador $\mathalpha{\circ}\in\mathcal{C}_n$.
 \end{notation}
 
-Podemos interpretar os conjuntos $\mathcal{P}$ e $\mathcal{C}$ de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ como contrutores de sentenças.
+Podemos interpretar os conjuntos $\mathcal{P}$ e $\mathcal{C}$ de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ como construtores de sentenças.
 Neste sentido, o conjunto $\mathcal{C}_0$ assemelha-se mais ao conjunto $\mathcal{P}$, uma vez que seus elementos --- ditos \emph{constantes} --- não geram sentenças maiores partindo de sentenças menores.
 Nota-se que uma assinatura constitui um elemento suficiente para definirmos indutivamente a linguagem de um sistema, conforme definido abaixo de maneira similar a~\cite{Franks}.
 Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos o conjunto de letras $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
@@ -68,18 +68,18 @@ Neste trabalho, definiremos a relações de dedução baseada em axiomatizaçõe
 
 
 Neste trabalho, consideraremos axiomatizações definidas em relação a conjuntos de premissas $\Gamma\subseteq\mathcal{L}$. 
-Por este motivo, todas as axiomatizações apresentadas futuramente neste trabalho conterão implicitamente a \emph{regra da premissa} $\mathbf{P}$ --- sendo esta regra definida como se $\alpha\in\Gamma$, então $\Gamma\entails\alpha$.
-Similarmente, faremos o mesmo para a \emph{regra do enfraquecimento} $\mathbf{E}$ --- definida aqui como se $\Gamma\entails\alpha$, então $\Gamma\cup\Delta\entails\alpha$ ---, tendo em vista que todos os sistemas apresentados neste trabaho são estruturais. Assim, tendo-se claro o conceito de axiomatização, podemos finalmente o conceito de dedução.
+Por este motivo, todas as axiomatizações apresentadas futuramente neste trabalho conterão implicitamente a \emph{regra da premissa} $\mathbf{P}$ --- sendo esta regra definida como: se $\alpha\in\Gamma$, então $\Gamma\entails\alpha$.
+Similarmente, faremos o mesmo para a \emph{regra do enfraquecimento} $\mathbf{E}$ --- definida aqui como: se $\Gamma\entails\alpha$, então $\Gamma\cup\Delta\entails\alpha$ ---, tendo em vista que todos os sistemas apresentados neste trabaho são estruturais. Assim, tendo-se claro o conceito de axiomatização, podemos finalmente o conceito de dedução.
 
 \begin{definition}[Dedução]
     Seja um sistema $\mathbf{L} = \sequence{\mathcal{L},{\vdash}}$ com uma relação de dedução definida sobre uma axiomatização $\mathcal{H} = \sequence{\mathcal{A},\mathcal{R}}$ e  seja um conjunto de sentenças $\Gamma\cup\set{\alpha}\subseteq\mathcal{L}$.
-    A dedução $\Gamma\vdash\alpha$ vale se e somente se houver sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ ou tenha sido gerada ou por algum esquema $\mathbf{A}\in\mathcal{A}$ ou pela aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.
+    A dedução $\Gamma\vdash\alpha$ vale se e somente se houver sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ tenha sido gerada ou por algum esquema $\mathbf{A}\in\mathcal{A}$ ou pela aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.
     \qed{}
 \end{definition}
 
 \section{Traduções}
 
-Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro, garantindo certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção e as necessidades de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
+Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro, garantindo certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando que a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção e as necessidades de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
 
 \begin{definition}[Condições]
     Chamaremos a condição $\varnothing\entails_\mathbf{A}\alpha$ implica em $\varnothing\entails_\mathbf{B}\alpha^*$ de correção fraca e a condição $\varnothing\entails_\mathbf{B}\alpha^*$ implica em $\varnothing\entails_\mathbf{A}\alpha$ de completude fraca. Analogamente, considerando-se dedução com premissas, chamaremos a condição $\Gamma\entails_\mathbf{A}\alpha$ implica em $\Gamma^*\entails_\mathbf{B}\alpha^*$ de correção forte e a condição $\Gamma^*\entails_\mathbf{B}\alpha^*$ implica em $\Gamma\entails_\mathbf{A}\alpha$ de completude forte.
