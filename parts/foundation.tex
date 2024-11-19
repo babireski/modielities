@@ -24,12 +24,12 @@ Ainda segundo~\cite{Beziau-B}, os primeiros desenvolvimentos neste sentido foram
 Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathbf{L}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. Ao par formado por letras e operadores daremos o nome \emph{assinatura}, conforme abaixo.
 
 \begin{definition}[Assinatura]
-    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\bullet}\in\mathcal{C}_n$ se e somente se $\mathalpha{\bullet}$ possuir aridade $n$.
+    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\circ}\in\mathcal{C}_n$ se e somente se $\mathalpha{\circ}$ possuir aridade $n$.
     \qed{}
 \end{definition}
 
 \begin{notation}
-    Seja $\mathcal{C}$ um conjunto de operadores, $\mathalpha{\bullet}^n$ denota um operador $\mathalpha{\bullet}\in\mathcal{C}_n$.
+    Seja $\mathcal{C}$ um conjunto de operadores, $\mathalpha{\circ}^n$ denota um operador $\mathalpha{\circ}\in\mathcal{C}_n$.
 \end{notation}
 
 Podemos interpretar os conjuntos $\mathcal{P}$ e $\mathcal{C}$ de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ como contrutores de sentenças.
@@ -41,7 +41,7 @@ Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usa
     Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ induzida a partir de $\Sigma$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
         \item$\mathcal{P}\subseteq\mathcal{L}$
-        \item\text{Se }$\mathalpha{\bullet}\in\mathcal{C}_n\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\bullet\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+        \item\text{Se }$\mathalpha{\circ}\in\mathcal{C}_n\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\circ\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
     \end{enumerate}
 \end{definition}
 
@@ -49,11 +49,11 @@ Neste trabalho, representaremos sentenças por letras gregas em caixa-baixa e co
 Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da construção da dada sentença. A definição provida abaixo consiste numa generalização para quaisquer aridades da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para fazer demonstrações por meio provas indutivas sobre esta propriedade.
 
 \begin{definition}[Profundidade]
-    Seja $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma proposição $a\in\mathcal{P}$, um operador ${\bullet}\in\mathcal{C}$ e uma aridade $n>0$, definimos a profundidade $|\alpha|$ de uma sentença $\alpha\in\mathcal{L}$ indutivamente da seguinte maneira:
+    Seja $\mathbf{L} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma proposição $a\in\mathcal{P}$, um operador ${\circ}\in\mathcal{C}$ e uma aridade $n>0$, definimos a profundidade $|\alpha|$ de uma sentença $\alpha\in\mathcal{L}$ indutivamente da seguinte maneira:
     \begin{align*}
         |a|&\coloneqq 0\\
-        |{\bullet^0}|&\coloneqq 0\\
-        |{\bullet^n\sequence{\varphi_i\mid i\leq n}}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
+        |{\circ^0}|&\coloneqq 0\\
+        |{\circ^n\sequence{\varphi_i\mid i\leq n}}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
         \tag*{\qed} 
     \end{align*}
 \end{definition}

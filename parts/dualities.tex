@@ -1,6 +1,10 @@
 \section{Interpretações computacionais}
 
     Conforme~\cite{Zach} aponta, pode-se derivar sentenças duais aos axiomas modais por meio da contraposição das implicações e da definição da possibilidade.
+    No caso do sistema abordado neste trabalho, torna-se podemos derivar as sentenças $\alpha\to\pos\alpha$ e $\pos\pos\alpha\to\pos\alpha$.
+    Faz-se interessante notar que estas sentenças apresentam grande similaridade com as tranformações naturais $\eta:1_C\to T$ e $\mu:T^2\to T$ de uma estrutura $\sequence{T,\eta,\mu}$, chamada \emph{mônada}.
+    Esta estrutura inspirou uma metalinguagem definida por~\cite{Moggi} para a modelagem de noções de computação --- como parcialidade, não-determinismo, excessões e continuações.
+    Posteriormente,~\cite{Wadler} sugeriu o uso dessas estrutrar como um \emph{framework} para simular efeitos em linguagens de programação puramente funcionais.
 
     \begin{theorem}
         $\vdash\alpha\to\pos\alpha$.
