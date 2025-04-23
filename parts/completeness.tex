@@ -1,4 +1,16 @@
 \section{Completude}
-    \babireski{Não vai rolar de provar a completude como~\cite{Troelstra}. Vou precisar procurar outros artigos.}
+    \begin{notation}
+        Sejam $\alpha,\varepsilon\in\mathcal{L}$ sentenças bem-formadas. Denota-se $\neg_\varepsilon\alpha$ a sentença $\alpha\to\varepsilon$.
+    \end{notation}
 
-    \babireski{Ver~\cite{Benton},~\cite{Pfenning} e~\cite{Fairtlough} acerca do sistema laxo}.
+    \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+        \begin{align*}
+            a^\varepsilon_\Gamma&\coloneqq \neg_\varepsilon\neg_\varepsilon a\\
+            \bot^\varepsilon_\Gamma&\coloneqq\bot\\
+            (\nec\varphi)\varphi^\varepsilon & \coloneqq \neg_\varepsilon\neg_\varepsilon\textstyle\bigwedge_{\gamma\in\Gamma}\varphi^\gamma_\Gamma\displaybreak[0]\\
+            {(\varphi \wedge \psi)}^\varepsilon_\Gamma & \coloneqq \varphi^\varepsilon_\Gamma\wedge\psi^\varepsilon_\Gamma\displaybreak[0]\\
+            {(\varphi \vee \psi)}^\varepsilon_\Gamma   & \coloneqq \neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon_\Gamma\vee\psi^\varepsilon_\Gamma)\displaybreak[0]\\
+            {(\varphi \to \psi)}^\varepsilon_\Gamma    & \coloneqq \varphi^\varepsilon_\Gamma\to\psi^\varepsilon_\Gamma
+            \tag*{\qed} 
+        \end{align*}
+    \end{definition}

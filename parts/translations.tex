@@ -1,9 +1,9 @@
 \section{Traduções}
     A primeira tradução do sistema intuicionista ao sistema modal foi proposta por~\cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \citep{Troelstra}. Gödel alegou --- sem apresentar provas --- a correção fraca dessa tradução e conjeiturou sua completude fraca, posteriormente provadas por~\cite{McKinsey}. As as traduções apresentadas abaixo foram retiradas de~\cite{Troelstra}.
 
-    \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ:\mathcal{L}_\mathbf{I}\to\mathcal{L}_\mathbf{M}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
         \begin{align*}
-            p^\circ&\coloneqq p\\
+            a^\circ&\coloneqq a\\
             \bot^\circ&\coloneqq\bot\\
             {(\varphi \wedge \psi)}^\circ & \coloneqq \varphi^\circ \wedge \psi^\circ\displaybreak[0]\\
             {(\varphi \vee \psi)}^\circ   & \coloneqq \nec \varphi^\circ \vee \nec \psi^\circ\displaybreak[0]\\
@@ -12,9 +12,9 @@
         \end{align*}
     \end{definition}
     
-    \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare:\mathcal{L}_\mathbf{I}\to\mathcal{L}_\mathbf{M}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\medsquare$] Define-se a tradução $\bullet^\medsquare:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
         \begin{align*}
-            p^\medsquare& \coloneqq \nec p\displaybreak[0]\\
+            a^\medsquare& \coloneqq \nec a\displaybreak[0]\\
             \bot^\medsquare& \coloneqq \bot\displaybreak[0]\\
             {(\varphi \wedge \psi)}^\medsquare & \coloneqq \varphi^\medsquare \wedge \psi^\medsquare\displaybreak[0]\\
             {(\varphi \vee \psi)}^\medsquare & \coloneqq \varphi^\medsquare \vee \psi^\medsquare\displaybreak[0]\\

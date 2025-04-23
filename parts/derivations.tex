@@ -7,12 +7,12 @@
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
-            \begin{fitch}   
+            \begin{fitch}
                 \fb\vdash\alpha\to\alpha\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
                 \fa\vdash\alpha\to(\alpha\to\alpha)\to\alpha&\hyperref[MA1]{$\mathbf{A_1}$}\\
                 \fa\vdash(\alpha\to(\alpha\to\alpha)\to\alpha)\to(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&\hyperref[MA2]{$\mathbf{A_2}$}\\
-                \fa\vdash(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
-                \fa\vdash\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
+                \fa\vdash(\alpha\to\alpha\to\alpha)\to\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+                \fa\vdash\alpha\to\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,4}$.
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -22,7 +22,7 @@
     Tendo-se provado o lema da identidade, agora provaremos a regra da dedução para os sistemas modais com base na prova apresentada por~\cite{Hakli}.
     Pequenas alterações foram feitas de modo a garantir a adequação da prova com a axiomatização provida na Definição~\ref{m-axioms}.
 
-    \begin{theorem}[Metateorema da dedução]\label{deduction}
+    \begin{theorem}[Dedução]\label{deduction}
         $\text{Se }\Gamma\cup\set{\alpha}\vdash\beta\text{, então }\Gamma\vdash\alpha\to\beta$.
 
         \begin{proof}
@@ -42,10 +42,11 @@
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\Gamma\vdash\beta&$\mathbf{P_\beta}$\\
+                    \fb\Gamma\vdash\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
-                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$.
                 \end{fitch}
+                \normalsize
             \end{subcase}
 
             \begin{subcase}
@@ -63,8 +64,9 @@
                 \begin{fitch}
                     \fb\Gamma\vdash\beta&$\mathbf{A_\beta}$\\
                     \fa\Gamma\vdash\beta\to\alpha\to\beta&$\hyperref[MA1]{\mathbf{A_1}}$\\
-                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$.
+                    \fa\Gamma\vdash\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$.
                 \end{fitch}
+                \normalsize
             \end{case}
 
             \begin{case}
@@ -75,10 +77,11 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\vdash\varphi&$\mathbf{H_1}$\\
-                    \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
+                    \fa\Gamma\vdash\nec\varphi&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$\\
                     \fa\Gamma\vdash\nec\varphi\to\alpha\to\nec\varphi&$\hyperref[MA1]{\mathbf{A_1}}$\\
-                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$.
+                    \fa\Gamma\vdash\alpha\to\nec\varphi&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$.
                 \end{fitch}
+                \normalsize
             \end{case}
 
             \begin{case}
@@ -91,11 +94,46 @@
                     \fb\Gamma\entails\alpha\to\varphi_j&$\mathbf{H_1}$\\
                     \fa\Gamma\entails\alpha\to\varphi_j\to\beta&$\mathbf{H_2}$\\
                     \fa\Gamma\entails(\alpha\to\varphi_j\to\beta)\to(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[MA2]{\mathbf{A_2}}$\\
-                    \fa\Gamma\entails(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
-                    \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$.
+                    \fa\Gamma\entails(\alpha\to\varphi_j)\to(\alpha\to\beta)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+                    \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,4}$.
                 \end{fitch}
+                \normalsize
             \end{case}
             Uma vez provada a propriedade para todos os casos do passo de indução, provamos que o teorema da dedução vale para o sistema $\mathbf{S4}$.
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}[Enfraquecimento]\label{weakening}
+        Se $\Gamma\subseteq\Delta$ e $\Gamma\vdash\alpha$, então $\Delta\vdash\alpha$.
+        \begin{proof}
+            Prova por indução forte sobre o tamanho da sucessão de dedução.
+            Assim, suponhamos que o teorema do enfraquecimento valha para qualquer sucessão de dedução de tamanho $n<k$.
+            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que o teorema do enfraquecimento vale para sucessões de dedução de tamanho $n=k$.
+
+            \begin{case}
+                \textsc{Caso 1.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\vdash\alpha$ tenha sido a invocação de alguma premissa $\alpha$, sabe-se que $\alpha\in\Gamma$.
+                Como $\Gamma\subseteq\Delta$, sabe-se que $\alpha\in\Delta$.
+                Deste modo, pode-se provar $\Delta\vdash\alpha$ pela invocação da mesma premissa $\alpha$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 2.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\vdash\alpha$ tenha sido a invocação de algum axioma, sabe-se que existe algum esquema $\mathbf{A_\alpha}\in\mathcal{A}$ que instancia $\alpha$.
+                Deste modo, podemos demonstrar que $\Delta\vdash\alpha$ pela invocação do mesmo axioma $\mathbf{A_\alpha}$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 3.}
+                Se a linha derradeira da sucessão de dedução que prova $\Gamma\vdash\alpha$ tenha sido gerada pela aplicação da regra da necessitação a uma linha anterior, sabe-se que $\alpha=\nec\varphi$ e que ${\entails\varphi}$. Como pode-se provar $\varphi$ sem o uso de premissas, podemos aplicar a regra da necessitação a ${\entails\varphi}$ de modo a provar ${\Delta\entails\nec\varphi}$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 4.} Seja a sentença $\varphi_n=\alpha$ gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$. Assumiremos, sem perda de generalidade, que $\varphi_j=\varphi_i\to\varphi_n$.
+                Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Delta\entails\varphi_i$ e que $\mathbf{H_2}=\Delta\entails\varphi_i\to\varphi_n$.
+                Deste modo, podemos demonstrar que $\Delta\vdash\alpha$ pela aplicação da regra do \emph{modus ponens} a $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            \end{case}
+            Uma vez provada a propriedade para todos os casos do passo de indução, provamos que o teorema do enfraquecimento vale para o sistema $\mathbf{S4}$.
         \end{proof}
     \end{theorem}
 
@@ -109,7 +147,7 @@
             \begin{case}
                 \textsc{Caso 1.} Para a base, consideraremos que $\Gamma=\varnothing$.
                 Assim, sabemos que o conjunto possui tamanho nulo e que $\entails\alpha$. Portanto, sabe-se que existe uma sucessão de dedução $\sequence{\varphi_i\mid 0\leq i\leq n}$ com $\varphi_n=\alpha$
-                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_2}$} sobre a sentença $\varphi_n$.
+                Deste modo, pode-se demonstrar que $\entails\nec\alpha$ trivialmente pela aplicação da regra da necessitação \hyperref[necessitation]{$\mathbf{R_3}$} sobre a sentença $\varphi_n$.
             \end{case}
             \begin{case}
                 \textsc{Caso 2.} 
@@ -120,15 +158,15 @@
                     \fb\nec\Gamma\cup\set{\nec\alpha}\entails\beta&$\mathbf{H_1}$\\
                     \fa\nec\Gamma\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{1}$\\
                     \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)&$\mathbf{H_2}\;\set{2}$\\
-                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta&$\hyperref[MB1]{\mathbf{K}}$\\
-                    \fa\nec\Gamma\entails\nec\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha&$\hyperref[MB3]{\mathbf{4}}$\\
+                    \fa\nec\Gamma\entails\nec(\nec\alpha\to\beta)\to\nec\nec\alpha\to\nec\beta&$\hyperref[MB1]{\mathbf{B_1}}$\\
+                    \fa\nec\Gamma\entails\nec\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\nec\alpha&$\hyperref[MB3]{\mathbf{B_3}}$\\
                     \fa\nec\Gamma\entails(\nec\alpha\to\nec\nec\alpha)\to(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta&$\hyperref[MA2]{\mathbf{A_2}}$\\
-                    \fa\nec\Gamma\entails(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,7}$\\
+                    \fa\nec\Gamma\entails(\nec\nec\alpha\to\nec\beta)\to\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,7}$\\
                     \fa\nec\Gamma\entails\nec\alpha\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,8}$\\
-                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha&$\mathbf{P_1}$\\
-                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\to\nec\beta&$\mathbf{E_1}\;\set{9}$\\
-                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{10,11}$.
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\alpha\to\nec\beta&$\hyperref[weakening]{\mathbf{T_2}}\;\set{9}$\\
+                    \fa\nec\Gamma\cup\set{\nec\alpha}\entails\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{10,11}$.
                 \end{fitch}
             \end{case}
             \vspace{.5\baselineskip}
@@ -138,7 +176,7 @@
 
     Uma vez provada a generalização da regra da necessitação, a prova da regra da dedução estrita --- conforme descrito por~\cite{Barcan, Marcus} --- torna-se trivial, como pode ser visto abaixo. Esta regra afirma que, dada uma dedução de $\beta$ partindo de um conjunto de premissas necessariamente verdadeiras e uma premissa $\alpha$, podemos deduzir $\nec(\alpha\to\beta)$ a partir desse conjunto de premissas necessariamente verdadeiras. Isso nos permite simplificar as provas de correção das traduções, uma vez que uma das traduções apresentadas mapeia implicações materiais do sistema intuicionista em implicações estritas.
 
-    \begin{theorem}\label{strictdeduction}
+    \begin{theorem}[Dedução estrita]\label{strictdeduction}
         $\text{Se }\nec\Gamma\cup\set{\alpha}\entails\beta\text{, então }\nec\Gamma\entails\nec(\alpha\to\beta)$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
@@ -155,7 +193,7 @@
 
     Agora, provaremos a aplicação da regra do \emph{modus ponens} a uma implicação estrita. Essa regra afirma que, dada uma prova de $\alpha$ e uma prova de $\nec(\alpha\to\beta)$ a partir de um conjunto de premissas, sabe-se que deve haver alguma prova de $\beta$ a partir desse mesmo conjunto de premissas.
 
-    \begin{theorem}\label{strictsep}
+    \begin{theorem}[Separação estrita]\label{strictsep}
         Se $\Gamma\entails\alpha$ e $\Gamma\entails\nec(\alpha\to\beta)$, então $\Gamma\entails\beta$.
         \begin{proof}
             Pode ser provado pela seguinte sucessão de dedução:
@@ -163,9 +201,9 @@
             \begin{fitch}
                 \fb\Gamma\entails\alpha&$\mathbf{H_1}$\\
                 \fa\Gamma\entails\nec(\alpha\to\beta)&$\mathbf{H_2}$\\
-                \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
-                \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
-                \fa\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$
+                \fa\Gamma\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\Gamma\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+                \fa\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,4}$
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -183,14 +221,14 @@
                 \fb\set{\alpha,\beta}\entails\gamma&$\mathbf{H_1}$\\
                 \fa\set{\alpha}\entails\beta\to\gamma&$\hyperref[deduction]{\mathbf{T_1}}\;\set{1}$\\
                 \fa\entails\alpha\to\beta\to\gamma&$\hyperref[deduction]{\mathbf{T_1}}\;\set{2}$\\
-                \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta&$\mathbf{P_1}$\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta\to\alpha&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                \fa\set{\alpha\wedge\beta}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
                 \fa\set{\alpha\wedge\beta}\entails\alpha\wedge\beta\to\beta&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                \fa\set{\alpha\wedge\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,7}$\\
-                \fa\set{\alpha\wedge\beta}\entails\alpha\to\beta\to\gamma&${\mathbf{E_1}}\;\set{3}$\\
-                \fa\set{\alpha\wedge\beta}\entails\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
-                \fa\set{\alpha\wedge\beta}\entails\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{8,10}$
+                \fa\set{\alpha\wedge\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,7}$\\
+                \fa\set{\alpha\wedge\beta}\entails\alpha\to\beta\to\gamma&$\hyperref[weakening]{\mathbf{T_2}}\;\set{3}$\\
+                \fa\set{\alpha\wedge\beta}\entails\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,9}$\\
+                \fa\set{\alpha\wedge\beta}\entails\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{8,10}$
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -209,13 +247,13 @@
                 \fa\set{\beta}\entails\gamma&$\mathbf{H_2}$\\
                 \fa\entails\alpha\to\gamma&$\hyperref[deduction]{\mathbf{T_1}}\;\set{1}$\\
                 \fa\entails\beta\to\gamma&$\hyperref[deduction]{\mathbf{T_1}}\;\set{2}$\\
-                \fa\set{\alpha\vee\beta}\entails\alpha\to\gamma&${\mathbf{E_1}}\;\set{3}$\\
-                \fa\set{\alpha\vee\beta}\entails\beta\to\gamma&${\mathbf{E_1}}\;\set{4}$\\
-                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta&$\mathbf{P_1}$\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\to\gamma&$\hyperref[weakening]{\mathbf{T_2}}\;\set{3}$\\
+                \fa\set{\alpha\vee\beta}\entails\beta\to\gamma&$\hyperref[weakening]{\mathbf{T_2}}\;\set{4}$\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\vee\beta}\entails(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma&$\hyperref[MA8]{\mathbf{A_8}}$\\
-                \fa\set{\alpha\vee\beta}\entails(\beta\to\gamma)\to\alpha\vee\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,8}$\\
-                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,9}$\\
-                \fa\set{\alpha\vee\beta}\entails\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$
+                \fa\set{\alpha\vee\beta}\entails(\beta\to\gamma)\to\alpha\vee\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,8}$\\
+                \fa\set{\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,9}$\\
+                \fa\set{\alpha\vee\beta}\entails\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,10}$
             \end{fitch}
             \normalsize
             Estando assim demonstrada a proposição.
@@ -230,11 +268,11 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\bot}\entails\bot&$\mathbf{P_1}$\\
+                \fb\set{\bot}\entails\bot&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot&$\hyperref[MA1]{\mathbf{A_1}}$\\
-                \fa\set{\bot}\entails\neg\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\bot}\entails\neg\neg\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\bot}\entails\neg\neg\alpha\to\alpha&$\hyperref[MANEG]{\mathbf{A_\neg}}$\\
-                \fa\set{\bot}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\set{\bot}\entails\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                 \fa\entails\bot\to\alpha&$\hyperref[deduction]{\mathbf{T_1}}\;\set{5}$.
             \end{fitch}
             \normalsize
@@ -248,13 +286,13 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\mathbf{P_1}$\\
+                \fb\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\to\beta,\neg\beta}\entails(\beta\to\bot)\to\alpha\to(\beta\to\bot)&\hyperref[MA1]{$\mathbf{A_1}$}\\
-                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta\to\bot)\to(\alpha\to\beta)\to(\alpha\to\bot)&\hyperref[MA2]{$\mathbf{A_2}$}\\
-                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta&$\mathbf{P_2}$\\
-                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta)\to(\alpha\to\bot)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                \fa\set{\alpha\to\beta,\neg\beta}\entails\neg\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,6}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta)\to(\alpha\to\bot)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\neg\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,6}$\\
                 \fa\set{\alpha\to\beta}\entails\neg\beta\to\neg\alpha&\refer{deduction}{T}$\;\set{7}$\\
                 \fa\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)&\refer{deduction}{T}$\;\set{8}$.
             \end{fitch}
@@ -269,14 +307,14 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\mathbf{P_1}$\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\beta&$\mathbf{P_3}$\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma&$\mathbf{P_2}$\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 4}$\\
+                \fb\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 2}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 4}$\\
                 \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\to\gamma\to\beta\wedge\gamma&\hyperref[MA3]{$\mathbf{A_3}$}\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma\to\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3, 6}$\\
-                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5, 7}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\gamma\to\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3, 6}$\\
+                \fa\set{\alpha\to\beta,\alpha\to\gamma,\alpha}\vdash\beta\wedge\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5, 7}$\\
                 \fa\set{\alpha\to\beta,\alpha\to\gamma}\vdash\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{8}$\\
                 \fa\set{\alpha\to\beta}\vdash(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{9}$\\
                 \fa\vdash(\alpha\to\beta)\to(\alpha\to\gamma)\to\alpha\to\beta\wedge\gamma&\refer{deduction}{T}$\;\set{10}$.
@@ -287,49 +325,47 @@
     \end{lemma}
 
     \begin{lemma}\label{nec-distr}
-        $\vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
+        $\nec\Gamma\vdash\nec(\alpha\wedge\beta)$ se e somente se $\nec\Gamma\vdash\nec\alpha\wedge\nec\beta$.
         \begin{proof}
-            Pode ser provado pela seguinte sucessão de dedução:
-            \footnotesize
-            \begin{fitch}
-                \fb\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
-                \fa\entails\nec(\alpha\wedge\beta\to\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$\\
-                \fa\entails\nec(\alpha\wedge\beta\to\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\alpha)&\hyperref[MB1]{$\mathbf{K}$}\\
-                \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2, 3}$\\
-                \fa\entails\alpha\wedge\beta\to\beta&\hyperref[MA5]{$\mathbf{A_5}$}\\
-                \fa\entails\nec(\alpha\wedge\beta\to\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{5}$\\
-                \fa\entails\nec(\alpha\wedge\beta\to\beta)\to(\nec(\alpha\wedge\beta)\to\nec\beta)&\hyperref[MB1]{$\mathbf{K}$}\\
-                \fa\entails\nec(\alpha\wedge\beta)\to\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6, 7}$\\
-                \fa\entails(\nec(\alpha\wedge\beta)\to\nec\alpha)\to(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&\refer{and-intro}{L}\\
-                \fa\entails(\nec(\alpha\wedge\beta)\to\nec\beta)\to\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4, 9}$\\
-                \fa\entails\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
-            \end{fitch}
-            \normalsize
-            Estando assim demonstrada a proposição.
-        \end{proof}
-    \end{lemma}
-
-    \begin{lemma}\label{nec-undistr}
-        $\entails\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
-        \begin{proof}
-            Pode ser provado pela seguinte sucessão de dedução:
-            \footnotesize
-            \begin{fitch}
-                \fb\set{\nec\alpha,\nec\beta}\entails\nec\alpha&$\mathbf{P_2}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec\alpha\to\alpha&\hyperref[MB2]{$\mathbf{T}$}\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta&$\mathbf{P_1}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec\beta\to\beta&\hyperref[MB2]{$\mathbf{T}$}\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\beta\to\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,7}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,8}$\\
-                \fa\set{\nec\alpha,\nec\beta}\entails\nec(\alpha\wedge\beta)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{9}$\\
-                \fa\set{\nec\alpha\wedge\nec\beta}\entails\nec(\alpha\wedge\beta)&$\hyperref[conjunctiondeduction]{\mathbf{T_{\getrefnumber{conjunctiondeduction}}}}\;\set{10}$\\
-                \fa\entails\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{11}$\\
-            \end{fitch}
-            \normalsize
-            Estando assim demonstrada a proposição.
+            \begin{case}
+                \textsc{Caso 1.} Pode ser provado pela seguinte sucessão de dedução:
+                \footnotesize
+                \begin{fitch}
+                    \fb\nec\Gamma\entails\nec(\alpha\wedge\beta)&$\mathbf{H_1}$\\
+                    \fa\nec\Gamma\entails\nec(\alpha\wedge\beta)\to\alpha\wedge\beta&\hyperref[MB2]{$\mathbf{B_2}$}\\
+                    \fa\nec\Gamma\entails\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 2}$\\
+                    \fa\nec\Gamma\entails\alpha\wedge\beta\to\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
+                    \fa\nec\Gamma\entails\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3, 4}$\\
+                    \fa\nec\Gamma\entails\nec\alpha&\refer{gen-nec}{T}$\;\set{5}$\\
+                    \fa\nec\Gamma\entails\alpha\wedge\beta\to\beta&\hyperref[MA5]{$\mathbf{A_5}$}\\
+                    \fa\nec\Gamma\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3, 7}$\\
+                    \fa\nec\Gamma\entails\nec\beta&\refer{gen-nec}{T}$\;\set{8}$\\
+                    \fa\nec\Gamma\entails\nec\alpha\to\nec\beta\to\nec\alpha\wedge\nec\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                    \fa\nec\Gamma\entails\nec\beta\to\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6, 10}$\\
+                    \fa\nec\Gamma\entails\nec\alpha\wedge\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{8, 11}$\\
+                \end{fitch}
+                \normalsize
+            \end{case}
+            \begin{case}
+                \textsc{Caso 2.} Pode ser provado pela seguinte sucessão de dedução:
+                \footnotesize
+                \begin{fitch}
+                    \fb\nec\Gamma\vdash\nec\alpha\wedge\nec\beta&$\mathbf{H_1}$\\
+                    \fa\nec\Gamma\vdash\nec\alpha\wedge\nec\beta\to\nec\alpha&\hyperref[MA4]{$\mathbf{A_4}$}\\
+                    \fa\nec\Gamma\vdash\nec\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 2}$\\
+                    \fa\nec\Gamma\vdash\nec\alpha\to\alpha&\hyperref[MB2]{$\mathbf{B_2}$}\\
+                    \fa\nec\Gamma\vdash\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3, 4}$\\
+                    \fa\nec\Gamma\vdash\nec\alpha\wedge\nec\beta\to\nec\beta&\hyperref[MA5]{$\mathbf{A_5}$}\\
+                    \fa\nec\Gamma\vdash\nec\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 6}$\\
+                    \fa\nec\Gamma\vdash\nec\beta\to\beta&\hyperref[MB2]{$\mathbf{B_2}$}\\
+                    \fa\nec\Gamma\vdash\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7, 8}$\\
+                    \fa\nec\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta&\hyperref[MA3]{$\mathbf{A_3}$}\\
+                    \fa\nec\Gamma\vdash\beta\to\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5, 10}$\\
+                    \fa\nec\Gamma\vdash\alpha\wedge\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9, 11}$\\
+                    \fa\nec\Gamma\vdash\nec(\alpha\wedge\beta)&\refer{gen-nec}{T}$\;\set{12}$\\
+                \end{fitch}
+                \normalsize
+            \end{case}
         \end{proof}
     \end{lemma}
 
@@ -339,18 +375,18 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\mathbf{P_2}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{T}}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\mathbf{P_1}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
-                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,6}$\\
+                \fb\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\nec(\alpha\to\beta)\to\alpha\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\alpha\to\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+                \fa\set{\nec(\alpha\to\beta),\nec\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
                 \fa\set{\nec(\alpha\to\beta)}\entails\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{7}$\\
                 \fa\entails\nec(\alpha\to\beta)\to\nec\alpha\to\beta&$\hyperref[deduction]{\mathbf{T_1}}\;\set{8}$.
             \end{fitch}
-            \vspace*{-18pt-0.7em}
-            \qedhere
+            \normalsize
+            Estando assim demonstrada a proposição.
         \end{proof}
     \end{lemma}
 
@@ -360,11 +396,11 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha&$\mathbf{P_1}$\\
-                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha\to\beta&$\mathbf{P_3}$\\
-                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta\to\gamma&$\mathbf{P_2}$\\
-                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fb\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\beta\to\gamma&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\beta\to\gamma,\alpha}\entails\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                 \fa\set{\alpha\to\beta,\beta\to\gamma}\entails\alpha\to\gamma&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{5}$\\
                 \fa\set{\alpha\to\beta}\entails(\beta\to\gamma)\to\alpha\to\gamma&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{6}$\\
                 \fa\entails(\alpha\to\beta)\to(\beta\to\gamma)\to\alpha\to\gamma&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{7}$\\
@@ -380,9 +416,9 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\set{\alpha,\neg\alpha}\entails\alpha&$\mathbf{P_2}$\\
-                \fa\set{\alpha,\neg\alpha}\entails\alpha\to\bot&$\mathbf{P_1}$\\
-                \fa\set{\alpha,\neg\alpha}\entails\bot&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fb\set{\alpha,\neg\alpha}\entails\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha,\neg\alpha}\entails\alpha\to\bot&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha,\neg\alpha}\entails\bot&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\alpha}\entails\neg\neg\alpha&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{3}$\\
                 \fa\entails\alpha\to\neg\neg\alpha&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{4}$\\
             \end{fitch}
@@ -397,11 +433,11 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize 
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\alpha}\entails\alpha&$\mathbf{P_1}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta&$\mathbf{P_2}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fb\set{\alpha\to\beta,\alpha}\entails\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\alpha\to\beta,\alpha}\entails\beta\to\beta\vee\gamma&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\beta\vee\gamma&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta\vee\gamma&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                 \fa\set{\alpha\to\beta}\entails\alpha\to\beta\vee\gamma&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{5}$\\
                 \fa\entails(\alpha\to\beta)\to\alpha\to\beta\vee\gamma&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{6}$\\
             \end{fitch}
@@ -416,11 +452,11 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize 
             \begin{fitch}
-                \fb\set{\alpha\to\beta,\alpha}\entails\alpha&$\mathbf{P_1}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta&$\mathbf{P_2}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fb\set{\alpha\to\beta,\alpha}\entails\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\alpha\to\beta,\alpha}\entails\beta\to\gamma\vee\beta&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                \fa\set{\alpha\to\beta,\alpha}\entails\gamma\vee\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\alpha}\entails\gamma\vee\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                 \fa\set{\alpha\to\beta}\entails\alpha\to\gamma\vee\beta&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{5}$\\
                 \fa\entails(\alpha\to\beta)\to\alpha\to\gamma\vee\beta&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{6}$\\
             \end{fitch}
@@ -435,17 +471,17 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize 
             \begin{fitch}
-                \fb\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma&$\mathbf{P_3}$\\
+                \fb\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\alpha\to\gamma)\to\alpha\to\gamma\vee\delta&$\hyperref[or-left]{\mathbf{L_{\getrefnumber{or-left}}}}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\delta&$\mathbf{P_2}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\delta&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\beta\to\delta)\to\beta\to\gamma\vee\delta&$\hyperref[or-right]{\mathbf{L_{\getrefnumber{or-right}}}}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\vee\beta&$\mathbf{P_1}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\vee\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
                 \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\alpha\to\gamma\vee\delta)\to(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[MA8]{\mathbf{A_8}}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
-                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,8}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,9}$\\
+                \fa\set{\alpha\to\gamma,\beta\to\delta,\alpha\vee\beta}\entails\gamma\vee\delta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,10}$\\
                 \fa\set{\alpha\to\gamma,\beta\to\delta}\entails\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{11}$\\
                 \fa\set{\alpha\to\gamma}\entails(\beta\to\delta)\to\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{12}$\\
                 \fa\entails(\alpha\to\gamma)\to(\beta\to\delta)\to\alpha\vee\beta\to\gamma\vee\delta&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{13}$\\
@@ -461,18 +497,18 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize 
             \begin{fitch}
-                \fb\set{\nec\alpha}\entails\nec\alpha&$\mathbf{P_1}$\\
-                \fa\set{\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{T}}$\\
-                \fa\set{\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                \fb\set{\nec\alpha}\entails\nec\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\nec\alpha}\entails\nec\alpha\to\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec\alpha}\entails\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                 \fa\set{\nec\alpha}\entails\alpha\to\alpha\vee\beta&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                \fa\set{\nec\alpha}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
-                \fa\set{\nec\alpha}\entails\nec(\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{5}$\\
-                \fa\set{\nec\beta}\entails\nec\beta&$\mathbf{P_1}$\\
-                \fa\set{\nec\beta}\entails\nec\beta\to\beta&$\hyperref[MB2]{\mathbf{T}}$\\
-                \fa\set{\nec\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
+                \fa\set{\nec\alpha}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
+                \fa\set{\nec\alpha}\entails\nec(\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{5}$\\
+                \fa\set{\nec\beta}\entails\nec\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\nec\beta}\entails\nec\beta\to\beta&$\hyperref[MB2]{\mathbf{B_2}}$\\
+                \fa\set{\nec\beta}\entails\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
                 \fa\set{\nec\beta}\entails\beta\to\alpha\vee\beta&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                \fa\set{\nec\beta}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,10}$\\
-                \fa\set{\nec\beta}\entails\nec(\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{11}$\\
+                \fa\set{\nec\beta}\entails\alpha\vee\beta&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
+                \fa\set{\nec\beta}\entails\nec(\alpha\vee\beta)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{11}$\\
                 \fa\set{\nec\alpha\vee\nec\beta}\entails\nec(\alpha\vee\beta)&$\hyperref[disjunctiondeduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{6,12}$\\
                 \fa\entails\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{13}$\\
             \end{fitch}

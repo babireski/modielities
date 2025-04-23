@@ -13,7 +13,7 @@
             \begin{case}
                 \textsc{Caso 1.}
                 Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $a^\medsquare=\nec a$ pela definição da tradução.
-                Deste modo, $\nec{a}\to\nec\nec{a}$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim $\entails\nec{a}\to\nec\nec{a}$ provado trivialmente.
+                Deste modo, $\nec{a}\to\nec\nec{a}$ constitui um axioma gerado pelo esquema \hyperref[MB3]{$\mathbf{4}$} --- sendo assim $\entails\nec{a}\to\nec\nec{a}$ provado trivialmente.
             \end{case}
 
             \begin{case}
@@ -29,20 +29,20 @@
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\mathbf{P_1}$\\
+                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&\hyperref[MA5]{${\mathbf{A_5}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,8}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\to\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,10}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{9,11}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&\refer{nec-undistr}{L}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{12,13}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,10}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,11}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&\refer{nec-distr}{L}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{12,13}$\\
                     \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$
                 \end{fitch}
             \end{case}
@@ -52,12 +52,25 @@
                 Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que ${(\varphi\vee\psi)}^\medsquare=\varphi^\medsquare\vee\psi^\medsquare$ pela definição da tradução.
                 A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
                 Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
+                \footnotesize
+                \begin{fitch}
+                    \fb\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{H_1}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{H_2}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\psi^\medsquare\to\nec\psi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&\refer{or-subst}{L}\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\nec\psi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,5}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\varphi^\medsquare\vee\nec\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)&\refer{or-undistr}{L}\\
+                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec(\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
+                    \fa\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{9}$
+                \end{fitch}
             \end{case}
 
             \begin{case}
                 \textsc{Caso 5.}
                 Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que ${(\varphi\to\psi)}^\medsquare=\nec(\varphi^\medsquare\to\psi^\medsquare)$ pela definição da tradução.
-                Deste modo, $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim $\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ provado trivialmente.
+                Deste modo, $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ constitui um axioma gerado pelo esquema \hyperref[MB3]{$\mathbf{B_3}$} --- sendo assim $\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ provado trivialmente.
             \end{case}
             \vspace{.5\baselineskip}
             Tendo-se provado todos os casos do passo de indução, podemos concluir que a propriedade vale, ou seja, que $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
@@ -91,13 +104,13 @@
                 \begin{fitch}
                     \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
                     \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA1]{${\mathbf{A_1}}$}\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\hyperref[MB1]{${\mathbf{K}}$}\\
-                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{2}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
+                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                     \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\refer{comp}{L}\\
-                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
-                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
+                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
+                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{8}$\\
                 \end{fitch}
             \end{subcase}
 
@@ -105,16 +118,16 @@
                 \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA2]{\mathbf{A_2}}$, sabemos que $\alpha=(\varphi\to\psi\to\chi)\to(\varphi\to\psi)\to\varphi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare&$\mathbf{P_1}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare&$\mathbf{P_2}$\\
+                    \fb\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_3}$\\
+                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,4}$\\
                     \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{3,5}$\\
                     \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{6}$\\
                     \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare}\entails(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{7}$\\
                     \fa\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\to(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
-                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{9}$\\
+                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{9}$\\
                 \end{fitch}
             \end{subcase}
 
@@ -124,13 +137,13 @@
                 \begin{fitch}
                     \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
                     \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&\hyperref[MB1]{${\mathbf{K}}$}\\
-                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{2}$\\
+                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
+                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                     \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare&\refer{comp}{L}\\
-                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
-                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_1}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{8}$\\
+                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
+                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,7}$\\
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{8}$\\
                 \end{fitch} 
             \end{subcase}
 
@@ -139,7 +152,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fa\entails\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -148,7 +161,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -157,7 +170,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -166,7 +179,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\Gamma^\medsquare\entails\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -174,21 +187,21 @@
                 \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA8]{\mathbf{A_8}}$, sabemos que $\alpha=(\varphi\to\chi)\to(\psi\to\chi)\to\varphi\vee\psi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_3}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to\varphi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\mathbf{P_2}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\to\psi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{4,5}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\mathbf{P_1}$\\
+                    \fb\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to\varphi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\to\psi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\chi^\medsquare)\to(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&\hyperref[MA8]{${\mathbf{A_8}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,8}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{6,9}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{7,10}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,8}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,9}$\\
+                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,10}$\\
                     \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
                     \fa\set{\varphi^\medsquare\strictif\chi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{12}$\\
                     \fa\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
-                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{14}$
+                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{14}$
                 \end{fitch}
             \end{subcase}
 
@@ -197,7 +210,7 @@
                 \footnotesize
                 \begin{fitch}
                     \fb\entails\bot\to\varphi^\medsquare&\refer{explosion}{L}\\
-                    \fa\Gamma^\medsquare\entails\nec(\bot\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{1}$
+                    \fa\Gamma^\medsquare\entails\nec(\bot\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
                 \end{fitch}
             \end{subcase}
 
@@ -210,9 +223,9 @@
             \begin{fitch}
                 \fb\varphi_i^\medsquare&$\mathbf{H_2}$\\
                 \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)&$\mathbf{H_1}$\\
-                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{T}}$}\\
-                \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1, 2}$\\
-                \fa\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3, 4}$
+                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2, 3}$\\
+                \fa\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 4}$
             \end{fitch}
         \end{case}
         \vspace{.5\baselineskip}

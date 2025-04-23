@@ -26,6 +26,13 @@
 \usepackage{stackengine}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{listings}
+\usepackage{lstfiracode}
+\usepackage{fontspec}
+\usepackage{styles/coq}
+
+\newfontfamily\Fira{Fira Code}[Contextuals=Alternate]
+\lstset{language=Coq, basicstyle=\Fira}
 
 % Math font settings
 \DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}

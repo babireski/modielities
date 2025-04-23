@@ -66,11 +66,6 @@ Neste trabalho, definiremos a relações de dedução baseada em axiomatizaçõe
     Seja $\mathbf{L}=\sequence{\mathcal{L},\vdash}$ um sistema. Uma axiomatização para o sistema $\mathbf{L}$ consiste num par $\mathcal{H}=\sequence{\mathcal{A},\mathcal{R}}$, sendo $\mathcal{A}$ um conjunto de esquemas de axiomas e $\mathcal{R}$ um conjunto de regras de dedução.
 \end{definition}
 
-
-Neste trabalho, consideraremos axiomatizações definidas em relação a conjuntos de premissas $\Gamma\subseteq\mathcal{L}$. 
-Por este motivo, todas as axiomatizações apresentadas futuramente neste trabalho conterão implicitamente a \emph{regra da premissa} $\mathbf{P}$ --- sendo esta regra definida como: se $\alpha\in\Gamma$, então $\Gamma\entails\alpha$.
-Similarmente, faremos o mesmo para a \emph{regra do enfraquecimento} $\mathbf{E}$ --- definida aqui como: se $\Gamma\entails\alpha$, então $\Gamma\cup\Delta\entails\alpha$ ---, tendo em vista que todos os sistemas apresentados neste trabaho são estruturais. Assim, tendo-se claro o conceito de axiomatização, podemos finalmente o conceito de dedução.
-
 \begin{definition}[Dedução]
     Seja um sistema $\mathbf{L} = \sequence{\mathcal{L},{\vdash}}$ com uma relação de dedução definida sobre uma axiomatização $\mathcal{H} = \sequence{\mathcal{A},\mathcal{R}}$ e  seja um conjunto de sentenças $\Gamma\cup\set{\alpha}\subseteq\mathcal{L}$.
     A dedução $\Gamma\vdash\alpha$ vale se e somente se houver sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e que cada sentença $\varphi_i$ tenha sido gerada ou por algum esquema $\mathbf{A}\in\mathcal{A}$ ou pela aplicação de alguma regra $\mathbf{R}\in\mathcal{R}$ a sentenças anteriores.

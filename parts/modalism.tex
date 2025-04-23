@@ -3,8 +3,8 @@
 
     Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que a definição clássica desse operador\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdadeiras. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S1}$ a $\mathbf{S5}$ --- sendo $\mathbf{S4}$ o abordado neste trabalho.
 
-    \begin{definition}[$\mathcal{L}_\mathbf{M}$]
-        A linguagem dos sistemas modais, denotada $\mathcal{L}_\mathbf{M}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{M}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{M}}$, onde $\mathcal{C}_\mathbf{M}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
+    \begin{definition}[$\mathcal{L}_{\nec}$]
+        A linguagem dos sistemas modais, denotada $\mathcal{L}_{\nec}$, pode ser induzida a partir da assinatura $\Sigma_{\nec}=\sequence{\mathcal{P},\mathcal{C}_{\nec}}$, onde $\mathcal{C}_{\nec}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
     \end{definition}
 
     \begin{notation}
@@ -19,8 +19,8 @@
     \end{notation}
 
     \begin{notation}
-        Seja $\Gamma\in\wp(\mathcal{L}_\mathbf{M})$ um conjunto de sentenças bem-formadas.
-        $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_\mathbf{M})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
+        Seja $\Gamma\in\wp(\mathcal{L}_{\nec})$ um conjunto de sentenças bem-formadas.
+        $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_{\nec})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
     \end{notation}
 
     \begin{definition}[$\entails_\mathbf{S4}$]\label{m-axioms}
@@ -38,10 +38,11 @@
             &\mathbf{K}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\displaybreak[0]\\
             &\mathbf{T}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\displaybreak[0]\\
             &\mathbf{4}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_1}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_2}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
-        \end{alignat}   
+            &\mathbf{R_1}\quad&&\alpha\in\Gamma\text{, então}\Gamma\entails\alpha\label{premisse}\tag*{}\displaybreak[0]\\
+            &\mathbf{R_2}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\displaybreak[0]\\
+            &\mathbf{R_3}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
+        \end{alignat}
     \end{definition}
 
     Assim como feito para o sistema intuicionista, nomearemos as regras acima de modo a facilitar a comunicação.
-    Deste modo, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens} e $\mathbf{R_2}$ de regra da necessitação. A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.
+    Deste modo, chamaremos $\mathbf{R_2}$ de regra da separação ou \emph{modus ponens} e $\mathbf{R_3}$ de regra da necessitação. A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.

@@ -4,8 +4,8 @@
     Esse sistema foi inicialmente formalizado por~\cite{Kolmogorov}, Heyting e~\cite{Glivenko-A, Glivenko-B} com inspiração nos trabalhos de~\cite{Brouwer-A, Brouwer-B} acerca do intuicionismo.
     Nesta seção, definiremos este sistema conforme~\cite{Troelstra} e traremos um breve contexto de seu uso na computação.
 
-    \begin{definition}[$\mathcal{L}_\mathbf{I}$]
-        A linguagem do sistema intuicionista, denotada $\mathcal{L}_\mathbf{I}$, pode ser induzida a partir da assinatura $\Sigma_\mathbf{I}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{I}}$, onde $\mathcal{C}_\mathbf{I}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
+    \begin{definition}[$\mathcal{L}$]
+        A linguagem do sistema intuicionista, denotada $\mathcal{L}$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{C}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
         \qed{}
     \end{definition}
 
@@ -19,7 +19,7 @@
     \end{notation}
 
     \begin{definition}[$\entails_\mathbf{I}$]
-        A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1}}$, definidos abaixo:
+        A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat*}{3}
             &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{IA1}\tag*{}\displaybreak[0]\\
             &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{IA2}\tag*{}\displaybreak[0]\\
@@ -30,8 +30,9 @@
             &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{IA7}\tag*{}\displaybreak[0]\\
             &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{IA8}\tag*{}\displaybreak[0]\\
             &\mathbf{A_\bot}\quad&&\bot\to\alpha\label{IABOT}\tag*{}\displaybreak[0]\\
-            & \mathbf{R_1}\quad && \text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\text{.} & \tag*{\qed}
-        \end{alignat*}   
+            &\mathbf{R_1}\quad&&\alpha\in\Gamma\text{, então}\Gamma\entails\alpha\tag*{}\displaybreak[0]\\
+            &\mathbf{R_2}\quad && \text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\text{.} & \tag*{\qed}
+        \end{alignat*}
     \end{definition}
 
     De modo a facilitar a comunicação no decorrer deste trabalho, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens}.

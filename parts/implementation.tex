@@ -1,0 +1,14 @@
+\chapter{Implementação}
+
+\begin{definition}[$\mathcal{L}_{\nec^n}$]
+    A linguagem dos sistemas multimodais com $n$ modalidades, denotada $\mathcal{L}_{\nec^n}$, pode ser induzida a partir da assinatura $\Sigma_{\nec^n}=\sequence{\mathcal{P},\mathcal{C}_{\nec^n}}$, onde $\mathcal{C}_{\nec^n}=\set{\bot^0,\wedge^2,\vee^2,\to^2}\cup\set{\nec^1_i\mid i<n\wedge i,n\in \mathbb{N}}$.
+\end{definition}
+
+\begin{lstlisting}
+    Inductive Boxed $\Gamma$ i : formula -> Prop :=
+    | Boxing : forall $\alpha$, $\Gamma$ $\alpha$ -> Boxed $\Gamma$ i [! [i]$\alpha$ !].
+\end{lstlisting}
+
+\begin{lstlisting}
+    Definition Boxed $\Gamma$ i := forall $\alpha$, $\Gamma$ $\alpha$ -> exists $\beta$, $\alpha$ = [! [i]$\beta$ !].
+\end{lstlisting}
