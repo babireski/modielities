@@ -1,16 +1,19 @@
 \section{Completude}
+    Esta seção dedica-se a provar que as traduções são completas, ou seja, que derivações de sentenças traduzidas no sistema de destino implicam em derivações no sistema de origem. Para tanto, deixaremos de basear-nos nas provas de~\cite{Troelstra} e passaremos a basear-nos na prova de~\cite{Flagg}. Este abandono deve-se ao uso de propriedades de sequentes na demontração que seriam complicadas de acomodar ao sistema de dedução usado neste trabalho, enquanto escolha da prova usada deu-se por esta ser feita construtivamente. A construtividade da prova releva por esta conter uma computação --- ou seja, um procedimento que descreve \emph{como} transformar uma prova de uma sentença traduzida no sistema de destino em uma prova traduzida no sistema de origem.
+
+    A prova de~\cite{Flagg} baseia-se na definição de uma contratradução da tradução por necessitação foco deste trabalho. Com isso, eles reduzem o problema de provar a completude da tradução ao problema de provar a correção da contratradução, coisa que pode ser feita por indução sobre o tamanho da prova em conjunto com uma coleção de lemas. Esta nova tradução faz grande uso de implicações duplas --- ou seja, sentenças da forma $(\alpha\to\varepsilon)\to\varepsilon$ ---, motivo que justifica a introdução abaixo de uma nova notação para a implicação.
+
     \begin{notation}
-        Sejam $\alpha,\varepsilon\in\mathcal{L}$ sentenças bem-formadas. Denota-se $\neg_\varepsilon\alpha$ a sentença $\alpha\to\varepsilon$.
+        Sejam $\alpha,\varepsilon\in\mathcal{L}$ sentenças proposicionais bem-formadas. Denota-se por $\neg_\varepsilon\alpha$ a sentença $\alpha\to\varepsilon$, ou seja, a implicação de $\alpha$ em $\varepsilon$.
     \end{notation}
 
-    \begin{definition}[$\bullet^\circ$] Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\circ$] Seja $\Gamma\in\wp(\mathcal{L})$ um conjunto de sentenças proposicionais bem-formadas e seja $\varepsilon\in\Gamma$ uma dessas sentenças. Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
         \begin{align*}
             a^\varepsilon_\Gamma&\coloneqq \neg_\varepsilon\neg_\varepsilon a\\
             \bot^\varepsilon_\Gamma&\coloneqq\bot\\
-            (\nec\varphi)\varphi^\varepsilon & \coloneqq \neg_\varepsilon\neg_\varepsilon\textstyle\bigwedge_{\gamma\in\Gamma}\varphi^\gamma_\Gamma\displaybreak[0]\\
-            {(\varphi \wedge \psi)}^\varepsilon_\Gamma & \coloneqq \varphi^\varepsilon_\Gamma\wedge\psi^\varepsilon_\Gamma\displaybreak[0]\\
-            {(\varphi \vee \psi)}^\varepsilon_\Gamma   & \coloneqq \neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon_\Gamma\vee\psi^\varepsilon_\Gamma)\displaybreak[0]\\
-            {(\varphi \to \psi)}^\varepsilon_\Gamma    & \coloneqq \varphi^\varepsilon_\Gamma\to\psi^\varepsilon_\Gamma
-            \tag*{\qed} 
+            (\nec\varphi)^\varepsilon_\Gamma&\coloneqq\neg_\varepsilon\neg_\varepsilon\textstyle\bigwedge_{\gamma\in\Gamma}\varphi^\gamma_\Gamma\displaybreak[0]\\
+            {(\varphi \wedge \psi)}^\varepsilon_\Gamma&\coloneqq \varphi^\varepsilon_\Gamma\wedge\psi^\varepsilon_\Gamma\displaybreak[0]\\
+            {(\varphi \vee \psi)}^\varepsilon_\Gamma&\coloneqq \neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon_\Gamma\vee\psi^\varepsilon_\Gamma)\displaybreak[0]\\
+            {(\varphi \to \psi)}^\varepsilon_\Gamma&\coloneqq \varphi^\varepsilon_\Gamma\to\psi^\varepsilon_\Gamma\tag*{\qed}
         \end{align*}
     \end{definition}
