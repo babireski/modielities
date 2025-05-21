@@ -20,7 +20,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
         \begin{case}
             \textsc{Caso 2.}
             Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\medsquare=\bot$ pelas definições das traduções.
-            Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{T}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
+            Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
             Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
         \end{case}
 
@@ -38,19 +38,20 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                 \footnotesize
                 \begin{fitch}
                     \fb\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&\refer{nec-distr}{L}$\;\set{1}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&\refer{nec-distr}{L}\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&\hyperref[MA4]{${\mathbf{A_4}}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,6}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&\hyperref[MA5]{$\mathbf{A_5}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,7}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,8}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{8,9}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
                     \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{$\mathbf{A_3}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,11}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{10,12}$\\
-                    \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,12}$\\
+                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{11,13}$\\
+                    \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
                 \end{fitch}
             \end{subcase} 
 
@@ -61,7 +62,7 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
 
                 \footnotesize
                 \begin{fitch}
-                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
@@ -73,9 +74,9 @@ Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalh
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&\hyperref[MA3]{${\mathbf{A_3}}$}\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,10}$\\
                     \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,11}$\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$\\
-                    \fa\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&\refer{nec-distr}{L}\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&\refer{comp}{L}$\;\set{13, 14}$\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&\refer{nec-undistr}{L}\\
+                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{12,13}$\\
+                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
                 \end{fitch}
             \end{subcase}
 

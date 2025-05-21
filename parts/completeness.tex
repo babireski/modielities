@@ -7,13 +7,108 @@
         Sejam $\alpha,\varepsilon\in\mathcal{L}$ sentenças proposicionais bem-formadas. Denota-se por $\neg_\varepsilon\alpha$ a sentença $\alpha\to\varepsilon$, ou seja, a implicação de $\alpha$ em $\varepsilon$.
     \end{notation}
 
-    \begin{definition}[$\bullet^\circ$] Seja $\Gamma\in\wp(\mathcal{L})$ um conjunto de sentenças proposicionais bem-formadas e seja $\varepsilon\in\Gamma$ uma dessas sentenças. Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+    \begin{definition}[$\bullet^\varepsilon$] Seja $\Gamma\in\wp(\mathcal{L})$ um conjunto de sentenças proposicionais bem-formadas e seja $\varepsilon\in\Gamma$ uma dessas sentenças. Define-se a tradução $\bullet^\varepsilon:\mathcal{L}_{\nec}\times\wp(\mathcal{L})\times\mathcal{L}\to\mathcal{L}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
         \begin{align*}
-            a^\varepsilon_\Gamma&\coloneqq \neg_\varepsilon\neg_\varepsilon a\\
-            \bot^\varepsilon_\Gamma&\coloneqq\bot\\
-            (\nec\varphi)^\varepsilon_\Gamma&\coloneqq\neg_\varepsilon\neg_\varepsilon\textstyle\bigwedge_{\gamma\in\Gamma}\varphi^\gamma_\Gamma\displaybreak[0]\\
-            {(\varphi \wedge \psi)}^\varepsilon_\Gamma&\coloneqq \varphi^\varepsilon_\Gamma\wedge\psi^\varepsilon_\Gamma\displaybreak[0]\\
-            {(\varphi \vee \psi)}^\varepsilon_\Gamma&\coloneqq \neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon_\Gamma\vee\psi^\varepsilon_\Gamma)\displaybreak[0]\\
-            {(\varphi \to \psi)}^\varepsilon_\Gamma&\coloneqq \varphi^\varepsilon_\Gamma\to\psi^\varepsilon_\Gamma\tag*{\qed}
+            a^\varepsilon&\mapsto\neg_\varepsilon\neg_\varepsilon a\\
+            \bot^\varepsilon&\mapsto\bot\\
+            (\nec\varphi)^\varepsilon&\mapsto\neg_\varepsilon\neg_\varepsilon\textstyle\bigwedge_{\gamma}\varphi^\gamma\displaybreak[0]\\
+            {(\varphi \wedge \psi)}^\varepsilon&\mapsto \varphi^\varepsilon\wedge\psi^\varepsilon\displaybreak[0]\\
+            {(\varphi \vee \psi)}^\varepsilon&\mapsto \neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon\vee\psi^\varepsilon)\displaybreak[0]\\
+            {(\varphi \to \psi)}^\varepsilon&\mapsto \varphi^\varepsilon\to\psi^\varepsilon\tag*{\qed}
         \end{align*}
     \end{definition}
+
+    \begin{theorem}
+        Se $\Gamma\entails\alpha$, então $\neg_\varepsilon\neg_\varepsilon\Gamma\entails\neg_\varepsilon\neg_\varepsilon\alpha$.
+    \end{theorem}
+
+    \begin{theorem}
+        Se $\Gamma\entails\alpha$, então $\Gamma^\varepsilon\entails\alpha^\varepsilon$.
+
+        \begin{proof}
+            Prova por indução forte sobre o tamanho da sucessão de dedução.
+            Assim, suponhamos que a contratradução seja correta para qualquer sucessão de dedução de tamanho $n < k$.
+            Demonstraremos, analisando-se os casos, que a correção da contratradução vale para sucessões de dedução de tamanho $n = k$.
+
+            \begin{case}
+                \textsc{Caso 1.}
+                Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela invocação de alguma premissa.
+                Sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\varepsilon\in\Gamma^\varepsilon$.
+                Deste modo, pode-se demonstrar que $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação da premissa $\alpha^\varepsilon$.
+            \end{case}
+
+            \begin{case}
+                \textsc{Caso 2.}
+                Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela invocação de algum axioma.
+                Sabe-se que existe algum esquema $\mathbf{A}\in\mathcal{A}$ que gera $\alpha$. 
+                Deste modo, analisaremos os casos e demonstraremos que se pode derivar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ para cada esquema $\mathbf{A}\in\mathcal{A}$.
+            \end{case}
+
+                \begin{subcase}
+                    \textsc{Caso 2.1.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA1]{\mathbf{A_1}}$.
+                    Sabe-se que $\alpha=\varphi\to\psi\to\varphi$ e que $\alpha^\varepsilon=\varphi^\varepsilon\to\psi^\varepsilon\to\varphi^\varepsilon$.
+                    Deste modo, pode-se provar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação de $\hyperref[IA1]{\mathbf{A_1}}$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.2.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA2]{\mathbf{A_2}}$.
+                    Sabe-se que $\alpha=(\varphi\to\psi\to\chi)\to(\varphi\to\psi)\to\varphi\to\chi$ e que $\alpha^\varepsilon=(\varphi^\varepsilon\to\psi^\varepsilon\to\chi^\varepsilon)\to(\varphi^\varepsilon\to\psi^\varepsilon)\to\varphi^\varepsilon\to\chi^\varepsilon$.
+                    Deste modo, pode-se provar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação de $\hyperref[IA2]{\mathbf{A_2}}$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.3.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA3]{\mathbf{A_3}}$.
+                    Sabe-se que $\alpha=\varphi\to\psi\to\varphi\wedge\psi$ e que $\alpha^\varepsilon=\varphi^\varepsilon\to\psi^\varepsilon\to\varphi^\varepsilon\wedge\psi^\varepsilon$.
+                    Deste modo, pode-se provar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação de $\hyperref[IA3]{\mathbf{A_3}}$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.4.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA4]{\mathbf{A_4}}$.
+                    Sabe-se que $\alpha=\varphi\wedge\psi\to\varphi$ e que $\alpha^\varepsilon=\varphi^\varepsilon\wedge\psi^\varepsilon\to\varphi^\varepsilon$.
+                    Deste modo, pode-se provar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação de $\hyperref[IA4]{\mathbf{A_4}}$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.5.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA5]{\mathbf{A_5}}$.
+                    Sabe-se que $\alpha=\varphi\wedge\psi\to\psi$ e que $\alpha^\varepsilon=\varphi^\varepsilon\wedge\psi^\varepsilon\to\varphi^\psi$.
+                    Deste modo, pode-se provar $\Gamma^\varepsilon\entails\alpha^\varepsilon$ trivialmente pela invocação de $\hyperref[IA5]{\mathbf{A_5}}$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.6.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA6]{\mathbf{A_6}}$.
+                    Sabe-se que $\alpha=\varphi\to\varphi\vee\psi$ e que $\alpha^\varepsilon=\varphi^\varepsilon\to\neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon\vee\psi^\varepsilon)$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.7.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA7]{\mathbf{A_7}}$.
+                    Sabe-se que $\alpha=\psi\to\varphi\vee\psi$ e que $\alpha^\varepsilon=\psi^\varepsilon\to\neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon\vee\psi^\varepsilon)$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.8.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MA8]{\mathbf{A_8}}$.
+                    Sabe-se que $\alpha=(\varphi\to\chi)\to(\psi\to\chi)\to\varphi\vee\psi\to\chi$ e que $\alpha^\varepsilon=(\varphi^\varepsilon\to\chi^\varepsilon)\to(\psi^\varepsilon\to\chi^\varepsilon)\to\neg_\varepsilon\neg_\varepsilon(\varphi^\varepsilon\vee\psi^\varepsilon)\to\chi^\varepsilon$.
+                \end{subcase}
+
+                \begin{subcase}
+                    \textsc{Caso 2.9.}
+                    Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pelo esquema $\hyperref[MANEG]{\mathbf{A_\neg}}$.
+                    Sabe-se que $\alpha=\neg\neg\varphi\to\varphi$ e que $\alpha^\varepsilon=\neg\neg\varphi^\varepsilon\to\varphi^\varepsilon$.
+                \end{subcase}
+        \end{proof}
+    \end{theorem}
+
+    \begin{theorem}
+        Se $\Gamma^\medsquare\entails\alpha^\medsquare$ então $\Gamma\entails\alpha$.
+    \end{theorem}
+
+    \begin{theorem}
+        Se $\nec\Gamma^\circ\entails\alpha^\circ$ então $\Gamma\entails\alpha$.
+    \end{theorem}

@@ -13,7 +13,7 @@
             \footnotesize
             \begin{fitch}
                 \fb\entails\alpha\to\neg\neg\alpha&\refer{neg-intro}{L}\\
-                \fa\entails\nec\neg\alpha\to\neg\alpha&$\hyperref[MB2]{\mathbf{T}}$\\
+                \fa\entails\nec\neg\alpha\to\neg\alpha&$\hyperref[MB2]{\mathbf{B_2}}$\\
                 \fa\entails(\nec\neg\alpha\to\neg\alpha)\to\neg\neg\alpha\to\pos\alpha&$\hyperref[contrapositive]{\mathbf{L_3}}$\\
                 \fa\entails\neg\neg\alpha\to\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{2,3}$\\
                 \fa\entails(\alpha\to\neg\neg\alpha)\to(\neg\neg\alpha\to\pos\alpha)\to\alpha\to\pos\alpha&\refer{comp}{L}\\
@@ -31,10 +31,10 @@
             Pode ser provado pela seguinte sucessão de dedução:
             \footnotesize
             \begin{fitch}
-                \fb\entails\nec\neg\alpha\to\nec\nec\neg\alpha&$\hyperref[MB3]{\mathbf{4}}$\\
+                \fb\entails\nec\neg\alpha\to\nec\nec\neg\alpha&$\hyperref[MB3]{\mathbf{B_3}}$\\
                 \fa\entails\nec\neg\alpha\to\neg\pos\alpha&$\hyperref[neg-intro]{\mathbf{L_{\getrefnumber{neg-intro}}}}$\\
                 \fa\entails\nec(\nec\neg\alpha\to\neg\pos\alpha)&$\hyperref[necessitation]{\mathbf{R_2}}\;\set{2}$\\
-                \fa\entails\nec(\neg\pos\alpha\to\nec\neg\alpha)\to\nec\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[MB1]{\mathbf{K}}$\\
+                \fa\entails\nec(\neg\pos\alpha\to\nec\neg\alpha)\to\nec\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[MB1]{\mathbf{B_1}}$\\
                 \fa\entails\nec\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{3,4}$\\
                 \fa\entails(\nec\neg\alpha\to\nec\nec\neg\alpha)\to(\nec\nec\neg\alpha\to\nec\neg\pos\alpha)\to\nec\neg\alpha\to\nec\neg\pos\alpha&\refer{comp}{L}\\
                 \fa\entails(\nec\nec\neg\alpha\to\nec\neg\pos\alpha)\to\nec\neg\alpha\to\nec\neg\pos\alpha&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,6}$\\
@@ -46,15 +46,3 @@
             Estando assim demonstrada a proposição.
         \end{proof}
     \end{theorem}
-
-%     Apesar da similaridades com as transformações naturais, deve-se destacar que as noções de computação não podem ser interpretadas simplesmente como necessidade ou possibilidade, uma vez que apresentam propriedades presentes em ambas as modalidades. Neste sentido, a modalidade de \emph{laxidade} --- que combina noções de necessidade e possibilidade --- mostra-se uma melhor representação de efeitos computacionais sobre a interpretação programa-prova.
-    
-%     Ao sistema que comporta essa modalidade --- denotada $\lax$ --- damos o nome de sistema laxo ou simplesmente $\mathbf{L}$. Este sistema foi primeiramente considerado por~\cite{Curry-A,Curry-B} e posteriormente redescoberto por~\cite{Fairtlough,Mendler} como uma tentativa de representar correção dentro de restrições na verificação formal de \emph{hardware} de computadores. Pode ser definido formalmente por meio da assinatura $\Sigma_\mathbf{L}=\sequence{\mathcal{P},\mathcal{C}_\mathbf{L}}$ e da axiomatização $\mathcal{H}=\sequence{\mathcal{A}_\mathbf{L},\mathcal{R}_\mathbf{I}}$, onde $\mathcal{C}_\mathbf{L}=\mathcal{C}_\mathbf{I}\cup\set{\lax^1}$ e $\mathcal{A}_\mathbf{L}=\mathcal{A}_\mathbf{I}\cup\set{\mathbf{C_1},\mathbf{C_2},\mathbf{C_3}}$, considerando-se os esquemas abaixo:
-%     \begin{alignat*}{3}
-%         &\mathbf{C_1}\quad&&\alpha\to\lax\alpha\\
-%         &\mathbf{C_2}\quad&&\lax\lax\alpha\to\lax\alpha\\
-%         &\mathbf{C_3}\quad&&(\alpha\to\beta)\to\lax\alpha\to\lax\beta
-%     \end{alignat*}
-
-% ~\cite{Benton} e~\cite{Pfenning} notam a capacidade deste sistema de representar a metalinguagem de computação apresentada por~\cite{Moggi}.
-%     Ainda,~\cite{Pfenning} apresentam uma tradução desse sistema a um sistema $\mathbf{S_4}$ intuicionista.
