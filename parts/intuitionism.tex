@@ -1,4 +1,6 @@
 \section{Sistema intuicionista}
+    Nesta seção, definiremos os sistema intuicionista $\mathfrak{B}=\langle\mathcal{L},\vdash_\mathfrak{B}\rangle$, cuja linguagem consiste no conjunto de origem das traduções foco deste trabalho.
+    Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\Gamma\vdash\alpha\vee\neg\alpha$ não vale para todos os casos.
 
     O sistema intuicionista consiste no sistema resultante da rejeição de algumas sentenças classicamente tidas como verdadeiras, como a sentença $\alpha\vee\neg\alpha$ e a sentença $\neg\neg\alpha\to\alpha$.
     Esse sistema foi inicialmente formalizado por~\cite{Kolmogorov}, Heyting e~\cite{Glivenko-A, Glivenko-B} com inspiração nos trabalhos de~\cite{Brouwer-A, Brouwer-B} acerca do intuicionismo.
@@ -18,8 +20,8 @@
         \end{align*}
     \end{notation}
 
-    \begin{definition}[$\entails_\mathbf{I}$]
-        A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\bot}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
+    \begin{definition}[$\entails_\mathfrak{B}$]
+        A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\cup\set{\bot}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
         \begin{alignat*}{3}
             &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{IA1}\tag*{}\displaybreak[0]\\
             &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{IA2}\tag*{}\displaybreak[0]\\
