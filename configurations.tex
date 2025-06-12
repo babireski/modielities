@@ -29,10 +29,16 @@
 \usepackage{listings}
 \usepackage{lstfiracode}
 \usepackage{fontspec}
+\usepackage{bussproofs}
 \usepackage{styles/coq}
 
-\newfontfamily\Fira{Fira Code}[Contextuals=Alternate]
-\lstset{language=Coq, basicstyle=\Fira}
+\usepackage[lf]{Baskervaldx} % lining figures
+\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+\renewcommand*\oldstylenums[1]{\textosf{#1}} 
+
+\defaultfontfeatures[Fira Code]{BoldFont = {Fira Code SemiBold}}
+\setmonofont{Fira Code}[Contextuals = Alternate]
 
 % Math font settings
 \DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
@@ -48,7 +54,7 @@
 \newtheorem{lemma}{Lema}
 \newtheorem{theorem}{Teorema}
 
-% Chapter title formatting
+    % Chapter title formatting
 \titleformat{\chapter}[block]
   {\normalfont\huge\bfseries}{\thechapter.}{1em}{\Huge}
 \titlespacing*{\chapter}{0pt}{-19pt}{20pt}

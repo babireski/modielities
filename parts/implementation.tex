@@ -1,14 +1,281 @@
-\chapter{Implementação}
+\chapter{Implementação} 
 
-\begin{definition}[$\mathcal{L}_{\nec^n}$]
-    A linguagem dos sistemas multimodais com $n$ modalidades, denotada $\mathcal{L}_{\nec^n}$, pode ser induzida a partir da assinatura $\Sigma_{\nec^n}=\sequence{\mathcal{P},\mathcal{C}_{\nec^n}}$, onde $\mathcal{C}_{\nec^n}=\set{\bot^0,\wedge^2,\vee^2,\to^2}\cup\set{\nec^1_i\mid i<n\wedge i,n\in \mathbb{N}}$.
+A biblioteca desenvolvida por \cite{Silveira} apresenta algumas diferenças menores de definições quando comparada ao que foi formalizado anteriormente neste trabalho.
+Tais diferenças serão abordadas em detalhes nesta seção.
+Primeiramente, trataremos das diferenças na linguagem dos sistemas modais.
+A linguagem da biblioteca de \cite{Silveira} permite sistemas multimodais, ou seja, sistemas com uma quantidade qualquer de modalidades.
+Distinguiremos estas modalidades por um valor $i\in\mathbb{N}$.
+Ademais, a biblioteca se \cite{Silveira} trata a negação como uma operação primitiva -- confrontando a contradição, usada neste trabalho --, bem como trata a possibilidade do mesmo modo.
+Pequenas modificações nas definições deste trabalho precisaram ser feitas para dar conta de tais diferenças.
+Tais modificações serão assomadas quando relevantes.
+
+\begin{definition}[$\mathcal{L}_{\nec}$]
+    A linguagem dos sistemas multimodais com $n\in\mathbb{N}^+$ modalidades distinguidas por $i\in\mathbb{N}^+$ pode ser induzida a partir da assinatura $\Sigma_{\nec}=\sequence{\mathcal{P},\mathcal{C}_{\nec}}$, onde $\mathcal{C}_{\nec}=\set{\neg^1,\nec^1_i,\pos^1_i,\wedge^2,\vee^2,\to^2\mid i\leq n}$.
 \end{definition}
 
-\begin{lstlisting}
-    Inductive Boxed $\Gamma$ i : formula -> Prop :=
-    | Boxing : forall $\alpha$, $\Gamma$ $\alpha$ -> Boxed $\Gamma$ i [! [i]$\alpha$ !].
-\end{lstlisting}
+Outra diferença entre as definições deste trabalho e as definições de \cite{Silveira} consistem no conjunto regras de deduções, ligeiramente maior na biblioteca, conforme mostrado abaixo.
+Isso acontece pela adição da regra $\mathbf{A_9}$ -- que pode ser derivada usando as regras apresentadas neste trabalho -- e pela regra $\mathbf{B_4}$ -- neste trabalho tratada como uma definição.
+Ainda, as regras $\mathbf{B_1}$, $\mathbf{B_2}$ e $\mathbf{B_3}$ precisaram ser quantificadas universalmente sobre $i\in\mathbb{N}^+$.
+Todas as definições e teoremas deste trabalho serão quantificados analogamente, de modo a encaixar-se nas definições da biblioteca.
 
-\begin{lstlisting}
-    Definition Boxed $\Gamma$ i := forall $\alpha$, $\Gamma$ $\alpha$ -> exists $\beta$, $\alpha$ = [! [i]$\beta$ !].
-\end{lstlisting}
+\begin{definition}[$\vdash_{\mathfrak{L}}$]
+    Abaixo estão definidas as regras do sistema multimodal $\mathfrak{L}$.
+\hfill\break
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_2}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_3}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_4}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\alpha$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_5}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\beta$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_6}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\alpha\vee\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_7}$}
+    \UnaryInfC{$\Gamma\vdash\beta\to\alpha\vee\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_8}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_9}$}
+    \UnaryInfC{$\Gamma\vdash(\neg\beta\to\neg\alpha)\to\alpha\to\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_\neg}$}
+    \UnaryInfC{$\Gamma\vdash\neg\neg\alpha\to\alpha$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_1}$}
+    \UnaryInfC{$\Gamma\vdash\Box_i(\alpha\to\beta)\to\Box_i\alpha\to\Box_i\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_2}$}
+    \UnaryInfC{$\Gamma\vdash\Box_i\alpha\to\alpha$}
+    \DisplayProof
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_3}$}
+    \UnaryInfC{$\Gamma\vdash\Box_i\alpha\to\Box_i\Box_i\alpha$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_4}$}
+    \UnaryInfC{$\Gamma\vdash\pos_i\alpha\leftrightarrow\neg\Box_i\neg\alpha$}
+    \DisplayProof
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{$\alpha\in\Gamma$}
+    \RightLabel{\footnotesize$\mathbf{R_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \DisplayProof
+    \quad
+    \AxiomC{$\Gamma\vdash\alpha$}
+    \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+    \RightLabel{\footnotesize$\mathbf{R_2}$}
+    \BinaryInfC{$\Gamma\vdash\beta$}
+    \DisplayProof
+    \quad
+    \AxiomC{$\vdash\alpha$}
+    \RightLabel{\footnotesize$\mathbf{R_3}$}
+    \UnaryInfC{$\Gamma\vdash\Box_i\alpha$}
+    \DisplayProof
+\end{center}
+\end{definition}
+\hfill\break
+Uma vez ditas as diferenças, partiremos para a definição da linguagem intuicionista.
+Para tanto, definiu-se um tipo indutivo com cinco construtores, conforme apresentado abaixo.
+O construtor \texttt{\footnotesize\textbf{Contradiction}} representa a contradição $\bot$.
+O construtor \texttt{\footnotesize\textbf{Proposition}} eleva um valor $n\in\mathbb{N}$ a uma sentença intuicionista que representa uma letra proposicional.
+Por fim, os construtores \texttt{\footnotesize\textbf{Conjunction}}, \texttt{\footnotesize\textbf{Disjunction}} e \texttt{\footnotesize\textbf{Implication}} criam conjunções, disjunções e implicações --- nesta ordem --- a partir de sentenças menores.
+Notações foram definidas de modo a replicar a notação usada neste trabalho, com letras propositionais sendo introduzidas por um operador \texttt{\footnotesize\textbf{\#}}.
+Deste modo, podemos representar a sentença intuicionista $a\wedge b\to a\vee b$ como \texttt{\footnotesize\textbf{\#1 ∧ \#2 → \#1 ∨ \#2}}, para $a,b\in\mathcal{P}$.
+\\
+\begin{mdframed}
+\noindent
+\texttt
+{\noindent\footnotesize\textbf{Inductive} Propositional : \textbf{Set} :=\\
+| Contradiction : Propositional\\
+| Proposition\ \ \ : nat -> Propositional\\
+| Conjunction\ \ \ : Propositional -> Propositional -> Propositional\\
+| Disjunction\ \ \ : Propositional -> Propositional -> Propositional\\
+| Implication\ \ \ : Propositional -> Propositional -> Propositional.\\
+\\
+Notation "\ ⊥\ "\ := Contradiction.
+}
+\end{mdframed}
+\hfill\break
+Similarmente, uma dedução intuicionista foi definida como um tipo indutivo, desta vez com onze construtores.
+Cada um desses construtores representa uma das regras de dedução apresentadas anteriormente.
+Assim como feito com a linguagem, foi definida uma notação de modo a facilitar a escrita de asserções.
+Cabe destacar que o conjunto de assunções $\Gamma$ foi representada pela sua função indicadora $\mathbf{I}_\Gamma:\mathcal{L}\to\{0,1\}$, em que $\mathbf{I}_\Gamma(\alpha)=1$ se e somente se $\alpha\in\Gamma$.
+Na implementação oferecida abaixo, isso foi feito por meio de uma função do tipo \texttt{\footnotesize\textbf{Sentence}} ao tipo \texttt{\footnotesize\textbf{Prop}}, o tipo das proposições.
+\hfill\break
+\begin{mdframed}
+\noindent
+\texttt
+{\noindent\footnotesize\textbf{Definition} Theory := Propositional -> Prop.\\
+\\
+\textbf{Reserved} \textbf{Notation} "Γ ⊢ α"\ (at level 110).\\
+\\
+\textbf{Inductive} Deduction : Theory -> Propositional -> \textbf{Prop} :=\\
+| A₁ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α → β → α\\
+| A₂ : \textbf{forall} Γ α β γ, Γ ⊢ (α → β → γ) → (α → β) → α → γ\\
+| A₃ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α → β → α ∧ β\\
+| A₄ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α ∧ β → α\\
+| A₅ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α ∧ β → β\\
+| A₆ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α → α ∨ β\\
+| A₇ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ β → α ∨ β\\
+| A₈ : \textbf{forall} Γ α β γ, Γ ⊢ (α → γ) → (β → γ) → α ∨ β → γ\\
+| A₉ : \textbf{forall} Γ α,\ \ \ \ \ Γ ⊢ ⊥ → α\\
+| R₁ : \textbf{forall} Γ α,\ \ \ \ \ Γ ∈ α -> Γ ⊢ α\\
+| R₂ : \textbf{forall} Γ α β,\ \ \ Γ ⊢ α → β -> Γ ⊢ α -> Γ ⊢ β\\
+\textbf{where} "Γ ⊢ α" := (Deduction Γ α).\\
+\\
+\textbf{Notation} "Γ ⊢ α" := (Deduction Γ α) (at level 110).
+}
+\end{mdframed}
+\hfill\break
+Para ilustração do uso do tipo indutivo \texttt{\footnotesize\textbf{Deduction}}, abaixo fornecemos a prova da identidade $\Gamma\vdash\alpha\to\alpha$.
+A prova tem uma relação de um para um com a prova apresentada anteriormente, tirando-se o fato desta ser feita de baixo para cima, da conclusão em direção ao assumido.
+Isso acontece porque, via de regra, transformamos a meta de prova em vez das assunções das provas na aplicação.
+Nada impediria, entretanto, que o oposto fosse feito.
+Abaixo, usamos o comando \texttt{\footnotesize\textbf{apply}} para a aplicar regras de dedução à meta de prova.
+Ao fazermos isso, estamos dizendo que esta conclusão foi gerada a partir da aplicação da dita regra.
+\hfill\break
+\begin{mdframed}
+\noindent
+\texttt
+{\noindent\footnotesize\textbf{Lemma} identity : \textbf{forall} Γ α, Γ ⊢ α → α.\\
+\textbf{Proof}.\\
+\phantom{\ \ \ \ }\textbf{intros} Γ α.\\
+\phantom{\ \ \ \ }\textbf{apply} R₂ \textbf{with} (α → α → α).\\
+\phantom{\ \ \ \ }+ \textbf{apply} R₂ \textbf{with} (α → (α → α) → α).\\
+\phantom{\ \ \ \ }\phantom{\ \ \ \ }* \textbf{apply} A₂.\\
+\phantom{\ \ \ \ }\phantom{\ \ \ \ }* \textbf{apply} A₁.\\
+\phantom{\ \ \ \ }+ \textbf{apply} A₁.\\
+\textbf{Qed}.
+}
+\end{mdframed}
+\hfill\break
+Uma vez definido o sistema intuicionista, podemos definir as funções de tradução do sistema intuicionista ao sistema modal $\mathbf{S4}$, definido por \cite{Silveira}.
+A tradução $\bullet^\nec$ e a tradução $\bullet^\circ$, agora chamadas \texttt{\footnotesize\textbf{square}} e \texttt{\footnotesize\textbf{circle}}, foram definidas com apenas duas alterações.
+Primeiramente, ambas as funções agora recebem um argumento a mais, que identifica a modalidade usada, uma vez que estamos usando uma biblioteca para sistema multimodais.
+Em segundo lugar, a contradição $\bot$ passou a ser mapeada para $a\wedge\neg a$ para algum $a\in\mathcal{P}$, uma vez que esta biblioteca não traz a contradição como um operador primitivo.
+\hfill\break
+\begin{mdframed}
+\noindent
+\texttt
+{\noindent\footnotesize\textbf{Fixpoint} square (α : Propositional) (i : Index) : Multimodal :=\\
+\textbf{match} α \textbf{with}\\
+| ⊥\ \ \ \ \ => \#1 ∧ ¬\#1\\
+| \#a\ \ \ \ => [i] \#a\\
+| α ∧ β => (square α i) ∧ (square β i)\\
+| α ∨ β => (square α i) ∨ (square β i)\\
+| α → β => [i]((square α i) → (square β i))\\
+\textbf{end}.\\
+\\
+\textbf{Fixpoint} circle (α : Propositional) (i : Index) : Multimodal :=\\
+\textbf{match} α \textbf{with}\\
+| ⊥\ \ \ \ \ => \#1 ∧ ¬\#1\\
+| \#a\ \ \ \ => \#a\\
+| α ∧ β => (circle α i) ∧ (circle β i)\\
+| α ∨ β => [i](circle α i) ∨ [i](circle β i)\\
+| α → β => [i](circle α i) → (circle β i)\\
+\textbf{end}.
+}
+\end{mdframed}
+\hfill\break
+Faz-se preciso definir novos construtores de tipos para representar conjuntos cujas sentenças são resultados da aplicação de alguma função ou operação, que foram chamados de \texttt{\footnotesize\textbf{Imboxed}}, \texttt{\footnotesize\textbf{Squared}} e \texttt{\footnotesize\textbf{Circled}}.
+Cada um desses possui apenas um construtor, nomeados \texttt{\footnotesize\textbf{Imboxing}}, \texttt{\footnotesize\textbf{Squaring}} e \texttt{\footnotesize\textbf{Circling}}, nesta ordem.
+\texttt{\footnotesize\textbf{Imboxing}} recebe como argumento um conjunto de sentenças multimodais de tipo \texttt{\footnotesize\textbf{Multimodal -> Prop}} e prefixa a necessidade a cada uma destas sentenças, ou seja, representa o conjunto $\nec\Gamma$. \texttt{\footnotesize\textbf{Squaring}} e \texttt{\footnotesize\textbf{Circling}} recebem como argumento conjuntos de sentenças intuicionistas de tipo \texttt{\footnotesize\textbf{Propositional -> Prop}} e aplicam os seus elementos às funções de tradução \texttt{\footnotesize\textbf{square}} e \texttt{\footnotesize\textbf{circled}}, ou seja, representam os conjuntos $\Gamma^\nec$ e $\Gamma^\circ$.
+\hfill\break
+\begin{mdframed}
+\noindent
+\texttt
+{\noindent\footnotesize\textbf{Inductive} Imboxed Γ i : Multimodal -> \textbf{Prop} :=\\
+| Imboxing : \textbf{forall} α , Γ α  -> Imboxed Γ i ([i]α).
+\\
+\\
+\textbf{Inductive} Squared Γ i : Multimodal -> \textbf{Prop} :=\\
+| Squaring : \textbf{forall} α , Γ α  -> Squared Γ i (square α i).
+\\
+\\
+\textbf{Inductive} Circled Γ i : Multimodal -> \textbf{Prop} :=\\
+| Circling : \textbf{forall} α , Γ α  -> Circled Γ i (circle α i).
+}
+\end{mdframed}
+\hfill\break
+Agora que as definições precisas para o desenvolvimento desta formalização foram feitos, partiremos pra uma enumeração das principais asserções provadas, com considerações pontuais.
+Não serão apresentadas as provas das asserções por questões de brevidade.
+As provas, entretanto, são paralelas às provas apresentadas anteriormente, a não ser quando destacado o oposto.
+\hfill\break
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} generalization :\textbf{forall} Γ α i,\\Imboxed Γ i ⊢ α -> Imboxed Γ i ⊢ [i]α.}
+\end{mdframed}
+
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} stability :\textbf{forall} Γ α i,\\Γ ⊢ square α i → [i](square α i).}
+\end{mdframed}
+
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} biimplication :\textbf{forall} Γ α i,\\Γ ⊢ [i](circle α i) ↔ square α i.}
+\end{mdframed}
+
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} equivalence : \textbf{forall} Γ α i,\\Imboxed (Circled Γ i) i ⊢ circle α i <-> Squared Γ i ⊢ square α i.}
+\end{mdframed}
+
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Squared Γ i ⊢ square α i.}
+\end{mdframed}
+
+\begin{mdframed}
+\texttt{\noindent\footnotesize\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Imboxed (Squared Γ i) i ⊢ circle α i.}
+\end{mdframed}
