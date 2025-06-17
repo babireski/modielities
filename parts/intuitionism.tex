@@ -110,7 +110,7 @@
 \vspace{.5\baselineskip}
 A noção de \emph{construção} representada pelo sistema intuicionista $\mathfrak{B}$ assemelha-se muito com a noção de \emph{computação}.
 Mais que isso: elas são noções \emph{isomorfas}.
-Com isso queremos dizer que, dada uma linguagem de programação tipada, a asserção de que um programa dessa linguagem \emph{pertence tipo $\alpha$} implica que este programa \emph{prova a proposição $\alpha$} e vice-versa.
+Com isso queremos dizer que, dada uma linguagem de programação tipada, a asserção de que um programa dessa linguagem \emph{pertence ao tipo $\alpha$} implica que este programa \emph{prova a proposição $\alpha$} e vice-versa.
 Em outras palavras, o problema da decisão da verdade desta proposição pode ser vista como da decisão habitação de um tipo que corresponde a ela.
 Assim, podemos dizer que \emph{proposições são tipos} e \emph{provas são programas} (\textbf{CITAR} Wadler).
 Os primeiros vislumbres dessa relação foram feitos por Curry e Feys (\textbf{CITAR}), no entando ela começou a ser de fato desvendada a partir do de Howard \textbf{CITAR}.
@@ -122,6 +122,22 @@ Como ilustração, abaixo as regras do fragmento implicativo do sistema intuicio
         \toprule
         \textbf{Regras de dedução} & \textbf{Regras de tipagem}\\
         \midrule
+        \small$\Gamma\cup\{\alpha\}\vdash\alpha$ & \small$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$ \\
+        \small$\Gamma\cup\{\alpha\}\vdash\beta\implies\Gamma\vdash\alpha\to\beta$ & \small$\Gamma\cup\{x:\alpha\}\vdash e:\beta\implies\Gamma\vdash\lambda x.e:\alpha\to\beta$ \\
+        \small$\Gamma\vdash\alpha\to\beta\implies\Gamma\vdash\alpha\implies\Gamma\vdash\beta$ & \small$\Gamma\vdash e_1:\alpha\to\beta\implies\Gamma\vdash e_2:\alpha\implies\Gamma\vdash e_1\text{ }e_2:\beta$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c}
+        \toprule
+        \textbf{Regras de dedução} & \textbf{Regras de tipagem}\\
+        \midrule
+
+
+
         \small$\Gamma\cup\{\alpha\}\vdash\alpha$ & \small$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$ \\
         \small$\Gamma\cup\{\alpha\}\vdash\beta\implies\Gamma\vdash\alpha\to\beta$ & \small$\Gamma\cup\{x:\alpha\}\vdash e:\beta\implies\Gamma\vdash\lambda x.e:\alpha\to\beta$ \\
         \small$\Gamma\vdash\alpha\to\beta\implies\Gamma\vdash\alpha\implies\Gamma\vdash\beta$ & \small$\Gamma\vdash e_1:\alpha\to\beta\implies\Gamma\vdash e_2:\alpha\implies\Gamma\vdash e_1\text{ }e_2:\beta$ \\
