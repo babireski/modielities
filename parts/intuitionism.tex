@@ -1,11 +1,14 @@
 \section{Sistema intuicionista}
-    Nesta seção, definiremos os sistema intuicionista $\mathfrak{B}=\langle\mathcal{L},\vdash_\mathfrak{B}\rangle$, cuja linguagem consiste no conjunto de origem das traduções foco deste trabalho.
+    Nesta seção, definiremos os sistema intuicionista $\mathfrak{B}=\langle\mathcal{L},\vdash_\mathfrak{B}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
     Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\Gamma\vdash\alpha\vee\neg\alpha$ não vale para todos os casos.
+    O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer-A, Brouwer-B}.
+    Este defendia que uma asserção poderia ser dita verdade apenas quando esta poderia ser~\emph{construída}.
+    Assim, uma demonstração por contradição não valeria, uma vez que durante uma demonstração deste tipo, estar-se-ia contruindo a dupla negação da proposição em apreciação, mas não a proposição em si.
+    Brouwer repudiou a tentativa formalização de seu pensamento como um sistema, todavia isso não impediu que esta fosse feita.
+    A primeira formalização encontrada na literatura foi feita por~\cite{Kolmogorov}, entretanto outros também a fizeram posteriormente.
+    A linguagem abaixo foi definida conforme~\cite{Troelstra}. Adotamos as ordens usuais de avaliação dos operadores.
 
-    O sistema intuicionista consiste no sistema resultante da rejeição de algumas sentenças classicamente tidas como verdadeiras, como a sentença $\alpha\vee\neg\alpha$ e a sentença $\neg\neg\alpha\to\alpha$.
-    Esse sistema foi inicialmente formalizado por~\cite{Kolmogorov}, Heyting e~\cite{Glivenko-A, Glivenko-B} com inspiração nos trabalhos de~\cite{Brouwer-A, Brouwer-B} acerca do intuicionismo.
-    Nesta seção, definiremos este sistema conforme~\cite{Troelstra} e traremos um breve contexto de seu uso na computação.
-
+    \vspace{\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{definition}[$\mathcal{L}$]\label{intuitionistic.language}
         A linguagem do sistema intuicionista, denotada $\mathcal{L}$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{C}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
@@ -20,6 +23,13 @@
     \end{tcolorbox}
 
 \vspace{.5\baselineskip}
+    Consideremos agora a relação de dedução para o sistema $\mathfrak{B}$, definida por suas regras de dedução.
+    Estas destacam-se pela omissão de uma regra que gera asserções do tipo $\Gamma\vdash\neg\neg\alpha$.
+    Isso acontece porque não somente esta regra permite provas não-contrutivas como permite a derivação de uma regra derivada $\Gamma\vdash\alpha\vee\neg\alpha$.
+    Os axiomas abaixo estão organizadas de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na quarta linha os axiomas da disjunção e na quinta linha o axioma da contradição.
+    Aaixo dos axiomas, temos as demais regras, nomeadamente a \emph{regra da assunção} e a \emph{regra da separação}.
+
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[$\vdash_{\mathfrak{B}}$]\label{intuitionistic.deduction}
     Abaixo estão definidas as regras do sistema intuicionista $\mathfrak{B}$.
@@ -97,14 +107,24 @@
 \end{definition}
 \end{tcolorbox}
 
-    De modo a facilitar a comunicação no decorrer deste trabalho, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens}.
+\vspace{.5\baselineskip}
+A noção de \emph{construção} representada pelo sistema intuicionista $\mathfrak{B}$ assemelha-se muito com a noção de \emph{computação}.
+Mais que isso: elas são noções \emph{isomorfas}.
+Com isso queremos dizer que, dada uma linguagem de programação tipada, a asserção de que um programa dessa linguagem \emph{pertence tipo $\alpha$} implica que este programa \emph{prova a proposição $\alpha$} e vice-versa.
+Em outras palavras, o problema da decisão da verdade desta proposição pode ser vista como da decisão habitação de um tipo que corresponde a ela.
+Assim, podemos dizer que \emph{proposições são tipos} e \emph{provas são programas} (\textbf{CITAR} Wadler).
+Os primeiros vislumbres dessa relação foram feitos por Curry e Feys (\textbf{CITAR}), no entando ela começou a ser de fato desvendada a partir do de Howard \textbf{CITAR}.
+Como ilustração, abaixo as regras do fragmento implicativo do sistema intuicionista em dedução natural são postas lado a lado com as regras de tipagem do cálculo lambda simplesmente tipado.
 
-    O sistema intuicionista calca-se numa visão construtivista que fundamenta aplicações importantes na computação. O isomorfismo de Curry-Howard estabelece uma associação entre provas e programas e entre proposições e tipos.
-    Enquanto isso, a interpretação de Brouwer-Heyting-Kolmogorov --- definida abaixo segundo~\cite{Troelstra} --- exige que provas sejam construtivas, garantindo a realidade efetiva dos elementos provados. Tais propriedades são largamente usadas, por exemplo, na prova de teoremas computacionalmente e na construção de compiladores robustos.
-
-    \begin{enumerate}[label=\textbf{(\alph*)}, left=\parindent]
-        \item Não existe prova de $\bot$.
-        \item Uma prova de $\alpha\wedge\beta$ consiste num par $\sequence{A,B}$, sendo $A$ uma prova de $\alpha$ e $B$ uma prova de $\beta$.
-        \item Uma prova de $\alpha\vee\beta$ consiste ou num par $\sequence{0,A}$, sendo $A$ uma prova de $\alpha$, ou num par $\sequence{1,B}$, sendo $B$ uma prova de $\beta$.
-        \item Uma prova de $\alpha\to\beta$ consiste numa construção $C$ que transforma uma prova $A$ de $\alpha$ numa prova $B$ de $\beta$.
-    \end{enumerate}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c}
+        \toprule
+        \textbf{Regras de dedução} & \textbf{Regras de tipagem}\\
+        \midrule
+        \small$\Gamma\cup\{\alpha\}\vdash\alpha$ & \small$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$ \\
+        \small$\Gamma\cup\{\alpha\}\vdash\beta\implies\Gamma\vdash\alpha\to\beta$ & \small$\Gamma\cup\{x:\alpha\}\vdash e:\beta\implies\Gamma\vdash\lambda x.e:\alpha\to\beta$ \\
+        \small$\Gamma\vdash\alpha\to\beta\implies\Gamma\vdash\alpha\implies\Gamma\vdash\beta$ & \small$\Gamma\vdash e_1:\alpha\to\beta\implies\Gamma\vdash e_2:\alpha\implies\Gamma\vdash e_1\text{ }e_2:\beta$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}

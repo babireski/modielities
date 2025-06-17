@@ -6,7 +6,7 @@ Esta seção busca demonstrar essa interderivabilidade de duas maneiras: tanto c
 Para tanto, precisaremos demonstrar uma quantidade de lemas.
 Nomearemos o primeiro deles \emph{explosão}, conforme abaixo.
 
-\vspace{.5\baselineskip}
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{lemma}[Explosão]\label{explosion}
     $\Gamma\entails_\mathfrak{L}\bot\to\alpha$.
@@ -37,7 +37,7 @@ Em seguida, demonstraremos um lema que combina duas implicações com uma conjun
 Para tanto, foram usados os axiomas de introdução e eliminação da negação em conjunto com a regra da separação.
 A demontração deste lema busca simplificar a prova de interderivabilidade, uma vez que a faremos por indução sobre a profundidade da sentença, sendo um dos seus casos a conjunção.
 
-\vspace{.5\baselineskip}
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}\label{conjunction.exchange}
         Se $\Gamma\entails_\mathfrak{L}\alpha\to\gamma$ e $\Gamma\entails_\mathfrak{L}\beta\to\delta$, então $\Gamma\entails_\mathfrak{L}\alpha\wedge\beta\to\gamma\wedge\delta$.
@@ -76,8 +76,9 @@ Este lema afirma que, caso tenhamos necessidade de uma conjunção, então temos
 Assim como no lema anterior, foram usados os axiomas de introdução e eliminação da negação em conjunto com a regra da separação.
 Neste lema, entretanto, o teorema da generalização da necessitação e o teorema do enfraqueciemnto desempenham um funções importantes.
 Usaremos esta asseção para a demonstração da interderivabilidade.
+Mais adiante, demonstraremos a proposição conversa deste lema
 
-\vspace{.5\baselineskip}
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}\label{necessity.conjunction.distribution}
         $\Gamma\entails_\mathfrak{L}\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
@@ -113,12 +114,12 @@ Usaremos esta asseção para a demonstração da interderivabilidade.
 
 \vspace{.5\baselineskip}
 Consideremos agora um novo lema.
-Este lema afirma que, dada uma implicação dupla, podemos as antecedentes destas duas implicações podem ser conjuntos em um antecedente de uma implicação apenas.
+Este lema afirma que, dada uma implicação dupla, podemos juntar as sentenças antecedentes destas duas implicações em uma conjunção antecedente de uma implicação apenas.
 Na computação, este corresponte ao tipo da função de \emph{descurrificação}.
 Aqui entretanto referiremos a ele como \emph{importação}.
 Usaremos esta asseção para a demonstração da do lema que o segue.
 
-\vspace{.5\baselineskip}
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}[Importação]\label{importation}
         Se $\Gamma\entails_\mathfrak{L}\alpha\to\beta\to\gamma$ então $\Gamma\entails_\mathfrak{L}\alpha\wedge\beta\to\gamma$.
@@ -147,7 +148,14 @@ Usaremos esta asseção para a demonstração da do lema que o segue.
         \end{proof}
     \end{lemma}
 \end{tcolorbox}
+
 \vspace{.5\baselineskip}
+A demonstração do lema da importação nos permite demonstrar o lema da \emph{agregação da necessidade sobre a conjunção}, que se trata da implicação conversa ao lema da distribuição da necessidade sobre a conjunção.
+Este lema afirma que, caso tenhamos a conjunção de duas necessidades, temos a necessidade dos conjuntos.
+O uso da importação se mostra importante porque este nos permite assumir um conjunto de sentenças necessariamente verdadeiras, anuindo o uso do teorema da generalização da necessitação.
+Esse conjunto pode então ser transformado em uma implicação por meio do teorema da dedução e em uma conjunção por meio do lema da importação.
+
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}\label{necessity.conjunction.undistribution}
         $\Gamma\entails_\mathfrak{L}\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
@@ -180,7 +188,14 @@ Usaremos esta asseção para a demonstração da do lema que o segue.
         \end{proof}
     \end{lemma}
 \end{tcolorbox}
+
 \vspace{.5\baselineskip}
+Demonstraremos agora a versão disjuntiva do lema \refer{conjunction.exchange}{L}.
+Este lema combina duas implicações com uma disjunção dos antecedentes de modo a inferir uma disjunção dos consequentes.
+Para tanto, foram usados os axiomas de introdução e eliminação da disjunução em conjunto com a regra da separação.
+Assim como para a conjunção, a demontração deste lema busca simplificar a prova de interderivabilidade, sendo a disjunção um de seus casos da indução.
+
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}\label{disjunction.exchange}
         Se $\Gamma\entails_\mathfrak{L}\alpha\to\gamma$ e $\Gamma\entails_\mathfrak{L}\beta\to\delta$, então $\Gamma\entails_\mathfrak{L}\alpha\vee\beta\to\gamma\vee\delta$.
@@ -223,7 +238,14 @@ Usaremos esta asseção para a demonstração da do lema que o segue.
         \end{proof}
     \end{lemma}
 \end{tcolorbox}
+
 \vspace{.5\baselineskip}
+Por fim, consideremos o lema derradeiro desta seção.
+Demonstraremos o lema da \emph{agregação da necessidade sobre a disjunção}, a versão disjuntiva do lema da agregação da necessidade sobre a conjunção apresentada acima.
+Este lema afirma que, caso tenhamos a disjunção de duas necessidades, temos a necessidade dos disjuntos.
+De maneira semelhante à sua contraparte conjuntiva, este lema faz uso do teorema da dedução e da generalização da necessitação.
+
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}\label{necessity.disjunction.undistribution}
         $\Gamma\entails_\mathfrak{L}\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$.
@@ -260,9 +282,15 @@ Usaremos esta asseção para a demonstração da do lema que o segue.
         \end{proof}
     \end{lemma}
 \end{tcolorbox}
+
 \vspace{.5\baselineskip}
+Demonstrados os lemas anteriores, pode-se demonstrar o teorema da interderivabilidade como uma bi-implicação dentro do sistema de destino.
+Para tanto, induziremos sobre a profundidade da sentença intuicionista traduzida, conforme~\cite{Troelstra}.
+A bi-implicação neste teorema o torna a demonstração com as maiores sucessões de dedução neste trabalho, em virtude da necessidade do uso abundante dos axiomas da introdução e eliminação da conjunção.
+
+\vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\begin{theorem}\label{isomorphism}
+\begin{theorem}\label{biimplication}
     $\Gamma\entails_\mathfrak{L}\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
 
     \begin{proof}
@@ -374,52 +402,52 @@ Usaremos esta asseção para a demonstração da do lema que o segue.
         \end{xltabular}
         \normalsize
 
-        \vspace{.5\baselineskip}
-            \textsc{Caso 5.}
-            Seja a sentença $\alpha$ a implicação de duas sentenças ${\alpha_1}$ e ${\alpha_2}$.
-            Sabe-se que $\nec{({\alpha_1}\to{\alpha_2})}^\circ=\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)$ e que ${({\alpha_1}\to{\alpha_2})}^\medsquare=\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pelas definições das traduções.
-            A partir de $\mathbf{H}$, temos que $\Gamma\entails\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$ e que $\Gamma\entails\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
-            Pode-se demonstrar $\Gamma\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ por meio da dedução que segue.
+        % \vspace{.5\baselineskip}
+        %     \textsc{Caso 5.}
+        %     Seja a sentença $\alpha$ a implicação de duas sentenças ${\alpha_1}$ e ${\alpha_2}$.
+        %     Sabe-se que $\nec{({\alpha_1}\to{\alpha_2})}^\circ=\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)$ e que ${({\alpha_1}\to{\alpha_2})}^\medsquare=\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pelas definições das traduções.
+        %     A partir de $\mathbf{H}$, temos que $\Gamma\entails\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$ e que $\Gamma\entails\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+        %     Pode-se demonstrar $\Gamma\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ por meio da dedução que segue.
 
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\circ&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[gen-nec]{\mathbf{T_\getrefnumber{gen-nec}}}\;\set{7}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[weakening]{\mathbf{T_\getrefnumber{weakening}}}\;\set{9}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_2}^\circ&\refer{comp}{L}$\;\set{2,10}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{11,12}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,13}$\\
-                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{14}$\\
-                    \fa\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{15}$
-                \end{fitch}
+        %         \footnotesize
+        %         \begin{fitch}
+        %             \fb\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\circ&$\mathbf{H_1}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[gen-nec]{\mathbf{T_\getrefnumber{gen-nec}}}\;\set{7}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[weakening]{\mathbf{T_\getrefnumber{weakening}}}\;\set{9}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_2}^\circ&\refer{comp}{L}$\;\set{2,10}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\medsquare&$\mathbf{H_2}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{11,12}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,13}$\\
+        %             \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{14}$\\
+        %             \fa\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{15}$
+        %         \end{fitch}
 
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_1}^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{2,5}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\circ&$\mathbf{H_2}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
-                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
-                    \fa\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$
-                \end{fitch}
+        %         \footnotesize
+        %         \begin{fitch}
+        %             \fb\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_1}^\medsquare&$\mathbf{H_1}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[premisse]{\mathbf{R_1}}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{2,5}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\circ&$\mathbf{H_2}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
+        %             \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
+        %             \fa\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$
+        %         \end{fitch}
 
-        \vspace{.5\baselineskip}
-        Estando assim demonstrada a proposição.
+        % \vspace{.5\baselineskip}
+        % Estando assim demonstrada a proposição.
     \end{proof}
 \end{theorem}
 \end{tcolorbox}
