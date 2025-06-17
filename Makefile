@@ -3,4 +3,6 @@ compile:
 	latexmk -c -bibtex -xelatex thesis.tex
 
 clean:
-	rm ./*/*.aux
+	rm ./*.aux
+	rm ./*.log
+	rm ./*.out

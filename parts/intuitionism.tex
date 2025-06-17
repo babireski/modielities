@@ -6,36 +6,96 @@
     Esse sistema foi inicialmente formalizado por~\cite{Kolmogorov}, Heyting e~\cite{Glivenko-A, Glivenko-B} com inspiração nos trabalhos de~\cite{Brouwer-A, Brouwer-B} acerca do intuicionismo.
     Nesta seção, definiremos este sistema conforme~\cite{Troelstra} e traremos um breve contexto de seu uso na computação.
 
-    \begin{definition}[$\mathcal{L}$]
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{definition}[$\mathcal{L}$]\label{intuitionistic.language}
         A linguagem do sistema intuicionista, denotada $\mathcal{L}$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{C}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
         \qed{}
     \end{definition}
+    \end{tcolorbox}
 
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{notation}
-        Serão usadas as seguintes abreviações:
-        \begin{align*}
-            \top&\coloneqq\bot\to\bot\\
-            \neg\alpha&\coloneqq\alpha\to\bot\\
-            \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
-        \end{align*}
+        Seja uma sentença $\alpha\in\mathcal{L}$, $\neg\alpha$ denota a sua negação $\alpha\to\bot$.
     \end{notation}
+    \end{tcolorbox}
 
-    \begin{definition}[$\entails_\mathfrak{B}$]
-        A axiomatização do sistema intuicionista consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\cup\set{\bot}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
-        \begin{alignat*}{3}
-            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{IA1}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{IA2}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{IA3}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{IA4}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{IA5}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{IA6}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{IA7}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{IA8}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_\bot}\quad&&\bot\to\alpha\label{IABOT}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_1}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha\tag*{}\displaybreak[0]\\
-            &\mathbf{R_2}\quad&&\text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{, então }\Gamma\vdash\beta\text{.} & \tag*{\qed}
-        \end{alignat*}
-    \end{definition}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{definition}[$\vdash_{\mathfrak{B}}$]\label{intuitionistic.deduction}
+    Abaixo estão definidas as regras do sistema intuicionista $\mathfrak{B}$.
+\vspace{.5\baselineskip}
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha$}
+    \DisplayProof\label{intuitionistic.axiom.1}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_2}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
+    \DisplayProof\label{intuitionistic.axiom.2}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_3}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta$}
+    \DisplayProof\label{intuitionistic.axiom.3}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_4}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\alpha$}
+    \DisplayProof\label{intuitionistic.axiom.4}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_5}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\beta$}
+    \DisplayProof\label{intuitionistic.axiom.5}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_6}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\alpha\vee\beta$}
+    \DisplayProof\label{intuitionistic.axiom.6}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_7}$}
+    \UnaryInfC{$\Gamma\vdash\beta\to\alpha\vee\beta$}
+    \DisplayProof\label{intuitionistic.axiom.7}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_8}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
+    \DisplayProof\label{intuitionistic.axiom.8}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_\bot}$}
+    \UnaryInfC{$\Gamma\vdash\bot\to\alpha$}
+    \DisplayProof\label{intuitionistic.axiom.contradiction}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{$\alpha\in\Gamma$}
+    \RightLabel{\footnotesize$\mathbf{R_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \DisplayProof\label{intuitionistic.rule.1}
+    \quad
+    \AxiomC{$\Gamma\vdash\alpha$}
+    \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+    \RightLabel{\footnotesize$\mathbf{R_2}$}
+    \BinaryInfC{$\Gamma\vdash\beta$}\label{intuitionistic.rule.1}
+    \DisplayProof
+\end{center}
+\end{definition}
+\end{tcolorbox}
 
     De modo a facilitar a comunicação no decorrer deste trabalho, chamaremos $\mathbf{R_1}$ de regra da separação ou \emph{modus ponens}.
 

@@ -2,85 +2,88 @@
 
     Neste sessão, apresentaremos uma prova de correção para a $\nec$-tradução. Antes disso, entretanto, apresentaremos uma prova de $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$, que usaremos como lema para a prova da correção conforme sugerido por~\cite{Troelstra}. Provaremos o lema por indução sobre a profundidade da sentença e a correção por indução sobre o tamanho da prova.
 
-    \begin{lemma}\label{square-nec}
-        $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{theorem}[Estabilidade]\label{square-nec}
+        $\Gamma\entails_\mathfrak{L}\alpha^\medsquare\to\nec\alpha^\medsquare$.
 
         \begin{proof}
-            Prova por indução forte sobre a profundidade de $\alpha\in\mathcal{L}_\mathbf{I}$ \citep{Troelstra}.
-            Assim, suponhamos que a proposição valha para qualquer sentença $\alpha$ de profundidade $n<k$.
-            Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que a proposição vale para qualquer $\alpha$ de profundidade $n=k$.
+            Prova por indução forte sobre a profundidade da sentença \citep{Troelstra}.
+            Seja $n\in\mathbb{N}^+$ a profundidade da sentença $\alpha\in\mathcal{L}$.
+            Suponhamos que a asserção valha para qualquer sentença de profundidade menor que $n$ e nomeemos esta suposição $\mathbf{H}$.
+            Devemos considerar cinco casos: a letra, a contradição, a conjunção, a disjunção e a implicação.
 
-            \begin{case}
-                \textsc{Caso 1.}
-                Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $a^\medsquare=\nec a$ pela definição da tradução.
-                Deste modo, $\nec{a}\to\nec\nec{a}$ constitui um axioma gerado pelo esquema \hyperref[MB3]{$\mathbf{B_3}$} --- sendo assim $\entails\nec{a}\to\nec\nec{a}$ provado trivialmente.
-            \end{case}
-
-            \begin{case}
-                \textsc{Caso 2.}
-                Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\bot^\medsquare=\bot$ pela definição da tradução.
-                Deste modo, devemos provar que $\entails\bot\to\nec\bot$, o que consiste num caso particular da explosão provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
-            \end{case}
-
-            \begin{case}
-                \textsc{Caso 3.}
-                Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que ${(\varphi\wedge\psi)}^\medsquare=\varphi^\medsquare\wedge\psi^\medsquare$ pela definição da tradução.
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&\hyperref[MA5]{${\mathbf{A_5}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\to\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,10}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,11}$\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec\varphi^\medsquare\wedge\nec\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$\\
-                    \fa\proves\nec\varphi^\medsquare\wedge\nec\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&\refer{nec-distr}{L}\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\medsquare\wedge\psi^\medsquare)&\refer{comp}{L}$\;\set{13, 14}$\\
-                \end{fitch}
-            \end{case}
-
-            \begin{case}
-                \textsc{Caso 4.}
-                Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que ${(\varphi\vee\psi)}^\medsquare=\varphi^\medsquare\vee\psi^\medsquare$ pela definição da tradução.
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\psi^\medsquare\to\nec\psi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&\refer{or-subst}{L}\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\nec\psi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_1}}\;\set{1,4}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,5}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\varphi^\medsquare\vee\nec\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
-                    \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec(\varphi^\medsquare\vee\psi^\medsquare)&\refer{or-distr}{L}$\;\set{7}$\\
-                    \fa\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$
-                \end{fitch}
-            \end{case}
-
-            \begin{case}
-                \textsc{Caso 5.}
-                Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que ${(\varphi\to\psi)}^\medsquare=\nec(\varphi^\medsquare\to\psi^\medsquare)$ pela definição da tradução.
-                Deste modo, $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ constitui um axioma gerado pelo esquema \hyperref[MB3]{$\mathbf{B_3}$} --- sendo assim $\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec\nec(\varphi^\medsquare\to\psi^\medsquare)$ provado trivialmente.
-            \end{case}
             \vspace{.5\baselineskip}
-            Tendo-se provado todos os casos do passo de indução, podemos concluir que a propriedade vale, ou seja, que $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$.
+            \textsc{Caso 1.}
+            Seja a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$.
+            Sabe-se que $a^\medsquare=\nec a$ pela definição da tradução.
+            Deste modo, $\Gamma\vdash\nec{a}\to\nec\nec{a}$ pode ser gerado por \hyperref[modal.axiom.modal.3]{$\mathbf{B_3}$}.
+
+            \vspace{.5\baselineskip}
+            \textsc{Caso 2.}
+            Seja a sentença $\alpha$ a constante $\bot$.
+            Sabe-se que $\bot^\medsquare=\bot$ pela definição da tradução.
+            Deste modo, $\Gamma\entails\bot\to\nec\bot$ foi provado pelo lema \hyperref[explosion]{$\mathbf{L_3}$}.
+
+            \vspace{.5\baselineskip}
+            \textsc{Caso 3.}
+            Seja a sentença $\alpha$ a conjunção de duas sentenças $\alpha_1$ e $\alpha_2$.
+            Sabe-se que ${(\alpha_1\wedge\alpha_2)}^\medsquare={\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare$ pela definição da tradução.
+            A partir de $\mathbf{H}$, temos que $\Gamma\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$ e que $\Gamma\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\wedge\alpha_2)}^\medsquare\to\nec{(\alpha_1\wedge\alpha_2)}^\medsquare$ pela dedução que segue.
+
+            \vspace{.5\baselineskip}
+            \footnotesize
+            \setlength{\rowskip}{.5\baselineskip}
+            \begin{xltabular}{\textwidth}{r | X l l}
+                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$                                                                 & $\mathbf{H_1}$                                  & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]
+                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare$                                                                  & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
+                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare\to\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare$       & \refer{conjunction.exchange}{L}                 & \\[\rowskip]
+                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare$                                                          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
+                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$ & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
+                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
+                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$                                                                   & \refer{deduction}{T} & $\set{7}$
+            \end{xltabular}
+            \normalsize
+
+            \vspace{.5\baselineskip}
+            \textsc{Caso 4.}
+            Seja a sentença $\alpha$ a disjunção de duas sentenças $\alpha_1$ e $\alpha_2$.
+            Sabe-se que ${(\alpha_1\vee\alpha_2)}^\medsquare={\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare$ pela definição da tradução.
+            A partir de $\mathbf{H}$, temos que $\Gamma\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$ e que $\Gamma\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\vee\alpha_2)}^\medsquare\to\nec{(\alpha_1\vee\alpha_2)}^\medsquare$ pela dedução que segue.
+
+            \vspace{.5\baselineskip}
+            \footnotesize
+            \setlength{\rowskip}{.5\baselineskip}
+            \begin{xltabular}{\textwidth}{r | X l l}
+                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$                                                                 & $\mathbf{H_1}$                                  & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]\pagebreak[4]
+                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare$                                                                    & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
+                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare\to\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare$           & \refer{disjunction.exchange}{L}                 & $\set{1, 2}$\\[\rowskip]
+                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
+                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$     & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
+                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$                                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
+                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$                                                                     & \refer{deduction}{T} & $\set{7}$
+            \end{xltabular}
+            \normalsize
+
+            \vspace{.5\baselineskip}
+            \textsc{Caso 5.}
+            Seja a sentença $\alpha$ a implicação de duas sentenças $\alpha_1$ e $\alpha_2$.
+            Sabe-se que ${(\alpha_1\to\alpha_2)}^\medsquare=\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pela definição da tradução.
+            Deste modo, $\Gamma\vdash\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to\nec\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pode ser gerado pela regra \hyperref[modal.axiom.modal.3]{$\mathbf{B_3}$}.
+
+            \vspace{.5\baselineskip}
+            Estando assim demonstrada a proposição.
         \end{proof}
-    \end{lemma}
+    \end{theorem}
+    \end{tcolorbox}
 
     Uma vez provado o lema podemos, por fim, provar a correção da $\nec$-tradução.
 
-    \begin{theorem}\label{square-correctness}
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{theorem}\label{square.soundness}
         Se $\Gamma\entails_\mathfrak{B}\alpha$, então $\Gamma^\medsquare\entails_\mathfrak{L}\alpha^\medsquare$.
     \end{theorem}
 
@@ -245,5 +248,17 @@
             \end{fitch}
         \end{case}
         \vspace{.5\baselineskip}
-        Tendo-se provado todos os casos do passo de indução, podemos concluir que a correção da $\nec$-tradução, ou seja, que se $\Gamma\entails_\mathbf{I}\alpha$, então $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$.
+        Estando assim demonstrada a proposição.
     \end{proof}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{theorem}[Correção]\label{circle.soundness}
+        Se $\Gamma\entails_\mathfrak{B}\alpha$, então $\nec\Gamma^\circ\entails_\mathfrak{L}\alpha^\circ$.
+    \end{theorem}
+    \begin{proof}
+        Partindo-se do teorema de correção da outra tradução \refer{square.soundness}{T}, temos que $\Gamma^\nec\entails\alpha^\nec$.
+        Então, por meio do teorema da interderivabilidade \refer{interderivability}{T}, temos que $\nec\Gamma^\circ\entails\alpha^\circ$.
+        Estando assim demonstrada a proposição.
+    \end{proof}
+    \end{tcolorbox}

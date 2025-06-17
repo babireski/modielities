@@ -31,6 +31,11 @@
 \usepackage{fontspec}
 \usepackage{bussproofs}
 \usepackage{styles/coq}
+\usepackage{changepage}
+\usepackage{tcolorbox}
+\usepackage{calc}
+\usepackage{xltabular}
+\tcbuselibrary{skins,breakable}
 
 \usepackage[lf]{Baskervaldx} % lining figures
 \usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
@@ -75,5 +80,15 @@
     urlcolor=blue
 }
 
+\newlength{\spaccc}
+\newlength{\tempA}
+\newlength{\tempB}
+\settowidth{\tempA}{\texttt{A}} % Measure width of "A"
+\settowidth{\tempB}{\texttt{\rotatebox{90}{…}}} % Measure width of rotated ellipsis
+\setlength{\spaccc}{0.5\tempA} % Set to half of tempA
+\addtolength{\spaccc}{-0.75\tempB} % Subtract half of tempB
+
 % Spacing settings
 \onehalfspacing{}
+
+\setlength\parindent{0pt}

@@ -1,50 +1,163 @@
 \section{Sistemas modais}
-    Nesta seção, definiremos o sistema modal $\mathfrak{L}=\langle\mathcal{L}_\nec,\vdash_\mathfrak{L}\rangle$.
+    Os sistemas modais surgem a partir da investigação acerca dos \emph{modos} em que uma proposição pode ser verdadeira, ou seja, das \emph{modalidades}.
+    As modalidades costumeiramente definidas são as noções duais de \emph{necessidade} e \emph{possibilidade}.
+    Assim, estão presentes nas linguagens destes sistemas sentenças da forma $\nec\alpha$ e da forma $\pos\alpha$, lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$.
+    Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso.
+    Em despeito dos seus nomes e de suas interpretações informais, estas modalidades podem ser usadas para modelar diferentes noções, como \emph{conhecimento} ou \emph{obrigação}.
+    Como veremos adiante, podemos relacionar a possibilidade como efeitos computationais, o que a torna interessante do ponto de vistada computação.
 
-    Os sistemas modais consistem em extensões do sistema proposicional com a adição de modalidades que representam \emph{necessidade} --- denotada como $\nec$ --- e \emph{possibilidade} --- denotada como $\pos$ --- bem como esquemas e regras que dizem respeito a elas. Deste modo, estão contidas na linguagem do sistema sentenças da forma $\nec\alpha$ e $\pos\alpha$ --- lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$, respectivamente. Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso. Nesta seção, contextualizaremos esses sistemas e, em seguida, definiremo-lo formalmente na sua versão $\mathbf{S4}$.
+    \vspace{.3\baselineskip}
+    As primeiras investigações acerca das modalidades foram feitos na antiguidade.
+    Entretanto, os estudos modais modernos foram fundados por~\cite{Lewis}.
+    Lewis motivou-se a criar um sistema onde os condicionais tivessem uma interpretação mais perto daquela das linguagens naturais.
+    Neste sistema, não valeriam para todos os casos sentenças da forma $\alpha\to\beta\to\alpha$, por exemplo.
+    Estes estudos culminaram no trabalho conjunto de~\cite{Langford}.
+    Este trabalho definiu cinco sistemas --- nomeados de $\mathbf{S1}$ a $\mathbf{S5}$ --- que contavam com a dita \emph{implicação estrita} $\alpha\strictif\beta$ definida em termos da possibilidade e que não permitia a demonstração de sentenças consideradas indesejadas.
 
-    Os primeiros desenvolvimentos acerca das modalidades acima foram feitos pelos gregos antigos, que anteciparam muitos dos preceitos aceitos modernamente e dentre os quais destacamos novamente~\cite{Aristotle}. O fundador dos estudos em sistemas modais modernos foi~\cite{Lewis}, motivado pela sua insatisfação com o conceito vigente de implicação, uma vez que a definição clássica desse operador\footnote{Definida como $\alpha\to\beta\equiv\neg\alpha\vee\beta$.} permite que sentenças intuitivamente falsas em linguagem natural seja valoradas como verdadeiras. Este sistema foi posteriormente melhor desenvolvido por~\cite{Langford}, onde foram apresentados os sistemas $\mathbf{S1}$ a $\mathbf{S5}$ --- sendo $\mathbf{S4}$ o abordado neste trabalho.
+    \vspace{.3\baselineskip}
+    \cite{Goedel} apresentou uma definição equivalente do sistema $\mathbf{S4}$, tendo a necessidade como operador primitivo e a dedução estrita podendo ser definida em termos desta e da implicação, como $\nec(\alpha\to\beta)$.
+    Este sistema apresentou a vantagem de separar as regras proposicionais das regras modais, propriedade que não estava presente nas definições anteriores, e tornou-se o padrão a partir de então.
+    Nesta sessão, apresentaremos este sistema, doravante chamado $\mathfrak{L}=\langle\mathcal{L}_\nec,\vdash_\mathfrak{L}\rangle$.
+    A linguagem abaixo foi definida conforme~\cite{Troelstra}.
+    Foram definidas notações costumeiras, das quais destacamos a dedução estrita.
+    Ainda, definiu-se uma notação para conjuntos com sentenças necessariamente verdadeiras.
 
-    \begin{definition}[$\mathcal{L}_{\nec}$]
+    \vspace{.5\baselineskip}
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{definition}[$\mathcal{L}_{\nec}$]\label{modal.language}
         A linguagem dos sistemas modais, denotada $\mathcal{L}_{\nec}$, pode ser induzida a partir da assinatura $\Sigma_{\nec}=\sequence{\mathcal{P},\mathcal{C}_{\nec}}$, onde $\mathcal{C}_{\nec}=\set{\bot^0,\nec^1,\wedge^2,\vee^2,\to^2}$.
     \end{definition}
+    \end{tcolorbox}
 
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{notation}
-        Serão usadas as seguintes abreviações:
-        \begin{align*}
-            \top&\coloneqq\bot\to\bot\\
-            \neg\alpha&\coloneqq\alpha\to\bot\\
-            \pos\alpha&\coloneqq\neg\nec\neg\alpha\\
-            \alpha\strictif\beta&\coloneqq\nec(\alpha\to\beta)\\
-            \alpha\leftrightarrow\beta&\coloneqq(\alpha\to\beta)\wedge(\beta\to\alpha)
-        \end{align*}
+        Sejam duas sentenças $\alpha,\beta\in\mathcal{L}$.
+        Denotamos por $\neg\alpha$ a negação $\alpha\to\bot$.
+        Denotamos por $\pos\alpha$ a possibilidade $\neg\nec\neg\alpha$.
+        Denotamos por $\alpha\strictif\beta$ a implicação estrita $\nec(\alpha\to\beta)$.
+        E denotamos por $\alpha\leftrightarrow\beta$ a bi-implicação $(\alpha\to\beta)\wedge(\beta\to\alpha)$.
     \end{notation}
+    \end{tcolorbox}
 
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{notation}
         Seja $\Gamma\in\wp(\mathcal{L}_{\nec})$ um conjunto de sentenças bem-formadas.
         $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_{\nec})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
     \end{notation}
+    \end{tcolorbox}
 
-    \begin{definition}[$\entails_\mathbf{S4}$]\label{m-axioms}
-        A axiomatização do sistema modal $\mathbf{S4}$ consiste no conjunto de esquemas de axiomas $\mathcal{A}=\set{\mathbf{A}_i\mid i\in[1,8]\vee i=\neg}\cup\set{\mathbf{B_1},\mathbf{B_2},\mathbf{B_3}}$ e no conjunto de regras $\mathcal{R}=\set{\mathbf{R_1},\mathbf{R_2}}$, definidos abaixo:
-        \begin{alignat}{3}
-            &\mathbf{A_1}\quad&&\alpha\to\beta\to\alpha\label{MA1}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_2}\quad&&(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to(\alpha\to\gamma)\label{MA2}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_3}\quad&&\alpha\to\beta\to\alpha\wedge\beta\label{MA3}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_4}\quad&&\alpha\wedge\beta\to\alpha\label{MA4}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_5}\quad&&\alpha\wedge\beta\to\beta\label{MA5}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_6}\quad&&\alpha\to\alpha\vee\beta\label{MA6}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_7}\quad&&\beta\to\alpha\vee\beta\label{MA7}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_8}\quad&&(\alpha\to\gamma)\to(\beta\to\gamma)\to(\alpha\vee\beta\to\gamma)\label{MA8}\tag*{}\displaybreak[0]\\
-            &\mathbf{A_\neg}\quad&&\neg\neg\alpha\to\alpha\label{MANEG}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_1}\quad&&\nec(\alpha\to\beta)\to\nec\alpha\to\nec\beta\label{MB1}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_2}\quad&&\nec\alpha\to\alpha\label{MB2}\tag*{}\displaybreak[0]\\
-            &\mathbf{B_3}\quad&&\nec\alpha\to\nec\nec\alpha\label{MB3}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_1}\quad&&\text{Se }\alpha\in\Gamma\text{, então }\Gamma\entails\alpha\label{premisse}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_2}\quad&&\text{Se }\Gamma\entails\alpha\text{ e }\Gamma\entails\alpha\to\beta\text{, então }\Gamma\entails\beta\label{detachment}\tag*{}\displaybreak[0]\\
-            &\mathbf{R_3}\quad&&\text{Se }\entails\alpha\text{, então }\Gamma\entails\nec\alpha\text{.}\tag*{\qed}\label{necessitation} 
-        \end{alignat}
-    \end{definition}
+\vspace{.5\baselineskip}
+    Consideremos agora a relação de dedução para o sistema $\mathfrak{L}$, definida por suas regras de dedução.
+    Nomeamos as regras de maneira com que as regras comuns ao sistema $\mathfrak{B}$ e ao sistema $\mathfrak{L}$ tenham nomes comuns, enquanto as regras diferentes tenham nomes diferentes, bem como as arranjamos de forma semelhante
+    A presença da regra $\mathbf{A_\neg}$ permite a derivação do \emph{tertium non datur}, em oposição ao sistema intuicionista.
+    Assim sendo, esta relação consiste no aumento das regras proposicionais com regras para a necessidade.
+    A definição que segue baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}.
 
-    Assim como feito para o sistema intuicionista, nomearemos as regras acima de modo a facilitar a comunicação.
-    Deste modo, chamaremos $\mathbf{R_2}$ de regra da separação ou \emph{modus ponens} e $\mathbf{R_3}$ de regra da necessitação. A definição das regras de dedução em relação a conjuntos de sentenças baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}. A definição da regra da necessitação deve ser cuidadosa de modo a permitir a prova do metateorema da dedução\footnote{Para uma discussão mais aprofudada, ver~\cite{Hakli}.}, feita futuramente neste trabalho. Neste sentido, restringimos a aplicação desta regra apenas a teoremas.
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{definition}[$\vdash_{\mathfrak{L}}$]\label{modal.deduction}
+    Abaixo estão definidas as regras do sistema modal $\mathfrak{L}$.
+\vspace{.5\baselineskip}
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha$}
+    \DisplayProof\label{modal.axiom.1}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_2}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
+    \DisplayProof\label{modal.axiom.2}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_3}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta$}
+    \DisplayProof\label{modal.axiom.3}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_4}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\alpha$}
+    \DisplayProof\label{modal.axiom.4}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_5}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\beta$}
+    \DisplayProof\label{modal.axiom.5}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_6}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\alpha\vee\beta$}
+    \DisplayProof\label{modal.axiom.6}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_7}$}
+    \UnaryInfC{$\Gamma\vdash\beta\to\alpha\vee\beta$}
+    \DisplayProof\label{modal.axiom.7}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_8}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
+    \DisplayProof\label{modal.axiom.8}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_\neg}$}
+    \UnaryInfC{$\Gamma\vdash\neg\neg\alpha\to\alpha$}
+    \DisplayProof\label{modal.axiom.negation}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_1}$}
+    \UnaryInfC{$\Gamma\vdash\Box(\alpha\to\beta)\to\Box\alpha\to\Box\beta$}
+    \DisplayProof\label{modal.axiom.modal.1}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_2}$}
+    \UnaryInfC{$\Gamma\vdash\Box\alpha\to\alpha$}
+    \DisplayProof\label{modal.axiom.modal.2}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{B_3}$}
+    \UnaryInfC{$\Gamma\vdash\Box\alpha\to\Box\Box\alpha$}
+    \DisplayProof\label{modal.axiom.modal.3}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{$\alpha\in\Gamma$}
+    \RightLabel{\footnotesize$\mathbf{R_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \DisplayProof\label{modal.rule.1}
+    \quad
+    \AxiomC{$\Gamma\vdash\alpha$}
+    \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+    \RightLabel{\footnotesize$\mathbf{R_2}$}
+    \BinaryInfC{$\Gamma\vdash\beta$}
+    \DisplayProof\label{modal.rule.2}
+    \quad
+    \AxiomC{$\vdash\alpha$}
+    \RightLabel{\footnotesize$\mathbf{R_3}$}
+    \UnaryInfC{$\Gamma\vdash\Box\alpha$}
+    \DisplayProof\label{modal.rule.3}
+\end{center}
+\end{definition}
+\end{tcolorbox}
+
+\vspace{.5\baselineskip}
+    A definição da regra $\mathbf{R_3}$, dita \emph{regra da necessitação}, foi feita de maneira cuidadosa de modo a permitir a correta derivação do teorema da dedução.
+    Este teorema mostra-se importante para tornar as demonstações feitas neste trabalho mais breves e claras.
+    Para tanto, foi preciso restringir a condição antecedente da regra a conjuntos vazios.
+    Em outras palavras, esta regra permite tornar apenas teoremas necessidades.
+    Para uma discussão mais aprofudada acerca da validade do teorema da dedução em sistemas modais, remetemos o leitor a~\cite{Hakli}.
+

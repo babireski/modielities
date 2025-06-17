@@ -6,10 +6,48 @@
     Esta estrutura inspirou uma metalinguagem definida por~\cite{Moggi} para a modelagem de noções de computação --- como parcialidade, não-determinismo, excessões e continuações.
     Posteriormente,~\cite{Wadler} sugeriu o uso dessas estruturas como um \emph{framework} para simular efeitos em linguagens de programação puramente funcionais.
 
+    \begin{lemma}\label{contrapositive}
+        $\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)$.
+        \begin{proof}
+            Pode ser demonstrado pela dedução que segue.
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha\to\beta,\neg\beta}\entails\beta\to\bot&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\beta\to\bot)\to\alpha\to(\beta\to\bot)&\hyperref[MA1]{$\mathbf{A_1}$}\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta\to\bot&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta\to\bot)\to(\alpha\to\beta)\to(\alpha\to\bot)&\hyperref[MA2]{$\mathbf{A_2}$}\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\alpha\to\beta&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails(\alpha\to\beta)\to(\alpha\to\bot)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
+                \fa\set{\alpha\to\beta,\neg\beta}\entails\neg\alpha&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,6}$\\
+                \fa\set{\alpha\to\beta}\entails\neg\beta\to\neg\alpha&\refer{deduction}{T}$\;\set{7}$\\
+                \fa\entails(\alpha\to\beta)\to(\neg\beta\to\neg\alpha)&\refer{deduction}{T}$\;\set{8}$.
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}\label{neg-intro}
+        $\entails\alpha\to\neg\neg\alpha$
+        \begin{proof}
+            Pode ser demonstrado pela dedução que segue.
+            \footnotesize
+            \begin{fitch}
+                \fb\set{\alpha,\neg\alpha}\entails\alpha&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha,\neg\alpha}\entails\alpha\to\bot&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                \fa\set{\alpha,\neg\alpha}\entails\bot&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
+                \fa\set{\alpha}\entails\neg\neg\alpha&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{3}$\\
+                \fa\entails\alpha\to\neg\neg\alpha&$\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}\;\set{4}$\\
+            \end{fitch}
+            \normalsize
+            Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+
     \begin{theorem}
         $\vdash\alpha\to\pos\alpha$.
         \begin{proof}
-            Pode ser provado pela seguinte sucessão de dedução:
+            Pode ser demonstrado pela dedução que segue.
             \footnotesize
             \begin{fitch}
                 \fb\entails\alpha\to\neg\neg\alpha&\refer{neg-intro}{L}\\
@@ -28,7 +66,7 @@
     \begin{theorem}
         $\vdash\pos\pos\alpha\to\pos\alpha$.
         \begin{proof}
-            Pode ser provado pela seguinte sucessão de dedução:
+            Pode ser demonstrado pela dedução que segue.
             \footnotesize
             \begin{fitch}
                 \fb\entails\nec\neg\alpha\to\nec\nec\neg\alpha&$\hyperref[MB3]{\mathbf{B_3}}$\\

@@ -1,0 +1,29 @@
+\chapter{Conclusão}
+    O sistemas modais atributos interessantes para a representação de efeitos computacionais, sobretudo o sistema $\mathfrak{L}$ definido neste trabalho.
+    Uma linguagem baseada nesse sistema, podendo representar efeitos monadicamente, imerge e pode ser imergida em continuações~\citep{Filinski}.
+    O estilo de passagem por continuações trata-se de uma das diversas representações usadas em compiladores.
+    Deste modo, este sistema possui interesse no ponto de vista de compilação.
+
+    \vspace{.3\baselineskip}
+    Consideremos as metas definidas na introdução.
+    Este trabalho apresentou noções gerais sobre sistemas e sobre traduções entre sistemas.
+    Em seguida, foram definidos os sistemas intuicionista e modais, bem como os principais artefatos deste trabalho: as traduções de um sistema a outro.
+    Adiante, foram demonstradas e equiderivabilidade e a correção das traduções, bem como um conjunto de teoremas e lemas auxiliares.
+    Por fim, tudo o que foi definido e demonstrado foi implementado.
+    Não foi demonstrada a completude, ou seja, de que derivações de sentenças traduzidas no sistema de destino implicam em derivações no sistema de origem.
+    Somente esta meta não foi cumprida.
+
+    \vspace{.3\baselineskip}
+    Sugerimos diversos trabalhos futuros. Primeiramente, a demonstração da completude das traduções apresentadas neste trabalho e sua formalização assistida por computador.
+    Em segundo lugar, sugerimos que o mesmo seja feito para a tradução do sistema laxo ao sistema $\mathfrak{L}$, conforme apresentada por~\cite{Fairtlough}. 
+    Outra tradução de interesse trata-se da tradução de~\cite{Pfenning} do sistema intuicionista a um sistema bimodal $\langle\mathfrak{L},\mathfrak{L}\rangle$, uma vez que os desenvolvimentos de~\cite{Nunes} permitem a fusões entre sistemas modais.
+    Por fim, sugerimos invertigações acerca do uso de uma de linguagem de representação baseada no sistema $\mathfrak{L}$ para uso em compiladores.
+
+    \vspace{.3\baselineskip}
+    Para a demonstração de completude, sugerimos que esta deixe de se basear na demonstraçõe de~\cite{Troelstra} e passem a se basear na demonstração de~\cite{Flagg}.
+    Este abandono deve-se ao uso de propriedades de sequentes na demontração que seriam complicadas de acomodar ao sistema de dedução usado neste trabalho, enquanto escolha da demonstração usada deu-se por esta ser feita construtivamente.
+    A construtividade da demonstração releva por esta conter uma computação --- ou seja, um procedimento que descreve \emph{como} transformar uma demonstração de uma sentença traduzida no sistema de destino em uma demonstração no sistema de origem.
+    A demonstração de~\cite{Flagg} baseia-se na definição de uma contratradução a uma das traduções foco deste trabalho. Com isso, eles reduzem o problema de provar a completude da tradução ao problema de provar a correção da contratradução, coisa que pode ser feita por indução sobre o tamanho da prova em conjunto com uma coleção de lemas.
+
+    \vspace{.3\baselineskip}
+    Este trabalho foi apresentado como \emph{poster} durante a \emph{XXII Brazilian Logic Conference}, ocorrido entre os dias doze e dezesseis de maio do corrente ano em Serra Negra --- São Paulo, e foi parcialmente apoiado pela \emph{Fundação de Amparo à Pesquisa e Inovação do Estado de Santa Catarina} --- Fapesc.

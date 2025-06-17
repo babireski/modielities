@@ -1,187 +1,431 @@
-\section{Isomorfismo entre as traduções}
+\section{Interderivabilidade}
 
-Conforme afirmado anteriormente, ambas as traduções apresentadas neste trabalho equivalem --- ou seja, são isomorfas --- na forma $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$. Nesta seção, provaremos este isomorfismo que, não somente constitui puramente um resultado de interesse, como permite tornar a prova de propriedades de uma tradução triviais caso tais propriedades valham para a outra tradução.
+Conforme afirmado anteriormente, ambas as traduções apresentadas gozam de propriedade da interderivação.
+Ou seja, a derivação de uma sentença traduzida por uma das traduções implica que se pode derivar esta mesma sentença traduzida pela outra tradução, e vice-versa.
+Esta seção busca demonstrar essa interderivabilidade de duas maneiras: tanto como uma bi-implicação dentro do sistema $\mathfrak{L}$ quanto como uma bi-implicação na metalinguagem.
+Para tanto, precisaremos demonstrar uma quantidade de lemas.
+Nomearemos o primeiro deles \emph{explosão}, conforme abaixo.
 
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{lemma}[Explosão]\label{explosion}
+    $\Gamma\entails_\mathfrak{L}\bot\to\alpha$.
+    \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma\set{\bot}\entails\bot$                              & $\hyperref[modal.rule.1]{\mathbf{R_1}}$\phantom{1} & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\set{\bot}\entails\bot\to(\alpha\to\bot)\to\bot$     & $\hyperref[modal.axiom.1]{\mathbf{A_1}}$           & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\set{\bot}\entails(\alpha\to\bot)\to\bot$            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\set{\bot}\entails((\alpha\to\bot)\to\bot)\to\alpha$ & $\hyperref[modal.axiom.negation]{\mathbf{A_\neg}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\set{\bot}\entails\alpha$                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{3,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\entails\bot\to\alpha$                               & \refer{deduction}{T}                               & $\set{5}$\\[\rowskip]
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+    \end{proof}
+\end{lemma}
+\end{tcolorbox}
+
+\vspace{.5\baselineskip}
+Em seguida, demonstraremos um lema que combina duas implicações com uma conjunção dos antecedentes de modo a inferir uma conjunção dos consequentes.
+Para tanto, foram usados os axiomas de introdução e eliminação da negação em conjunto com a regra da separação.
+A demontração deste lema busca simplificar a prova de interderivabilidade, uma vez que a faremos por indução sobre a profundidade da sentença, sendo um dos seus casos a conjunção.
+
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}\label{conjunction.exchange}
+        Se $\Gamma\entails_\mathfrak{L}\alpha\to\gamma$ e $\Gamma\entails_\mathfrak{L}\beta\to\delta$, então $\Gamma\entails_\mathfrak{L}\alpha\wedge\beta\to\gamma\wedge\delta$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta$                     & $\hyperref[modal.rule.1]{\mathbf{R_1}}$\phantom{1} & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta\to\alpha$            & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$           & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha$                                & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta\to\beta$             & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$           & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\beta$                                 & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{1,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\to\gamma$                       & $\mathbf{H_1}$                                     & \\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\beta\to\delta$                        & $\mathbf{H_2}$                                     & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\gamma$                                & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{3,6}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\delta$                                & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{5,7}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\gamma\to\delta\to\gamma\wedge\delta$  & $\hyperref[modal.axiom.3]{\mathbf{A_4}}$           & \\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\delta\to\gamma\wedge\delta$           & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{8,10}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\gamma\wedge\delta$                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{9,11}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \Gamma\vdash\alpha\wedge\beta\to\gamma\wedge\delta$                           & \refer{deduction}{T}                               & $\set{12}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+
+\vspace{.5\baselineskip}
+Agora, demonstraremos a \emph{distribução da necessidade sobre a conjunção}.
+Este lema afirma que, caso tenhamos necessidade de uma conjunção, então temos a conjunção da necessidade dos conjuntos.
+Assim como no lema anterior, foram usados os axiomas de introdução e eliminação da negação em conjunto com a regra da separação.
+Neste lema, entretanto, o teorema da generalização da necessitação e o teorema do enfraqueciemnto desempenham um funções importantes.
+Usaremos esta asseção para a demonstração da interderivabilidade.
+
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}\label{necessity.conjunction.distribution}
+        $\Gamma\entails_\mathfrak{L}\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec(\alpha\wedge\beta)$                            & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec(\alpha\wedge\beta)\to\alpha\wedge\beta$        & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\alpha\wedge\beta$                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\alpha\wedge\beta\to\alpha$                         & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$       & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\alpha$                                             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{3,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec\alpha$                                         & \refer{generalization}{T}\phantom{1}           & $\set{5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\alpha\wedge\beta\to\beta$                          & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$       & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\beta$                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{3,7}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec\beta$                                          & \refer{generalization}{T}                      & $\set{8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec\alpha\to\nec\beta\to\nec\alpha\wedge\nec\beta$ & $\hyperref[modal.axiom.3]{\mathbf{A_3}}$       & \\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec\beta\to\nec\alpha\wedge\nec\beta$              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{6,10}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \set{\nec(\alpha\wedge\beta)}\vdash\nec\alpha\wedge\nec\beta$                          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{9,11}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$                             & \refer{deduction}{T}                           & $\set{12}$\\[\rowskip]
+            \scriptsize{14}\phantom{ }           & $\ \Gamma\vdash\nec(\alpha\wedge\beta)\to\nec\alpha\wedge\nec\beta$                       & \refer{weakening}{T}                           & $\set{13}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+
+\vspace{.5\baselineskip}
+Consideremos agora um novo lema.
+Este lema afirma que, dada uma implicação dupla, podemos as antecedentes destas duas implicações podem ser conjuntos em um antecedente de uma implicação apenas.
+Na computação, este corresponte ao tipo da função de \emph{descurrificação}.
+Aqui entretanto referiremos a ele como \emph{importação}.
+Usaremos esta asseção para a demonstração da do lema que o segue.
+
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}[Importação]\label{importation}
+        Se $\Gamma\entails_\mathfrak{L}\alpha\to\beta\to\gamma$ então $\Gamma\entails_\mathfrak{L}\alpha\wedge\beta\to\gamma$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma\vdash\alpha\to\beta\to\gamma$                               & $\mathbf{H_1}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta$          & $\hyperref[modal.rule.1]{\mathbf{R_1}}$  & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta\to\alpha$ & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha$                     & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{2,3}$\\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\wedge\beta\to\beta$  & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\beta$                      & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{2,5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\alpha\to\beta\to\gamma$    & \refer{weakening}{T}                     & $\set{1}$\\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\beta\to\gamma$             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{4,7}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma\cup\set{\alpha\wedge\beta}\vdash\gamma$                     & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{6,8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \Gamma\vdash\alpha\wedge\beta\to\gamma$                            & \refer{deduction}{T}                     & $\set{9}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}\label{necessity.conjunction.undistribution}
+        $\Gamma\entails_\mathfrak{L}\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\nec\alpha$                         & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\nec\alpha\to\alpha$                & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\alpha$                             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\nec\beta$                          & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\nec\beta\to\beta$                  & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\beta$                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{4,5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\alpha\to\beta\to\alpha\wedge\beta$ & $\hyperref[modal.axiom.3]{\mathbf{A_3}}$       & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\beta\to\alpha\wedge\beta$          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{3,7}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \set{\nec\alpha,\nec\beta}\vdash\alpha\wedge\beta$                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{6,8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \set{\nec\alpha,\nec\beta}\vdash\nec(\alpha\wedge\beta)$            & \refer{generalization}{T}\phantom{1}           & $\set{9}$\\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \set{\nec\alpha}\vdash\nec\beta\to\nec(\alpha\wedge\beta)$          & \refer{deduction}{T}                           & $\set{10}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \vdash\nec\alpha\to\nec\beta\to\nec(\alpha\wedge\beta)$             & \refer{deduction}{T}                           & $\set{11}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$          & \refer{importation}{L}                         & $\set{12}$\\[\rowskip]
+            \scriptsize{14}\phantom{ }           & $\ \Gamma\vdash\nec\alpha\wedge\nec\beta\to\nec(\alpha\wedge\beta)$    & \refer{weakening}{T}                           & $\set{13}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}\label{disjunction.exchange}
+        Se $\Gamma\entails_\mathfrak{L}\alpha\to\gamma$ e $\Gamma\entails_\mathfrak{L}\beta\to\delta$, então $\Gamma\entails_\mathfrak{L}\alpha\vee\beta\to\gamma\vee\delta$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma,\alpha}\vdash\alpha$                                                                  & $\hyperref[modal.rule.1]{\mathbf{R_1}}$\phantom{1} & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma,\alpha}\vdash\alpha\to\gamma$                                                         & $\hyperref[modal.rule.1]{\mathbf{R_1}}$            & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma,\alpha}\vdash\gamma$                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma,\alpha}\vdash\gamma\to\gamma\vee\delta$                                               & $\hyperref[modal.axiom.6]{\mathbf{A_6}}$           & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma,\alpha}\vdash\gamma\vee\delta$                                                        & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{3,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta,\beta}\vdash\beta$                                                                     & $\hyperref[modal.rule.1]{\mathbf{R_1}}$            & \\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta,\beta}\vdash\beta\to\delta$                                                            & $\hyperref[modal.rule.1]{\mathbf{R_1}}$            & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta,\beta}\vdash\delta$                                                                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{6,7}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta,\beta}\vdash\delta\to\gamma\vee\delta$                                                 & $\hyperref[modal.axiom.6]{\mathbf{A_7}}$           & \\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta,\beta}\vdash\gamma\vee\delta$                                                          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{8,9}$\\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta,\alpha\to\gamma}\vdash\alpha\to\gamma\vee\delta$                                                      & \refer{deduction}{T}                               & $\set{4}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta,\beta\to\delta}\vdash\beta\to\gamma\vee\delta$                                                        & \refer{deduction}{T}                               & $\set{10}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\alpha\to\gamma$                                                                                & $\mathbf{H_1}$                                     & \\[\rowskip]
+            \scriptsize{14}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash(\alpha\to\gamma)\to\alpha\to\gamma\vee\delta$                                                  & \refer{deduction}{T}                               & $\set{11}$\\[\rowskip]
+            \scriptsize{15}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\alpha\to\gamma\vee\delta$                                                                      & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{13,14}$\\[\rowskip]
+            \scriptsize{16}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\beta\to\delta$                                                                                 & $\mathbf{H_2}$                                     & \\[\rowskip]
+            \scriptsize{17}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash(\beta\to\delta)\to\beta\to\gamma\vee\delta$                                                    & \refer{deduction}{T}                               & $\set{12}$\\[\rowskip]
+            \scriptsize{18}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\beta\to\gamma\vee\delta$                                                                       & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{16,17}$\\[\rowskip]
+            \scriptsize{19}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\alpha\vee\beta$                                                                                & $\hyperref[modal.rule.1]{\mathbf{R_1}}$            & \\[\rowskip]
+            \scriptsize{20}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash(\alpha\to\gamma\vee\delta)\to(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta$  & $\hyperref[modal.axiom.8]{\mathbf{A_8}}$           & \\[\rowskip]
+            \scriptsize{21}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash(\beta\to\gamma\vee\delta)\to\alpha\vee\beta\to\gamma\vee\delta$                                & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{15,20}$\\[\rowskip]
+            \scriptsize{22}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\alpha\vee\beta\to\gamma\vee\delta$                                                             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{18,21}$\\[\rowskip]
+            \scriptsize{23}\phantom{ }           & $\ \Gamma\cup\set{\alpha\vee\beta}\vdash\gamma\vee\delta$                                                                               & $\hyperref[modal.rule.2]{\mathbf{R_2}}$            & $\set{19,22}$\\[\rowskip]
+            \scriptsize{24}\phantom{ }           & $\ \Gamma\vdash\alpha\vee\beta\to\gamma\vee\delta$                                                                                      & \refer{deduction}{T}                               & $\set{23}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{lemma}\label{necessity.disjunction.undistribution}
+        $\Gamma\entails_\mathfrak{L}\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$.
+        \begin{proof}
+        Pode ser demonstrado pela dedução que segue.
+
+        \vspace{0.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{0.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \set{\nec\alpha}\vdash\nec\alpha$                                                                                                   & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \set{\nec\alpha}\vdash\nec\alpha\to\alpha$                                                                                          & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \set{\nec\alpha}\vdash\alpha$                                                                                                       & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \set{\nec\alpha}\vdash\alpha\to\alpha\vee\beta$                                                                                     & $\hyperref[modal.axiom.6]{\mathbf{A_6}}$       & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \set{\nec\alpha}\vdash\alpha\vee\beta$                                                                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{3,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \set{\nec\alpha}\vdash\nec(\alpha\vee\beta)$                                                                                        & \refer{generalization}{T}                      & $\set{5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \set{\nec\beta}\vdash\nec\beta$                                                                                                     & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \set{\nec\beta}\vdash\nec\beta \to \beta$                                                                                           & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \set{\nec\beta}\vdash\beta$                                                                                                         & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{7,8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \set{\nec\beta}\vdash\beta\to\alpha\vee\beta$                                                                                       & $\hyperref[modal.axiom.7]{\mathbf{A_7}}$       & \\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \set{\nec\beta}\vdash\alpha\vee\beta$                                                                                               & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{9,10}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \set{\nec\beta}\vdash\nec(\alpha\vee\beta)$                                                                                         & \refer{generalization}{T}                      & $\set{11}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \vdash\nec\alpha\to\nec(\alpha\vee\beta)$                                                                                           & \refer{deduction}{T}                           & $\set{6}$\\[\rowskip]
+            \scriptsize{14}\phantom{ }           & $\ \vdash\nec\beta\to\nec(\alpha\vee\beta)$                                                                                            & \refer{deduction}{T}                           & $\set{12}$\\[\rowskip]
+            \scriptsize{15}\phantom{ }           & $\ \vdash(\nec\alpha\to\nec(\alpha\vee\beta))\to(\nec\beta\to\nec(\alpha\vee\beta))\to\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$ & $\hyperref[modal.axiom.8]{\mathbf{A_8}}$       & \\[\rowskip]
+            \scriptsize{16}\phantom{ }           & $\ \vdash(\nec\beta\to\nec(\alpha\vee\beta))\to\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$                                        & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{13,15}$\\[\rowskip]
+            \scriptsize{17}\phantom{ }           & $\ \vdash\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$                                                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{14,16}$\\[\rowskip]
+            \scriptsize{18}\phantom{ }           & $\ \Gamma\vdash\nec\alpha\vee\nec\beta\to\nec(\alpha\vee\beta)$                                                                        & \refer{weakening}{T}\phantom{1}                & $\set{17}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{0.5\baselineskip}
+        Estando assim demonstrada a proposição.
+        \end{proof}
+    \end{lemma}
+\end{tcolorbox}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{theorem}\label{isomorphism}
-    $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
+    $\Gamma\entails_\mathfrak{L}\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
 
     \begin{proof}
-        Prova por indução forte sobre a profundidade de $\alpha\in\mathcal{L}_\mathbf{I}$ \citep{Troelstra}.
-        Assim, suponhamos que as traduções equivalham para qualquer $\alpha$ de profundidade $n<k$.
-        Demonstraremos analisando-se os casos e valendo-se da suposição acima --- doravante chamada $\mathbf{H}$ --- o passo de indução, ou seja, que as traduções equivalem para qualquer $\alpha$ de profundidade $n=k$.
+        Prova por indução forte sobre a profundidade da sentença \citep{Troelstra}.
+        Seja $n\in\mathbb{N}^+$ a profundidade da sentença $\alpha\in\mathcal{L}$.
+        Suponhamos que a asserção valha para qualquer sentença de profundidade menor que $n$ e nomeemos esta suposição $\mathbf{H}$.
+        Devemos considerar cinco casos: a letra, a contradição, a conjunção, a disjunção e a implicação.
 
-        \begin{case}
-            \textsc{Caso 1.}
-            Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\medsquare=\nec a$ pelas definições das traduções.
-            Deste modo, tanto a ida quanto a volta possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
-            Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
-        \end{case}
-
-        \begin{case}
-            \textsc{Caso 2.}
-            Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\medsquare=\bot$ pelas definições das traduções.
-            Deste modo, a ida $\nec\bot\to\bot$ constitui um axioma gerado pelo esquema \hyperref[MB2]{$\mathbf{B_2}$} --- sendo assim provada trivialmente --- e a volta $\bot\to\nec\bot$ pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_2}$}.
-            Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
-        \end{case}
-
-        \begin{case}
-            \textsc{Caso 3.}
-            Se a sentença $\alpha$ for o resultado da conjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\wedge\psi)}^\circ=\nec(\varphi^\circ\wedge\psi^\circ)$ e que ${(\varphi\wedge\psi)}^\medsquare=\varphi^\medsquare\wedge\psi^\medsquare$ pelas definições das traduções.
-            Separaremos a prova em dois casos: um para a ida $\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare$ e outro para a volta $\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)$. Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio do esquema da introdução da conjunção \hyperref[MA3]{$\mathbf{A_3}$}.
-        \end{case}
-
-            \begin{subcase}
-                \textsc{Caso 3.1.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\nec\varphi^\circ\to\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\nec\varphi^\circ\wedge\nec\psi^\circ&\refer{nec-distr}{L}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\varphi^\circ&\hyperref[MA4]{${\mathbf{A_4}}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,6}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec\psi^\circ&\hyperref[MA5]{$\mathbf{A_5}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,8}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{$\mathbf{A_3}$}\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,12}$\\
-                    \fa\set{\nec(\varphi^\circ\wedge\psi^\circ)}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{11,13}$\\
-                    \fa\proves\nec(\varphi^\circ\wedge\psi^\circ)\to\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
-                \end{fitch}
-            \end{subcase} 
-
-            \begin{subcase}
-                \textsc{Caso 3.2.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA4]{${\mathbf{A_4}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&\hyperref[MA5]{${\mathbf{A_5}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\to\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\psi^\circ\to\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,10}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,11}$\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec\varphi^\circ\wedge\nec\psi^\circ\to\nec(\varphi^\circ\wedge\psi^\circ)&\refer{nec-undistr}{L}\\
-                    \fa\set{\varphi^\medsquare\wedge\psi^\medsquare}\proves\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{12,13}$\\
-                    \fa\proves\varphi^\medsquare\wedge\psi^\medsquare\to\nec(\varphi^\circ\wedge\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{14}$\\
-                \end{fitch}
-            \end{subcase}
-
-        \begin{case}
-            \textsc{Caso 4.}
-            Se a sentença $\alpha$ for o resultado da disjunção de duas outras sentenças $\varphi$ e $\psi$, sabe-se que $\nec{(\varphi\vee\psi)}^\circ=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ e que ${(\varphi\vee\psi)}^\medsquare=\varphi^\medsquare\vee\psi^\medsquare$ pelas definições das traduções.
-            Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare$ e outro para a volta $\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$.
-            Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema da introdução da conjunção \hyperref[MA3]{$\mathbf{A_3}$}.
-        \end{case}
-
-        \begin{subcase}
-            \textsc{Caso 4.1.}
-            A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\nec\varphi^\circ\to\varphi^\medsquare}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação da regra do \emph{modus ponens}.
-            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare$ pela seguinte sucessão de dedução, sendo $\chi=\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$:
-
-            \footnotesize
-            \begin{fitch}
-                \fb\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\nec\varphi^\circ\vee\nec\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\nec\varphi^\circ\vee\nec\psi^\circ\to\varphi^\medsquare\vee\psi^\medsquare&\refer{or-subst}{L}$\;\set{1,2}$\\
-                \fa\set{\nec(\nec\varphi^\circ\vee\nec\psi^\circ)}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,6}$\\
-                \fa\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{7}$\\
-            \end{fitch}
-        \end{subcase}
-
-        \begin{subcase}
-            \textsc{Caso 4.2.}
-            A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\psi^\medsquare\to\nec\psi^\circ}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra do \emph{modus ponens}.
-            Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)$ pela seguinte sucessão de dedução.
-            \footnotesize
-            \begin{fitch}
-                \fb\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\varphi^\circ\to\nec\nec\varphi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\nec\nec\varphi^\circ&\refer{comp}{L}$\;\set{1,2}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\psi^\circ\to\nec\nec\psi^\circ&\hyperref[MB3]{${\mathbf{B_3}}$}\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\nec\nec\psi^\circ&\refer{comp}{L}$\;\set{4,5}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ&\refer{or-subst}{L}$\;\set{5,10}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{11,14}$\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec\nec\varphi^\circ\vee\nec\nec\psi^\circ\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&\refer{or-distr}{L}\\
-                \fa\set{\varphi^\medsquare\vee\psi^\medsquare}\entails\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{15,16}$\\
-                \fa\entails\varphi^\medsquare\vee\psi^\medsquare\to\nec(\nec\varphi^\circ\vee\nec\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{17}$
-            \end{fitch}
-        \end{subcase}
-
-        \begin{case}
-            \textsc{Caso 5.}
-            Se a sentença $\alpha$ for o resultado da implicação de uma sentença $\varphi$ a uma sentença $\psi$, sabe-se que $\nec{(\varphi\to\psi)}^\circ=\nec(\nec\varphi^\circ\to\psi^\circ)$ e que ${(\varphi\to\psi)}^\medsquare=\nec(\varphi^\medsquare\to\psi^\medsquare)$ pelas definições das traduções.
-            Separaremos a prova em dois casos: um para a ida $\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\medsquare\to\psi^\medsquare)$ e outro para a volta $\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)$.
-            Ambas as implicações, então, podem ser unidas em uma bi-implicação por meio do esquema \hyperref[MA3]{$\mathbf{A_3}$}.
-        \end{case}
-
-            \begin{subcase}
-                \textsc{Caso 5.1.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}={\entails\varphi^\medsquare\to\nec\varphi^\circ}$ e que $\mathbf{H_2}={\entails\nec\psi^\circ\to\psi^\medsquare}$ por meio dos esquemas da eliminação da conjunção e da aplicação regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\psi^\medsquare\to\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\varphi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\varphi^\medsquare\to\nec\varphi^\circ&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\nec\varphi^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec\varphi^\circ\to\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\nec\varphi^\circ}\entails\nec\psi^\circ&$\hyperref[gen-nec]{\mathbf{T_\getrefnumber{gen-nec}}}\;\set{7}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec\varphi^\circ\to\nec\psi^\circ&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\nec\varphi^\circ\to\nec\psi^\circ&$\hyperref[weakening]{\mathbf{T_\getrefnumber{weakening}}}\;\set{9}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\varphi^\medsquare\to\nec\psi^\circ&\refer{comp}{L}$\;\set{2,10}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\nec\psi^\circ\to\psi^\medsquare&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\varphi^\medsquare\to\psi^\medsquare&\refer{comp}{L}$\;\set{11,12}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ),\varphi^\medsquare}\entails\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,13}$\\
-                    \fa\set{\nec(\nec\varphi^\circ\to\psi^\circ)}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{14}$\\
-                    \fa\entails\nec(\nec\varphi^\circ\to\psi^\circ)\to\nec(\varphi^\medsquare\to\psi^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{15}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 5.2.}
-                A partir de $\mathbf{H}$, temos que $\mathbf{H_1}=\nec\varphi^\circ\to\varphi^\medsquare$ e que $\mathbf{H_2}=\psi^\medsquare\to\nec\psi^\circ$ por meio dos esquemas da eliminação da conjunção e da aplicação regra do \emph{modus ponens}.
-                Valendo-se do listado acima em conjunto com alguns lemas, pode-se provar que $\entails\nec(\psi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\varphi^\medsquare&$\mathbf{H_1}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\varphi^\medsquare\to\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\varphi^\circ\to\psi^\medsquare&\refer{comp}{L}$\;\set{2,5}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\medsquare\to\nec\psi^\circ&$\mathbf{H_2}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\nec\psi^\circ\to\psi^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare),\nec\varphi^\circ}\entails\psi^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
-                    \fa\set{\nec(\varphi^\medsquare\to\psi^\medsquare)}\entails\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare)\to\nec(\nec\varphi^\circ\to\psi^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$
-                \end{fitch}
-            \end{subcase}
         \vspace{.5\baselineskip}
-        Tendo-se provado todos os casos do passo de indução, podemos concluir que ambas as traduções apresentadas equivalem, ou seja, que $\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$.
+        \textsc{Caso 1.}
+        Se a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$, sabe-se que $\nec a^\circ=\nec a$ e que $a^\medsquare=\nec a$ pelas definições das traduções.
+        Deste modo, tanto a ida quanto a volta da bi-implicação possuem a forma $\nec a\to\nec a$ e podem ser provadas pelo lema \hyperref[identity]{$\mathbf{L_\getrefnumber{identity}}$}.
+        Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio das regras \hyperref[MA3]{$\mathbf{A_3}$} e \hyperref[detachment]{$\mathbf{R_2}$}.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 2.}
+        Se a sentença $\alpha$ for a constante $\bot$, sabe-se que $\nec\bot^\circ=\nec\bot$ e que $\bot^\medsquare=\bot$ pelas definições das traduções.
+        Deste modo, a ida $\nec\bot\to\bot$ da bi-implicação constitui um axioma gerado pela regra \hyperref[MB2]{$\mathbf{B_2}$}.
+        A volta $\bot\to\nec\bot$ da bi-implicação pode ser provada pelo lema \hyperref[explosion]{$\mathbf{L_3}$}.
+        Ambas as implicações posteriormente podem ser unidas em uma bi-implicação por meio das regras \hyperref[MA3]{$\mathbf{A_3}$} e \hyperref[detachment]{$\mathbf{R_2}$}.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 3.}
+        Seja a sentença $\alpha$ a conjunção de duas sentenças ${\alpha_1}$ e ${\alpha_2}$.
+        Sabe-se que $\nec{({\alpha_1}\wedge{\alpha_2})}^\circ=\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)$ e que ${({\alpha_1}\wedge{\alpha_2})}^\medsquare={\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare$ pelas definições das traduções.
+        A partir de $\mathbf{H}$, temos que $\Gamma\entails\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$ e que $\Gamma\entails\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+        Pode-se demonstrar $\Gamma\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ por meio da dedução que segue.
+
+        \vspace{.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma\vdash\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$                                                                                                                                                      & $\mathbf{H_1}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\vdash\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$                                                                                                                                                      & $\mathbf{H_2}$                           & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\vdash(\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare)\to\nec{\alpha_1}^\circ\to{\alpha_1}^\medsquare$                                                                                                     & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\vdash(\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare)\to\nec{\alpha_2}^\circ\to{\alpha_2}^\medsquare$                                                                                                     & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\vdash(\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare)\to{\alpha_1}^\medsquare \to \nec{\alpha_1}^\circ$                                                                                                   & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\vdash(\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare)\to{\alpha_2}^\medsquare \to \nec{\alpha_2}^\circ$                                                                                                   & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma\vdash\nec{\alpha_1}^\circ\to{\alpha_1}^\medsquare$                                                                                                                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{1,3}$\\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma\vdash\nec{\alpha_2}^\circ\to{\alpha_2}^\medsquare$                                                                                                                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{2,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma\vdash{\alpha_1}^\medsquare\to\nec{\alpha_1}^\circ$                                                                                                                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{1,5}$\\[\rowskip]
+            \scriptsize{10}\phantom{ }           & $\ \Gamma\vdash{\alpha_2}^\medsquare\to\nec{\alpha_2}^\circ$                                                                                                                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{2,6}$\\[\rowskip]
+            \scriptsize{11}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \to {\alpha_1}^\medsquare$                                                                                                        & \refer{weakening}{T}                     & $\set{7}$\\[\rowskip]
+            \scriptsize{12}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec{\alpha_2}^\circ \to {\alpha_2}^\medsquare$                                                                                                        & \refer{weakening}{T}                     & $\set{8}$\\[\rowskip]
+            \scriptsize{13}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ)$                                                                                                        & $\hyperref[modal.rule.1]{\mathbf{R_1}}$  & \\[\rowskip]
+            \scriptsize{14}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ) \to \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ$                                                   & \refer{necessity.conjunction.distribution}{L} & \\[\rowskip]
+            \scriptsize{15}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ$                                                                                                      & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{13,14}$\\[\rowskip]
+            \scriptsize{16}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ \to {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare$                                               & \refer{conjunction.exchange}{L} & $\set{11,12}$\\[\rowskip]
+            \scriptsize{17}\phantom{ }           & $\ \Gamma\cup\set{\nec({\alpha_1}^\circ\wedge{\alpha_2}^\circ)} \vdash {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare$                                                                                                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{15,16}$\\[\rowskip]
+            \scriptsize{18}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \to \nec{\alpha_1}^\circ$                                                                                                    & \refer{weakening}{T} & $\set{9}$\\[\rowskip]
+            \scriptsize{19}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash {\alpha_2}^\medsquare \to \nec{\alpha_2}^\circ$                                                                                                    & \refer{weakening}{T} & $\set{10}$\\[\rowskip]
+            \scriptsize{20}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare$                                                                                                & $\hyperref[modal.rule.1]{\mathbf{R_1}}$        & \\[\rowskip]
+            \scriptsize{21}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare \to \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ$                                           & \refer{conjunction.exchange}{L} & $\set{18,19}$\\[\rowskip]
+            \scriptsize{22}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ$                                                                                                  & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{20,21}$\\[\rowskip]
+            \scriptsize{23}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash \nec{\alpha_1}^\circ \wedge \nec{\alpha_2}^\circ \to \nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ)$                                               & \refer{necessity.conjunction.undistribution}{L} & \\[\rowskip]
+            \scriptsize{24}\phantom{ }           & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare} \vdash \nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ)$                                                                                                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{22,23}$\\[\rowskip]
+            \scriptsize{25}\phantom{ }           & $\ \Gamma\vdash\nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ) \to {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare$                                                                                                         & \refer{deduction}{T} & $\set{17}$\\[\rowskip]
+            \scriptsize{26}\phantom{ }           & $\ \Gamma\vdash{\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare \to \nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ)$                                                                                                         & \refer{deduction}{T} & $\set{24}$\\[\rowskip]
+            \scriptsize{27}\phantom{ }           & $\ \Gamma\vdash(\nec\alpha^\circ \to \alpha^\medsquare) \to (\alpha^\medsquare \to \nec\alpha^\circ) \to (\nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare)$ & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{28}\phantom{ }           & $\ \Gamma\vdash(\alpha^\medsquare \to \nec\alpha^\circ) \to (\nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare)$                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{25,27}$\\[\rowskip]
+            \scriptsize{29}\phantom{ }           & $\ \Gamma\vdash\nec({\alpha_1}^\circ \wedge {\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \wedge {\alpha_2}^\medsquare$                                                                                             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{26,28}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 4.}
+        Seja a sentença $\alpha$ a disjunção de duas sentenças ${\alpha_1}$ e ${\alpha_2}$.
+        Sabe-se que $\nec{({\alpha_1}\vee\psi)}^\circ=\nec(\nec{\alpha_1}^\circ\vee\nec\psi^\circ)$ e que ${({\alpha_1}\vee\psi)}^\medsquare={\alpha_1}^\medsquare\vee\psi^\medsquare$ pelas definições das traduções.
+        A partir de $\mathbf{H}$, temos que $\Gamma\entails\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$ e que $\Gamma\entails\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+        Pode-se demonstrar $\Gamma\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ por meio da dedução que segue.
+
+        \vspace{.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma \vdash \nec{\alpha_1}^\circ \leftrightarrow {\alpha_1}^\medsquare$ & $\mathbf{H_1}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma \vdash \nec{\alpha_2}^\circ \leftrightarrow {\alpha_2}^\medsquare$ & $\mathbf{H_2}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma \vdash (\nec{\alpha_1}^\circ \leftrightarrow {\alpha_1}^\medsquare) \to \nec{\alpha_1}^\circ \to {\alpha_1}^\medsquare$ & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma \vdash (\nec{\alpha_2}^\circ \leftrightarrow {\alpha_2}^\medsquare) \to \nec{\alpha_2}^\circ \to {\alpha_2}^\medsquare$ & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma \vdash (\nec{\alpha_1}^\circ \leftrightarrow {\alpha_1}^\medsquare) \to {\alpha_1}^\medsquare \to \nec{\alpha_1}^\circ$ & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma \vdash (\nec{\alpha_2}^\circ \leftrightarrow {\alpha_2}^\medsquare) \to {\alpha_2}^\medsquare \to \nec{\alpha_2}^\circ$ & $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma \vdash \nec{\alpha_1}^\circ \to {\alpha_1}^\medsquare$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{1,3}$\\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma \vdash \nec{\alpha_2}^\circ \to {\alpha_2}^\medsquare$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{2,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma \vdash {\alpha_1}^\medsquare \to \nec{\alpha_1}^\circ$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{1,5}$\\[\rowskip]
+            \scriptsize{10}\phantom{ } & $\ \Gamma \vdash {\alpha_2}^\medsquare \to \nec{\alpha_2}^\circ$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{2,6}$\\[\rowskip]
+            \scriptsize{11}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \to {\alpha_1}^\medsquare$ & \refer{weakening}{T} & $\set{7}$\\[\rowskip]
+            \scriptsize{12}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec{\alpha_2}^\circ \to {\alpha_2}^\medsquare$ & \refer{weakening}{T} & $\set{8}$\\[\rowskip]
+            \scriptsize{13}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{14}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ) \to \nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ$ & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{15}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{13,14}$\\[\rowskip]
+            \scriptsize{16}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash \nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ \to {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare$ & \refer{disjunction.exchange}{L} & $\set{11,12}$\\[\rowskip]
+            \scriptsize{17}\phantom{ } & $\ \Gamma \cup \set{\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)} \vdash {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{15,16}$\\[\rowskip]
+            \scriptsize{19}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \to \nec{\alpha_1}^\circ$ & \refer{weakening}{T} & $\set{9}$\\[\rowskip]
+            \scriptsize{20}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_2}^\medsquare \to \nec{\alpha_2}^\circ$ & \refer{weakening}{T} & $\set{10}$\\[\rowskip]
+            \scriptsize{21}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash \nec{\alpha_1}^\circ \to \nec\nec{\alpha_1}^\circ$ & $\hyperref[modal.axiom.modal.3]{\mathbf{B_3}}$ & \\[\rowskip]
+            \scriptsize{22}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash \nec{\alpha_2}^\circ \to \nec\nec{\alpha_2}^\circ$ & $\hyperref[modal.axiom.modal.3]{\mathbf{B_3}}$ & \\[\rowskip]
+            \scriptsize{23}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \to \nec\nec{\alpha_1}^\circ$ & \refer{composition}{L} & $\set{18,20}$\\[\rowskip]
+            \scriptsize{24}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_2}^\medsquare \to \nec\nec{\alpha_2}^\circ$ & \refer{composition}{L} & $\set{19,21}$\\[\rowskip]
+            \scriptsize{25}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{26}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare \to \nec\nec{\alpha_1}^\circ \vee \nec\nec{\alpha_2}^\circ$ & \refer{disjunction.exchange}{L} & $\set{22,23}$\\[\rowskip]
+            \scriptsize{27}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash \nec\nec{\alpha_1}^\circ \vee \nec\nec{\alpha_2}^\circ$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{24,25}$\\[\rowskip]
+            \scriptsize{28}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash \nec\nec{\alpha_1}^\circ \vee \nec\nec{\alpha_2}^\circ \to \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)$ & \refer{necessity.disjunction.undistribution}{L} & \\[\rowskip]
+            \scriptsize{29}\phantom{ } & $\ \Gamma \cup \set{{\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare} \vdash \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{26,27}$\\[\rowskip]
+            \scriptsize{30}\phantom{ } & $\ \Gamma \vdash \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ) \to {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare$ & \refer{deduction}{T} & $\set{17}$\\[\rowskip]
+            \scriptsize{31}\phantom{ } & $\ \Gamma \vdash {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare \to \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ)$ & \refer{deduction}{T} & $\set{28}$\\[\rowskip]
+            \scriptsize{32}\phantom{ } & $\ \Gamma \vdash (\nec\alpha^\circ \to \alpha^\medsquare) \to (\alpha^\medsquare \to \nec\alpha^\circ) \to (\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare)$ & $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ & \\[\rowskip]
+            \scriptsize{33}\phantom{ } & $\ \Gamma \vdash (\alpha^\medsquare \to \nec\alpha^\circ) \to (\nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare)$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{29,31}$\\[\rowskip]
+            \scriptsize{34}\phantom{ } & $\ \Gamma \vdash \nec(\nec{\alpha_1}^\circ \vee \nec{\alpha_2}^\circ) \leftrightarrow {\alpha_1}^\medsquare \vee {\alpha_2}^\medsquare$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{30,32}$\
+        \end{xltabular}
+        \normalsize
+
+        \vspace{.5\baselineskip}
+            \textsc{Caso 5.}
+            Seja a sentença $\alpha$ a implicação de duas sentenças ${\alpha_1}$ e ${\alpha_2}$.
+            Sabe-se que $\nec{({\alpha_1}\to{\alpha_2})}^\circ=\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)$ e que ${({\alpha_1}\to{\alpha_2})}^\medsquare=\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pelas definições das traduções.
+            A partir de $\mathbf{H}$, temos que $\Gamma\entails\nec{\alpha_1}^\circ\leftrightarrow{\alpha_1}^\medsquare$ e que $\Gamma\entails\nec{\alpha_2}^\circ\leftrightarrow{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            Pode-se demonstrar $\Gamma\entails\nec\alpha^\circ\leftrightarrow\alpha^\medsquare$ por meio da dedução que segue.
+
+                \footnotesize
+                \begin{fitch}
+                    \fb\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\circ&$\mathbf{H_1}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,6}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[gen-nec]{\mathbf{T_\getrefnumber{gen-nec}}}\;\set{7}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_1}^\circ\to\nec{\alpha_2}^\circ&$\hyperref[weakening]{\mathbf{T_\getrefnumber{weakening}}}\;\set{9}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_2}^\circ&\refer{comp}{L}$\;\set{2,10}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\medsquare&$\mathbf{H_2}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{11,12}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ),{\alpha_1}^\medsquare}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,13}$\\
+                    \fa\set{\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[gen-nec]{\mathbf{T_{\getrefnumber{gen-nec}}}}\;\set{14}$\\
+                    \fa\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)\to\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{15}$
+                \end{fitch}
+
+                \footnotesize
+                \begin{fitch}
+                    \fb\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_1}^\medsquare&$\mathbf{H_1}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)&$\hyperref[premisse]{\mathbf{R_1}}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_1}^\medsquare\to{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2,3}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_1}^\circ\to{\alpha_2}^\medsquare&\refer{comp}{L}$\;\set{2,5}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\circ&$\mathbf{H_2}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,8}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails\nec{\alpha_2}^\circ\to{\alpha_2}^\circ&\hyperref[MB2]{${\mathbf{B_2}}$}\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare),\nec{\alpha_1}^\circ}\entails{\alpha_2}^\circ&$\hyperref[detachment]{\mathbf{R_2}}\;\set{9,10}$\\
+                    \fa\set{\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)}\entails\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
+                    \fa\entails\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to\nec(\nec{\alpha_1}^\circ\to{\alpha_2}^\circ)&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{12}$
+                \end{fitch}
+
+        \vspace{.5\baselineskip}
+        Estando assim demonstrada a proposição.
     \end{proof}
 \end{theorem}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{theorem}[Interderivabilidade]\label{interderivability}
+    $\nec\Gamma^\circ\entails_\mathfrak{L}\alpha^\circ$ se e somente se $\Gamma^\nec\entails_\mathfrak{L}\alpha^\nec$.
+\end{theorem}
+\end{tcolorbox}
