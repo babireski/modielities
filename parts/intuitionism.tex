@@ -1,34 +1,37 @@
 \section{Sistema intuicionista}
-    Nesta seção, definiremos os sistema intuicionista $\mathfrak{I}=\langle\mathcal{L},\vdash_\mathfrak{I}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
-    Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\Gamma\vdash\alpha\vee\neg\alpha$ não vale para todos os casos.
-    O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer-A, Brouwer-B}.
-    Este defendia que uma asserção poderia ser dita verdade apenas quando esta poderia ser~\emph{construída}.
-    Assim, uma demonstração por contradição não valeria, uma vez que durante uma demonstração deste tipo, estar-se-ia contruindo a dupla negação da proposição em apreciação, mas não a proposição em si.
-    Brouwer repudiou a tentativa formalização de seu pensamento como um sistema, todavia isso não impediu que esta fosse feita.
-    A primeira formalização encontrada na literatura foi feita por~\cite{Kolmogorov}, entretanto outros também a fizeram posteriormente.
-    A linguagem abaixo foi definida conforme~\cite{Troelstra}. Adotamos as ordens usuais de avaliação dos operadores.
 
-    \vspace{\baselineskip}
-    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+Nesta seção, definiremos os sistema intuicionista $\mathfrak{I}=\langle\mathcal{L},\vdash_\mathfrak{I}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
+Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\alpha\mathrel{\vee}\neg\alpha$ não vale para todos os casos.
+O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer-A, Brouwer-B}.
+Este defendia que uma asserção poderia ser dita verdade apenas quando esta poderia ser~\emph{construída}.
+Assim, uma demonstração por contradição não valeria, uma vez que durante uma demonstração deste tipo, estar-se-ia contruindo a dupla negação da proposição em apreciação, mas não a proposição em si.
+
+\vspace{0.5\baselineskip}
+Brouwer repudiou a tentativa formalização de seu pensamento como um sistema, todavia isso não impediu que esta fosse feita.
+A primeira formalização encontrada na literatura foi feita por~\cite{Kolmogorov}, entretanto outros também a fizeram posteriormente.
+A linguagem abaixo foi definida conforme~\cite{Troelstra}. Adotamos as ordens usuais de avaliação dos operadores.
+
+\vspace{0.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{definition}[$\mathcal{L}$]\label{intuitionistic.language}
         A linguagem do sistema intuicionista, denotada $\mathcal{L}$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{C}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
     \end{definition}
-    \end{tcolorbox}
+\end{tcolorbox}
 
-    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{notation}
         Seja uma sentença $\alpha\in\mathcal{L}$, $\neg\alpha$ denota a sua negação $\alpha\to\bot$.
     \end{notation}
-    \end{tcolorbox}
+\end{tcolorbox}
 
-\vspace{.5\baselineskip}
-    Consideremos agora a relação de dedução para o sistema $\mathfrak{I}$, definida por suas regras de dedução.
-    Estas destacam-se pela omissão de uma regra que gera asserções do tipo $\Gamma\vdash\neg\neg\alpha$.
-    Isso acontece porque não somente esta regra permite provas não-contrutivas como permite a derivação de uma regra derivada $\Gamma\vdash\alpha\vee\neg\alpha$.
-    Os axiomas abaixo estão organizadas de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na quarta linha os axiomas da disjunção e na quinta linha o axioma da contradição.
-    Aaixo dos axiomas, temos as demais regras, nomeadamente a \emph{regra da assunção} e a \emph{regra da separação}.
+\vspace{0.5\baselineskip}
+Consideremos agora a relação de dedução para o sistema $\mathfrak{I}$, definida por suas regras de dedução.
+Estas destacam-se pela omissão de uma regra que gera sentenças do tipo $\neg\neg\alpha\to\alpha$.
+Isso acontece porque não somente esta regra permite provas não-contrutivas como permite a derivação de sentenças do tipo $\alpha\vee\neg\alpha$.
+Os axiomas abaixo estão organizadas de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na terceira linha os axiomas da disjunção e na quarta linha o axioma da contradição.
+Abaixo dos axiomas, temos as demais regras, nomeadamente a \emph{regra da assunção} e a \emph{regra da separação}.
 
-\vspace{\baselineskip}
+\vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[$\vdash_{\mathfrak{I}}$]\label{intuitionistic.deduction}
     Abaixo estão definidas as regras do sistema $\mathfrak{I}$.
@@ -106,14 +109,14 @@
 \end{definition}
 \end{tcolorbox}
 
-\vspace{.5\baselineskip}
-A noção de \emph{construção} representada pelo sistema intuicionista $\mathfrak{I}$ assemelha-se muito com a noção de \emph{computação}.
+\vspace{0.5\baselineskip}
+A noção de \emph{construção} representada pelo sistema intuicionista assemelha-se muito com a noção de \emph{computação}.
 Mais que isso: elas são noções \emph{isomorfas}.
-Com isso queremos dizer que, dada uma linguagem de programação tipada, a asserção de que um programa dessa linguagem \emph{pertence ao tipo $\alpha$} implica que este programa \emph{prova a proposição $\alpha$} e vice-versa.
-Em outras palavras, o problema da decisão da verdade desta proposição pode ser vista como da decisão habitação de um tipo que corresponde a ela.
-Assim, podemos dizer que \emph{proposições são tipos} e \emph{provas são programas} (\textbf{CITAR} Wadler).
-Os primeiros vislumbres dessa relação foram feitos por Curry e Feys (\textbf{CITAR}), no entando ela começou a ser de fato desvendada a partir do de Howard \textbf{CITAR}.
-Como ilustração, abaixo as regras do implicativo do sistema intuicionista em dedução natural são postas lado a lado com as regras de tipagem do cálculo lambda simplesmente tipado.
+Com isso queremos dizer que, dado um termo-$\lambda$, a asserção de que este termo pertence ao tipo $\alpha$ implica que este termo demonstra a proposição $\alpha$.
+Conversamente, a demonstração de uma proposição instuicionista $\alpha$ implica que deve haver algum termo-$\lambda$ com tipo $\alpha$.
+Como aponta \cite{Wadler.2015}, podemos dizer que \emph{proposições são tipos}, \emph{derivações são programas} e \emph{normalizações de derivações são avaliações de programas}.
+
+\counterwithout{table}{chapter}
 
 \begin{table}[H]
     \newlength{\skipvalue}
@@ -124,14 +127,14 @@ Como ilustração, abaixo as regras do implicativo do sistema intuicionista em d
         \midrule
             &
                 \small
-                \AxiomC{}
+                \AxiomC{\phantom{$\Gamma\cup\{\alpha\}\vdash\alpha$}}
                 \UnaryInfC{$\Gamma\cup\{\alpha\}\vdash\alpha$}
                 \DisplayProof{}
             &
             &
                 \small
-                \AxiomC{}
-                \UnaryInfC{$\Gamma\cup\{x:\alpha\}\vdash\:\alpha$}
+                \AxiomC{\phantom{$\Gamma\cup\{\alpha\}\vdash\alpha$}}
+                \UnaryInfC{$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$}
                 \DisplayProof{}
             &
             \\[\skipvalue]
@@ -165,4 +168,8 @@ Como ilustração, abaixo as regras do implicativo do sistema intuicionista em d
             \\[.5\skipvalue]
         \bottomrule
     \end{xltabular}
+    \caption{Comparação entre regras de dedução intuicionistas and regras de tipagem de termos-$\lambda$. Elaborado pelo autor.}\label{comparison}
 \end{table}
+
+Os primeiros vislumbres dessa relação foram feitos por \cite{Curry+Feys.1958}, no entando ela começou a ser de fato desvendada a partir do trabalho de \cite{Howard.1980}.
+Como ilustração, regras de dedução do sistema intuicionista e regras de tipagem de termos-$\lambda$ são postas lado a lado na Tabela \ref{comparison}.

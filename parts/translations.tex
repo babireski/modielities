@@ -1,31 +1,31 @@
 \section{Traduções}
     A primeira tradução do sistema intuicionista ao sistema modal foi proposta por~\cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \citep{Troelstra}. Gödel alegou --- sem apresentar provas --- a correção fraca dessa tradução e conjeiturou sua completude fraca, posteriormente provadas por~\cite{McKinsey}. As as traduções apresentadas abaixo foram retiradas de~\cite{Troelstra}.
 
+    \vspace{0.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-    \begin{definition}[Traduções]\label{translations}
-        Definem-se a traduções $\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{B}$ ao sistema $\mathfrak{L}$ indutivamente da maneira que segue.
-        \begin{align*}
-            a^\circ&\mapsto a\\
-            \bot^\circ&\mapsto\bot\\
-            {(\varphi \wedge \psi)}^\circ & \mapsto \varphi^\circ \wedge \psi^\circ\displaybreak[0]\\
-            {(\varphi \vee \psi)}^\circ   & \mapsto \nec \varphi^\circ \vee \nec \psi^\circ\displaybreak[0]\\
-            {(\varphi \to \psi)}^\circ    & \mapsto \nec \varphi^\circ \to \psi^\circ
-            \tag*{\qed} 
-        \end{align*}
+    \begin{definition}[Tradução quadrado]\label{translation.square}
+        Define-se a tradução $\squareee:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ indutivamente da maneira que segue.
+        Considere $a\in\mathcal{P}$.
+
+        \begin{center}
+            $a^\medsquare\coloneqq\nec a\quad\quad\quad\quad\quad\quad\quad\quad\quad\bot^\medsquare\coloneqq\bot$\\\vspace{0.5\baselineskip}
+            ${(\alpha\wedge\beta)}^\medsquare\coloneqq\alpha^\medsquare\wedge\beta^\medsquare\quad\quad{(\alpha \to \beta)}^\medsquare\coloneqq \nec (\alpha^\medsquare \to \beta^\medsquare)\quad\quad{(\alpha\vee\beta)}^\medsquare\coloneqq\alpha^\medsquare\vee\beta^\medsquare$
+        \end{center}
     \end{definition}
     \end{tcolorbox}
-    
-    \begin{definition}[$\bullet^\medsquare$]\label{translation.square}
-        Define-se a tradução $\bullet^\medsquare:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
-        \begin{align*}
-            a^\medsquare& \mapsto \nec a\displaybreak[0]\\
-            \bot^\medsquare& \mapsto \bot\displaybreak[0]\\
-            {(\varphi \wedge \psi)}^\medsquare & \mapsto \varphi^\medsquare \wedge \psi^\medsquare\displaybreak[0]\\
-            {(\varphi \vee \psi)}^\medsquare & \mapsto \varphi^\medsquare \vee \psi^\medsquare\displaybreak[0]\\
-            {(\varphi \to \psi)}^\medsquare & \mapsto \nec (\varphi^\medsquare \to \psi^\medsquare)
-            \tag*{\qed} 
-        \end{align*}
+
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{definition}[Tradução redondo]\label{translation.circle}
+        Define-se a tradução $\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ indutivamente da maneira que segue.
+        Considere $a\in\mathcal{P}$.
+
+        \begin{center}
+            $a^\circ\coloneqq a\quad\quad\quad\quad\quad\quad\quad\quad\quad\bot^\circ\coloneqq\bot$\\\vspace{0.5\baselineskip}
+            ${(\alpha\wedge\beta)}^\circ\coloneqq\alpha^\circ\wedge\beta^\circ\quad\quad{(\alpha \to \beta)}^\circ\coloneqq \nec \alpha^\circ \to \beta^\circ\quad\quad{(\alpha\vee\beta)}^\circ\coloneqq\nec\alpha^\circ\vee\nec\beta^\circ$
+        \end{center}
     \end{definition}
-    
+    \end{tcolorbox}
+
+    \vspace{0.5\baselineskip}
     Ambas as traduções providas são equivalentes, conforme demonstraremos futuramente.
     Ademais, faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}. A primeira tradução de Girard corresponde a uma ordem de avaliação por nome (\textit{call-by-name}) e a segunda a uma ordem de avaliação por valor (\textit{call-by-value}), conforme notam~\cite{Maraist}.

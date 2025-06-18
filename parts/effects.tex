@@ -6,17 +6,34 @@ Alguns exemplos de efeitos são \emph{continuações}, \emph{excessões} e \emph
 Programas com efeitos podem mudar seus estados internos, bem como receber entradas externas.
 Tais capacidades, enquanto promovem expressividade, também tornam a avaliação do comportamento do programa menos claras.
 
-\vspace{.3\baselineskip}
-Motivado pela busca de uma maneira de representar semanticamente efeitos em linguagens de programação,~\cite{Moggi} introduziu a linguagem $\lambda_c$.
-Nesta linguagem, os termos-$\lambda$ são distinguidos entre valores de tipo $\alpha$ e computações $\mu\alpha$ de tipo $\alpha$ de modo que estas se comportam monadicamente.
+\vspace{.5\baselineskip}
+Motivado pela busca de uma metalinguagem para modelar efeitos em linguagens de programação,~\cite{Moggi.1991} introduziu a linguagem $\lambda_c$.
+Nesta linguagem, os termos-$\lambda$ são distinguidos entre valores de tipo $\alpha$ e computações $\mu\ \alpha$ de tipo $\alpha$ de modo que estas se comportam \emph{monadicamente}.
+O construtor de tipos $\mu$ representa alguma \emph{noção de computação}, ou melhor dizendo, algum efeito.
+Inspirado por este trabalho, \cite{Wadler.1993} sugere e defende o uso de \emph{mônadas} como estruturas dentro de linguagens funcionais como uma maneira de simular efeitos.
 
-\vspace{.3\baselineskip}
-Conforme notado por~\cite{Benton}, a linguagem $\lambda_c$ corresponde ao sistema \emph{laxo} por meio da interpretação prova-programa, doravante chamado de $\mathfrak{L}$.
-Este sistema, que aumenta o sistema intuicionista $\mathfrak{I}$ com uma modalidade de \emph{laxidade} $\bigcirc$, foi inicialmente considerado por~\cite{Curry-A} e posteriormente redescoberto por~\cite{Fairtlough}.
-Esta modalidade foi interpretada por estes como \emph{verdade com restrições}, motivo que justifica seu nome.
-As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalidade laxa, geram sentenças correspondentes aos tipos das funções {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}.
+\vspace{.5\baselineskip}
+Para os fins deste trabalho, consideraremos mônadas como um construtor de tipos {\footnotesize\texttt{\textbf{μ}}} munido das operações {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{bind}}}.\footnote{Estas operações devem respeitar certas condições, que não serão abordadas.}
+Alternativamente, podemos usar a operação {\footnotesize\texttt{\textbf{join}}} em lugar da operação {\footnotesize\texttt{\textbf{bind}}}.
+A operação {\footnotesize\texttt{\textbf{lift}}} eleva funções a funções \emph{efeituosas}.\footnote{\emph{Effectful}.}
+Do mesmo modo, a operação {\footnotesize\texttt{\textbf{unit}}} eleva um valor a um valor com efeitos, a operação {\footnotesize\texttt{\textbf{bind}}} encadeia efeitos e a operação {\footnotesize\texttt{\textbf{join}}} une efeitos.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \texttt{\footnotesize\textbf{lift} : ∀α.∀β.∀μ.(α ⟶ β) ⟶ μα ⟶ μβ}\\
+    \texttt{\footnotesize\textbf{unit} : ∀α.∀μ.α ⟶ μα}\\
+    \texttt{\footnotesize\textbf{bind} : ∀α.∀β.∀μ.(α ⟶ μβ) ⟶ μα ⟶ μβ}\\
+        \texttt{\footnotesize\textbf{join} : ∀α.∀μ.μμα ⟶ μα}
+\end{tcolorbox}
+
+\vspace{.5\baselineskip}
+Conforme notado por~\cite{Benton}, a linguagem $\lambda_c$ corresponde ao sistema \emph{laxo} --- doravante chamado de $\mathfrak{L}$ --- por meio da interpretação prova-programa.
+Este sistema, que aumenta o sistema intuicionista $\mathfrak{I}$ com uma modalidade de \emph{laxidade}, foi inicialmente considerado por~\cite{Curry-A} e posteriormente redescoberto por~\cite{Fairtlough}.
+Esta modalidade --- denotada $\bigcirc$ --- foi interpretada por estes como \emph{verdade com restrições}, motivo que justifica seu nome.
+As regras que govenam a modalidade laxa, conforme    apresentadas abaixo, geram sentenças correspondentes aos tipos das funções {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}.
+Do mesmo modo, podemos derivar a sentença que corresponde ao tipo da função {\footnotesize\texttt{\textbf{bind}}}.
+
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[$\mathcal{L}_\bigcirc$]\label{lax.language}
     A linguagem do sistema laxo, denotada $\mathcal{L}_\bigcirc$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}_\bigcirc}$, onde $\mathcal{C}_\bigcirc=\set{\bot^0,\bigcirc^1,\wedge^2,\vee^2,\to^2}$.
@@ -24,19 +41,19 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
 \end{tcolorbox}
 
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\begin{definition}[$\vdash_{\mathfrak{L}}$]
+\begin{definition}[$\entails_{\mathfrak{L}}$]
     Abaixo estão definidas as regras do sistema $\mathfrak{L}$.
 \vspace{.5\baselineskip}
 \begin{center}
     \footnotesize
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_1}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha$}
+    \UnaryInfC{$\Gamma\entails\alpha\to\beta\to\alpha$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_2}$}
-    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
+    \UnaryInfC{$\Gamma\entails(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
     \DisplayProof{}
 \end{center}
 
@@ -44,17 +61,17 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
     \footnotesize
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_3}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta$}
+    \UnaryInfC{$\Gamma\entails\alpha\to\beta\to\alpha\wedge\beta$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_4}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\alpha$}
+    \UnaryInfC{$\Gamma\entails\alpha\wedge\beta\to\alpha$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_5}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\beta$}
+    \UnaryInfC{$\Gamma\entails\alpha\wedge\beta\to\beta$}
     \DisplayProof{}
 \end{center}
 
@@ -62,17 +79,17 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
     \footnotesize
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_6}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\to\alpha\vee\beta$}
+    \UnaryInfC{$\Gamma\entails\alpha\to\alpha\vee\beta$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_7}$}
-    \UnaryInfC{$\Gamma\vdash\beta\to\alpha\vee\beta$}
+    \UnaryInfC{$\Gamma\entails\beta\to\alpha\vee\beta$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_8}$}
-    \UnaryInfC{$\Gamma\vdash(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
+    \UnaryInfC{$\Gamma\entails(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
     \DisplayProof{}
 \end{center}
 
@@ -80,7 +97,7 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
     \footnotesize
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{A_\bot}$}
-    \UnaryInfC{$\Gamma\vdash\neg\neg\alpha\to\alpha$}
+    \UnaryInfC{$\Gamma\entails\neg\neg\alpha\to\alpha$}
     \DisplayProof{}
 \end{center}
 
@@ -88,17 +105,17 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
     \footnotesize
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{C_1}$}
-    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta)\to\bigcirc\alpha\to\bigcirc\beta$}
+    \UnaryInfC{$\Gamma\entails(\alpha\to\beta)\to\bigcirc\alpha\to\bigcirc\beta$}
     \DisplayProof{}
     \quad
     \AxiomC{}
     \RightLabel{\footnotesize$\mathbf{C_2}$}
-    \UnaryInfC{$\Gamma\vdash\alpha\to\bigcirc\alpha$}
+    \UnaryInfC{$\Gamma\entails\alpha\to\bigcirc\alpha$}
     \DisplayProof{}
     \quad
     \AxiomC{}
-    \RightLabel{\footnotesize$\mathbf{C_2}$}
-    \UnaryInfC{$\Gamma\vdash\bigcirc\bigcirc\alpha\to\bigcirc\alpha$}
+    \RightLabel{\footnotesize$\mathbf{C_3}$}
+    \UnaryInfC{$\Gamma\entails\bigcirc\bigcirc\alpha\to\bigcirc\alpha$}
     \DisplayProof{}
 \end{center}
 
@@ -106,17 +123,33 @@ As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalid
     \footnotesize
     \AxiomC{$\alpha\in\Gamma$}
     \RightLabel{\footnotesize$\mathbf{R_1}$}
-    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \UnaryInfC{$\Gamma\entails\alpha$}
     \DisplayProof{}
     \quad
-    \AxiomC{$\Gamma\vdash\alpha$}
-    \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+    \AxiomC{$\Gamma\entails\alpha$}
+    \AxiomC{$\Gamma\entails\alpha\to\beta$}
     \RightLabel{\footnotesize$\mathbf{R_2}$}
-    \BinaryInfC{$\Gamma\vdash\beta$}
+    \BinaryInfC{$\Gamma\entails\beta$}
     \DisplayProof{}
 \end{center}
 \end{definition}
 \end{tcolorbox}
 
+\vspace{.5\baselineskip}
+Pode-se imergir sentenças do sistema $\mathfrak{L}$ em sentenças do sistema $\mathfrak{M}$ de modo que $\lax\alpha\coloneqq\pos\nec\alpha$, conforme definem~\cite{Pfenning}.
+Como estes apontam, isso permite com que usemos o sistema $\mathfrak{M}$ para razoar sobre o sistema $\mathfrak{L}$, uma vez que as regras deste podem ser derivadas naquele.
+Outra imersão de interesse trata-se da tradução de~\cite{Fairtlough}, com sistema de origem o sistema $\mathfrak{L}$ e com sistema de destino um sistema bimodal $\langle\mathfrak{M},\mathfrak{M}\rangle$, que serve para reforçar ainda mais o caso da relação entre ambos os sistemas.
 
-\cite{Pfenning} 
+\vspace{.5\baselineskip}
+A imersão apresentada acima sugere que possamos interpretar algumas das sentenças do sistema~$\mathfrak{M}$ como representando computações com efeitos.
+De fato,~\cite{Pfenning} alegam que $\nec\alpha$ intuitivamente representa valores de tipo $\alpha$ que sobrevivem a efeitos, enquanto $\pos\alpha$ representa computações que retornam valores de tipo $\alpha$.
+Corrobora com esta visão o trabalho de~\cite{Kobayashi.1997}.
+Notamos que, segundo~\cite{Zach}, podem ser derivadas no sistema $\mathfrak{M}$ sentenças da forma $\alpha\to\pos\alpha$ e da forma $\pos\pos\alpha\to\pos\alpha$.
+Do mesmo modo, podem ser derivadas sentenças da forma $\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$.
+Estas assemelham-se ao {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}, o que reforça o ponto apresentado aqui.
+
+\vspace{.5\baselineskip}
+Em computação, \emph{continuações} são um conceito descoberto e redescoberto diversas vezes~\citep{Reynolds.1993} que representa o restante de uma computação a partir de um determinado ponto.
+O \emph{estilo de passagem por continuações} consiste num estilo de programação onde cada função, em vez de retornar um valor, recebe como argumento uma função com a sua continuação e a invoca ao fim de sua execução~\citep{Thielecke.1999}.
+Linguagens em estilo de passagem por continuações são muito usadas como representação dentro de compiladores, uma vez que essa inversão de controle --- ou seja, a passagem de continuações como argumento --- revela o fluxo do programa.
+Uma vez que mônadas podem ser imergidas em continuações e continuações podem ser imergidas em mônadas \citep{Filinski.1994}, o sistema $\mathfrak{M}$ torna-se interessante do ponto de vista de compilação, motivo que justifica investigações acerca do uso de uma linguagem baseada em $\mathfrak{M}$ como representação durante a compilação.
