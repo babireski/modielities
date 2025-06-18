@@ -1,0 +1,122 @@
+\section{Efeitos}
+
+Os \emph{efeitos computationais}, ou simplesmente \emph{efeitos}, são todas as ações e interações performadas pelos computadores que vão além da simples computação.
+Assim, uma função que computa a soma entre dois valores não apresenta nenhum efeito, enquanto uma função que computa a soma entre dois valores e imprime o resultado na tela performa um efeito ao fazer a impressão.
+Alguns exemplos de efeitos são \emph{continuações}, \emph{excessões} e \emph{não-determinismo}.
+Programas com efeitos podem mudar seus estados internos, bem como receber entradas externas.
+Tais capacidades, enquanto promovem expressividade, também tornam a avaliação do comportamento do programa menos claras.
+
+\vspace{.3\baselineskip}
+Motivado pela busca de uma maneira de representar semanticamente efeitos em linguagens de programação,~\cite{Moggi} introduziu a linguagem $\lambda_c$.
+Nesta linguagem, os termos-$\lambda$ são distinguidos entre valores de tipo $\alpha$ e computações $\mu\alpha$ de tipo $\alpha$ de modo que estas se comportam monadicamente.
+
+\vspace{.3\baselineskip}
+Conforme notado por~\cite{Benton}, a linguagem $\lambda_c$ corresponde ao sistema \emph{laxo} por meio da interpretação prova-programa, doravante chamado de $\mathfrak{L}$.
+Este sistema, que aumenta o sistema intuicionista $\mathfrak{I}$ com uma modalidade de \emph{laxidade} $\bigcirc$, foi inicialmente considerado por~\cite{Curry-A} e posteriormente redescoberto por~\cite{Fairtlough}.
+Esta modalidade foi interpretada por estes como \emph{verdade com restrições}, motivo que justifica seu nome.
+As regras $\mathbf{C_1}$, $\mathbf{C_2}$ e $\mathbf{C_3}$, que govenam a modalidade laxa, geram sentenças correspondentes aos tipos das funções {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}.
+
+\vspace{\baselineskip}
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{definition}[$\mathcal{L}_\bigcirc$]\label{lax.language}
+    A linguagem do sistema laxo, denotada $\mathcal{L}_\bigcirc$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}_\bigcirc}$, onde $\mathcal{C}_\bigcirc=\set{\bot^0,\bigcirc^1,\wedge^2,\vee^2,\to^2}$.
+\end{definition}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\begin{definition}[$\vdash_{\mathfrak{L}}$]
+    Abaixo estão definidas as regras do sistema $\mathfrak{L}$.
+\vspace{.5\baselineskip}
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_2}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta\to\gamma)\to(\alpha\to\beta)\to\alpha\to\gamma$}
+    \DisplayProof{}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_3}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\beta\to\alpha\wedge\beta$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_4}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\alpha$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_5}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\wedge\beta\to\beta$}
+    \DisplayProof{}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_6}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\alpha\vee\beta$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_7}$}
+    \UnaryInfC{$\Gamma\vdash\beta\to\alpha\vee\beta$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_8}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\gamma)\to(\beta\to\gamma)\to\alpha\vee\beta\to\gamma$}
+    \DisplayProof{}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{A_\bot}$}
+    \UnaryInfC{$\Gamma\vdash\neg\neg\alpha\to\alpha$}
+    \DisplayProof{}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{C_1}$}
+    \UnaryInfC{$\Gamma\vdash(\alpha\to\beta)\to\bigcirc\alpha\to\bigcirc\beta$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{C_2}$}
+    \UnaryInfC{$\Gamma\vdash\alpha\to\bigcirc\alpha$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{}
+    \RightLabel{\footnotesize$\mathbf{C_2}$}
+    \UnaryInfC{$\Gamma\vdash\bigcirc\bigcirc\alpha\to\bigcirc\alpha$}
+    \DisplayProof{}
+\end{center}
+
+\begin{center}
+    \footnotesize
+    \AxiomC{$\alpha\in\Gamma$}
+    \RightLabel{\footnotesize$\mathbf{R_1}$}
+    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \DisplayProof{}
+    \quad
+    \AxiomC{$\Gamma\vdash\alpha$}
+    \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+    \RightLabel{\footnotesize$\mathbf{R_2}$}
+    \BinaryInfC{$\Gamma\vdash\beta$}
+    \DisplayProof{}
+\end{center}
+\end{definition}
+\end{tcolorbox}
+
+
+\cite{Pfenning} 

@@ -1,8 +1,9 @@
 \section{Traduções}
     A primeira tradução do sistema intuicionista ao sistema modal foi proposta por~\cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \citep{Troelstra}. Gödel alegou --- sem apresentar provas --- a correção fraca dessa tradução e conjeiturou sua completude fraca, posteriormente provadas por~\cite{McKinsey}. As as traduções apresentadas abaixo foram retiradas de~\cite{Troelstra}.
 
-    \begin{definition}[$\bullet^\circ$]\label{translation.circle}
-        Define-se a tradução $\bullet^\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{definition}[Traduções]\label{translations}
+        Definem-se a traduções $\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{B}$ ao sistema $\mathfrak{L}$ indutivamente da maneira que segue.
         \begin{align*}
             a^\circ&\mapsto a\\
             \bot^\circ&\mapsto\bot\\
@@ -12,6 +13,7 @@
             \tag*{\qed} 
         \end{align*}
     \end{definition}
+    \end{tcolorbox}
     
     \begin{definition}[$\bullet^\medsquare$]\label{translation.square}
         Define-se a tradução $\bullet^\medsquare:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema intuicionista ao sistema modal $\mathbf{S4}$ indutivamente da seguinte maneira:
@@ -27,16 +29,3 @@
     
     Ambas as traduções providas são equivalentes, conforme demonstraremos futuramente.
     Ademais, faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}. A primeira tradução de Girard corresponde a uma ordem de avaliação por nome (\textit{call-by-name}) e a segunda a uma ordem de avaliação por valor (\textit{call-by-value}), conforme notam~\cite{Maraist}.
-
-\section{Avaliação}
-    Dada uma linguagem de programação, podem haver diferentes maneiras de aplicar reduções em expressões desta linguagem --- ou seja, diferentes maneiras de performar uma computação.
-    A cada uma dessas maneiras, damos o nome \emph{ordem de avaliação}.
-    Como notado na seção anterior, as imersões modais do sistema intuicionista assemelham-se muito às imersões lineares do sistema intuicionista.
-    Como notam~\cite{Maraist}, correspondem a uma tradução a uma ordem de avaliação por nome e a uma ordem de avaliação por valor.
-    Neste sentido, pode-se dizer que, do mesmo modo, as imersões modais correspondem a estas duas ordens de avaliação, que são duais entre si (Wadler).
-    Assim, esta seção busca fundamentar estas duas ordens de avaliação.
-
-    Para tanto, consideremos expressões-lambda $e$, que consistem em valores $v$ ou em aplicações $e\ e$ de uma expressão a outra expressão.
-    Os valores $v$, por sua vez, dividem-se em letras $x$ ou em funções $\lambda x.e$ que recebem $x$ e retornam uma expressão $e$.
-    As letras pertencem a um conjunto de letras $\mathcal{V}$.
-    Consideraremos duas beta-reduções diferentes, uma na ordem de avaliação por nome e outra por valor.

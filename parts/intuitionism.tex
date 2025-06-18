@@ -1,5 +1,5 @@
 \section{Sistema intuicionista}
-    Nesta seção, definiremos os sistema intuicionista $\mathfrak{B}=\langle\mathcal{L},\vdash_\mathfrak{B}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
+    Nesta seção, definiremos os sistema intuicionista $\mathfrak{I}=\langle\mathcal{L},\vdash_\mathfrak{I}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
     Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\Gamma\vdash\alpha\vee\neg\alpha$ não vale para todos os casos.
     O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer-A, Brouwer-B}.
     Este defendia que uma asserção poderia ser dita verdade apenas quando esta poderia ser~\emph{construída}.
@@ -12,7 +12,6 @@
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{definition}[$\mathcal{L}$]\label{intuitionistic.language}
         A linguagem do sistema intuicionista, denotada $\mathcal{L}$, pode ser induzida a partir da assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{C}=\set{\bot^0,\wedge^2,\vee^2,\to^2}$.
-        \qed{}
     \end{definition}
     \end{tcolorbox}
 
@@ -23,7 +22,7 @@
     \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-    Consideremos agora a relação de dedução para o sistema $\mathfrak{B}$, definida por suas regras de dedução.
+    Consideremos agora a relação de dedução para o sistema $\mathfrak{I}$, definida por suas regras de dedução.
     Estas destacam-se pela omissão de uma regra que gera asserções do tipo $\Gamma\vdash\neg\neg\alpha$.
     Isso acontece porque não somente esta regra permite provas não-contrutivas como permite a derivação de uma regra derivada $\Gamma\vdash\alpha\vee\neg\alpha$.
     Os axiomas abaixo estão organizadas de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na quarta linha os axiomas da disjunção e na quinta linha o axioma da contradição.
@@ -31,8 +30,8 @@
 
 \vspace{\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\begin{definition}[$\vdash_{\mathfrak{B}}$]\label{intuitionistic.deduction}
-    Abaixo estão definidas as regras do sistema intuicionista $\mathfrak{B}$.
+\begin{definition}[$\vdash_{\mathfrak{I}}$]\label{intuitionistic.deduction}
+    Abaixo estão definidas as regras do sistema $\mathfrak{I}$.
 \vspace{.5\baselineskip}
 \begin{center}
     \footnotesize
@@ -108,39 +107,62 @@
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-A noção de \emph{construção} representada pelo sistema intuicionista $\mathfrak{B}$ assemelha-se muito com a noção de \emph{computação}.
+A noção de \emph{construção} representada pelo sistema intuicionista $\mathfrak{I}$ assemelha-se muito com a noção de \emph{computação}.
 Mais que isso: elas são noções \emph{isomorfas}.
 Com isso queremos dizer que, dada uma linguagem de programação tipada, a asserção de que um programa dessa linguagem \emph{pertence ao tipo $\alpha$} implica que este programa \emph{prova a proposição $\alpha$} e vice-versa.
 Em outras palavras, o problema da decisão da verdade desta proposição pode ser vista como da decisão habitação de um tipo que corresponde a ela.
 Assim, podemos dizer que \emph{proposições são tipos} e \emph{provas são programas} (\textbf{CITAR} Wadler).
 Os primeiros vislumbres dessa relação foram feitos por Curry e Feys (\textbf{CITAR}), no entando ela começou a ser de fato desvendada a partir do de Howard \textbf{CITAR}.
-Como ilustração, abaixo as regras do fragmento implicativo do sistema intuicionista em dedução natural são postas lado a lado com as regras de tipagem do cálculo lambda simplesmente tipado.
+Como ilustração, abaixo as regras do implicativo do sistema intuicionista em dedução natural são postas lado a lado com as regras de tipagem do cálculo lambda simplesmente tipado.
 
 \begin{table}[H]
-    \centering
-    \begin{tabular}{c c}
+    \newlength{\skipvalue}
+    \setlength{\skipvalue}{\baselineskip}
+    \begin{xltabular}{\linewidth}{X c X c X}
         \toprule
-        \textbf{Regras de dedução} & \textbf{Regras de tipagem}\\
+        &\textbf{Regras de dedução} & & \textbf{Regras de tipagem}&\\
         \midrule
-        \small$\Gamma\cup\{\alpha\}\vdash\alpha$ & \small$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$ \\
-        \small$\Gamma\cup\{\alpha\}\vdash\beta\implies\Gamma\vdash\alpha\to\beta$ & \small$\Gamma\cup\{x:\alpha\}\vdash e:\beta\implies\Gamma\vdash\lambda x.e:\alpha\to\beta$ \\
-        \small$\Gamma\vdash\alpha\to\beta\implies\Gamma\vdash\alpha\implies\Gamma\vdash\beta$ & \small$\Gamma\vdash e_1:\alpha\to\beta\implies\Gamma\vdash e_2:\alpha\implies\Gamma\vdash e_1\text{ }e_2:\beta$ \\
+            &
+                \small
+                \AxiomC{}
+                \UnaryInfC{$\Gamma\cup\{\alpha\}\vdash\alpha$}
+                \DisplayProof{}
+            &
+            &
+                \small
+                \AxiomC{}
+                \UnaryInfC{$\Gamma\cup\{x:\alpha\}\vdash\:\alpha$}
+                \DisplayProof{}
+            &
+            \\[\skipvalue]
+            &
+                \small
+                \AxiomC{$\Gamma\cup\{\alpha\}\vdash\beta$}
+                \UnaryInfC{$\Gamma\vdash\alpha\to\beta$}
+                \DisplayProof{}
+            &
+            &
+                \small
+                \AxiomC{$\Gamma\cup\{x:\alpha\}\vdash e:\beta$}
+                \UnaryInfC{$\Gamma\vdash\lambda x.e:\alpha\to\beta$}
+                \DisplayProof{}
+            &
+            \\[\skipvalue]
+            &
+                \small
+                \AxiomC{$\Gamma\vdash\alpha\to\beta$}
+                \AxiomC{$\Gamma\vdash\alpha$}
+                \BinaryInfC{$\Gamma\vdash\beta$}
+                \DisplayProof{}
+            &
+            &
+                \small
+                \AxiomC{$\Gamma\vdash e_1:\alpha\to\beta$}
+                \AxiomC{$\Gamma\vdash e_2:\alpha$}
+                \BinaryInfC{$\Gamma\vdash e_1\ e_2:\beta$}
+                \DisplayProof{}
+            &
+            \\[.5\skipvalue]
         \bottomrule
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{c c}
-        \toprule
-        \textbf{Regras de dedução} & \textbf{Regras de tipagem}\\
-        \midrule
-
-
-
-        \small$\Gamma\cup\{\alpha\}\vdash\alpha$ & \small$\Gamma\cup\{x:\alpha\}\vdash x:\alpha$ \\
-        \small$\Gamma\cup\{\alpha\}\vdash\beta\implies\Gamma\vdash\alpha\to\beta$ & \small$\Gamma\cup\{x:\alpha\}\vdash e:\beta\implies\Gamma\vdash\lambda x.e:\alpha\to\beta$ \\
-        \small$\Gamma\vdash\alpha\to\beta\implies\Gamma\vdash\alpha\implies\Gamma\vdash\beta$ & \small$\Gamma\vdash e_1:\alpha\to\beta\implies\Gamma\vdash e_2:\alpha\implies\Gamma\vdash e_1\text{ }e_2:\beta$ \\
-        \bottomrule
-    \end{tabular}
+    \end{xltabular}
 \end{table}
