@@ -10,18 +10,24 @@
     Ainda, eles apresentam uma função que traduzem sentenças do sistema laxo, que corresponde com $\lambda_c$, a sentenças do sistema $\mathfrak{M}$.
 
     \vspace{.5\baselineskip}
-    Computações com efeitos modeladas por \emph{mônadas} imergem e podem ser imergidas em \emph{continuações}~\citep{Filinski.1994}.\footnote{\emph{Embedded.}}
+    Computações com efeitos modeladas por \emph{mônadas} imergem e podem ser imersas em \emph{continuações}~\citep{Filinski.1994}.\footnote{\emph{Embedded.}}
     Como continuações são usadas como representação dentro de compiladores, uma linguagem baseada no sistema $\mathfrak{M}$ que consiga modelar efeitos mostra-se relevante do ponto de vista da compilação.
     Este trabalho busca fundamentar futuras investigações nesse sentido.
 
     \vspace{.5\baselineskip}
     Para tanto, apresentaremos duas traduções do sistema intuicionista $\mathfrak{I}$ ao sistema $\mathfrak{L}$ conforme definidas por~\cite{Troelstra+Schwichtenberg.2000}, bem como suas provas de interderivação e correção.
-    Então, estas traduções serão declaradas e as asserções demonstradas no provador de teoremas \emph{Rocq}.
+    O sistema de origem, o intuicionista, destaca-se por abarcar a noção de \emph{construção}, que em muito lembra a noção de \emph{computação}.
+    As traduções apresentadas e as asserções demonstradas serão verificadas no provador de teoremas \emph{Rocq}.\footnote{Antigamente conhecido como\emph{Coq}.}
 
     \vspace{.5\baselineskip}
-    ~\cite{Troelstra} apresentam duas traduções equivalentes da lógica intuicionista para o sistema \textbf{S4} da lógica modal, sendo um deles correspondente a uma abordagem \textit{call-by-name} e outra a um abordagem \textit{call-by-value}. Tais traduções possuem grande similaridade com as traduções da lógica intuicionista para a lógica linear definidas por~\cite{Girard}. Essas traduções equivalem à tradução por negação dupla que, por sua vez, equivalem a traduções \textit{continuation-passing style} (CPS) em compiladores por meio do isomorfismo de Curry-Howard~\citep{Reynolds}, o que torna esse tema interessante no ponto de vista de compilação.
+    As implementações das demonstrações deste trabalho usarão como base a biblioteca de sistemas modais normais desenvolvida em \emph{Rocq} por~\cite{Silveira+others.2022} e posteriormente aumentada por~\cite{Nunes+Roggia+Torrens.2025} de modo a permitir a fusão os sistemas modais.
+    Ainda, as implementações das traduções serão afins às implementações das traduções feitas por~\cite{Sehnem.2023}, estas tendo como sistema de destino o sistema linear de~\cite{Girard}.
+    Tais traduções, tal-qualmente definidas por~\cite{Girard}, assemelham-se muito com as traduções abordadas neste trabalho.
 
-    Durante grande parte da história, provas lógicas e matemáticas eram validadas manualmente pela comunidade acadêmica, o que muitas vezes --- a depender do tamanho e complexidade da prova --- se mostrava ser um trabalho complexo e sujeito a erros. Hoje em dia, exitem \textit{softwares} chamados assistentes de provas que permitem verificar --- graças ao isomorfismo de Curry-Howard --- a corretude de provas~\citep{Chlipala}. O assistente de provas que será usado neste trabalho é o \textsc{coq}, que utiliza o cálculo de construções indutivas e um conjunto axiomático pequeno para permitir a escrita de provas simples e intuitivas~\citep{Coq}.
+    \vspace{.5\baselineskip}
+    Provadores de teoremas tem-se mostrado ferramentas poderosas para a verificação de asserções em sistemas formais.
+    Tais programas analisam cada passo da demonstração e podem apontar erros que em muitos casos passariam despercebidos.
+    Os artefatos da formalização ficarão dispostos para consulta de todos no endereço \texttt{\footnotesize\textbf{\url{https://github.com/babireski/embedding}}}.
 
     \section{Objetivos}
     Este trabalho consiste numa continuação do desenvolvimento da biblioteca de formalização de sistemas modais normais iniciado por~\cite{Silveira} e posteriormente expandida de forma a permitir a fusão de sistemas modais por~\cite{Nunes}. Nele, formalizaremos as traduções do sistema intuicionista ao sistema modal $\mathbf{S4}$ no asssitente de provas \textsc{coq} e provaremos suas propriedades. Uma formalização de traduções entre sistemas de dedução similar a nossa foi feita por~\cite{Sehnem}, neste caso tendo como alvo o sistema linear de~\cite{Girard}. Todas as formalizações citadas acima deram-se no assistente de provas \textsc{coq}, o mesmo assistente usado neste trabalho. Como objetivos específicos, listamos:
