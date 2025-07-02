@@ -5,23 +5,15 @@ As modalidades costumeiramente definidas são as noções duais de \emph{necessi
 Assim, estão presentes nas linguagens destes sistemas sentenças da forma $\nec\alpha$ e da forma $\pos\alpha$, lidas \emph{necessariamente} $\alpha$ e \emph{possivelmente} $\alpha$.
 Intuitivamente, uma necessidade deve ser verdade em todos os casos, enquanto uma possibilidade deve ser verdade em algum caso.
 Em despeito dos seus nomes e de suas interpretações informais, estas modalidades podem ser usadas para modelar diferentes noções, como \emph{conhecimento} ou \emph{obrigação}.
-Como veremos adiante, podemos relacionar a possibilidade como efeitos computationais, o que a torna interessante do ponto de vistada computação.
+Como veremos adiante, podemos relacionar a possibilidade com efeitos computationais, o que a torna interessante do ponto de vista da computação.
 
 \vspace{0.5\baselineskip}
-As primeiras investigações acerca das modalidades foram feitos na antiguidade.
-Entretanto, os estudos modais modernos foram fundados por~\cite{Lewis}.
+As primeiras investigações acerca das modalidades foram feitas na antiguidade.
+Entretanto, os estudos modais modernos foram fundados por~\cite{Lewis.1912}.
 Lewis motivou-se a criar um sistema onde os condicionais tivessem uma interpretação mais perto daquela das linguagens naturais.
 Neste sistema, não valeriam para todos os casos sentenças da forma $\alpha\to\beta\to\alpha$, por exemplo.
-Estes estudos culminaram no trabalho conjunto de~\cite{Langford}.
+Estes estudos culminaram no trabalho conjunto de~\cite{Lewis+Langford.1932}.
 Este trabalho definiu cinco sistemas --- nomeados de $\mathbf{S1}$ a $\mathbf{S5}$ --- que contavam com a dita \emph{implicação estrita} $\alpha\strictif\beta$ definida em termos da possibilidade e que não permitia a demonstração de sentenças consideradas indesejadas.
-
-\vspace{0.5\baselineskip}
-\cite{Goedel} apresentou uma definição equivalente do sistema $\mathbf{S4}$, tendo a necessidade como operador primitivo e a dedução estrita podendo ser definida em termos desta e da implicação, como $\nec(\alpha\to\beta)$.
-Este sistema apresentou a vantagem de separar as regras proposicionais das regras modais, propriedade que não estava presente nas definições anteriores, e tornou-se o padrão a partir de então.
-Nesta sessão, apresentaremos este sistema, doravante chamado $\mathfrak{M}=\langle\mathcal{L}_\nec,\vdash_\mathfrak{M}\rangle$.
-A linguagem abaixo foi definida conforme~\cite{Troelstra}.
-Foram definidas notações costumeiras, das quais destacamos a dedução estrita.
-    Ainda, definiu-se uma notação para conjuntos com sentenças necessariamente verdadeiras.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
@@ -30,6 +22,14 @@ Foram definidas notações costumeiras, das quais destacamos a dedução estrita
 \end{definition}
 \end{tcolorbox}
 
+\vspace{0.5\baselineskip}
+\cite{Gödel.1986b} apresentou uma definição equivalente do sistema $\mathbf{S4}$, tendo a necessidade como operador primitivo e a dedução estrita podendo ser definida em termos desta e da implicação, como $\nec(\alpha\to\beta)$.
+Este sistema apresentou a vantagem de separar as regras proposicionais das regras modais, propriedade que não estava presente nas definições anteriores, e tornou-se o padrão a partir de então.
+Nesta seção, apresentaremos este sistema, doravante chamado $\mathfrak{M}=\langle\mathcal{L}_\nec,\vdash_\mathfrak{M}\rangle$, cuja linguagem foi definida conforme~\cite{Troelstra+Schwichtenberg.2000}.
+Foram definidas notações costumeiras, das quais destacamos a dedução estrita.
+Ainda, definiu-se uma notação para conjuntos com sentenças necessariamente verdadeiras.
+
+\vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{notation}
     Sejam duas sentenças $\alpha,\beta\in\mathcal{L}$.
@@ -42,17 +42,17 @@ Foram definidas notações costumeiras, das quais destacamos a dedução estrita
 
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{notation}
-    Seja $\Gamma\in\wp(\mathcal{L}_{\nec})$ um conjunto de sentenças bem-formadas.
-    $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\wp(\mathcal{L}_{\nec})$, ou seja, a prefixação da necessitação a todos os elementos do conjunto $\Gamma$.
+    Seja $\Gamma\in\mathfrak{P}(\mathcal{L}_{\nec})$ um conjunto de sentenças bem-formadas.
+    $\nec\Gamma$ denota o conjunto $\set{\nec\alpha\mid\alpha\in\Gamma}\in\mathfrak{P}(\mathcal{L}_{\nec})$, ou seja, a anteposição da necessidade a todos os elementos do conjunto $\Gamma$.
 \end{notation}
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
 Consideremos agora a relação de dedução para o sistema $\mathfrak{M}$, definida por suas regras de dedução.
-Nomeamos as regras de maneira com que as regras comuns ao sistema $\mathfrak{I}$ e ao sistema $\mathfrak{M}$ tenham nomes comuns, enquanto as regras diferentes tenham nomes diferentes, bem como as arranjamos de forma semelhante
+Nomeamos as regras de maneira com que as regras comuns ao sistema $\mathfrak{I}$ e ao sistema $\mathfrak{M}$ tenham nomes comuns, enquanto as regras diferentes tenham nomes diferentes, bem como as arranjamos de forma semelhante.
 A presença da regra $\mathbf{A_\neg}$ permite a derivação do \emph{tertium non datur}, em oposição ao sistema intuicionista.
-Assim sendo, esta relação consiste no aumento das regras proposicionais com regras para a necessidade.
-A definição que segue baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}.
+Assim sendo, esta relação consiste no aumento das regras proposicionais clássicas com regras para a necessidade.
+A definição que segue baseia-se tanto em~\cite{Troelstra+Schwichtenberg.2000} como em~\cite{Hakli+Negri.2012}.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
@@ -136,9 +136,9 @@ A definição que segue baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}
 
 \begin{center}
     \footnotesize
-    \AxiomC{$\alpha\in\Gamma$}
+    \AxiomC{\phantom{$\beta$}}
     \RightLabel{\footnotesize$\mathbf{R_1}$}
-    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \UnaryInfC{$\Gamma\cup\set{\alpha}\vdash\alpha$}
     \DisplayProof\label{modal.rule.1}
     \quad
     \AxiomC{$\Gamma\vdash\alpha$}
@@ -156,8 +156,8 @@ A definição que segue baseia-se tanto em~\cite{Troelstra} como em~\cite{Hakli}
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-A definição da regra $\mathbf{R_3}$, dita \emph{regra da necessitação}, foi feita de maneira cuidadosa de modo a permitir a correta derivação do teorema da dedução.
+A definição da regra $\mathbf{R_3}$, dita \emph{regra da necessitação}, foi feita de maneira cuidadosa, de modo a permitir a correta derivação do teorema da dedução.
 Este teorema mostra-se importante para tornar as demonstações feitas neste trabalho mais breves e claras.
-Para tanto, foi preciso restringir a condição antecedente da regra a conjuntos vazios.
+Para tanto, foi preciso restringir a condição antecedente da regra ao conjunto vazio.
 Em outras palavras, esta regra permite tornar apenas teoremas necessidades.
-Para uma discussão mais aprofudada acerca da validade do teorema da dedução em sistemas modais, remetemos o leitor a~\cite{Hakli}.
+Para uma discussão mais aprofudada acerca da validade do teorema da dedução em sistemas modais, remetemos o leitor a~\cite{Hakli+Negri.2012}.

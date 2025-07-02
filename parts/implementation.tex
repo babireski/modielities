@@ -1,13 +1,18 @@
-\chapter{Implementação} 
+\chapter{Implementação}\label{implementation}
 
-A implementação da formalização das provas apresentadas neste trabalho faz uso da biblioteca para sistemas modais normais desenvolvida por~\cite{Silveira}.
-A linguagem desta foi definida de maneira ligeiramente diferente da definida neste trabalho.
-~\cite{Silveira} tratam a negação como operação primitiva enquanto, neste trabalho, tratamos a contradição como primitiva e a negação como definida em termos dessa e da implicação.
+Nesta seção, discorreremos sobre a implementação da formalização das provas apresentadas neste trabalho em \emph{Rocq},\footnote{Antigamente conhecido como \emph{Coq}.} disposta para consulta no endereço \texttt{<}\url{https://github.com/babireski/embedding}\texttt{>}.
+Esta, faz uso da biblioteca para sistemas modais normais desenvolvida por~\cite{Silveira+others.2022} e posteriormente aumentada por~\cite{Nunes+others.2025}.
+Assim sendo, antes disso destacaremos as diferenças entre as definições usadas na biblioteca e as definições usadas neste trabalho.
+
+\section{Preliminares}
+
+A linguagem da biblioteca para sistemas modais normais desenvolvida por~\cite{Silveira+others.2022} foi definida de maneira ligeiramente diferente da definida neste trabalho.
+~\cite{Silveira+others.2022} tratam a negação como operação primitiva enquanto, neste trabalho, tratamos a contradição como primitiva e a negação como definida em termos dessa e da implicação.
 De modo similar, considerou-se o operador de possibilidade primitivo na biblioteca, enquanto neste trabalho define-se este em termos da necessidade.
-Remetemos o leitor à definição~\ref{modal.language} para comparações.
+Remetemos o leitor à \textsc{Definição}~\ref{modal.language} para comparações.
 
 \vspace{0.5\baselineskip}
-Esta biblioteca foi posteriormente aumentada de modo a permitir a fusão de sistemas modais normais por~\cite{Nunes}.
+Esta biblioteca foi posteriormente aumentada de modo a permitir a fusão de sistemas modais normais por~\cite{Nunes+others.2025}.
 Para tanto, a linguagem dos sistemas modais precisou ser alterada de modo a permitir a definição de sistemas multimodais, ou seja, sistemas com mais de uma modalidade.
 Considerando as diferenças apontadas, redefiniremos abaixo a linguagem do sistema $\mathfrak{L}$.
 As diversas modalidades serão distinguidas por um valor $i\in\mathcal{I}$.
@@ -22,12 +27,11 @@ Tais modificações serão assomadas quando relevantes.
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-\cite{Silveira} definem o sistema de dedução da biblioteca de modo levemente maior do que feito neste trabalho.
-Isso acontece da regra $\mathbf{A_9}$ --- que pode ser derivada usando as demais regras apresentadas neste trabalho --- e da regra $\mathbf{B_4}$ --- neste trabalho tratada como uma definição.
-O trabalho posterior de~\cite{Nunes} precisou quantificar univesalmente sobre um valor $i\in\mathcal{I}$ as regras $\mathbf{B_1}$, $\mathbf{B_2}$ e $\mathbf{B_3}$.
-Ainda, adiu a regra $\mathbf{B_4}$, neste trabalho tratada como uma definição.
+\cite{Silveira+others.2022} definem o sistema de dedução da biblioteca de modo levemente maior do que feito neste trabalho.
+Isso acontece da regra $\mathbf{A_9}$ --- que pode ser derivada usando as demais regras apresentadas neste trabalho --- e da regra $\mathbf{B_4}$ --- neste trabalho tratada como notação.
+O trabalho posterior de~\cite{Nunes+others.2025} precisou quantificar univesalmente sobre um valor $i\in\mathcal{I}$ as regras $\mathbf{B_1}$, $\mathbf{B_2}$ e $\mathbf{B_3}$.
 Considerando as diferenças apontadas, redefiniremos abaixo a relação de dedução do sistema $\mathfrak{L}$.
-Remetemos o leitor à definição \ref{modal.deduction} para comparações.
+Remetemos o leitor à \textsc{Definição}~\ref{modal.deduction} para comparações.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
@@ -143,19 +147,21 @@ Remetemos o leitor à definição \ref{modal.deduction} para comparações.
 \end{definition}
 \end{tcolorbox}
 
-\vspace{0.5\baselineskip}
-Uma vez ditas as diferenças, partiremos para a implementação propriamente dita.
+\section{Desenvolvimento}
+
+Uma vez indicadas as diferenças, partiremos para a implementação propriamente dita.
 Consideremos a definição da linguagem intuicionista.
 Para tanto, definiu-se um tipo indutivo com cinco construtores, conforme apresentado abaixo.
-O construtor \texttt{\footnotesize\textbf{Contradiction}} representa a contradição $\bot$.
-O construtor \texttt{\footnotesize\textbf{Proposition}} leva um valor $n\in\mathbb{N}$ a uma sentença intuicionista que representa uma letra proposicional.
-Por fim, os construtores \texttt{\footnotesize\textbf{Conjunction}}, \texttt{\footnotesize\textbf{Disjunction}} e \texttt{\footnotesize\textbf{Implication}} criam conjunções, disjunções e implicações --- nesta ordem --- a partir de sentenças menores.
-Notações foram definidas de modo a replicar a notação usada neste trabalho, com letras propositionais sendo introduzidas por um operador \texttt{\footnotesize\textbf{\#}}.
-Deste modo, podemos representar a sentença intuicionista $a\wedge b\to a\vee b$ como \texttt{\footnotesize\textbf{\#1 ∧ \#2 → \#1 ∨ \#2}}, para $a,b\in\mathcal{P}$.
-Remetemos o leitor à definição \ref{intuitionistic.language} para comparações.
+O construtor \texttt{\textbf{Contradiction}} representa a contradição $\bot$.
+O construtor \texttt{\textbf{Proposition}} leva um valor $n\in\mathbb{N}$ a uma sentença intuicionista que representa uma letra proposicional.
+Por fim, os construtores \texttt{\textbf{Conjunction}}, \texttt{\textbf{Disjunction}} e \texttt{\textbf{Implication}} criam conjunções, disjunções e implicações --- nesta ordem --- a partir de sentenças menores.
+Notações foram definidas de modo a replicar a notação usada neste trabalho, com letras propositionais sendo introduzidas por um operador \texttt{{\#}}.
+Deste modo, podemos representar a sentença intuicionista $a\wedge b\to a\vee b$ como \texttt{\textbf{\#1 $\mathtt{\wedge}$ \#2 $\mathtt{\to}$ \#1 $\mathtt{\vee}$ \#2}}, para $a,b\in\mathcal{P}$.
+Remetemos o leitor à \textsc{Definição}~\ref{intuitionistic.language} para comparações.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \noindent
 \texttt
 {\noindent\footnotesize\textbf{Inductive} Propositional : \textbf{Set} :=\\
@@ -171,13 +177,14 @@ Notation "\ ⊥\ "\ := Contradiction.
 
 \vspace{0.5\baselineskip}
 Similarmente, uma dedução intuicionista foi definida como um tipo indutivo, desta vez com onze construtores.
-Cada um desses construtores representa uma das regras de dedução apresentadas anteriormente na definição \ref{intuitionistic.deduction}.
+Cada um desses construtores representa uma das regras de dedução apresentadas anteriormente na \textsc{Definição}~\ref{intuitionistic.deduction}.
 Assim como feito com a linguagem, foi definida uma notação de modo a facilitar a escrita de asserções.
 Cabe destacar que o conjunto de assunções $\Gamma$ foi representado pela sua função indicadora $\mathbf{I}_\Gamma:\mathcal{L}\to\{0,1\}$, em que $\mathbf{I}_\Gamma(\alpha)=1$ se e somente se $\alpha\in\Gamma$.
-Na implementação oferecida abaixo, isso foi feito por meio de uma função do tipo \texttt{\footnotesize\textbf{Sentence}} ao tipo \texttt{\footnotesize\textbf{Prop}}, o tipo das proposições.
+Na implementação oferecida abaixo, isso foi feito por meio de uma função do tipo \texttt{\textbf{Sentence}} ao tipo \texttt{\textbf{Prop}}, o tipo das proposições.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \noindent
 \texttt
 {\noindent\footnotesize\textbf{Definition} Theory := Propositional -> Prop.\\
@@ -199,15 +206,16 @@ Na implementação oferecida abaixo, isso foi feito por meio de uma função do 
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-Para ilustração do uso do tipo indutivo \texttt{\footnotesize\textbf{Deduction}}, abaixo fornecemos a prova da identidade $\Gamma\vdash\alpha\to\alpha$.
-A prova tem uma relação de um para um com a prova apresentada anteriormente no lema \refer{identity}{L}, tirando-se o fato desta ser feita de baixo para cima, da conclusão em direção às assunções.
-Isso acontece porque o comando \texttt{\footnotesize\textbf{apply}}, que aplica regras a uma asserção, as aplica por padrão à meta de prova.
+Para ilustração do uso do tipo indutivo \texttt{\textbf{Deduction}}, abaixo fornecemos a prova da identidade $\Gamma\vdash\alpha\to\alpha$.
+A prova tem uma relação de um para um com a prova apresentada anteriormente no \textsc{Lema}~\ref{identity}, tirando-se o fato desta ser feita de baixo para cima, da conclusão em direção às assunções.
+Isso acontece porque o comando \texttt{\textbf{apply}}, que aplica regras a uma asserção, as aplica por padrão à meta de prova.
 Nada impediria, entretanto, que o oposto fosse feito.
-Ao usarmos o comando \texttt{\footnotesize\textbf{apply}} estamos dizendo que esta conclusão foi gerada a partir da aplicação da dita regra.
+Ao usarmos o comando \texttt{\textbf{apply}} estamos dizendo que esta conclusão foi gerada a partir da aplicação da dita regra.
 A meta de prova torna-se, então, os antecedentes da regra, caso haja.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \noindent
 \texttt
 {\noindent\footnotesize\textbf{Lemma} identity : \textbf{forall} Γ α, Γ ⊢ α → α.\\
@@ -224,13 +232,14 @@ A meta de prova torna-se, então, os antecedentes da regra, caso haja.
 
 \vspace{0.5\baselineskip}
 Uma vez definido o sistema intuicionista, podemos definir as funções de tradução do sistema $\mathfrak{B}$ ao sistema $\mathfrak{L}$.
-A tradução de ordem de avaliação por nome e a tradução ordem de avaliação por valor, agora chamadas \texttt{\footnotesize\textbf{square}} e \texttt{\footnotesize\textbf{circle}}, foram definidas com apenas duas alterações.
+A tradução quadrado e a tradução redondo, agora chamadas \texttt{\textbf{square}} e \texttt{\textbf{circle}}, foram definidas com apenas duas alterações.
 Primeiramente, ambas as funções agora recebem um argumento a mais, que identifica a modalidade usada, uma vez que estamos usando uma biblioteca para sistema multimodais.
 Em segundo lugar, a contradição $\bot$ passou a ser mapeada para $a\wedge\neg a$ para algum $a\in\mathcal{P}$, uma vez que a biblioteca não traz a contradição como um operador primitivo.
-Remetemos o leitor às definições \ref{translation.square} e \ref{translation.circle} para comparações.
+Remetemos o leitor às \textsc{Definições}~\ref{translation.square} e \ref{translation.circle} para comparações.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \noindent
 \texttt
 {\noindent\footnotesize\textbf{Fixpoint} square (α : Propositional) (i : Index) : Multimodal :=\\
@@ -254,12 +263,14 @@ Remetemos o leitor às definições \ref{translation.square} e \ref{translation.
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-Faz-se preciso definir novos construtores de tipos para representar conjuntos cujas sentenças são resultados da aplicação de alguma função ou operação, que foram chamados de \texttt{\footnotesize\textbf{Imboxed}}, \texttt{\footnotesize\textbf{Squared}} e \texttt{\footnotesize\textbf{Circled}}.
-Cada um desses possui apenas um construtor, nomeados \texttt{\footnotesize\textbf{Imboxing}}, \texttt{\footnotesize\textbf{Squaring}} e \texttt{\footnotesize\textbf{Circling}}, nesta ordem.
-\texttt{\footnotesize\textbf{Imboxing}} recebe como argumento um conjunto de sentenças multimodais de tipo \texttt{\footnotesize\textbf{Multimodal -> Prop}} e prefixa a necessidade a cada uma destas sentenças, ou seja, representa o conjunto $\nec\Gamma$. \texttt{\footnotesize\textbf{Squaring}} e \texttt{\footnotesize\textbf{Circling}} recebem como argumento conjuntos de sentenças intuicionistas de tipo \texttt{\footnotesize\textbf{Propositional -> Prop}} e aplicam os seus elementos às funções de tradução \texttt{\footnotesize\textbf{square}} e \texttt{\footnotesize\textbf{circled}}, ou seja, representam os conjuntos $\Gamma^\nec$ e $\Gamma^\circ$.
+Faz-se preciso definir novos construtores de tipos para representar conjuntos cujas sentenças são resultados da aplicação de alguma função ou operação, que foram chamados de \texttt{\textbf{Imboxed}}, \texttt{\textbf{Squared}} e \texttt{\textbf{Circled}}.
+Cada um desses possui apenas um construtor, nomeados \texttt{\textbf{Imboxing}}, \texttt{\textbf{Squaring}} e \texttt{\textbf{Circling}}, nesta ordem.
+\texttt{\textbf{Imboxing}} recebe como argumento um conjunto de sentenças multimodais e prefixa a necessidade a cada uma destas sentenças, ou seja, representa o conjunto $\nec\Gamma$.
+\texttt{\textbf{Squaring}} e \texttt{\textbf{Circling}} recebem como argumento conjuntos de sentenças intuicionistas e aplicam os seus elementos às funções de tradução \texttt{\textbf{square}} e \texttt{\textbf{circled}}, ou seja, representam o conjunto $\Gamma^\bullet$ e o conjunto $\Gamma^\circ$.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \noindent
 \texttt
 {\noindent\footnotesize\textbf{Inductive} Imboxed Γ i : Multimodal -> \textbf{Prop} :=\\
@@ -276,81 +287,76 @@ Cada um desses possui apenas um construtor, nomeados \texttt{\footnotesize\textb
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-Agora que as definições precisas para o desenvolvimento desta formalização foram feitos, partiremos pra uma enumeração das principais asserções provadas, com considerações pontuais.
+Agora que as definições iniciais para o desenvolvimento desta formalização foram feitas, partiremos pra uma enumeração das principais asserções provadas, com considerações pontuais.
 Não serão apresentadas as provas das asserções por questões de brevidade.
 As provas, entretanto, são paralelas às provas apresentadas anteriormente, a não ser quando destacado o oposto.
-As provas que envolvem modalidades foram quantificadas universalmente sobre um valor $i\in\mathcal{I}$, assim como foi feito no sistema dedutivo por~\cite{Nunes}.
+As provas que envolvem modalidades foram quantificadas universalmente sobre um valor $i\in\mathcal{I}$, assim como foi feito no sistema dedutivo por~\cite{Nunes+others.2025}.
 
 \vspace{0.5\baselineskip}
 Já estão presentes na biblioteca provas do teorema da dedução e do teorema do enfraquecimento.
-Deste modo, a primeira grande prova feita foi a prova do teorema da generalização da necessitação, dito \texttt{\footnotesize\textbf{generalization}}.
+Deste modo, a primeira grande prova feita foi a prova do teorema da generalização da necessitação, dito \texttt{\textbf{generalization}}.
 Não podemos induzir diretamente sobre o conjunto $\Gamma$, uma vez que este consiste numa função, um tipo não-indutivo.
 Para a prova deste teorema, então, usou-se outra asserção demonstrada na biblioteca, que afirma que qualquer dedução a partir de um conjunto $\Gamma$ pode ser feita a partir de um conjunto finito $\Delta$ contido em $\Gamma$.
 Podemos induzir sobre este novo conjunto $\Delta$, uma vez que ele foi definido usando-se uma lista, um tipo indutivo.
-O restante da prova procedeu conforme o teorema \refer{gen-nec}{T}.
+O restante da prova procedeu conforme o \textsc{Teorema}~\ref{generalization}.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \texttt{\noindent\footnotesize\textbf{Theorem} generalization : \textbf{forall} Γ α i,\\Imboxed Γ i ⊢ α -> Imboxed Γ i ⊢ [i]α.}
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-Consideremos demonstração da estabilidade da tradução quadrado e a demonstração da bi-implicação entre ambas as traduções, ditas \texttt{\noindent\footnotesize\textbf{stability}} e \texttt{\noindent\footnotesize\textbf{biimplication}}.
-Ambas foram feitas por indução sobre a profundidade da sentença $\alpha$, e não houve grandes diferenças entre as demonstrações implementadas e as demonstrações apresentadas nos teoremas \refer{square-nec}{T} e \refer{isomorphism}{T}.
+Consideremos demonstração da estabilidade da tradução quadrado e a demonstração da bi-implicação entre ambas as traduções, ditas \texttt{\textbf{stability}} e \texttt{\textbf{biimplication}}.
+Ambas foram feitas por indução sobre a profundidade da sentença $\alpha$, e não houve grandes diferenças entre as demonstrações implementadas e as demonstrações apresentadas nos \textsc{Teoremas}~\ref{stability} e \ref{biimplication}.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\texttt{\noindent\footnotesize\textbf{Theorem} stability : \textbf{forall} Γ α i,\\Γ ⊢ square α i → [i](square α i).}
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\texttt{\noindent\footnotesize\textbf{Theorem} biimplication : \textbf{forall} Γ α i,\\Γ ⊢ [i](circle α i) ↔ square α i.}
+\setmonofont{Fira Code}[Contextuals = Alternate]
+\texttt{\noindent\footnotesize\textbf{Theorem} stability : \textbf{forall} Γ α i,\\Γ ⊢ square α i → [i](square α i).\\
+\\
+\textbf{Theorem} biimplication : \textbf{forall} Γ α i,\\Γ ⊢ [i](circle α i) ↔ square α i.
+}
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-A prova que apresentou maior dificuldade a esta implementação foi a prova do teorema da interderivabilidade, dita \texttt{\noindent\footnotesize\textbf{interderivability}}.
-Em um primeiro momento, tentou-se provar este por indução sobre a dedução, assim como no teorema \refer{interderivability}{T}.
-Entretanto, quando da indução, perdeu-se a forma do conjunto \texttt{\noindent\footnotesize\textbf{Imboxed (Circled Γ i) i}} e do conjunto \texttt{\noindent\footnotesize\textbf{Squared Γ i}} que passaram a ser representados por um conjunto qualquer $\Delta$.
-Isso não permite a dedução da forma de uma sentença $\alpha\in\Delta$, para algum $\alpha$.
-Caso as formas dos conjuntos tivessem sido mantidas, seriam igualmente mantidas informações sobre $\alpha$ de maneira implicita, uma vez que a partir de $\alpha\in\nec\Gamma$ sabe-se que $\alpha=\nec\beta$ para algum $\beta$, por exemplo.
-De modo semelhante, perdeu-se informação sobre a forma das sentenças \texttt{\noindent\footnotesize\textbf{circle α i}} e \texttt{\noindent\footnotesize\textbf{square α i}}.
+A prova que apresentou maior dificuldade a esta implementação foi a prova do teorema da interderivabilidade, dita \texttt{\textbf{interderivability}}.
+Em um primeiro momento, tentou-se provar este por indução sobre a dedução, assim como no \textsc{Teorema}~\ref{interderivability}.
+Entretanto, quando da indução, perdeu-se a forma do conjunto $\nec\Gamma^\circ$ e do conjunto $\Gamma^\bullet$ que passaram a ser representados por um conjunto qualquer $\Delta$.
+Isso não permite inferir a forma de uma sentença $\alpha\in\Delta$, para algum $\alpha$.
+Caso as formas tivessem sido mantidas, seriam igualmente mantidas informações sobre $\alpha$, uma vez que a partir de $\alpha\in\nec\Gamma$ sabe-se que $\alpha=\nec\beta$ para algum $\beta$.
+De modo semelhante, perdeu-se informação sobre a forma das sentenças traduzidas.
 
 \vspace{0.5\baselineskip}
 Houveram duas tentativas de solução.
-A primeira delas foi o uso do comando \texttt{\noindent\footnotesize\textbf{remember}}, que nos permitiu lembrar as informações perdidas na forma de equações, como \texttt{\noindent\footnotesize\textbf{Δ = Imboxed (Circled Γ i) i}}.
+A primeira delas foi o uso do comando \texttt{\textbf{remember}}, que nos permitiu lembrar as informações perdidas na forma de equações, como $\Delta=\nec\Gamma^\circ$.
 Isso, entretanto, alterou a premissa indutiva de um modo que não se pode fazer uso dela.
-Tentou-se, do mesmo modo, fazer a prova usando-se o comando \texttt{\noindent\footnotesize\textbf{dependent induction}}, que se comparta de maneira semelhante ao uso do comandos \texttt{\noindent\footnotesize\textbf{remember}} seguido do comando \texttt{\noindent\footnotesize\textbf{induction}}.
+Tentou-se, do mesmo modo, fazer a prova usando-se o comando \texttt{\textbf{dependent induction}}, que se comporta de maneira semelhante ao uso do comando \texttt{\textbf{remember}} seguido do comando \texttt{\textbf{induction}}.
 Tampouco logrou-se sucesso, pelas mesmas razões da tentativa anterior.
-
-\vspace{0.5\baselineskip}
 A solução adotada foi buscar outra maneira de se provar o teorema.
 A prova foi, então, feita por indução sobre o tamanho do conjunto de assunções.
-Para tanto, novas asserções precisaram ser provadas, dentre os quais destacamos dois: o lema
-\texttt{\noindent\footnotesize\textbf{forall Γ α i, Imboxed (Squared Γ i) i ⊢ [i] α -> Squared Γ i ⊢ [i] α}} e
-o lema \texttt{\noindent\footnotesize\textbf{forall Γ α i, Γ ⊢ α -> Squared Γ i ⊢ α}}.
-Ambos os lemas foram inspirados em~\cite{Troelstra}.
+Para tanto, novas asserções precisaram ser provadas, dentre as quais destacamos duas: o lema
+$\nec\Gamma^\bullet\entails\nec(\alpha^\bullet\to\beta^\bullet)\implies\Gamma^\bullet\entails\nec(\alpha^\bullet\to\beta^\bullet)$ e o lema $\Gamma\entails\alpha\implies\nec\Gamma\entails\alpha$.
+Ambos os lemas foram inspirados em~\cite{Troelstra+Schwichtenberg.2000}.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+\setmonofont{Fira Code}[Contextuals = Alternate]
 \texttt{\noindent\footnotesize\textbf{Theorem} interderivability : \textbf{forall} Γ α i,\\Imboxed (Circled Γ i) i ⊢ circle α i <-> Squared Γ i ⊢ square α i.}
 \end{tcolorbox}
 
 \vspace{0.5\baselineskip}
-Por fim, consideremos a implementação das principais provas deste trabalho: as provas de correção das traduções, ditas \texttt{\noindent\footnotesize\textbf{soundness}}.
-A prova da correção da tradução de ordem de avaliação por nome foi feita por indução sobre o tamanho da sucessão de dedução.
-Não houve grande diferença entre a prova implementada e a prova apresentada no teorema \refer{square.soundness}{T}.
-
-\vspace{0.5\baselineskip}
-\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\texttt{\noindent\footnotesize\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Squared Γ i ⊢ square α i.}
-\end{tcolorbox}
-
-\vspace{0.5\baselineskip}
-Assim como foi o caso da prova apresentada anteriormente neste trabalho, a prova da correção da tradução de ordem de avaliação por valor segue trivialmente das provas de equiderivabilidade e de correção da correção de ordem de avaliação por nome.
-Assim sendo, não houve grande diferença entre a prova implementada e a prova apresentada no teorema \refer{circle.soundness}{T}.
+Por fim, consideremos a implementação das principais demosntrações deste trabalho: as demosntrações de correção das traduções, ditas \texttt{{soundness}}.
+A demonstração da correção da tradução quadrado foi feita por indução sobre o tamanho da sucessão de dedução.
+Assim como foi o caso da demonstração apresentada anteriormente neste trabalho, a demonstração da correção da tradução redondo segue trivialmente das demonstrações de interderivação e de correção da tradução quadrado.
+Não houve grandes diferenças entre as demonstrações implementadas e as demonstrações apresentadas nos \textsc{Teoremas}~\ref{square.soundness} e~\ref{circle.soundness}.
 Destacamos que os nomes de ambas as traduções não conflitam, uma vez que as asserções foram definidas em arquivos diferentes e podem ser desambiguadas por prefixação.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\texttt{\noindent\footnotesize\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Imboxed (Squared Γ i) i ⊢ circle α i.}
+\setmonofont{Fira Code}[Contextuals = Alternate]
+\texttt{\noindent\footnotesize\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Squared Γ i ⊢ square α i.\\
+\\
+\textbf{Theorem} soundness : \textbf{forall} Γ α i,\\Γ ⊢ α -> Imboxed (Squared Γ i) i ⊢ circle α i.
+}
 \end{tcolorbox}

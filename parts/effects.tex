@@ -1,10 +1,10 @@
 \section{Efeitos}
 
-Os \emph{efeitos computationais}, ou simplesmente \emph{efeitos}, são todas as ações e interações performadas pelos computadores que vão além da simples computação.
-Assim, uma função que computa a soma entre dois valores não apresenta nenhum efeito, enquanto uma função que computa a soma entre dois valores e imprime o resultado na tela performa um efeito ao fazer a impressão.
-Alguns exemplos de efeitos são \emph{continuações}, \emph{excessões} e \emph{não-determinismo}.
+Os \emph{efeitos computacionais}, ou simplesmente \emph{efeitos}, são todas as ações e interações efetuadas pelos computadores que vão além da simples computação.
+Assim, uma função que computa a soma entre dois valores não apresenta nenhum efeito, enquanto uma função que computa a soma entre dois valores e imprime o resultado na tela produz um efeito ao fazer a impressão.
+Alguns exemplos de efeitos são \emph{parcialidade}, \emph{continuações} e \emph{não-determinismo}.
 Programas com efeitos podem mudar seus estados internos, bem como receber entradas externas.
-Tais capacidades, enquanto promovem expressividade, também tornam a avaliação do comportamento do programa menos claras.
+Tais capacidades tornam a avaliação do comportamento do programa menos clara.
 
 \vspace{.5\baselineskip}
 Motivado pela busca de uma metalinguagem para modelar efeitos em linguagens de programação,~\cite{Moggi.1991} introduziu a linguagem $\lambda_c$.
@@ -13,13 +13,15 @@ O construtor de tipos $\mu$ representa alguma \emph{noção de computação}, ou
 Inspirado por este trabalho, \cite{Wadler.1993} sugere e defende o uso de \emph{mônadas} como estruturas dentro de linguagens funcionais como uma maneira de simular efeitos.
 
 \vspace{.5\baselineskip}
-Para os fins deste trabalho, consideraremos mônadas como um construtor de tipos {\footnotesize\texttt{\textbf{μ}}} munido das operações {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{bind}}}.\footnote{Estas operações devem respeitar certas condições, que não serão abordadas.}
-Alternativamente, podemos usar a operação {\footnotesize\texttt{\textbf{join}}} em lugar da operação {\footnotesize\texttt{\textbf{bind}}}.
-A operação {\footnotesize\texttt{\textbf{lift}}} eleva funções a funções \emph{efeituosas}.\footnote{\emph{Effectful}.}
-Do mesmo modo, a operação {\footnotesize\texttt{\textbf{unit}}} eleva um valor a um valor com efeitos, a operação {\footnotesize\texttt{\textbf{bind}}} encadeia efeitos e a operação {\footnotesize\texttt{\textbf{join}}} une efeitos.
+Para os fins deste trabalho, consideraremos mônadas como um construtor de tipos $\mu$ munido das operações {\texttt{\textbf{lift}}}, {\texttt{\textbf{unit}}} e {\texttt{\textbf{bind}}}.\footnote{Estas operações devem respeitar certas condições, que não serão abordadas.}
+A operação {\texttt{\textbf{lift}}} eleva funções a funções \emph{efeituosas}.\footnote{\emph{Effectful}.}
+Do mesmo modo, a operação {\texttt{\textbf{unit}}} eleva um valor a um valor com efeitos e a operação {\texttt{\textbf{bind}}} encadeia efeitos.
+Alternativamente, podemos usar a operação {\texttt{\textbf{join}}}, que une efeitos, em lugar da operação {\texttt{\textbf{bind}}}.
+A seguir temos as assinaturas de tipo das operações citadas.
 
 \vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \setmonofont{Fira Code}[Contextuals = Alternate]
     \texttt{\footnotesize\textbf{lift} : ∀α.∀β.∀μ.(α ⟶ β) ⟶ μα ⟶ μβ}\\
     \texttt{\footnotesize\textbf{unit} : ∀α.∀μ.α ⟶ μα}\\
     \texttt{\footnotesize\textbf{bind} : ∀α.∀β.∀μ.(α ⟶ μβ) ⟶ μα ⟶ μβ}\\
@@ -27,11 +29,11 @@ Do mesmo modo, a operação {\footnotesize\texttt{\textbf{unit}}} eleva um valor
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-Conforme notado por~\cite{Benton}, a linguagem $\lambda_c$ corresponde ao sistema \emph{laxo} --- doravante chamado de $\mathfrak{L}$ --- por meio da interpretação prova-programa.
-Este sistema, que aumenta o sistema intuicionista $\mathfrak{I}$ com uma modalidade de \emph{laxidade}, foi inicialmente considerado por~\cite{Curry-A} e posteriormente redescoberto por~\cite{Fairtlough}.
+Conforme notado por~\cite{Benton+others.1998}, a linguagem $\lambda_c$ corresponde ao sistema \emph{laxo} --- doravante chamado de $\mathfrak{L}$ --- por meio da interpretação prova-programa.
+Este sistema, que aumenta o sistema intuicionista $\mathfrak{I}$ com uma modalidade de \emph{laxidade}, foi inicialmente considerado por~\cite{Curry.1950, Curry.1952} e posteriormente redescoberto por~\cite{Fairtlough+Mendler.1997}.
 Esta modalidade --- denotada $\bigcirc$ --- foi interpretada por estes como \emph{verdade com restrições}, motivo que justifica seu nome.
-As regras que govenam a modalidade laxa, conforme    apresentadas abaixo, geram sentenças correspondentes aos tipos das funções {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}.
-Do mesmo modo, podemos derivar a sentença que corresponde ao tipo da função {\footnotesize\texttt{\textbf{bind}}}.
+As regras que governam a modalidade laxa, conforme apresentadas abaixo, geram sentenças correspondentes aos tipos das funções {\texttt{\textbf{lift}}}, {\texttt{\textbf{unit}}} e {\texttt{\textbf{join}}}.
+Do mesmo modo, podemos derivar a sentença que corresponde ao tipo da função {\texttt{\textbf{bind}}}.
 
 \vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
@@ -121,9 +123,9 @@ Do mesmo modo, podemos derivar a sentença que corresponde ao tipo da função {
 
 \begin{center}
     \footnotesize
-    \AxiomC{$\alpha\in\Gamma$}
+    \AxiomC{\phantom{$\beta$}}
     \RightLabel{\footnotesize$\mathbf{R_1}$}
-    \UnaryInfC{$\Gamma\entails\alpha$}
+    \UnaryInfC{$\Gamma\cup\set{\alpha}\entails\alpha$}
     \DisplayProof{}
     \quad
     \AxiomC{$\Gamma\entails\alpha$}
@@ -136,20 +138,20 @@ Do mesmo modo, podemos derivar a sentença que corresponde ao tipo da função {
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-Pode-se imergir sentenças do sistema $\mathfrak{L}$ em sentenças do sistema $\mathfrak{M}$ de modo que $\lax\alpha\coloneqq\pos\nec\alpha$, conforme definem~\cite{Pfenning}.
+Pode-se imergir sentenças do sistema $\mathfrak{L}$ em sentenças do sistema $\mathfrak{M}$ de modo que $\lax\alpha\coloneqq\pos\nec\alpha$, conforme definem~\cite{Pfenning+Davies.2001}.
 Como estes apontam, isso permite com que usemos o sistema $\mathfrak{M}$ para razoar sobre o sistema $\mathfrak{L}$, uma vez que as regras deste podem ser derivadas naquele.
-Outra imersão de interesse trata-se da tradução de~\cite{Fairtlough}, com sistema de origem o sistema $\mathfrak{L}$ e com sistema de destino um sistema bimodal $\langle\mathfrak{M},\mathfrak{M}\rangle$, que serve para reforçar ainda mais o caso da relação entre ambos os sistemas.
+Outra imersão de interesse trata-se da tradução de~\cite{Fairtlough+Mendler.1997}, com sistema de origem o sistema $\mathfrak{L}$ e com sistema de destino um sistema bimodal $\langle\mathfrak{M},\mathfrak{M}\rangle$, que serve para reforçar ainda mais o caso da relação entre ambos os sistemas.
 
 \vspace{.5\baselineskip}
 A imersão apresentada acima sugere que possamos interpretar algumas das sentenças do sistema~$\mathfrak{M}$ como representando computações com efeitos.
-De fato,~\cite{Pfenning} alegam que $\nec\alpha$ intuitivamente representa valores de tipo $\alpha$ que sobrevivem a efeitos, enquanto $\pos\alpha$ representa computações que retornam valores de tipo $\alpha$.
+De fato,~\cite{Pfenning+Davies.2001} alegam que $\nec\alpha$ intuitivamente representa valores de tipo $\alpha$ que sobrevivem a efeitos, enquanto $\pos\alpha$ representa computações que retornam valores de tipo $\alpha$.
 Corrobora com esta visão o trabalho de~\cite{Kobayashi.1997}.
-Notamos que, segundo~\cite{Zach}, podem ser derivadas no sistema $\mathfrak{M}$ sentenças da forma $\alpha\to\pos\alpha$ e da forma $\pos\pos\alpha\to\pos\alpha$.
+Notamos que, segundo~\cite{Zach+others.2019}, podem ser derivadas no sistema $\mathfrak{M}$ sentenças da forma $\alpha\to\pos\alpha$ e da forma $\pos\pos\alpha\to\pos\alpha$.
 Do mesmo modo, podem ser derivadas sentenças da forma $\nec(\alpha\to\beta)\to\pos\alpha\to\pos\beta$.
-Estas assemelham-se ao {\footnotesize\texttt{\textbf{lift}}}, {\footnotesize\texttt{\textbf{unit}}} e {\footnotesize\texttt{\textbf{join}}}, o que reforça o ponto apresentado aqui.
+Estas assemelham-se ao{\texttt{\textbf{lift}}}, {\texttt{\textbf{unit}}} e {\texttt{\textbf{join}}}, o que reforça o ponto apresentado aqui.
 
 \vspace{.5\baselineskip}
 Em computação, \emph{continuações} são um conceito descoberto e redescoberto diversas vezes~\citep{Reynolds.1993} que representa o restante de uma computação a partir de um determinado ponto.
 O \emph{estilo de passagem por continuações} consiste num estilo de programação onde cada função, em vez de retornar um valor, recebe como argumento uma função com a sua continuação e a invoca ao fim de sua execução~\citep{Thielecke.1999}.
-Linguagens em estilo de passagem por continuações são muito usadas como representação dentro de compiladores, uma vez que essa inversão de controle --- ou seja, a passagem de continuações como argumento --- revela o fluxo do programa.
-Uma vez que mônadas podem ser imergidas em continuações e continuações podem ser imergidas em mônadas \citep{Filinski.1994}, o sistema $\mathfrak{M}$ torna-se interessante do ponto de vista de compilação, motivo que justifica investigações acerca do uso de uma linguagem baseada em $\mathfrak{M}$ como representação durante a compilação.
+O estilo de passagem por continuações pode ser usado como representação dentro de compiladores~\citep{Appel.1991}, uma vez que essa inversão de controle --- ou seja, a passagem de continuações como argumento --- revela o fluxo do programa.
+Uma vez que mônadas podem ser imersas em continuações e continuações podem ser imersas em mônadas \citep{Filinski.1994}, o sistema $\mathfrak{M}$ torna-se interessante do ponto de vista de compilação, motivo que justifica investigações acerca do uso de uma linguagem baseada em $\mathfrak{M}$ como representação durante a compilação.

@@ -1,8 +1,8 @@
-\chapter{Fundamentação}
+\chapter{Fundamentação}\label{foundation}
 
 Nesta parte do trabalho, serão apresentadas definições gerais que fundamentarão as definições mais estritas que serão apresentadas futuramente. Notadamente, fundamentaremos as noções de sistemas e traduções. Ademais, discorreremos acerca da noção de provadores, que serão usados para certificar as provas apresentadas posteriormente. Antes disso, entretanto, introduziremos duas notações que serão usadas copiosamente, uma para o conjunto das partes e outra para sucessões.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{notation}
     Seja $A$ um conjunto, $\mathfrak{P}(A)$ denota o conjunto $\set{X\mid X\subseteq A}$.
@@ -15,28 +15,37 @@ Nesta parte do trabalho, serão apresentadas definições gerais que fundamentar
 \end{notation}
 \end{tcolorbox}
 
-\section{Sistemas}
+\section{Sistemas}\label{foundation.systems}
 
-Sistemas de dedução buscam formalizar e sistematizar o processo de razoamento. Estudos acerca disso datam da antiguidade, dentre os quais destaca-se~\cite{Aristotle}. Considera-se que os estudos modernos neste campo foram, dentre outras pessoas, fundados por~\cite{Frege} e continuados por~\cite{Russel-A,Russel-B,Russel-C}. Estas investigações --- bem como outras --- levaram ao desenvolvimento do sistema hoje tido como padrão. Posteriormente a isso, viu-se o surgimento de diversos sistemas não-padrões, fato que --- conforme~\cite{Beziau-B} --- justifica uma conceituação de sistema de dedução, que apresentaremos nesta seção.
+Sistemas de dedução buscam formalizar e sistematizar o processo de razoamento.
+Para tanto, são consideradas regras de dedução que permitem derivar verdades a partir de outras verdades conhecidas.
+Estudos acerca deste processo datam da antiguidade, entretanto considera-se que os estudos modernos neste campo foram, dentre outras pessoas, fundados por~\cite{Frege.1967}.
+Desde então, surgiram diversos sistemas com diferentes linguagens e regras de dedução.
+Esta diversidade de sistemas justifica o desenvolvimento de uma teoria unificadora.
 
-Ainda segundo~\cite{Beziau-B}, os primeiros desenvolvimentos neste sentido foram feitos por~\cite{Tarski}, que define o conceito de dedução com base num operador de fecho $C\mathrel{:}\mathfrak{P}(\mathcal{L})\to\mathfrak{P}(\mathcal{L})$, sendo $\mathcal{L}$ um conjunto qualquer. Neste trabalho entretanto usaremos a definição proposta por~\cite{Beziau} baseada numa relação de dedução ${\vdash}\subseteq\mathfrak{P}(\mathcal{L})\times\mathcal{L}$, uma vez que, por sua simplicidade, não traz elementos irrelevantes aos intuitos deste. Cabe destacar, conforme apontam~\cite{Font}, que ambas as definições são equivalentes\footnote{Destaca-se, entretanto, que a definição de~\cite{Tarski} requer a satisfação de postulados não requeridos por~\cite{Beziau}, sendo portanto menos geralista.}, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in C(\Gamma)$.
-
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Sistema]
     Um sistema de dedução consiste num par $\mathfrak{S} = \sequence{\mathcal{L}, \vdash}$, onde $\mathcal{L}$ consiste em um conjunto e ${\vdash}\subseteq\mathfrak{P}(\mathcal{L})\times\mathcal{L}$ em uma relação sobre o produto cartesiano do conjunto das partes de $\mathcal{L}$ e o conjunto $\mathcal{L}$, sem demais condições.
-    \qed{}
 \end{definition}
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sistema $\mathfrak{S}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade. Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais. Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores. Ao par formado por letras e operadores daremos o nome \emph{assinatura}, conforme abaixo.
+Os primeiros desenvolvimentos neste sentido foram feitos por~\cite{Tarski.1983}, que define o conceito de dedução com base num operador de fecho $\mathbf{C}\mathrel{:}\mathfrak{P}(\mathcal{L})\to\mathfrak{P}(\mathcal{L})$, sendo $\mathcal{L}$ um conjunto qualquer.
+Usaremos entretanto uma definição baseada numa relação de dedução ${\vdash}\subseteq\mathfrak{P}(\mathcal{L})\times\mathcal{L}$, que se mostra mais conveniente para as intenções deste trabalho~\citep{Coniglio.2005}.
+Cabe destacar que ambas as definições são equivalentes, uma vez que $\Gamma\entails\alpha$ se e somente se $\alpha\in\mathbf{C}(\Gamma)$.
+Destaca-se, entretanto, que o operador de fecho requer a satisfação de postulados não requeridos aqui, motivo pelos quais sistemas que respeitam tais condições são ditos \emph{tarskianos}.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
+A qualidade e quantidade dos elementos de um sistema $\mathfrak{S}=\sequence{\mathcal{L}, \vdash}$ não são especificados, portanto sendo esta uma definição de grande generalidade.
+Neste sentido, com base no escopo deste trabalho, restringiremos a definição do conjunto $\mathcal{L}$ --- dito \emph{linguagem} --- a linguagens proposicionais.
+Os elementos destas, aos quais daremos o nome de \emph{sentenças}, notabilizam-se por serem formadas por \emph{letras} --- que consistem em proposições indivisas --- e \emph{operadores} --- que podem gerar proposições maiores a partir de proposições menores.
+Ao par formado por letras e operadores daremos o nome \emph{assinatura}, conforme abaixo.
+
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Assinatura]
-    Uma assinatura proposicional consiste num par $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\circ}\in\mathcal{C}_n$ se e somente se $\mathalpha{\circ}$ possuir aridade $n$.
-    \qed{}
+    Uma assinatura proposicional consiste num par $\Sigma=\langle\mathcal{P},\mathcal{C}\rangle$, onde $\mathcal{P}$ consiste num conjunto letras e $\mathcal{C}=\bigcup\set{\mathcal{C}_i\mid i\in\mathbb{N}}$ num conjunto de operadores de modo que $\mathalpha{\circ}\in\mathcal{C}_n$ se e somente se $\mathalpha{\circ}$ possuir aridade $n$.
 \end{definition}
 \end{tcolorbox}
 
@@ -49,63 +58,64 @@ Conforme~\cite{Beziau} aponta, a qualidade e quantidade dos elementos de um sist
 \vspace{.5\baselineskip}
 Podemos interpretar os conjuntos $\mathcal{P}$ e $\mathcal{C}$ de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ como construtores de sentenças.
 Neste sentido, o conjunto $\mathcal{C}_0$ assemelha-se mais ao conjunto $\mathcal{P}$, uma vez que seus elementos --- ditos \emph{constantes} --- não geram sentenças maiores partindo de sentenças menores.
-Nota-se que uma assinatura constitui um elemento suficiente para definirmos indutivamente a linguagem de um sistema, conforme definido abaixo de maneira similar a~\cite{Franks}.
+Nota-se que uma assinatura constitui um elemento suficiente para definirmos indutivamente a linguagem de um sistema, conforme definido abaixo de maneira similar a~\cite{Franks.2025}.
 Por fim, destacamos que, para todos os sistemas apresentados neste trabalho, usaremos o conjunto de letras $\mathcal{P}=\set{p_i\mid i\in\mathbb{N}}$ e letras romanas em caixa-baixa para representar seus elementos.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Linguagem]
-    Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ induzida a partir de $\Sigma$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das seguintes regras:
+    Seja $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$ uma assinatura proposicional. Uma linguagem proposicional $\mathcal{L}$ induzida a partir de $\Sigma$ consiste no menor conjunto de sentenças bem-formadas induzido a partir das regras que seguem.
     \begin{enumerate}[label=\textbf{\emph{(\alph*)}}, left=\parindent]
-        \item$\mathcal{P}\subseteq\mathcal{L}$
-        \item\text{Se }$\mathalpha{\circ}\in\mathcal{C}_n\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\circ\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.\qed{}
+        \item$\mathcal{P}\subseteq\mathcal{L}$,
+        \item\text{Se }$\mathalpha{\circ}\in\mathcal{C}_n\text{ e }\set{\varphi_i\mid i\leq n}\subseteq\mathcal{L}\text{, então }\circ\sequence{\varphi_i\mid i\leq n}\in\mathcal{L}$.
     \end{enumerate}
 \end{definition}
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
 Neste trabalho, representaremos sentenças por letras gregas em caixa-baixa e conjuntos de sentenças por letras gregas em caixa-alta.\footnote{Desconsiderando-se o $\Sigma$, usado para representar assinaturas.}
-Ademais, impõe-se definir a noção de profundidade de uma sentença. Esta noção, em termos simples, consiste no comprimento do maior ramo da construção da dada sentença. A definição provida abaixo consiste numa generalização para quaisquer aridades da definição dada por~\cite{Troelstra}. Usaremos essa definição futuramente para fazer demonstrações por meio provas indutivas sobre esta propriedade.
+Ademais, impõe-se definir a noção de profundidade de uma sentença.
+Esta noção, em termos simples, consiste no comprimento do maior ramo da construção da dada sentença.
+A definição provida abaixo consiste numa generalização para quaisquer aridades da definição dada por~\cite{Troelstra+Schwichtenberg.2000}.
+Usaremos essa definição futuramente para fazer demonstrações por meio provas indutivas sobre esta propriedade.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Profundidade]
-    Seja $\mathfrak{S} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma proposição $a\in\mathcal{P}$, um operador ${\circ}\in\mathcal{C}$ e uma aridade $n>0$, definimos a profundidade $|\alpha|$ de uma sentença $\alpha\in\mathcal{L}$ indutivamente da seguinte maneira:
+    Seja $\mathfrak{S} = \sequence{\mathcal{L}, \vdash}$ um sistema com linguagem induzida a partir de uma assinatura $\Sigma=\sequence{\mathcal{P},\mathcal{C}}$. Considerando-se uma proposição $a\in\mathcal{P}$, um operador ${\circ}\in\mathcal{C}$ e uma aridade $n>0$, definimos a profundidade $|\alpha|$ de uma sentença $\alpha\in\mathcal{L}$ indutivamente da maneira que segue.
     \begin{align*}
         |a|&\coloneqq 0\\
         |{\circ^0}|&\coloneqq 0\\
-        |{\circ^n\sequence{\varphi_i\mid i\leq n}}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1.
-        \tag*{\qed}
+        |{\circ^n\sequence{\varphi_i\mid i\leq n}}|&\coloneqq\max\set{|\varphi_i|\mid i\leq n}+1
     \end{align*}
 \end{definition}
 \end{tcolorbox}
 
 \vspace{.5\baselineskip}
-Com isso, encerram-se as definições relacionadas a linguagens de sistemas de dedução. Agora, apresentaremos definições relacionadas a relações de dedução, que gozam da mesma generalidade dada a liguagens. Deste modo, a relação $\mathalpha{\vdash}$ pode ser tanto uma relação de \emph{derivação} --- definida sintaticamente --- quanto uma relação de \emph{satisfação}\footnote{Sendo esta denotada por $\mathalpha{\vDash}$.} --- definida semanticamente. Neste trabalho, serão abordados apenas sistemas definidos sobre relações de derivação. Cabe destacar, entretanto, que nada na definição de tradução impede que esta seja feita sobre relações de satisfação, conforme veremos com mais detalhes futuramente.
-\vspace{.3\baselineskip}
-Neste trabalho, definiremos a relações de dedução baseada em axiomatizações, ou seja, em conjuntos de \emph{axiomas} --- sentenças postuladas como verdadeiras --- e conjuntos de \emph{regras de dedução} --- que permitem derivar mais sentenças verdadeiras caso certas condições sejam satisfeitas. Axiomatizações consistem numa abordagem hilbertiana de dedução que, segundo~\cite{Troelstra}, distinguem-se por conter um conjunto reduzido de regras de dedução que nunca descartam premissas. Ainda baseando-se em~\cite{Troelstra} e em contraste a~\cite{Frege} e~\cite{Hilbert-A, Hilbert-B}, preferiremos esquemas de axiomas a axiomas individuais de modo a eliminarmos a necessidade de instanciações.
+Agora, apresentaremos definições relacionadas a relações de dedução, que gozam da mesma generalidade dada a liguagens.
+Neste trabalho, definiremos as relações de dedução como relações de \emph{derivação} baseadas em um conjunto de regras que permitem derivar sentenças verdadeiras caso um conjunto de \emph{juízos} sejam satisfeitos.
+Caso não haja nenhuma condições antecedentes para o uso das regras, dizemos que estas são \emph{axiomas}.
+Adotaremos uma abordagem hilbertiana de dedução, que se distingue por conter um conjunto reduzido de regras com condições antecedentes que nunca descartam premissas~\citep{Troelstra+Schwichtenberg.2000}.
 
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Dedução]
     Seja um sistema $\mathfrak{S} = \sequence{\mathcal{L},{\vdash}}$ com uma relação de dedução definida sobre um conjunto de regras $\mathcal{R}$ e seja um conjunto de sentenças $\Gamma\cup\set{\alpha}\subseteq\mathcal{L}$.
-    A dedução $\Gamma\vdash\alpha$ vale se e somente se houver sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e de modo que cada sentença $\varphi_i$ tenha sido gerada por alguma regra $\mathbf{R}\in\mathcal{R}$ aplicada, caso preciso, a sentenças anteriores.
-    \qed{}
+    A dedução $\Gamma\vdash\alpha$ vale se e somente se houver uma sucessão de sentenças $\sequence{\varphi_i\in\mathcal{L}\mid i\leq n}$ de modo que $\varphi_n=\alpha$ e de modo que cada sentença $\varphi_i$ tenha sido gerada por alguma regra $\mathbf{R}\in\mathcal{R}$ aplicada, caso preciso, a sentenças anteriores.
 \end{definition}
 \end{tcolorbox}
 
-\section{Traduções}
+\section{Traduções}\label{foundation.translations}
 
-Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro, garantindo certas propriedades. As propriedades a serem garantidas variam e ainda são discutidas na literatura, deixando que a definição exata de tradução --- assim como houve com a definição de sistema --- varie de acordo com a predileção e as necessidades de cada autor. Nesta seção, serão abordadas historicamente noções de tradução entre sistemas, bem como serão definidos e nomeados os conceitos de tradução que serão usados no restante deste trabalho.
+Traduções entre sistemas consistem em funções que mapeiam sentenças de um sistema a sentenças de outro, garantindo certas propriedades.
+As propriedades a serem garantidas variam e ainda são discutidas na literatura, podendo ser mais fortes ou mais fracas.
+Neste trabalho, adotaremos uma noção forte de tradução que requer tanto a correção forte quanto a completude forte, dita \emph{conservativa}~\citep{Coniglio.2005}.
+Definiremos, ainda, uma notação que nos permite aplicar sucintamente a tradução a todos os elementos de um conjunto.
 
-\vspace{.3\baselineskip}
-Historicamente, autores usaram diferentes combinações das condições apresentadas acima e, em certos casos, outras. Neste trabalho, adotaremos uma noção forte de tradução que requer tanto a correção forte quanto a completude forte, conforme~\cite{Coniglio}. Definiremos, ainda, uma notação que nos permite aplicar sucintamente a tradução a todos os elementos de um conjunto.
-
-\vspace{\baselineskip}
+\vspace{.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
 \begin{definition}[Tradução] 
     Uma sentença $\alpha$ de um sistema $\mathfrak{A} = \langle\mathcal{A}, \vdash_\mathfrak{A}\rangle$ pode ser traduzida a uma sentença $\alpha^*$ em um sistema $\mathfrak{B} = \langle\mathcal{B}, \vdash_\mathfrak{B} \rangle$ caso exista uma função $\bullet^* : \mathcal{A} \to \mathcal{B}$ que garanta que $\Gamma\vdash_\mathfrak{A}\alpha$ se e somente se $\Gamma^*\vdash_\mathfrak{B}\alpha^*$.
-    \qed{}
 \end{definition}
 \end{tcolorbox}
 
@@ -118,31 +128,30 @@ Historicamente, autores usaram diferentes combinações das condições apresent
 
 \vspace{.5\baselineskip}
 Uma \emph{imersão} consiste numa função injetora que mapeia uma estrutura em outra de uma maneira que a estrutura de origem seja de alguma forma preservada.
-Percebe-se que uma tradução, conforme apresentada, pode ser vista como uma imersão caso seja injetora, com a estrutura preservada sendo a relação de dedução.
+Percebe-se que uma tradução, da forma como foi apresentada, pode ser vista como uma imersão caso seja injetora, com a estrutura preservada sendo a relação de dedução.
 Dizemos então que um sistema foi \emph{imerso} em outro.
-\vspace{.3\baselineskip}
-A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov} como uma maneira de demonstrar que o uso da \emph{lei do terceiro excluso}\footnote{Definido como $\entails\alpha\vee\neg\alpha$.} não leva a contradições. Essa definição consiste basicamente em prefixar uma dupla negação a cada elemento da construção de uma dada sentença \citep{Coniglio}, motivo pelo qual chamaremos essa tradução de \emph{tradução de negação dupla}. Essa mesma tradução foi também descoberta independentemente por Gödel e por Getzen. Curiosamente, essa tradução mostra-se relevante para o escopo deste trabalho, uma vez que consiste na contraparte da passagem por continuações segundo a interpretação prova-programa.
 
-\vspace{\baselineskip}
-\begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-\begin{example} Define-se a tradução $\bullet^\neg:\mathcal{L}_\mathbf{C}\to\mathcal{L}_\mathbf{I}$ do sistema clássico ao sistema intuicionista indutivamente da seguinte maneira:
-    \begin{align*}
-        p^\neg&\coloneqq\neg\neg p\\
-        \bot^\neg&\coloneqq\bot\\
-        {(\varphi\wedge\psi)}^\neg&\coloneqq\neg\neg(\varphi^\neg \wedge \psi^\neg)\\
-        {(\varphi\vee\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \vee \psi^\neg)\\
-        {(\varphi\to\psi)}^\neg&\coloneqq\neg\neg (\varphi^\neg \to \psi^\neg)
-        \tag*{\qed} 
-    \end{align*}
-\end{example}
-\end{tcolorbox}
+\vspace{.5\baselineskip}
+A primeira tradução entre dois sistemas conhecida na literatura foi definida por~\cite{Kolmogorov.1967} como uma maneira de demonstrar que o uso da lei do \emph{tertium non datur} --- que valida sentenças da forma $\alpha\vee\neg\alpha$ --- não leva a contradições.
+Esta mesma tradução foi descoberta de maneira independente por~\cite{Gödel.1986a} e por~\cite{Gentzen.1969}.
+Essa definição consiste basicamente em prefixar uma dupla negação a cada elemento da construção de uma dada sentença \citep{Coniglio.2005}, motivo que levou esta tradução a ser chamada de \emph{tradução por negação dupla}.
 
-\section{Provadores}
+\section{Provadores}\label{foundation.provers}
 
-A primeira prova de destaque a ser realizada com grande uso de computadores foi a do teorema das quatro cores\footnote{Que afirma que \emph{qualquer mapa planar tem uma quatro-coloração}.}, feita por~\cite{Appel}, motivado pela grande quantidade de casos a serem analisados. Conforme~\cite{Wilson} afirma, esta prova foi, por uns, recebida com entusiasmo e por outros, devido ao uso de computadores, com cetistismo e desapontamento. Dentre aqueles que compartilharam destas visões opositoras, destaca-se~\cite{Tymoczko}. Ainda segundo~\cite{Wilson}, o teorema tornou-se mais aceito com o passar do tempo e foi, posteriormente, formalizado em um provador de teoremas por~\cite{Gonthier}.
+A primeira prova de destaque a ser realizada com grande uso de computadores foi a do teorema das quatro cores, feita por~\cite{Appel+Haken.1976}, motivado pela grande quantidade de casos a serem analisados.\footnote{Este teorema afirma que \emph{qualquer mapa planar tem uma quatro-coloração}.}
+Conforme~\cite{Wilson.2021} afirma, esta prova foi, por uns, recebida com entusiasmo e por outros, devido ao uso de computadores, com cetistismo e desapontamento. Dentre aqueles que compartilharam destas visões opositoras, destaca-se~\cite{Tymoczko.1979}. Ainda segundo~\cite{Wilson.2021}, o teorema tornou-se mais aceito com o passar do tempo e foi, posteriormente, formalizado em um provador de teoremas por~\cite{Gonthier.2008}.
 
-\vspace{.3\baselineskip}
-Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automáticos} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem. Formalizaremos as provas apresentadas neste trabalho no provador de teoremas interativo \textsc{coq}, o mesmo \emph{software} usado por~\cite{Gonthier}.
+\vspace{.5\baselineskip}
+Provadores de teoremas consistem em programas de computador que verificam a validade de teoremas. Dentre estes, podemos destacar as classes dos provadores \emph{automáticos} e dos provadores \emph{interativos}. Os primeiros buscam provar teoremas de maneira que requeira a menor quantidade de intervenção humana, enquanto os segundos --- que ganharam destaque depois das limitações dos primeiros ficarem evidentes --- delegam-se a verificar rigorosamente provas desenvolvidas por humanos em sua linguagem. Formalizaremos as provas apresentadas neste trabalho no provador de teoremas interativo \textit{Rocq}, o mesmo \emph{software} usado por~\cite{Gonthier.2008}.
 
-\vspace{.3\baselineskip}
-O \textsc{coq} trata-se de um provador de teoremas interativo baseado no \emph{cálculo de construções}. Este sistema formal fornece uma estrutura unificada para definir funções, tipos e proposições, permitindo a construção e verificação de provas dentro do mesmo formalismo. No \textsc{coq}, entretanto, este formalismo foi estendido de modo a permitir tipos indutivos, criando o dito \emph{cálculo de construções indutivas}. Neste, pode-se definir tipos de dados estruturados e funções e provas recursivas. Essa fundação alinha-se com isomorfismo de Curry-Howard, onde programas correspondem a provas e tipos correspondem a proposições, tornando o \textsc{coq} uma ferramenta poderosa de formalização e verificação. Para um maior aprofundamento acerca do provador de teoremas \textsc{coq}, recomenda-se a leitura de~\cite{Chlipala},~\cite{Pierce} e~\cite{Coq}.
+\vspace{.5\baselineskip}
+O \emph{Rocq} --- previamente chamado \emph{Coq} --- trata-se de um provador de teoremas interativo baseado no formalismo das \emph{construções} de~\cite{Coquand+Huet.1988}, que fica no topo do cubo-$\lambda$ de~\cite{Barendregt.1991}.
+O cubo-$\lambda$ classifica sistemas-$\lambda$ em um cubo onde cada dimensão $x$, $y$ e $z$ representa uma propriedade.
+O eixo $x$ representa a propriedade tipos poderem depender em termos, o eixo $y$ representa a propriedade de termos poderem depender em tipos e o eixo $z$ representa a propriedade de tipos poderem depender em tipos.
+Deste modo, o \emph{Rocq} goza de todas estas capacidades.
+
+\vspace{.5\baselineskip}
+Este sistema formal fornece uma estrutura unificada para definir funções, tipos e proposições, permitindo a construção e verificação de provas dentro do mesmo formalismo. No \emph{Rocq}, entretanto, este formalismo foi estendido de modo a permitir tipos indutivos e coindutivos, criando as ditas \emph{construções indutivas e coindutivas}.
+Neste, pode-se definir tipos de dados estruturados e funções e provas recursivas.
+Essa fundação alinha-se com a interpretação de programas como demonstrações e de tipos como proposições, tornando o \textit{Rocq} uma ferramenta poderosa de formalização e verificação.
+Para um maior aprofundamento acerca do provador de teoremas \emph{Rocq}, remetemos o leitor a~\cite{Chlipala.2013} e~\cite{Pierce.2025}.

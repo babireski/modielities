@@ -1,15 +1,15 @@
 \section{Sistema intuicionista}
 
-Nesta seção, definiremos os sistema intuicionista $\mathfrak{I}=\langle\mathcal{L},\vdash_\mathfrak{I}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
+Nesta seção, definiremos o sistema intuicionista $\mathfrak{I}=\langle\mathcal{L},\vdash_\mathfrak{I}\rangle$, cuja linguagem consiste no conjunto de origem das traduções apresentadas deste trabalho.
 Este sistema surge da rejeição da lei do \textit{tertium non datur}, ou seja $\alpha\mathrel{\vee}\neg\alpha$ não vale para todos os casos.
-O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer-A, Brouwer-B}.
+O intuicionismo foi primeiramente considerado e defendido por~\cite{Brouwer.1908}.
 Este defendia que uma asserção poderia ser dita verdade apenas quando esta poderia ser~\emph{construída}.
-Assim, uma demonstração por contradição não valeria, uma vez que durante uma demonstração deste tipo, estar-se-ia contruindo a dupla negação da proposição em apreciação, mas não a proposição em si.
+Assim, uma demonstração por contradição não valeria, uma vez que durante uma demonstração deste tipo, estar-se-ia construindo a dupla negação da proposição em apreciação, mas não a proposição em si.
 
 \vspace{0.5\baselineskip}
-Brouwer repudiou a tentativa formalização de seu pensamento como um sistema, todavia isso não impediu que esta fosse feita.
-A primeira formalização encontrada na literatura foi feita por~\cite{Kolmogorov}, entretanto outros também a fizeram posteriormente.
-A linguagem abaixo foi definida conforme~\cite{Troelstra}. Adotamos as ordens usuais de avaliação dos operadores.
+Brouwer opunha-se a tentativas de formalização de seu pensamento como um sistema, todavia isso não impediu que esta fosse feita.
+A primeira formalização encontrada na literatura foi feita por~\cite{Kolmogorov.1967}, entretanto outros também a fizeram posteriormente.
+A linguagem abaixo foi definida conforme~\cite{Troelstra+Schwichtenberg.2000}. Adotamos as ordens usuais de avaliação dos operadores.
 
 \vspace{0.5\baselineskip}
 \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
@@ -27,8 +27,8 @@ A linguagem abaixo foi definida conforme~\cite{Troelstra}. Adotamos as ordens us
 \vspace{0.5\baselineskip}
 Consideremos agora a relação de dedução para o sistema $\mathfrak{I}$, definida por suas regras de dedução.
 Estas destacam-se pela omissão de uma regra que gera sentenças do tipo $\neg\neg\alpha\to\alpha$.
-Isso acontece porque não somente esta regra permite provas não-contrutivas como permite a derivação de sentenças do tipo $\alpha\vee\neg\alpha$.
-Os axiomas abaixo estão organizadas de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na terceira linha os axiomas da disjunção e na quarta linha o axioma da contradição.
+Isso acontece porque não somente esta regra permite provas não-construtivas como permite a derivação de sentenças do tipo $\alpha\vee\neg\alpha$.
+Os axiomas abaixo estão organizados de acordo com os seus operadores principais: na primeira linha os axiomas da implicação, na segunda linha as axiomas da conjunção, na terceira linha os axiomas da disjunção e na quarta linha o axioma da contradição.
 Abaixo dos axiomas, temos as demais regras, nomeadamente a \emph{regra da assunção} e a \emph{regra da separação}.
 
 \vspace{0.5\baselineskip}
@@ -95,15 +95,15 @@ Abaixo dos axiomas, temos as demais regras, nomeadamente a \emph{regra da assun�
 
 \begin{center}
     \footnotesize
-    \AxiomC{$\alpha\in\Gamma$}
+    \AxiomC{\phantom{$\beta$}}
     \RightLabel{\footnotesize$\mathbf{R_1}$}
-    \UnaryInfC{$\Gamma\vdash\alpha$}
+    \UnaryInfC{$\Gamma\cup\set{\alpha}\vdash\alpha$}
     \DisplayProof\label{intuitionistic.rule.1}
     \quad
     \AxiomC{$\Gamma\vdash\alpha$}
     \AxiomC{$\Gamma\vdash\alpha\to\beta$}
     \RightLabel{\footnotesize$\mathbf{R_2}$}
-    \BinaryInfC{$\Gamma\vdash\beta$}\label{intuitionistic.rule.1}
+    \BinaryInfC{$\Gamma\vdash\beta$}\label{intuitionistic.rule.2}
     \DisplayProof
 \end{center}
 \end{definition}

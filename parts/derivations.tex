@@ -5,10 +5,10 @@
     Nomearemos este lema \emph{identidade} em analogia ao combinador $\mathbf{I}$, cujo tipo correspondente ao lema.
     Em seguida, o usaremos para a demonstração do teorema da dedução.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}[Identidade]\label{identity}
-        $\Gamma\entails\alpha\to\alpha$.
+        $\Gamma\entails_\mathfrak{M}\alpha\to\alpha$.
         \begin{proof}
             Pode ser demonstrado pela dedução que segue.
 
@@ -32,15 +32,15 @@
     \end{tcolorbox}
 
     \vspace{.5\baselineskip}
-    Tendo-se provado o lema da identidade, agora provaremos o teorema da \emph{dedução} com base na prova apresentada por~\cite{Hakli}.
+    Tendo-se provado o lema da identidade, agora provaremos o teorema da \emph{dedução} com base na prova apresentada por~\cite{Hakli+Negri.2012}.
     Como dito anteriormente, houve o cuidado em definir a regra da necessitação de modo a permitir a derivação correta deste teorema.
-    Pequenas alterações foram feitas de modo a garantir a adequação da prova de~\cite{Hakli} com as definições usadas neste trabalho.
+    Pequenas alterações foram feitas de modo a garantir a adequação da prova de~\cite{Hakli+Negri.2012} com as definições usadas neste trabalho.
     O teorema da dedução permite que com que provemos muitas asserções futuras de maneira mais breve e intuitiva.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
         \begin{theorem}[Dedução]\label{deduction}
-            $\text{Se }\Gamma\cup\set{\alpha}\vdash_{\mathfrak{L}}\beta\text{, então }\Gamma\vdash_{\mathfrak{L}}\alpha\to\beta$.
+            $\text{Se }\Gamma\cup\set{\alpha}\vdash_{\mathfrak{M}}\beta\text{, então }\Gamma\vdash_{\mathfrak{M}}\alpha\to\beta$.
         \begin{proof}
         Demonstração por indução forte sobre o tamanho da sucessão de dedução.
         Seja $n\in\mathbb{N}^+$ o tamanho da sucessão de dedução que deriva $\Gamma\vdash\alpha\to\beta$.
@@ -134,14 +134,14 @@
     \vspace{.5\baselineskip}
     Uma vez demonstrado o teorema da dedução, provaremos o teorema do \emph{enfraquecimento}.
     Este teorema afirma que, dada uma dedução $\Gamma\vdash\alpha$, sempre podemos deduzir esta mesma sentença $\alpha$ a partir de um sobreconjunto $\Delta$ de $\Gamma$.
-    Em outras palavras, se pudermos averar $\alpha$ dado um conjunto de assunções, sempre podemos fazer mais assunções sem alterar a verdade de $\alpha$.
+    Em outras palavras, se pudermos derivar $\alpha$ dado um conjunto de assunções, sempre podemos fazer mais assunções sem alterar a verdade de $\alpha$.
     Usaremos este teorema para, adiante, demonstrar o teorema da generalização da necessitação.
     Do mesmo modo, usaremos este teorema novamente em outras demonstrações no decorrer deste trabalho.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{theorem}[Enfraquecimento]\label{weakening}
-        Se $\Delta\subseteq\Gamma$ e $\Gamma\vdash_{\mathfrak{L}}\alpha$, então $\Delta\vdash_{\mathfrak{L}}\alpha$.
+        Se $\Delta\subseteq\Gamma$ e $\Gamma\vdash_{\mathfrak{M}}\alpha$, então $\Delta\vdash_{\mathfrak{M}}\alpha$.
         \begin{proof}
             Prova por indução forte sobre o tamanho da sucessão de dedução.
             Seja $n\in\mathbb{N}^+$ o tamanho da sucessão de dedução que prova $\Delta\vdash\alpha$.
@@ -179,17 +179,17 @@
     \end{theorem}
     \end{tcolorbox}
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     Agora, faz-se preciso demonstrar um novo lema.
     Usaremos este para demonstrar o teorema da generalização da necessitação.
     O lema afirma que, dadas a implicação de $\alpha$ em $\beta$ e a implicação de $\beta$ em $\gamma$, podemos derivar a implicação de $\alpha$ em $\gamma$.
     A ele demos o nome \emph{composição}, referindo-se ao combinador de composição $\mathbf{B}$, cujo tipo correspondente ao lema.
     Outros usos deste lema serão feitos ao longo deste trabalho, especialmente nas provas de interderivabilidade e correção.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}[Composição]\label{composition}
-        Se $\Gamma\entails_{\mathfrak{L}}\alpha\to\beta$ e $\Gamma\entails_{\mathfrak{L}}\beta\to\gamma$, então $\Gamma\entails_{\mathfrak{L}}\alpha\to\gamma$.
+        Se $\Gamma\entails_{\mathfrak{M}}\alpha\to\beta$ e $\Gamma\entails_{\mathfrak{M}}\beta\to\gamma$, então $\Gamma\entails_{\mathfrak{M}}\alpha\to\gamma$.
         \begin{proof}
             Pode ser demonstrado pela dedução que segue.
 
@@ -201,7 +201,7 @@
                 \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma\vdash\beta\to\gamma$                   & $\mathbf{H_2}$                           & \\[\rowskip]
                 \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\alpha$         & $\hyperref[modal.rule.1]{\mathbf{R_1}}$  & \\[\rowskip]
                 \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\alpha\to\beta$ & \refer{weakening}{T}                     & $\set{1}$\\[\rowskip]
-                \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\beta$          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{3,4}$\\
+                \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\beta$          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{3,4}$\\[\rowskip]
                 \scriptsize{\phantom{0}6}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\beta\to\gamma$ & \refer{weakening}{T}                     & $\set{2}$\\[\rowskip]
                 \scriptsize{\phantom{0}7}\phantom{ } & $\ \Gamma\cup\set{\alpha}\entails\gamma$         & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{5,6}$\\[\rowskip]
                 \scriptsize{\phantom{0}8}\phantom{ } & $\ \Gamma\entails\alpha\to\gamma$                & \refer{deduction}{T}                     & $\set{7}$
@@ -215,16 +215,16 @@
     \end{tcolorbox}
 
     \vspace{.5\baselineskip}
-    Tendo-se demonstrado o lema da composição, provaremos o teorema da \emph{generalização da regra da necessitação}, conforme~\cite{Troelstra}.
+    Tendo-se demonstrado o lema da composição, provaremos o teorema da \emph{generalização da regra da necessitação}, conforme~\cite{Troelstra+Schwichtenberg.2000}.
     Como apresentado abaixo, este teorema afirma que, caso possamos deduzir alguma sentença $\alpha$ a partir de um conjunto necessariamente verdadeiro de premissas, podemos deduzir a necessidade desta sentença $\alpha$.
     Trata-se este de uns dos resultados de maior valor para o desenvolvimento deste trabalho, sendo usado diversas vezes no decorrer deste, como durante as provas de interderivabilidade e correção.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{theorem}[Generalização da necessitação]\label{generalization}
-        Se $\nec\Gamma\entails_{\mathfrak{L}}\alpha$, então $\nec\Gamma\entails_{\mathfrak{L}}\nec\alpha$.
+        Se $\nec\Gamma\entails_{\mathfrak{M}}\alpha$, então $\nec\Gamma\entails_{\mathfrak{M}}\nec\alpha$.
         \begin{proof}
-            Demonstração por indução fraca sobre o tamanho do conjunto de assunções \citep{Troelstra}.
+            Demonstração por indução fraca sobre o tamanho do conjunto de assunções \citep{Troelstra+Schwichtenberg.2000}.
             Seja $n\in\mathbb{N}$ o tamanho do conjunto $\Gamma$ e $\mathbf{H_1}$ a suposição $\nec\Gamma\entails\alpha$.
             Deve-se analisar dois casos: um para a base de indução $n=0$ e o outro para o passo de indução $n>0$.
             \begin{adjustwidth}{0pt}{}
@@ -246,17 +246,17 @@
             \footnotesize
             \setlength{\rowskip}{0.5\baselineskip}
             \begin{xltabular}{\textwidth}{r | X l l}
-                \scriptsize{\phantom{0}1}\phantom{ } & $\ \nec\Gamma\vdash\nec\beta\to\nec\nec\beta$                             & $\hyperref[modal.axiom.modal.3]{\mathbf{B_3}}$ & \phantom{$\set{00,00}$}\\[\rowskip]
-                \scriptsize{\phantom{0}2}\phantom{ } & $\ \nec\Gamma\vdash\alpha$                                                & $\mathbf{H_1}$\phantom{1}                      & \\[\rowskip]
-                \scriptsize{\phantom{0}3}\phantom{ } & $\ \nec\Gamma\vdash\alpha\to\nec\beta\to\alpha$                           & $\hyperref[modal.axiom.1]{\mathbf{A_1}}$       & \\[\rowskip]
-                \scriptsize{\phantom{0}4}\phantom{ } & $\ \nec\Gamma\vdash\nec\beta\to\alpha$                                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{2,3}$\\[\rowskip]
-                \scriptsize{\phantom{0}5}\phantom{ } & $\ \nec\Gamma\vdash\nec(\nec\beta\to\alpha)$                              & $\mathbf{H_2}$                                 & $\set{4}$\\
-                \scriptsize{\phantom{0}6}\phantom{ } & $\ \nec\Gamma\vdash\nec(\nec\beta\to\alpha)\to\nec\nec\beta\to\nec\alpha$ & $\hyperref[modal.axiom.modal.1]{\mathbf{B_1}}$ & \phantom{$\set{00,00}$}\\[\rowskip]
-                \scriptsize{\phantom{0}7}\phantom{ } & $\ \nec\Gamma\vdash\nec\nec\beta\to\nec\alpha$                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{5,6}$\\[\rowskip]
-                \scriptsize{\phantom{0}8}\phantom{ } & $\ \nec\Gamma\vdash\nec\beta\to\nec\alpha$                                & \refer{composition}{L}                         & $\set{1,7}$\\[\rowskip]
-                \scriptsize{\phantom{0}9}\phantom{ } & $\ \nec\Gamma\cup\set{\nec\beta}\vdash\nec\beta$                          & $\hyperref[modal.rule.2]{\mathbf{R_1}}$        & \\[\rowskip]
-                \scriptsize{10}\phantom{ }           & $\ \nec\Gamma\cup\set{\nec\beta}\vdash\nec\beta\to\nec\alpha$             & \refer{weakening}{T}                           & $\set{8}$\\[\rowskip]
-                \scriptsize{11}\phantom{ }           & $\ \nec\Gamma\cup\set{\nec\beta}\vdash\alpha$                             & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{9,10}$
+                \scriptsize{\phantom{0}1}\phantom{ } & $\ \nec\Delta\vdash\nec\beta\to\nec\nec\beta$                             & $\hyperref[modal.axiom.modal.3]{\mathbf{B_3}}$ & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{0}2}\phantom{ } & $\ \nec\Delta\vdash\alpha$                                                & $\mathbf{H_1}$\phantom{1}                      & \\[\rowskip]
+                \scriptsize{\phantom{0}3}\phantom{ } & $\ \nec\Delta\vdash\alpha\to\nec\beta\to\alpha$                           & $\hyperref[modal.axiom.1]{\mathbf{A_1}}$       & \\[\rowskip]
+                \scriptsize{\phantom{0}4}\phantom{ } & $\ \nec\Delta\vdash\nec\beta\to\alpha$                                    & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{2,3}$\\[\rowskip]
+                \scriptsize{\phantom{0}5}\phantom{ } & $\ \nec\Delta\vdash\nec(\nec\beta\to\alpha)$                              & $\mathbf{H_2}$                                 & $\set{4}$\\[\rowskip]
+                \scriptsize{\phantom{0}6}\phantom{ } & $\ \nec\Delta\vdash\nec(\nec\beta\to\alpha)\to\nec\nec\beta\to\nec\alpha$ & $\hyperref[modal.axiom.modal.1]{\mathbf{B_1}}$ & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{0}7}\phantom{ } & $\ \nec\Delta\vdash\nec\nec\beta\to\nec\alpha$                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$        & $\set{5,6}$\\[\rowskip]
+                \scriptsize{\phantom{0}8}\phantom{ } & $\ \nec\Delta\vdash\nec\beta\to\nec\alpha$                                & \refer{composition}{L}                         & $\set{1,7}$\\[\rowskip]
+                \scriptsize{\phantom{0}9}\phantom{ } & $\ \nec\Delta\cup\set{\nec\beta}\vdash\nec\beta$                          & $\hyperref[modal.rule.2]{\mathbf{R_1}}$        & \\[\rowskip]
+                \scriptsize{10}\phantom{ }           & $\ \nec\Delta\cup\set{\nec\beta}\vdash\nec\beta\to\nec\alpha$             & \refer{weakening}{T}                           & $\set{8}$\\[\rowskip]
+                \scriptsize{11}\phantom{ }           & $\ \nec\Delta\cup\set{\nec\beta}\vdash\nec\alpha$                         & $\hyperref[modal.rule.2]{\mathbf{R_2}}$  & $\set{9,10}$
             \end{xltabular}
             \normalsize
 
@@ -267,14 +267,14 @@
     \end{tcolorbox}
 
     \vspace{.5\baselineskip}
-    Uma vez demonstrada a generalização da regra da necessitação, a demonstração da regra da \emph{dedução estrita} --- conforme descrito por~\cite{Barcan, Marcus} --- pode ser feita rapiadmente, como abaixo.
+    Uma vez demonstrada a generalização da regra da necessitação, a demonstração da regra da \emph{dedução estrita} pode ser feita rapidamente, como abaixo.
     Esta regra afirma que, dada uma dedução de $\beta$ partindo de um conjunto de premissas necessariamente verdadeiras e uma premissa $\alpha$, podemos deduzir $\nec(\alpha\to\beta)$ a partir desse conjunto de premissas necessariamente verdadeiras.
     Isso nos permite simplificar as demonstrações de correção das traduções, uma vez que uma das traduções apresentadas mapeia implicações materiais do sistema do origem em implicações estritas no sistema de destino.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}[Dedução estrita]\label{strict.deduction}
-        $\text{Se }\nec\Gamma\cup\set{\alpha}\entails_{\mathfrak{L}}\beta\text{, então }\nec\Gamma\entails_{\mathfrak{L}}\nec(\alpha\to\beta)$.
+        $\text{Se }\nec\Gamma\cup\set{\alpha}\entails_{\mathfrak{M}}\beta\text{, então }\nec\Gamma\entails_{\mathfrak{M}}\nec(\alpha\to\beta)$.
         \begin{proof}
             Pode ser demonstrado pela dedução que segue.
 
@@ -300,10 +300,10 @@
     Este lema afirma que, dada uma prova de $\alpha$ e uma prova de $\nec(\alpha\to\beta)$ a partir de um conjunto de premissas, sabe-se que deve haver alguma prova de $\beta$ a partir desse mesmo conjunto de premissas.
     Assim como o lema anterior, este nos permite simplificar as demonstrações que envolvam a implicação estrita.
 
-    \vspace{\baselineskip}
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{lemma}[Separação estrita]\label{strict.detachment}
-        Se $\Gamma\entails_{\mathfrak{L}}\alpha$ e $\Gamma\entails_{\mathfrak{L}}\nec(\alpha\to\beta)$, então $\Gamma\entails_{\mathfrak{L}}\beta$.
+        Se $\Gamma\entails_{\mathfrak{M}}\alpha$ e $\Gamma\entails_{\mathfrak{M}}\nec(\alpha\to\beta)$, então $\Gamma\entails_{\mathfrak{M}}\beta$.
         \begin{proof}
             Pode ser demonstrado pela dedução que segue.
 

@@ -1,65 +1,52 @@
 \input{configurations}
 
 \begin{document}
-    \title{Uma formalização assistida por computador da interpretação modal do sistema intuicionista}
+    \title{Uma formalização assistida por computador das imersões modais do sistema intuicionista}
     \author{Elian Babireski}
-    \date{2024}
+    \date{2025}
 
-    \maketitle
-
+    \pagenumbering{gobble}
     \include{parts/cover}
-    \include{parts/dedicatoria}
+    \include{parts/rosto}
     \include{parts/ficha}
-
-    \begin{abstract}
-        Os sistemas modais possuem atributos interessantes para a representação de efeitos computacionais.
-        Uma linguagem baseada em algum destes sistemas, podendo representar efeitos monadicamente, imerge e pode ser imersa em continuações.
-        O estilo de passagem por continuações trata-se de uma das diversas representações usadas em compiladores, o que torna estes sistemas relevantes do ponto de vista da compilação.
-        O sistema intuicionista, do mesmo modo, possui interesses computacionais, uma vez que a noção intuicionista de \emph{construção} assemelha-se com a noção de \emph{computação}.
-        Este trabalho apresenta duas traduções do sistema intuicionista a um dos sistemas modais em conjunto com as demonstrações das propriedades de interderivação e correção.
-        Todas as definições e asserções são implementadas e verificadas pela provador interativo de teoremas \emph{Rocq}.
-
-        \textit{Palavras-chave} --- Tradução. Imersão. Formalização. Intuitionismo. Modalidades. Efeitos. Compilação.
-    \end{abstract}
-
-    \begin{otherlanguage}{english} 
-        \begin{abstract}
-            One of the first translations of a deduction system into another presented in the literature involves the translation of the intuitionistic system into the modal system $\mathbf{S4}$ to interpret the modality of \emph{necessity} as a modality of \emph{provability}. Decades later, a metalanguage was introduced to semantically represent notions of computation such as partiality, non-determinism, exceptions, and continuations. The encoding of these notions shows great similarities with the modal axioms of the $\mathbf{S4}$ system, making the mentioned translation relevant within a proof-program interpretation perspective. Thus, inspired by the various cases of computer-assisted formalizations, this work aims to formally verify this translation.
-
-            \textit{Keywords} --- translation, embedding, formalization, intuitionism, modalities, effects, compilation.
-        \end{abstract}
-    \end{otherlanguage}
+    \include{parts/aprovacao}
+    \include{parts/dedicatoria}
+    \include{parts/epigraph}
+    \include{parts/resumo}
+    \include{parts/abstract}
 
     \tableofcontents
 
-    \include{parts/epigraph}
+    \pagenumbering{arabic}
+    \setcounter{page}{9}
+
     \include{parts/introduction}
     \include{parts/foundation}
 
-    \chapter{Sistemas}
+    \chapter{Sistemas}\label{systems}
 
-        Nesta parte do trabalho, uma vez apresentada a fundamentação, introduziremos as definições dos sistemas de origem e de destino das traduções apreciadas neste trabalho, nomeadamente o sistema intuicionista e um dos sistemas modais.
+        Nesta parte do trabalho, uma vez apresentada a fundamentação, introduziremos as definições dos sistemas de origem e de destino das traduções consideradas, nomeadamente o sistema intuicionista e um dos sistemas modais.
         Ainda, relacionaremos as modalidades dos sistemas modais com efeitos computacionais de modo a justificar investigações acerca destes a partir um ponto de vista da computação, especialmente aquele da compilação.
         Por fim, apresentaremos duas traduções que levam sentenças intuicionistas a sentenças modais.
 
-        \input{parts/intuitionism}
-        \input{parts/modalism}
-        \input{parts/effects}
-        \input{parts/translations}
+        \input{parts/intuitionism}\label{systems.intuitionistic}
+        \input{parts/modalism}\label{systems.modal}
+        \input{parts/effects}\label{systems.effects}
+        \input{parts/translations}\label{systems.translations}
 
-    \chapter{Propriedades}
+    \chapter{Propriedades}\label{properties}
         Uma vez definidos os conceitos precisos para o desenvolvimento deste trabalho, aqui apresentaremos diversas provas que lhes dizem respeito.
-        Notadamente, serão provados metateoremas acerca do sistema $\mathfrak{L}$, bem como serão demonstradas que as traduções são corretas e equivalem.
+        Notadamente, serão provados metateoremas acerca do sistema $\mathfrak{M}$, bem como serão demonstradas que as traduções são corretas e equivalem.
         Os metateoremas provados visam simplificar provas futuras.
-        Nas provas abaixo, adotaremos a convenção de que deduções denotadas $\Gamma\vdash\alpha$ valem para ambos os sistemas em apreciação neste trabalho.
-        Ou seja, são provas que não dependem do operador de necessidade e tampouco das regras associadas a ele ou ao operador de contradição.
-        Como definido, $\Gamma\vdash_\mathfrak{B}\alpha$ representa uma dedução no sistema $\mathfrak{B}$, enquanto $\Gamma\vdash_\mathfrak{L}\alpha$ uma dedução no sistema $\mathfrak{L}$.
+        % Nas provas abaixo, adotaremos a convenção de que deduções denotadas $\Gamma\vdash\alpha$ valem para ambos os sistemas em apreciação neste trabalho.
+        % Ou seja, são provas que não dependem do operador de necessidade e tampouco das regras associadas a ele ou ao operador de contradição.
+        Como definido, $\Gamma\vdash_\mathfrak{I}\alpha$ representa uma dedução no sistema intuicionista $\mathfrak{I}$, enquanto $\Gamma\vdash_\mathfrak{M}\alpha$ uma dedução no sistema modal $\mathfrak{M}$.
 
-        \input{parts/derivations}
-        \input{parts/interderivation}
-        \input{parts/soundness}
+        \input{parts/derivations}\label{properties.metaproperties}
+        \input{parts/interderivation}\label{properties.interderivation}
+        \input{parts/soundness}\label{properties.soundness}
         \input{parts/implementation}
-        \input{parts/conclusion}
+        \input{parts/conclusion}\label{conclusion}
 
     \bibliographystyle{bibliography}
     \bibliography{bibliography}

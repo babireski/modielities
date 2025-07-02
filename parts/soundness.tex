@@ -1,13 +1,16 @@
 \section{Correção}
 
-    Neste sessão, apresentaremos uma prova de correção para a $\nec$-tradução. Antes disso, entretanto, apresentaremos uma prova de $\entails\alpha^\medsquare\to\nec\alpha^\medsquare$, que usaremos como lema para a prova da correção conforme sugerido por~\cite{Troelstra}. Provaremos o lema por indução sobre a profundidade da sentença e a correção por indução sobre o tamanho da prova.
+    Neste seção, apresentaremos demosntrações de correção para ambas as traduções.
+    Antes disso, entretanto, demonstraremos a \emph{estabilidade} da tradução quadrado por indução sobre a profundidade da sentença, como sugerido por~\cite{Troelstra+Schwichtenberg.2000}.
+    Usaremos este teorema, cujo nome tiramos de~\cite{Flagg+Friedman.1986}, para a demonstração da correção da tradução quadrado.
 
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-    \begin{theorem}[Estabilidade]\label{square-nec}
-        $\Gamma\entails_\mathfrak{L}\alpha^\medsquare\to\nec\alpha^\medsquare$.
+    \begin{theorem}[Estabilidade]\label{stability}
+        $\Gamma\entails_\mathfrak{M}\alpha^\bullet\to\nec\alpha^\bullet$.
+    \end{theorem}
 
-        \begin{proof}
-            Prova por indução forte sobre a profundidade da sentença \citep{Troelstra}.
+            \emph{Demonstração.} Demonstração por indução forte sobre a profundidade da sentença \citep{Troelstra+Schwichtenberg.2000}.
             Seja $n\in\mathbb{N}^+$ a profundidade da sentença $\alpha\in\mathcal{L}$.
             Suponhamos que a asserção valha para qualquer sentença de profundidade menor que $n$ e nomeemos esta suposição $\mathbf{H}$.
             Devemos considerar cinco casos: a letra, a contradição, a conjunção, a disjunção e a implicação.
@@ -15,250 +18,247 @@
             \vspace{.5\baselineskip}
             \textsc{Caso 1.}
             Seja a sentença $\alpha$ for uma proposição $a\in\mathcal{P}$.
-            Sabe-se que $a^\medsquare=\nec a$ pela definição da tradução.
+            Sabe-se que $a^\bullet=\nec a$ pela definição da tradução.
             Deste modo, $\Gamma\vdash\nec{a}\to\nec\nec{a}$ pode ser gerado por \hyperref[modal.axiom.modal.3]{$\mathbf{B_3}$}.
 
             \vspace{.5\baselineskip}
             \textsc{Caso 2.}
             Seja a sentença $\alpha$ a constante $\bot$.
-            Sabe-se que $\bot^\medsquare=\bot$ pela definição da tradução.
+            Sabe-se que $\bot^\bullet=\bot$ pela definição da tradução.
             Deste modo, $\Gamma\entails\bot\to\nec\bot$ foi provado pelo lema \hyperref[explosion]{$\mathbf{L_3}$}.
 
             \vspace{.5\baselineskip}
             \textsc{Caso 3.}
             Seja a sentença $\alpha$ a conjunção de duas sentenças $\alpha_1$ e $\alpha_2$.
-            Sabe-se que ${(\alpha_1\wedge\alpha_2)}^\medsquare={\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare$ pela definição da tradução.
-            A partir de $\mathbf{H}$, temos que $\Gamma\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$ e que $\Gamma\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
-            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\wedge\alpha_2)}^\medsquare\to\nec{(\alpha_1\wedge\alpha_2)}^\medsquare$ pela dedução que segue.
+            Sabe-se que ${(\alpha_1\wedge\alpha_2)}^\bullet=\alpha_1^\bullet\wedge\alpha_2^\bullet$ pela definição da tradução.
+            A partir de $\mathbf{H}$, temos que $\Gamma\entails\alpha_1^\bullet\to\nec\alpha_1^\bullet$ e que $\Gamma\entails\alpha_2^\bullet\to\nec\alpha_2^\bullet$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\wedge\alpha_2)}^\bullet\to\nec{(\alpha_1\wedge\alpha_2)}^\bullet$ pela dedução que segue.
 
             \vspace{.5\baselineskip}
             \footnotesize
             \setlength{\rowskip}{.5\baselineskip}
             \begin{xltabular}{\textwidth}{r | X l l}
-                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$                                                                 & $\mathbf{H_1}$                                  & \phantom{$\set{00,00}$}\\[\rowskip]
-                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]
-                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare$                                                                  & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
-                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare\to\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare$       & \refer{conjunction.exchange}{L}                 & \\[\rowskip]
-                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare$                                                          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
-                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\wedge\nec{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$ & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
-                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare}\entails\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
-                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails{\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\wedge{\alpha_2}^\medsquare)$                                                                   & \refer{deduction}{T} & $\set{7}$
+                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\alpha_1^\bullet\to\nec\alpha_1^\bullet$                                                                 & $\mathbf{H_1}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\alpha_2^\bullet\to\nec\alpha_2^\bullet$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]
+                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\alpha_1^\bullet\wedge\alpha_2^\bullet$                                                                  & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
+                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\alpha_1^\bullet\wedge\alpha_2^\bullet\to\nec\alpha_1^\bullet\wedge\nec\alpha_2^\bullet$       & \refer{conjunction.exchange}{L}                 & \\[\rowskip]
+                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\nec\alpha_1^\bullet\wedge\nec\alpha_2^\bullet$                                                          & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
+                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\nec\alpha_1^\bullet\wedge\nec\alpha_2^\bullet\to\nec(\alpha_1^\bullet\wedge\alpha_2^\bullet)$ & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
+                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\wedge\alpha_2^\bullet}\entails\nec(\alpha_1^\bullet\wedge\alpha_2^\bullet)$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
+                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails\alpha_1^\bullet\wedge\alpha_2^\bullet\to\nec(\alpha_1^\bullet\wedge\alpha_2^\bullet)$                                                                   & \refer{deduction}{T} & $\set{7}$
             \end{xltabular}
             \normalsize
 
             \vspace{.5\baselineskip}
             \textsc{Caso 4.}
             Seja a sentença $\alpha$ a disjunção de duas sentenças $\alpha_1$ e $\alpha_2$.
-            Sabe-se que ${(\alpha_1\vee\alpha_2)}^\medsquare={\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare$ pela definição da tradução.
-            A partir de $\mathbf{H}$, temos que $\Gamma\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$ e que $\Gamma\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
-            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\vee\alpha_2)}^\medsquare\to\nec{(\alpha_1\vee\alpha_2)}^\medsquare$ pela dedução que segue.
+            Sabe-se que ${(\alpha_1\vee\alpha_2)}^\bullet=\alpha_1^\bullet\vee\alpha_2^\bullet$ pela definição da tradução.
+            A partir de $\mathbf{H}$, temos que $\Gamma\entails\alpha_1^\bullet\to\nec\alpha_1^\bullet$ e que $\Gamma\entails\alpha_2^\bullet\to\nec\alpha_2^\bullet$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+            Pode-se demonstrar $\Gamma\vdash{(\alpha_1\vee\alpha_2)}^\bullet\to\nec{(\alpha_1\vee\alpha_2)}^\bullet$ pela dedução que segue.
 
             \vspace{.5\baselineskip}
             \footnotesize
             \setlength{\rowskip}{.5\baselineskip}
             \begin{xltabular}{\textwidth}{r | X l l}
-                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\to\nec{\alpha_1}^\medsquare$                                                                 & $\mathbf{H_1}$                                  & \phantom{$\set{00,00}$}\\[\rowskip]
-                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_2}^\medsquare\to\nec{\alpha_2}^\medsquare$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]\pagebreak[4]
-                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare$                                                                    & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
-                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare\to\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare$           & \refer{disjunction.exchange}{L}                 & $\set{1, 2}$\\[\rowskip]
-                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
-                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec{\alpha_1}^\medsquare\vee\nec{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$     & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
-                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare}\entails\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$                                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
-                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails{\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare\to\nec({\alpha_1}^\medsquare\vee{\alpha_2}^\medsquare)$                                                                     & \refer{deduction}{T} & $\set{7}$
+                \scriptsize{\phantom{1}1}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\alpha_1^\bullet\to\nec\alpha_1^\bullet$                                                                 & $\mathbf{H_1}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+                \scriptsize{\phantom{1}2}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\alpha_2^\bullet\to\nec\alpha_2^\bullet$                                                                 & $\mathbf{H_2}$                                  & \\[\rowskip]\pagebreak[4]
+                \scriptsize{\phantom{1}3}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\alpha_1^\bullet\vee\alpha_2^\bullet$                                                                    & $\hyperref[modal.rule.1]{\mathbf{R_1}}$         & \\[\rowskip]
+                \scriptsize{\phantom{1}4}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\alpha_1^\bullet\vee\alpha_2^\bullet\to\nec\alpha_1^\bullet\vee\nec\alpha_2^\bullet$           & \refer{disjunction.exchange}{L}                 & $\set{1, 2}$\\[\rowskip]
+                \scriptsize{\phantom{1}5}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\nec\alpha_1^\bullet\vee\nec\alpha_2^\bullet$                                                            & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{3,4}$\\[\rowskip]
+                \scriptsize{\phantom{1}6}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\nec\alpha_1^\bullet\vee\nec\alpha_2^\bullet\to\nec(\alpha_1^\bullet\vee\alpha_2^\bullet)$     & \refer{necessity.conjunction.undistribution}{L} &\\[\rowskip]
+                \scriptsize{\phantom{1}7}\phantom{ } & $\ \Gamma\cup\set{\alpha_1^\bullet\vee\alpha_2^\bullet}\entails\nec(\alpha_1^\bullet\vee\alpha_2^\bullet)$                                                              & $\hyperref[modal.rule.2]{\mathbf{R_2}}$         & $\set{5,6}$\\[\rowskip]
+                \scriptsize{\phantom{1}8}\phantom{ } & $\ \Gamma\entails\alpha_1^\bullet\vee\alpha_2^\bullet\to\nec(\alpha_1^\bullet\vee\alpha_2^\bullet)$                                                                     & \refer{deduction}{T} & $\set{7}$
             \end{xltabular}
             \normalsize
 
             \vspace{.5\baselineskip}
             \textsc{Caso 5.}
             Seja a sentença $\alpha$ a implicação de duas sentenças $\alpha_1$ e $\alpha_2$.
-            Sabe-se que ${(\alpha_1\to\alpha_2)}^\medsquare=\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pela definição da tradução.
-            Deste modo, $\Gamma\vdash\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)\to\nec\nec({\alpha_1}^\medsquare\to{\alpha_2}^\medsquare)$ pode ser gerado pela regra \hyperref[modal.axiom.modal.3]{$\mathbf{B_3}$}.
+            Sabe-se que ${(\alpha_1\to\alpha_2)}^\bullet=\nec(\alpha_1^\bullet\to\alpha_2^\bullet)$ pela definição da tradução.
+            Deste modo, $\Gamma\vdash\nec(\alpha_1^\bullet\to\alpha_2^\bullet)\to\nec\nec(\alpha_1^\bullet\to\alpha_2^\bullet)$ pode ser gerado pela regra \hyperref[modal.axiom.modal.3]{$\mathbf{B_3}$}.
 
             \vspace{.5\baselineskip}
             Estando assim demonstrada a proposição.
-        \end{proof}
-    \end{theorem}
     \end{tcolorbox}
 
-    Uma vez provado o lema podemos, por fim, provar a correção da $\nec$-tradução.
+    \vspace{.5\baselineskip}
+    Uma vez demonstrado o teorema da estabilidade podemos, então, demonstrar o teorema correção da tradução quadrado por indução sobre o tamanho da sucessão de dedução, conforme~\cite{Troelstra+Schwichtenberg.2000}.
 
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{theorem}\label{square.soundness}
-        Se $\Gamma\entails_\mathfrak{B}\alpha$, então $\Gamma^\medsquare\entails_\mathfrak{L}\alpha^\medsquare$.
+        Se $\Gamma\entails_\mathfrak{I}\alpha$, então $\Gamma^\bullet\entails_\mathfrak{M}\alpha^\bullet$.
     \end{theorem}
 
-    \begin{proof}
-        Prova por indução forte sobre o tamanho da sucessão de dedução.
-        Assim, suponhamos que a tradução seja correta para qualquer sucessão dedução de tamanho $n < k$.
-        Demonstraremos, analisando-se os casos, que a correção da tradução vale para sucessões de dedução de tamanho $n = k$.
+        \emph{Demonstração.}
+        Demonstração por indução forte sobre o tamanho da sucessão de dedução~\citep{Troelstra+Schwichtenberg.2000}.
+        Seja $n\in\mathbb{N}^+$ o tamanho da sucessão de dedução que deriva $\Gamma\entails\alpha$.
+        Suponhamos que a correção da tradução quadrado valha para qualquer sucessão de dedução de tamanho menor que $n$ e nomeemos esta suposição $\mathbf{H}$.
+        Demos considerar onze casos: um para cada regra de dedução.
 
-        \begin{case}
-            \textsc{Caso 1.}
-            Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela invocação de alguma premissa.
-            Sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\medsquare\in\Gamma^\medsquare$.
-            Desde modo, pode-se demonstrar que $\Gamma^\medsquare\entails\alpha^\medsquare$ trivialmente pela evocação da premissa $\alpha^\medsquare$.
-        \end{case}
-
-        \begin{case}
-            \textsc{Caso 2.}
-            Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela invocação de algum axioma.
-            Sabe-se que existe algum esquema $\mathbf{A}\in\mathcal{A}$ que gera $\alpha$. 
-            Deste modo, analisaremos os casos e demonstraremos que se pode derivar $\Gamma^\medsquare\entails\alpha^\medsquare$ para cada esquema $\mathbf{A}\in\mathcal{A}$.
-            Nos casos abaixo, usaremos ocasionalmente a implicação estrita de modo a diminuir o espaço ocupado pelas provas.
-        \end{case}
-
-            \begin{subcase}
-                \textsc{Caso 2.1.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA1]{\mathbf{A_1}}$, sabemos que $\alpha=\varphi\to\psi\to\varphi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
-                    \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare&\hyperref[MA1]{${\mathbf{A_1}}$}\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{2}$\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
-                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                    \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&\refer{comp}{L}\\
-                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{8}$\\
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.2.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA2]{\mathbf{A_2}}$, sabemos que $\alpha=(\varphi\to\psi\to\chi)\to(\varphi\to\psi)\to\varphi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{1,4}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare,\varphi^\medsquare}\entails\chi^\medsquare&$\hyperref[strictsep]{\mathbf{T_\getrefnumber{strictsep}}}\;\set{3,5}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\strictif\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{6}$\\
-                    \fa\set{\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare}\entails(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{7}$\\
-                    \fa\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\to(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{8}$\\
-                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\psi^\medsquare\strictif\chi^\medsquare)\strictif(\varphi^\medsquare\strictif\psi^\medsquare)\strictif\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{9}$\\
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.3.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA3]{\mathbf{A_3}}$, sabemos que $\alpha=\varphi\to\psi\to\varphi\wedge\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\varphi^\medsquare\to\nec\varphi^\medsquare&\refer{square-nec}{L}\\
-                    \fa\entails\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare&\hyperref[MA3]{${\mathbf{A_3}}$}\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{2}$\\
-                    \fa\entails\nec(\varphi^\medsquare\to\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)\to\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&\hyperref[MB1]{${\mathbf{B_1}}$}\\
-                    \fa\entails\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,4}$\\
-                    \fa\entails(\varphi^\medsquare\to\nec\varphi^\medsquare)\to(\nec\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare)\to\varphi^\medsquare\to\psi^\medsquare\strictif\varphi^\medsquare\wedge\psi^\medsquare&\refer{comp}{L}\\
-                    \fa\entails(\nec\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))\to\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,6}$\\
-                    \fa\entails\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare)&$\hyperref[detachment]{\mathbf{R_2}}\;\set{5,7}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\nec(\psi^\medsquare\to\varphi^\medsquare\wedge\psi^\medsquare))&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{8}$\\
-                \end{fitch} 
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.4.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA4]{\mathbf{A_4}}$, sabemos que $\alpha=\varphi\wedge\psi\to\varphi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fa\entails\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare&$\hyperref[MA4]{\mathbf{A_4}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.5.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA5]{\mathbf{A_5}}$, sabemos que $\alpha=\varphi\wedge\psi\to\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare&$\hyperref[MA5]{\mathbf{A_5}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\wedge\psi^\medsquare\to\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.6.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA6]{\mathbf{A_6}}$, sabemos que $\alpha=\varphi\to\varphi\vee\psi$ e que $\alpha^\medsquare=\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA6]{\mathbf{A_6}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\varphi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.7.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA7]{\mathbf{A_7}}$, sabemos que $\alpha=\psi\to\varphi\vee\psi$ e que $\alpha^\medsquare=\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[MA7]{\mathbf{A_7}}$\\
-                    \fa\Gamma^\medsquare\entails\nec(\psi^\medsquare\to\varphi^\medsquare\vee\psi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.8.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\hyperref[IA8]{\mathbf{A_8}}$, sabemos que $\alpha=(\varphi\to\chi)\to(\psi\to\chi)\to\varphi\vee\psi\to\chi$ e que $\alpha^\medsquare=(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to\varphi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1,2}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\to\psi^\medsquare\to\chi^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{4,5}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare&$\hyperref[premisse]{\mathbf{R_1}}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\varphi^\medsquare\to\chi^\medsquare)\to(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&\hyperref[MA8]{${\mathbf{A_8}}$}\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails(\psi^\medsquare\to\chi^\medsquare)\to\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{3,8}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\to\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{6,9}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare,\varphi^\medsquare\vee\psi^\medsquare}\entails\chi^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{7,10}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare,\psi^\medsquare\strictif\chi^\medsquare}\entails\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{11}$\\
-                    \fa\set{\varphi^\medsquare\strictif\chi^\medsquare}\entails(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[strictdeduction]{\mathbf{T_\getrefnumber{strictdeduction}}}\;\set{12}$\\
-                    \fa\entails(\varphi^\medsquare\strictif\chi^\medsquare)\to(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[deduction]{\mathbf{T_\getrefnumber{deduction}}}\;\set{13}$\\
-                    \fa\Gamma^\medsquare\entails(\varphi^\medsquare\strictif\chi^\medsquare)\strictif(\psi^\medsquare\strictif\chi^\medsquare)\strictif\varphi^\medsquare\vee\psi^\medsquare\strictif\chi^\medsquare&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{14}$
-                \end{fitch}
-            \end{subcase}
-
-            \begin{subcase}
-                \textsc{Caso 2.9.} Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido a evocação de algum axioma gerado pelo esquema $\mathbf{A_{\bot}}$, sabemos que $\alpha=\bot\to\varphi$ e que $\alpha^\medsquare=\nec(\bot\to\varphi^\medsquare)$. Deste modo, podemos provar que $\Gamma^\medsquare\entails_\mathbf{S4}\nec(\bot\to\varphi^\medsquare)$ pela seguinte sucessão de dedução:
-
-                \footnotesize
-                \begin{fitch}
-                    \fb\entails\bot\to\varphi^\medsquare&\refer{explosion}{L}\\
-                    \fa\Gamma^\medsquare\entails\nec(\bot\to\varphi^\medsquare)&$\hyperref[necessitation]{\mathbf{R_3}}\;\set{1}$
-                \end{fitch}
-            \end{subcase}
-
-        \begin{case}
-            \textsc{Caso 3.}
-            Se a linha derradeira da sucessão de dedução que prova $\Gamma\entails_\mathbf{I}\alpha$ tenha sido gerada pela aplicação da regra do \emph{modus ponens} a duas sentenças $\varphi_i$ e $\varphi_j$ com $i<j<n$ pode-se assumir, sem perda de generalidade, que $\varphi_j=\varphi_i\to\alpha$.
-            Assim, a partir de $\mathbf{H}$ temos que $\mathbf{H_1}=\Gamma^\medsquare\entails_\mathbf{S4}\varphi_i^\medsquare$ e que $\mathbf{H_2}=\Gamma^\medsquare\entails_\mathbf{S4}\nec(\varphi_i^\medsquare\to\alpha^\medsquare)$.
-            Deste modo, podemos demonstrar que $\Gamma^\medsquare\entails_\mathbf{S4}\alpha^\medsquare$ pela seguinte sucessão de dedução:
-
-            \footnotesize
-            \begin{fitch}
-                \fb\varphi_i^\medsquare&$\mathbf{H_2}$\\
-                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)&$\mathbf{H_1}$\\
-                \fa\nec(\varphi_i^\medsquare\to\alpha^\medsquare)\to\varphi_i^\medsquare\to\alpha^\medsquare&\hyperref[MB2]{${\mathbf{B_2}}$}\\
-                \fa\varphi_i^\medsquare\to\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{2, 3}$\\
-                \fa\alpha^\medsquare&$\hyperref[detachment]{\mathbf{R_2}}\;\set{1, 4}$
-            \end{fitch}
-        \end{case}
         \vspace{.5\baselineskip}
+        \textsc{Caso 1.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.1]{\mathbf{A_1}}$.
+        Sabe-se que $\alpha=\alpha_1\to\alpha_2\to\alpha_1$ e que $\alpha^\bullet=\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_1^\bullet$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pela dedução que segue.
+
+        \vspace{\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{tabularx}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \nec\alpha_1^\bullet$                                                  & \refer{stability}{T}\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet$ & $\hyperref[modal.axiom.1]{\mathbf{A_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \vdash \nec(\alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet)$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \vdash \nec(\alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet) \to \nec\alpha_1^\bullet \to \alpha_2^\bullet \strictif \alpha_1^\bullet$ & $\hyperref[modal.axiom.modal.1]{\mathbf{B_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \vdash \nec\alpha_1^\bullet \to \alpha_2^\bullet \strictif \alpha_1^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{3,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \nec\alpha_2^\bullet \strictif \alpha_1^\bullet$ & \refer{composition}{L} & $\set{1,5}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma^\bullet \vdash \alpha_1^\bullet \strictif \alpha_2^\bullet \strictif \alpha_1^\bullet$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{6}$
+        \end{tabularx}
+        \normalsize
+
+        \vspace{\baselineskip}
+        \textsc{Caso 2.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.2]{\mathbf{A_2}}$.
+        Sabe-se que $\alpha=(\alpha_1\to\alpha_2\to\alpha_3)\to(\alpha_1\to\alpha_2)\to\alpha_1\to\alpha_3$ e que $\alpha^\bullet=(\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif(\alpha_1^\bullet\strictif\alpha_2^\bullet)\strictif\alpha_1^\bullet\strictif\alpha_3^\bullet$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pela dedução que segue.
+
+        \vspace{\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{tabularx}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_1^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_1^\bullet\strictif\alpha_2^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_2^\bullet$ & $\hyperref[strict.detachment]{\mathbf{L_{\getrefnumber{strict.detachment}}}}$ & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[strict.detachment]{\mathbf{L_{\getrefnumber{strict.detachment}}}}$ & $\set{1,4}$\\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet,\alpha_1^\bullet} \vdash \alpha_3^\bullet$ & $\hyperref[strict.detachment]{\mathbf{L_{\getrefnumber{strict.detachment}}}}$ & $\set{3,5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\strictif\alpha_2^\bullet} \vdash \alpha_1^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[strict.deduction]{\mathbf{L_{\getrefnumber{strict.deduction}}}}$ & $\set{6}$\\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet} \vdash (\alpha_1^\bullet\strictif\alpha_2^\bullet)\strictif\alpha_1^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[strict.deduction]{\mathbf{L_{\getrefnumber{strict.deduction}}}}$ & $\set{7}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \vdash (\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet)\to(\alpha_1^\bullet\strictif\alpha_2^\bullet)\strictif\alpha_1^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}$ & $\set{8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ } & $\ \Gamma^\bullet \vdash (\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif(\alpha_1^\bullet\strictif\alpha_2^\bullet)\strictif\alpha_1^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{9}$
+        \end{tabularx}
+        \normalsize
+
+        \vspace{\baselineskip}
+        \textsc{Caso 3.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.3]{\mathbf{A_3}}$.
+        Sabe-se que $\alpha=\alpha_1\to\alpha_2\to\alpha_1\wedge\alpha_2$ e que $\alpha^\bullet=\alpha_1^\bullet\strictif\alpha_2^\bullet\strictif\alpha_1^\bullet\wedge\alpha_2^\bullet$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pela dedução que segue.
+
+        \vspace{\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{tabularx}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \nec\alpha_1^\bullet$ & \refer{stability}{T}\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet \wedge \alpha_2^\bullet$ & $\hyperref[MA3]{\mathbf{A_3}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \vdash \nec(\alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet \wedge \alpha_2^\bullet)$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \vdash \nec(\alpha_1^\bullet \to \alpha_2^\bullet \to \alpha_1^\bullet \wedge \alpha_2^\bullet) \to \nec\alpha_1^\bullet \to \alpha_2^\bullet \strictif \alpha_1^\bullet \wedge \alpha_2^\bullet$ & $\hyperref[modal.axiom.modal.1]{\mathbf{B_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \vdash \nec\alpha_1^\bullet \to \alpha_2^\bullet \strictif \alpha_1^\bullet \wedge \alpha_2^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{3,4}$\\
+        \end{tabularx}
+        \begin{tabularx}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \vdash \alpha_1^\bullet \to \alpha_2^\bullet \strictif \alpha_1^\bullet \wedge \alpha_2^\bullet$ & \refer{composition}{L} & $\set{1,6}$\\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Gamma^\bullet \vdash \alpha_1^\bullet \strictif \alpha_2^\bullet \strictif \alpha_1^\bullet \wedge \alpha_2^\bullet$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{6}$
+        \end{tabularx}
+        \normalsize
+
+        \vspace{\baselineskip}
+        \textsc{Caso 4.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.4]{\mathbf{A_4}}$.
+        Sabe-se que $\alpha=\alpha_1\wedge\alpha_2\to\alpha_1$ e que $\alpha^\bullet=\alpha_1^\bullet\wedge\alpha_2^\bullet\strictif\alpha_1^\bullet$
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pelo uso da regra $\hyperref[modal.axiom.4]{\mathbf{A_4}}$ seguido do uso da regra $\hyperref[modal.rule.3]{\mathbf{R_3}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 5.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.5]{\mathbf{A_5}}$.
+        Sabe-se que $\alpha=\alpha_1\wedge\alpha_2\to\alpha_2$ e que $\alpha^\bullet=\alpha_1^\bullet\wedge\alpha_2^\bullet\strictif\alpha_2^\bullet$
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pelo uso da regra $\hyperref[modal.axiom.5]{\mathbf{A_5}}$ seguido do uso da regra $\hyperref[modal.rule.3]{\mathbf{R_3}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 6.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.6]{\mathbf{A_6}}$.
+        Sabe-se que $\alpha=\alpha_1\to\alpha_1\vee\alpha_2$ e que $\alpha^\bullet=\alpha_1^\bullet\strictif\alpha_1^\bullet\vee\alpha_2^\bullet$
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pelo uso da regra $\hyperref[modal.axiom.6]{\mathbf{A_6}}$ seguido do uso da regra $\hyperref[modal.rule.3]{\mathbf{R_3}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 7.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.7]{\mathbf{A_7}}$.
+        Sabe-se que $\alpha=\alpha_2\to\alpha_1\vee\alpha_2$ e que $\alpha^\bullet=\alpha_2^\bullet\strictif\alpha_1^\bullet\vee\alpha_2^\bullet$
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pelo uso da regra $\hyperref[modal.axiom.7]{\mathbf{A_7}}$ seguido do uso da regra $\hyperref[modal.rule.3]{\mathbf{R_3}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 8.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.8]{\mathbf{A_8}}$.
+        Sabe-se $\alpha=(\alpha_1\to\alpha_3)\to(\alpha_2\to\alpha_3)\to\alpha_1\vee\alpha_2\to\alpha_3$ e que $\alpha^\bullet=(\alpha_1^\bullet\strictif\alpha_3^\bullet)\strictif(\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif\alpha_1^\bullet\vee\alpha_2^\bullet\strictif\alpha_3^\bullet$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pela dedução que segue, onde $\Delta=\set{\alpha_1^\bullet\strictif\alpha_3^\bullet,\alpha_2^\bullet\strictif\alpha_3^\bullet,\alpha_1^\bullet\vee\alpha_2^\bullet}$.
+
+        \vspace{.5\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{xltabular}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Delta \vdash \alpha_1^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Delta \vdash (\alpha_1^\bullet\strictif\alpha_3^\bullet)\to\alpha_1^\bullet\to\alpha_1^\bullet$ & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Delta \vdash \alpha_1^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{1,2}$\\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Delta \vdash \alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Delta \vdash (\alpha_2^\bullet\strictif\alpha_3^\bullet)\to\alpha_2^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}6}\phantom{ } & $\ \Delta \vdash \alpha_2^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{4,5}$\\[\rowskip]
+            \scriptsize{\phantom{0}7}\phantom{ } & $\ \Delta \vdash \alpha_1^\bullet\vee\alpha_2^\bullet$ & $\hyperref[modal.rule.1]{\mathbf{R_1}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}8}\phantom{ } & $\ \Delta \vdash (\alpha_1^\bullet\to\alpha_3^\bullet)\to(\alpha_2^\bullet\to\alpha_3^\bullet)\to\alpha_1^\bullet\vee\alpha_2^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.axiom.8]{\mathbf{A_8}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}9}\phantom{ } & $\ \Delta \vdash (\alpha_2^\bullet\to\alpha_3^\bullet)\to\alpha_1^\bullet\vee\alpha_2^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{3,8}$\\[\rowskip]
+            \scriptsize{10}\phantom{ } & $\ \Delta \vdash \alpha_1^\bullet\vee\alpha_2^\bullet\to\alpha_3^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{6,9}$\\[\rowskip]
+            \scriptsize{11}\phantom{ } & $\ \Delta \vdash \alpha_3^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{7,10}$\\[\rowskip]
+            \scriptsize{12}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_3^\bullet,\alpha_2^\bullet\strictif\alpha_3^\bullet} \vdash \alpha_1^\bullet\vee\alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[strict.deduction]{\mathbf{T_{\getrefnumber{strict.deduction}}}}$ & $\set{11}$\\[\rowskip]
+            \scriptsize{13}\phantom{ } & $\ \set{\alpha_1^\bullet\strictif\alpha_3^\bullet} \vdash (\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif\alpha_1^\bullet\vee\alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[strict.deduction]{\mathbf{T_{\getrefnumber{strict.deduction}}}}$ & $\set{12}$\\[\rowskip]
+            \scriptsize{14}\phantom{ } & $\ \vdash (\alpha_1^\bullet\strictif\alpha_3^\bullet)\to(\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif\alpha_1^\bullet\vee\alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[deduction]{\mathbf{T_{\getrefnumber{deduction}}}}$ & $\set{13}$\\[\rowskip]
+            \scriptsize{15}\phantom{ } & $\ \Gamma^\bullet \vdash (\alpha_1^\bullet\strictif\alpha_3^\bullet)\strictif(\alpha_2^\bullet\strictif\alpha_3^\bullet)\strictif\alpha_1^\bullet\vee\alpha_2^\bullet\strictif\alpha_3^\bullet$ & $\hyperref[modal.rule.3]{\mathbf{R_3}}$ & $\set{14}$
+        \end{xltabular}
+        \normalsize
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 9.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela a regra $\hyperref[intuitionistic.axiom.contradiction]{\mathbf{A_{\bot}}}$.
+        Sabe-se que $\alpha=\bot\to\alpha_1$ e que $\alpha^\bullet=\nec(\bot\to\alpha_1^\bullet)$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pelo uso do lema \refer{explosion}{L} seguido do uso da regra $\hyperref[modal.rule.3]{\mathbf{R_3}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 10.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela regra $\hyperref[intuitionistic.rule.1]{\mathbf{R_1}}$.
+        Sabe-se que $\alpha\in\Gamma$ e, portanto, que $\alpha^\bullet\in\Gamma^\bullet$.
+        Pode-se demonstrar que $\Gamma^\bullet\entails\alpha^\bullet$ por meio da invocação da premissa $\alpha^\bullet$ com a regra $\hyperref[modal.rule.1]{\mathbf{R_1}}$.
+
+        \vspace{.5\baselineskip}
+        \textsc{Caso 11.}
+        Seja a linha derradeira da sucessão de dedução que prova $\Gamma\entails\alpha$ gerada pela regra $\hyperref[intuitionistic.rule.2]{\mathbf{R_2}}$.
+        Sabe-se que $\Gamma\entails\beta$ e que $\Gamma\entails\beta\to\alpha$, para algum $\beta$.
+        A partir de $\mathbf{H}$, temos que $\Gamma^\bullet\entails\beta^\bullet$ e que $\Gamma^\bullet\entails\nec(\beta^\bullet\to\alpha^\bullet)$, ditos $\mathbf{H_1}$ e $\mathbf{H_2}$.
+        Pode-se demonstrar $\Gamma^\bullet\entails\alpha^\bullet$ pela dedução que segue.
+
+        \vspace{\baselineskip}
+        \footnotesize
+        \setlength{\rowskip}{.5\baselineskip}
+        \begin{tabularx}{\textwidth}{r | X l l}
+            \scriptsize{\phantom{0}1}\phantom{ } & $\ \Gamma^\bullet \vdash \beta^\bullet$ & $\mathbf{H_2}$\phantom{1}                & \phantom{$\set{00,00}$}\\[\rowskip]
+            \scriptsize{\phantom{0}2}\phantom{ } & $\ \Gamma^\bullet \vdash \nec(\beta^\bullet\to\alpha^\bullet)$ & $\mathbf{H_1}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}3}\phantom{ } & $\ \Gamma^\bullet \vdash \nec(\beta^\bullet\to\alpha^\bullet)\to\beta^\bullet\to\alpha^\bullet$ & $\hyperref[modal.axiom.modal.2]{\mathbf{B_2}}$ & \\[\rowskip]
+            \scriptsize{\phantom{0}4}\phantom{ } & $\ \Gamma^\bullet \vdash \beta^\bullet\to\alpha^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{2,3}$\\[\rowskip]
+            \scriptsize{\phantom{0}5}\phantom{ } & $\ \Gamma^\bullet \vdash \alpha^\bullet$ & $\hyperref[modal.rule.2]{\mathbf{R_2}}$ & $\set{1,4}$
+        \end{tabularx}
+        \normalsize
+
+        \vspace{\baselineskip}
         Estando assim demonstrada a proposição.
-    \end{proof}
     \end{tcolorbox}
 
+    \vspace{.5\baselineskip}
+    A demonstração postrema deste trabalho, o teorema da correção da tradução redondo, segue de maneira simples das demonstrações de interderivação e de correção da tradução quadrado, conforme apresentado a seguir.
+
+    \vspace{.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
     \begin{theorem}[Correção]\label{circle.soundness}
-        Se $\Gamma\entails_\mathfrak{B}\alpha$, então $\nec\Gamma^\circ\entails_\mathfrak{L}\alpha^\circ$.
+        Se $\Gamma\entails_\mathfrak{I}\alpha$, então $\nec\Gamma^\circ\entails_\mathfrak{M}\alpha^\circ$.
     \end{theorem}
-    \begin{proof}
-        Partindo-se do teorema de correção da outra tradução \refer{square.soundness}{T}, temos que $\Gamma^\nec\entails\alpha^\nec$.
-        Então, por meio do teorema da interderivabilidade \refer{interderivability}{T}, temos que $\nec\Gamma^\circ\entails\alpha^\circ$.
+        \emph{Demonstração.} Sabe-se que $\Gamma\entails\alpha$. A partir do teorema \refer{square.soundness}{T}, temos que $\Gamma^\bullet\entails\alpha^\bullet$.
+        Então, a partir do teorema \refer{interderivability}{T}, temos que $\nec\Gamma^\circ\entails\alpha^\circ$.
+
+        \vspace{.5\baselineskip}
         Estando assim demonstrada a proposição.
-    \end{proof}
     \end{tcolorbox}

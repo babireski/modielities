@@ -1,21 +1,22 @@
 \section{Traduções}
-    A primeira tradução do sistema intuicionista ao sistema modal foi proposta por~\cite{Goedel} motivado pela possibilidade de leitura da necessidade como uma modalidade de construtividade. Ou seja, por meio dessa tradução, a sentença $\nec \varphi$ poderia ser lida como \textit{$\varphi$ pode ser provada construtivamente} \citep{Troelstra}. Gödel alegou --- sem apresentar provas --- a correção fraca dessa tradução e conjeiturou sua completude fraca, posteriormente provadas por~\cite{McKinsey}. As as traduções apresentadas abaixo foram retiradas de~\cite{Troelstra}.
+    Nesta seção, apresentaremos as duas traduções que serão abordadas neste trabalho.
+    Estas traduções tem como sistema de origem o sistema $\mathfrak{I}$ e como sistema de destino o sistema $\mathfrak{M}$.
+    A primeira tradução entre estes sistemas foi dada por~\cite{Gödel.1986b}, motivado pela possibilidade de leitura da necessidade como uma modalidade de \emph{construtividade}.
+    Ou seja, por meio desta tradução, a sentença $\nec\alpha$ poderia ser lida como \textit{$\alpha$ pode ser provada construtivamente} \citep{Troelstra+Schwichtenberg.2000}.
+    Esta tradução, que~\cite{Gödel.1986b} alegou ser correta e completa, antepõe a necessidade a alguns --- ou, numa outra formulação, a todos --- dos elementos da construção de uma dada sentença.
+    As duas traduções consideradas no conseguinte foram apresentadas conforme~\cite{Troelstra+Schwichtenberg.2000}, sendo a segunda delas reminiscente da tradução de~\cite{Gödel.1986b}.
+
+    \vspace{0.5\baselineskip}
+    Ambas as traduções são fortemente corretas e equivalem --- ou seja, podem ser interderivadas ---, conforme demonstraremos futuramente.
+    Ademais, pontua-se que estas traduções assemelham-se muito com duas traduções do sistema intuicionista ao sistema linear providas por~\cite{Girard.1987}.
+    Nelas, sentenças da forma $\alpha\to\beta$ são mapeadas para sentenças da forma $!(\alpha\multimap\beta)$ e da forma $!\alpha\multimap\beta$.
+    De fato,~\cite{Troelstra+Schwichtenberg.2000} alega ter baseado a primeira das traduções que seguem em uma das traduções de~\cite{Girard.1987}.
+    De modo semelhante,~\cite{Girard.1987} alega que baseou a outra de suas traduções na segunda apresentada a seguir, a tradução de~\cite{Gödel.1986b}.
+    Nomeamo-las \emph{tradução $\circ$} e \emph{tradução $\bullet$}.
 
     \vspace{0.5\baselineskip}
     \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-    \begin{definition}[Tradução quadrado]\label{translation.square}
-        Define-se a tradução $\squareee:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ indutivamente da maneira que segue.
-        Considere $a\in\mathcal{P}$.
-
-        \begin{center}
-            $a^\medsquare\coloneqq\nec a\quad\quad\quad\quad\quad\quad\quad\quad\quad\bot^\medsquare\coloneqq\bot$\\\vspace{0.5\baselineskip}
-            ${(\alpha\wedge\beta)}^\medsquare\coloneqq\alpha^\medsquare\wedge\beta^\medsquare\quad\quad{(\alpha \to \beta)}^\medsquare\coloneqq \nec (\alpha^\medsquare \to \beta^\medsquare)\quad\quad{(\alpha\vee\beta)}^\medsquare\coloneqq\alpha^\medsquare\vee\beta^\medsquare$
-        \end{center}
-    \end{definition}
-    \end{tcolorbox}
-
-    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
-    \begin{definition}[Tradução redondo]\label{translation.circle}
+    \begin{definition}[Tradução $\circ$]\label{translation.circle}
         Define-se a tradução $\circ:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ indutivamente da maneira que segue.
         Considere $a\in\mathcal{P}$.
 
@@ -26,6 +27,19 @@
     \end{definition}
     \end{tcolorbox}
 
+    \begin{tcolorbox}[enhanced jigsaw, breakable, sharp corners, colframe=black, colback=white, boxrule=0.5pt, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm]
+    \begin{definition}[Tradução $\bullet$]\label{translation.square}
+        Define-se a tradução $\bullet:\mathcal{L}\to\mathcal{L}_{\nec}$ do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ indutivamente da maneira que segue.
+        Considere $a\in\mathcal{P}$.
+
+        \begin{center}
+            $a^\bullet\coloneqq\nec a\quad\quad\quad\quad\quad\quad\quad\quad\quad\bot^\bullet\coloneqq\bot$\\\vspace{0.5\baselineskip}
+            ${(\alpha\wedge\beta)}^\bullet\coloneqq\alpha^\bullet\wedge\beta^\bullet\quad\quad{(\alpha \to \beta)}^\bullet\coloneqq \nec (\alpha^\bullet \to \beta^\bullet)\quad\quad{(\alpha\vee\beta)}^\bullet\coloneqq\alpha^\bullet\vee\beta^\bullet$
+        \end{center}
+    \end{definition}
+    \end{tcolorbox}
+
     \vspace{0.5\baselineskip}
-    Ambas as traduções providas são equivalentes, conforme demonstraremos futuramente.
-    Ademais, faz-se interessante pontuar que as traduções $\bullet^\circ$ e $\bullet^\medsquare$ correspondem, respectivamente, às traduções $\bullet^\circ$ e $\bullet^*$ do sistema intuicionista ao sistema linear providas por~\cite{Girard}. A primeira tradução de Girard corresponde a uma ordem de avaliação por nome (\textit{call-by-name}) e a segunda a uma ordem de avaliação por valor (\textit{call-by-value}), conforme notam~\cite{Maraist}.
+    As traduções do sistema intuicionista ao sistema linear de~\cite{Girard.1987} possuem relação com os conceitos duais~\citep{Wadler.2003} de \emph{avaliação por valor} e de \emph{avaliação por nome}, conforme notam~\cite{Maraist+others.1999}.
+    Isto sugere que pode haver uma relação semelhante para as traduções consideradas aqui, fato confirmado por~\cite{Espírito-Santo+others.2019}.
+    Deste modo, a tradução $\circ$ corresponde a uma tradução de avaliação por nome e a tradução $\bullet$ a uma tradução de avaliação por valor.

@@ -2,7 +2,7 @@
 
     Os sistemas modais consistem em um conjunto de aumentos aos sistemas proposicionais um ou mais operadores, chamados \emph{modalidades}, que qualificam sentenças.
     No caso do sistema $\mathbf{S4}$, dito $\mathfrak{M}$, são adicionadas as modalidades duais de \emph{necessidade} e \emph{possibilidade} --- denotadas $\nec$ e $\pos$ ---, bem como regras que governam o comportamento destas modalidades.
-    Neste sistema, valem sentenças da forma $\nec(\alpha\to\alpha)\to\pos\alpha\to\pos\beta$, da forma $\alpha\to\pos\alpha$ e da forma $\pos\alpha\to\pos\pos\alpha$ \citep{Zach+others.2024}, que se assemelham com as transformações naturais de uma \emph{mônada}.
+    Neste sistema, valem sentenças da forma $\nec(\alpha\to\alpha)\to\pos\alpha\to\pos\beta$, da forma $\alpha\to\pos\alpha$ e da forma $\pos\alpha\to\pos\pos\alpha$ \citep{Zach+others.2019}, que se assemelham com as transformações naturais de uma \emph{mônada}.
 
     \vspace{.5\baselineskip}
     As \emph{mônadas} ganharam destaque em pesquisa de liguagens de programação deste de~\cite{Moggi.1991} formalizou a metalinguagem $\lambda_c$ como uma maneira de modelar \emph{efeitos computacionais}, como parcialidade, não-determinismo e continuações.
@@ -17,30 +17,37 @@
     \vspace{.5\baselineskip}
     Para tanto, apresentaremos duas traduções do sistema intuicionista $\mathfrak{I}$ ao sistema $\mathfrak{M}$ conforme definidas por~\cite{Troelstra+Schwichtenberg.2000}, bem como suas provas de interderivação e correção.
     O sistema de origem, o intuicionista, destaca-se por abarcar a noção de \emph{construção}, que em muito lembra a noção de \emph{computação}.
-    As traduções apresentadas e as asserções demonstradas serão verificadas no provador de teoremas \emph{Rocq}.\footnote{Antigamente conhecido como\emph{Coq}.}
+    As traduções apresentadas e as asserções demonstradas serão verificadas no provador de teoremas \emph{Rocq}.\footnote{Antigamente conhecido como \emph{Coq}.}
+    Os artefatos desta formalização ficarão dispostos para consulta no endereço \texttt{<}\url{https://github.com/babireski/embedding}\texttt{>}.
 
     \vspace{.5\baselineskip}
-    As implementações das demonstrações deste trabalho usarão como base a biblioteca de sistemas modais normais desenvolvida em \emph{Rocq} por~\cite{Silveira+others.2022} e posteriormente aumentada por~\cite{Nunes+Roggia+Torrens.2025} de modo a permitir a fusão os sistemas modais.
-    Ainda, as implementações das traduções serão afins às implementações das traduções feitas por~\cite{Sehnem.2023}, estas tendo como sistema de destino o sistema linear de~\cite{Girard}.
-    Tais traduções, tal-qualmente definidas por~\cite{Girard}, assemelham-se muito com as traduções abordadas neste trabalho.
+    As implementações das demonstrações deste trabalho usarão como base a biblioteca de sistemas modais normais desenvolvida em \emph{Rocq} por~\cite{Silveira+others.2022} e posteriormente aumentada por~\cite{Nunes+others.2025} de modo a permitir a fusão os sistemas modais.
+    Ainda, as implementações das traduções serão afins às implementações das traduções feitas por~\cite{Sehnem.2023}, estas tendo como sistema de destino o sistema linear de~\cite{Girard.1987}.
+    Tais traduções, tal-qualmente definidas por~\cite{Girard.1987}, assemelham-se muito com as traduções abordadas neste trabalho.
 
     \vspace{.5\baselineskip}
-    Provadores de teoremas tem-se mostrado ferramentas poderosas para a verificação de asserções em sistemas formais.
-    Tais programas analisam cada passo da demonstração e podem apontar erros que em muitos casos passariam despercebidos.
-    Os artefatos da formalização ficarão dispostos para consulta de todos no endereço \texttt{\footnotesize\textbf{\url{https://github.com/babireski/embedding}}}.
+    Historicamente, demonstrações feitas por um autor são validadas à mão por seus pares, em um processo que pode ser laborioso e sujeito a erros.
+    Neste sentido, provadores de teoremas tem-se mostrado ferramentas poderosas para a verificação de asserções em sistemas formais~\citep{Chlipala.2013}.
+    Tais \emph{softwares} --- que usufruem de uma relação profunda entre demonstrações e provas~\citep{Wadler.2015} --- analisam cada passo da demonstração e podem apontar erros que em muitos casos passariam despercebidos.
+    Assim, este trabalho busca fornecer uma base robusta para futuros estudos sobre o tema abordado.
 
-    \section{Objetivos}
-    Este trabalho consiste numa continuação do desenvolvimento da biblioteca de formalização de sistemas modais normais iniciado por~\cite{Silveira} e posteriormente expandida de forma a permitir a fusão de sistemas modais por~\cite{Nunes}. Nele, formalizaremos as traduções do sistema intuicionista ao sistema modal $\mathbf{S4}$ no asssitente de provas \textsc{coq} e provaremos suas propriedades. Uma formalização de traduções entre sistemas de dedução similar a nossa foi feita por~\cite{Sehnem}, neste caso tendo como alvo o sistema linear de~\cite{Girard}. Todas as formalizações citadas acima deram-se no assistente de provas \textsc{coq}, o mesmo assistente usado neste trabalho. Como objetivos específicos, listamos:
+    \section{Metas}
+    Este trabalho busca apresentas duas traduções do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ conforme definidas por~\cite{Troelstra+Schwichtenberg.2000} e as suas demonstrações de interderivação e correção, bem como formalizar tais traduções e propriedades no assistente de provas interativo \emph{Rocq}.
+    Para tanto, usaremos a biblioteca uma biblioteca de sistemas modais normais desenvolvida por~\cite{Silveira+others.2022} e posteriormente aumentada de forma a permitir a fusão de sistemas modais por~\cite{Nunes+others.2025}.
+    Listamos as metas que seguem para este trabalho.
 
-    \begin{itemize}
-        \item Fornecer uma introdução ao conceito de sistemas de dedução;
-        \item Fornecer uma introdução ao conceito de traduções entre sistemas;
-        \item Fornecer uma introdução ao sistema intuicionista;
-        \item Fornecer uma introdução aos sistemas modais, em especial o $\mathbf{S4}$;
-        \item Apresentar as traduções do sistema intuicionista ao sistema $\mathbf{S4}$;
-        \item Provar manualmente a correção e completude das traduções providas bem como outras propriedades pertinentes;
-        \item Formalizar as provas no provador de teoremas interativo \textsc{coq}.
-    \end{itemize}
+    \begin{enumerate}[label=\textbf{{(\alph*)}}, left=\parindent]
+        \item Apresentar a definição de \emph{sistemas de dedução} e de \emph{traduções} entre tais sistemas.
+        \item Apresentar as definições do sistema $\mathfrak{I}$ e do sistema $\mathfrak{M}$.
+        \item Apresentar as duas traduções do sistema $\mathfrak{I}$ ao sistema $\mathfrak{M}$ citadas.
+        \item Apresentar demonstrações de interderivação e correção para as traduções.
+        \item Formalizar as definições e demonstrações no assistente de provas \emph{Rocq}.
+    \end{enumerate}
 
     \section{Estruturação}
-    Estruturaremos este trabalho em cinco partes, iniciando-se por esta introdução. O Capítulo 2 consiste numa fundamentação de conceitos basilares ao desenvolvimento deste trabalho, notadamente os conceitos de \emph{sistemas de dedução}, \emph{traduções} e \emph{provadores de teoremas}. O Capítulo 3 apresenta as definições dos sistemas e traduções relevantes a este trabalho. No Capítulo 4 são provadas todas as propriedades abarcadas no escopo deste trabalho. Por fim, o Capítulo 5 compreende considerações parciais acerca do desenvolvido até o momento.
+    Estruturaremos este trabalho em seis partes, a começar por esta introdução.
+    Em seguida, na \textsc{Parte \ref{foundation}}, apresentaremos os conceitos basilares ao desenvolvimento deste trabalho, nomeadamente notadamente os conceitos de \emph{sistemas de dedução} (\textsc{Seção \ref{foundation.systems}}), \emph{traduções} (\textsc{Seção \ref{foundation.translations}}) e \emph{provadores de teoremas} (\textsc{Seção \ref{foundation.provers}}).
+    Durante a parte \textsc{Parte \ref{systems}}, serão apresentadas as definições dos  definições dos sistemas de dedução --- o sistema $\mathfrak{I}$ (\textsc{Seção \ref{systems.intuitionistic}}) e o sistema $\mathfrak{M}$ (\textsc{Seção \ref{systems.modal}}) ---, bem como as traduções abordadas neste trabalho (\textsc{Seção \ref{systems.translations}}).
+    Ainda, relacionaremos o sistema $\mathfrak{M}$ com \emph{efeitos computacionais} (\textsc{Seção \ref{systems.effects}}).
+    Serão apresentados na \textsc{Parte \ref{properties}} as derivações das propriedades, divididas em \emph{metateoremas}  (\textsc{Seção \ref{properties.metaproperties}}), \emph{interderivabilidade}  (\textsc{Seção \ref{properties.interderivation}}) e \emph{correção}  (\textsc{Seção \ref{properties.soundness}}).
+    Por fim, discutiremos a implementação na \textsc{Parte \ref{implementation}} e faremos considerações finais na \textsc{Parte \ref{conclusion}}.

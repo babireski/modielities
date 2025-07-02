@@ -726,68 +726,78 @@ FUNCTION {format.incoll.inproc.crossref}
 
 FUNCTION {article}
 { output.bibitem
-  format.authors "author" output.check
-  author format.key output
-  new.block
-  format.title "title" output.check
-  new.block
-  crossref missing$
-    { journal emphasize "journal" output.check
-      eid empty$
-        { format.vol.num.pages output }
-        { format.vol.num.eid output }
+  note empty$
+    { % Original processing when no note exists
+      format.authors "author" output.check
+      author format.key output
+      new.block
+      format.title "title" output.check
+      new.block
+      crossref missing$
+        { journal emphasize "journal" output.check
+          eid empty$
+            { format.vol.num.pages output }
+            { format.vol.num.eid output }
+          if$
+          format.date "year" output.check
+        }
+        { format.article.crossref output.nonnull
+          eid empty$
+            { format.pages output }
+            { format.eid output }
+          if$
+        }
       if$
-      format.date "year" output.check
+      format.issn output
+      format.doi output
+      format.url output
     }
-    { format.article.crossref output.nonnull
-      eid empty$
-        { format.pages output }
-        { format.eid output }
-      if$
+    { % Only output the note if it exists
+      note output
     }
   if$
-  format.issn output
-  format.doi output
-  format.url output
-  new.block
-  note output
   fin.entry
 }
 
 FUNCTION {book}
 { output.bibitem
-  author empty$
-    { format.editors "author and editor" output.check
-      editor format.key output
-    }
-    { format.authors output.nonnull
-      crossref missing$
-        { "author and editor" editor either.or.check }
-        'skip$
+  note empty$
+    { % Original processing when no note exists
+      author empty$
+        { format.editors "author and editor" output.check
+          editor format.key output
+        }
+        { format.authors output.nonnull
+          crossref missing$
+            { "author and editor" editor either.or.check }
+            'skip$
+          if$
+        }
       if$
-    }
-  if$
-  new.block
-  format.btitle "title" output.check
-  new.block
-  note output
-  crossref missing$
-    { format.bvolume output
       new.block
-      format.number.series output
-      new.sentence
-      address output.colon
-      publisher "publisher" output.check
+      format.btitle "title" output.check
+      crossref missing$
+        { format.bvolume output
+          new.block
+          format.number.series output
+          new.sentence
+          address output.colon
+          publisher "publisher" output.check
+        }
+        { new.block
+          format.book.crossref output.nonnull
+        }
+      if$
+      format.edition output
+      format.date "year" output.check
+      format.isbn output
+      format.doi output
+      format.url output
     }
-    { new.block
-      format.book.crossref output.nonnull
+    { % Only output the note if it exists
+      note output
     }
   if$
-  format.edition output
-  format.date "year" output.check
-  format.isbn output
-  format.doi output
-  format.url output
   fin.entry
 }
 
@@ -811,40 +821,45 @@ FUNCTION {booklet}
 
 FUNCTION {inbook}
 { output.bibitem
-  author empty$
-    { format.editors "author and editor" output.check
-      editor format.key output
-    }
-    { format.authors output.nonnull
-      crossref missing$
-        { "author and editor" editor either.or.check }
-        'skip$
+  note empty$
+    { % Original processing when no note exists
+      author empty$
+        { format.editors "author and editor" output.check
+          editor format.key output
+        }
+        { format.authors output.nonnull
+          crossref missing$
+            { "author and editor" editor either.or.check }
+            'skip$
+          if$
+        }
       if$
+      new.block
+      format.btitle "title" output.check
+      crossref missing$
+        { format.bvolume output
+          format.chapter.pages "chapter and pages" output.check
+          new.block
+          format.number.series output
+          new.sentence
+          publisher "publisher" output.check
+          address output
+        }
+        { format.chapter.pages "chapter and pages" output.check
+          new.block
+          format.book.crossref output.nonnull
+        }
+      if$
+      format.edition output
+      format.date "year" output.check
+      format.isbn output
+      format.doi output
+      format.url output
+    }
+    { % Only output the note if it exists
+      note output
     }
   if$
-  new.block
-  format.btitle "title" output.check
-  crossref missing$
-    { format.bvolume output
-      format.chapter.pages "chapter and pages" output.check
-      new.block
-      format.number.series output
-      new.sentence
-      publisher "publisher" output.check
-      address output
-    }
-    { format.chapter.pages "chapter and pages" output.check
-      new.block
-      format.book.crossref output.nonnull
-    }
-  if$
-  format.edition output
-  format.date "year" output.check
-  format.isbn output
-  format.doi output
-  format.url output
-  new.block
-  note output
   fin.entry
 }
 
@@ -880,39 +895,44 @@ FUNCTION {incollection}
 
 FUNCTION {inproceedings}
 { output.bibitem
-  format.authors "author" output.check
-  author format.key output
-  new.block
-  format.title "title" output.check
-  new.block
-  crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
-      format.bvolume output
-      format.number.series output
-      format.pages output
-      address empty$
-        { organization publisher new.sentence.checkb
-          organization output
-          publisher output
-          format.date "year" output.check
+  note empty$
+    { % Original processing when no note exists
+      format.authors "author" output.check
+      author format.key output
+      new.block
+      format.title "title" output.check
+      new.block
+      crossref missing$
+        { format.in.ed.booktitle "booktitle" output.check
+          format.bvolume output
+          format.number.series output
+          format.pages output
+          address empty$
+            { organization publisher new.sentence.checkb
+              organization output
+              publisher output
+              format.date "year" output.check
+            }
+            { address output.nonnull
+              format.date "year" output.check
+              new.sentence
+              organization output
+              publisher output
+            }
+          if$
         }
-        { address output.nonnull
-          format.date "year" output.check
-          new.sentence
-          organization output
-          publisher output
+        { format.incoll.inproc.crossref output.nonnull
+          format.pages output
         }
       if$
+      format.isbn output
+      format.doi output
+      format.url output
     }
-    { format.incoll.inproc.crossref output.nonnull
-      format.pages output
+    { % Only output the note if it exists
+      note output
     }
   if$
-  format.isbn output
-  format.doi output
-  format.url output
-  new.block
-  note output
   fin.entry
 }
 
